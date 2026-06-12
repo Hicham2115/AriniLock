@@ -1,11 +1,30 @@
 "use client";
 
 import Lenis from "lenis";
-import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
 
 export function LenisProvider({ children }: { children: React.ReactNode }) {
+  const lenisRef = useRef<Lenis | null>(null);
+  const pathname = usePathname();
+
+  // On home page, check if there's a hash in the URL and scroll to it
+  useEffect(() => {
+    if (pathname !== "/") return;
+    const hash = window.location.hash;
+    if (!hash) return;
+    const el = document.querySelector(hash);
+    if (!el || !lenisRef.current) return;
+    // Small delay to let page render first
+    const t = setTimeout(() => {
+      lenisRef.current?.scrollTo(el as HTMLElement, { offset: -72, lerp: 0.1, duration: 1.6 });
+    }, 100);
+    return () => clearTimeout(t);
+  }, [pathname]);
+
   useEffect(() => {
     const lenis = new Lenis({ lerp: 0.12 });
+    lenisRef.current = lenis;
 
     let frame: number;
     const raf = (time: number) => {
@@ -14,7 +33,6 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
     };
     frame = requestAnimationFrame(raf);
 
-    // Intercept anchor clicks so Lenis handles them smoothly
     const handleClick = (e: MouseEvent) => {
       const target = e.target as Element;
       const anchor = target.closest?.("a") as HTMLAnchorElement | null;
@@ -37,6 +55,7 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
       cancelAnimationFrame(frame);
       document.removeEventListener("click", handleClick, { capture: true });
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
 
