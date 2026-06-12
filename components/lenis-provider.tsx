@@ -8,20 +8,7 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
   const pathname = usePathname();
 
-  // On home page, check if there's a hash in the URL and scroll to it
-  useEffect(() => {
-    if (pathname !== "/") return;
-    const hash = window.location.hash;
-    if (!hash) return;
-    const el = document.querySelector(hash);
-    if (!el || !lenisRef.current) return;
-    // Small delay to let page render first
-    const t = setTimeout(() => {
-      lenisRef.current?.scrollTo(el as HTMLElement, { offset: -72, lerp: 0.1, duration: 1.6 });
-    }, 100);
-    return () => clearTimeout(t);
-  }, [pathname]);
-
+  // Init Lenis once
   useEffect(() => {
     const lenis = new Lenis({ lerp: 0.12 });
     lenisRef.current = lenis;
@@ -33,19 +20,17 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
     };
     frame = requestAnimationFrame(raf);
 
+    // Intercept hash-anchor clicks on the same page
     const handleClick = (e: MouseEvent) => {
-      const target = e.target as Element;
-      const anchor = target.closest?.("a") as HTMLAnchorElement | null;
+      const anchor = (e.target as Element).closest?.("a") as HTMLAnchorElement | null;
       if (!anchor) return;
-
       const href = anchor.getAttribute("href");
       if (!href?.startsWith("#") || href === "#") return;
-
       const el = document.querySelector(href);
       if (!el) return;
-
       e.preventDefault();
       e.stopPropagation();
+      history.pushState(null, "", href);
       lenis.scrollTo(el as HTMLElement, { offset: -72, lerp: 0.1, duration: 1.6 });
     };
 
@@ -58,6 +43,28 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
       lenisRef.current = null;
     };
   }, []);
+
+  // On every route change: scroll to top OR to hash section
+  useEffect(() => {
+    const lenis = lenisRef.current;
+    if (!lenis) return;
+
+    const hash = window.location.hash;
+
+    if (hash && hash !== "#") {
+      // e.g. navigated to /#fonctionnalites from another page
+      const t = setTimeout(() => {
+        const el = document.querySelector(hash);
+        if (el && lenisRef.current) {
+          lenisRef.current.scrollTo(el as HTMLElement, { offset: -72, lerp: 0.1, duration: 1.6 });
+        }
+      }, 150);
+      return () => clearTimeout(t);
+    }
+
+    // Normal page navigation — instant scroll to top via Lenis
+    lenis.scrollTo(0, { immediate: true });
+  }, [pathname]);
 
   return <>{children}</>;
 }
