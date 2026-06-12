@@ -49,7 +49,16 @@ export function StatsSection() {
           {STATS.map((stat, i) => (
             <div
               key={stat.label}
-              className={`py-8 ${i > 0 ? "border-l border-ink/10 pl-6" : ""} ${i < STATS.length - 1 ? "pr-6" : ""}`}
+              className={[
+                "py-8 px-4 lg:px-6",
+                // mobile 2-col: right column gets border-left
+                i % 2 !== 0 ? "border-l border-ink/10" : "",
+                // mobile 2-col: second row gets border-top
+                i >= 2 ? "border-t border-ink/10" : "",
+                // desktop 4-col: all except first get border-left, no border-top
+                i > 0 ? "lg:border-l lg:border-ink/10" : "",
+                i >= 2 ? "lg:border-t-0" : "",
+              ].filter(Boolean).join(" ")}
             >
               <div className="mb-1 flex items-baseline gap-1">
                 <span

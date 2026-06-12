@@ -182,7 +182,7 @@ export function ProductShowcase() {
                 onClick={() =>
                   addToCart([{ merchandiseId: variant.id, quantity }])
                 }
-                className="min-w-50 flex-1 rounded-full bg-ink px-8 py-4 font-medium text-cream transition-colors hover:bg-ink/80 disabled:opacity-60"
+                className="flex-1 rounded-full bg-ink px-8 py-4 font-medium text-cream transition-colors hover:bg-ink/80 disabled:opacity-60 sm:min-w-50"
               >
                 {isPending ? "Ajout en cours…" : "Ajouter au panier"}
               </button>

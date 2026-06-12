@@ -1,51 +1,158 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect } from "react";
+import { Fingerprint } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useUiStore } from "@/stores/ui-store";
+
+const EASE = [0.76, 0, 0.24, 1] as const;
+const RADIUS = 58;
+const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
 export function LoadingScreen() {
   const done = useUiStore((s) => s.loadingScreenDone);
   const finish = useUiStore((s) => s.finishLoadingScreen);
+  const [progress, setProgress] = useState(0); // 0 → 1
 
   useEffect(() => {
-    const timer = setTimeout(finish, 1400);
-    return () => clearTimeout(timer);
+    const duration = 1800;
+    const start = Date.now();
+
+    const tick = () => {
+      const elapsed = Date.now() - start;
+      const t = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setProgress(eased);
+      if (t < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        setTimeout(finish, 220);
+      }
+    };
+
+    const raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
   }, [finish]);
+
+  const strokeOffset = CIRCUMFERENCE - progress * CIRCUMFERENCE;
+  const isComplete = progress >= 0.99;
 
   return (
     <AnimatePresence>
       {!done && (
-        <motion.div
-          key="loading-screen"
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0.6, ease: "easeInOut" } }}
-          className="fixed inset-0 z-100 flex flex-col items-center justify-center gap-6 bg-dark"
-          aria-hidden="true"
-        >
-          <motion.span
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0, transition: { duration: 0.7 } }}
-            className="font-display text-4xl tracking-[0.18em] text-cream"
-          >
-            Arini Lock
-          </motion.span>
+        <div key="loading-root" aria-hidden="true" className="fixed inset-0 z-100">
+
+          {/* ── Top panel ── */}
           <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{
-              scaleX: 1,
-              transition: { duration: 1.1, ease: "easeInOut" },
-            }}
-            className="h-px w-40 origin-left bg-gold"
-          />
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { delay: 0.4, duration: 0.6 } }}
-            className="text-xs uppercase tracking-widest2 text-cream/60"
+            exit={{ y: "-100%", transition: { duration: 0.9, ease: EASE } }}
+            className="absolute inset-x-0 top-0 flex h-1/2 flex-col justify-between bg-ink px-6 pb-5 pt-8 sm:px-12"
           >
-            La porte qui vous reconnaît
-          </motion.p>
-        </motion.div>
+            <div className="flex items-center justify-between text-[10px] uppercase tracking-widest2 text-cream/25">
+              <span>Arini Lock</span>
+              <span>Est. 2026</span>
+            </div>
+            <motion.p
+              initial={{ opacity: 0, x: -12 }}
+              animate={{ opacity: 1, x: 0, transition: { delay: 0.35, duration: 0.55 } }}
+              className="text-xs uppercase tracking-[0.25em] text-cream/30"
+            >
+              Reconnaissance en cours…
+            </motion.p>
+          </motion.div>
+
+          {/* ── Bottom panel ── */}
+          <motion.div
+            exit={{ y: "100%", transition: { duration: 0.9, ease: EASE, delay: 0.06 } }}
+            className="absolute inset-x-0 bottom-0 flex h-1/2 flex-col justify-between bg-ink px-6 pb-10 pt-5 sm:px-12"
+          >
+            <div className="h-px w-full bg-cream/8" />
+            <div className="flex flex-col gap-1">
+              <motion.p
+                initial={{ opacity: 0, x: -12 }}
+                animate={{ opacity: 1, x: 0, transition: { delay: 0.5, duration: 0.55 } }}
+                className="text-[10px] uppercase tracking-[0.3em] text-gold/50"
+              >
+                // La porte qui vous reconnaît
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { delay: 0.7, duration: 0.5 } }}
+                className="text-[10px] uppercase tracking-[0.25em] text-cream/20"
+              >
+                Conçu pour le foyer marocain
+              </motion.p>
+            </div>
+          </motion.div>
+
+          {/* ── Centre overlay — fingerprint ── */}
+          <motion.div
+            exit={{ opacity: 0, transition: { duration: 0.25 } }}
+            className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-5"
+          >
+            {/* Ring + fingerprint */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1, transition: { duration: 0.6, ease: EASE } }}
+              className="relative flex items-center justify-center"
+            >
+              {/* SVG progress ring */}
+              <svg width="144" height="144" className="-rotate-90">
+                {/* Track */}
+                <circle
+                  cx="72" cy="72" r={RADIUS}
+                  fill="none"
+                  stroke="rgba(247,243,236,0.07)"
+                  strokeWidth="1.5"
+                />
+                {/* Progress arc */}
+                <motion.circle
+                  cx="72" cy="72" r={RADIUS}
+                  fill="none"
+                  stroke="#c49a65"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeDasharray={CIRCUMFERENCE}
+                  animate={{ strokeDashoffset: strokeOffset }}
+                  transition={{ duration: 0.06, ease: "linear" }}
+                />
+              </svg>
+
+              {/* Pulsing glow when complete */}
+              {isComplete && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: [0, 0.35, 0], scale: [0.8, 1.4, 1.8] }}
+                  transition={{ duration: 0.7, ease: "easeOut" }}
+                  className="absolute h-24 w-24 rounded-full bg-gold"
+                />
+              )}
+
+              {/* Fingerprint icon */}
+              <motion.div
+                className="absolute"
+                animate={{
+                  color: isComplete ? "#c49a65" : "rgba(247,243,236,0.55)",
+                  filter: isComplete
+                    ? "drop-shadow(0 0 14px rgba(196,154,101,0.7))"
+                    : "none",
+                }}
+                transition={{ duration: 0.4 }}
+              >
+                <Fingerprint className="h-14 w-14" strokeWidth={1.25} />
+              </motion.div>
+            </motion.div>
+
+            {/* Brand name */}
+            <motion.p
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0, transition: { delay: 0.25, duration: 0.55 } }}
+              className="font-display text-sm uppercase tracking-widest2 text-cream/35"
+            >
+              Arini Lock
+            </motion.p>
+          </motion.div>
+
+        </div>
       )}
     </AnimatePresence>
   );

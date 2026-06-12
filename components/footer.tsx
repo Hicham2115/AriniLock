@@ -85,7 +85,7 @@ export function Footer() {
       <div className="border-t border-cream/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 text-xs text-cream/40 sm:flex-row lg:px-10">
           <p>© {new Date().getFullYear()} Arini Lock. Tous droits réservés.</p>
-          <div className="flex items-center gap-4 uppercase tracking-[0.2em]">
+          <div className="flex flex-wrap items-center gap-3 uppercase tracking-[0.2em]">
             <span>CMI</span>
             <span>Visa</span>
             <span>Mastercard</span>

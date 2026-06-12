@@ -45,7 +45,7 @@ export function Reviews() {
         <span>Vérifié · 312 foyers</span>
       </div>
 
-      <div className="grid gap-16 lg:grid-cols-3">
+      <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-16">
         {/* Rating summary */}
         <div>
           <h2

@@ -74,7 +74,7 @@ export function OfferNewsletter() {
               L&apos;offre se<br />termine dans
             </h2>
 
-            <div className="flex gap-8">
+            <div className="flex flex-wrap gap-6 sm:gap-8">
               {units.map((unit) => (
                 <div key={unit.label}>
                   <p
