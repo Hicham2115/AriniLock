@@ -7,7 +7,8 @@ import { useCart } from "@/hooks/use-cart";
 import { useUiStore } from "@/stores/ui-store";
 
 const NAV_LINKS = [
-  { href: "#produit", label: "Produit" },
+  // { href: "#produit", label: "Produit" },
+  { href: "/produits", label: "Boutique" },
   { href: "#fonctionnalites", label: "Fonctionnalités" },
   { href: "#accessoires", label: "Accessoires" },
   { href: "#avis", label: "Avis" },
@@ -18,19 +19,14 @@ export function Header() {
   const openCart = useUiStore((s) => s.openCart);
   const { data: cart } = useCart();
   const count = cart?.totalQuantity ?? 0;
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
 
   return (
@@ -39,9 +35,11 @@ export function Header() {
       {mobileOpen && (
         <div className="fixed inset-0 z-50 flex flex-col bg-card md:hidden">
           <div className="flex items-center justify-between px-6 pt-6">
-            <span className="font-display text-base tracking-[0.18em] text-ink">
-              Arini Lock
-            </span>
+            <Link href="/" className="shrink-0 px-3">
+              <span className="font-display text-base tracking-[0.18em] text-ink">
+                Arini Lock
+              </span>
+            </Link>
             <button
               type="button"
               onClick={() => setMobileOpen(false)}
@@ -53,22 +51,36 @@ export function Header() {
           </div>
 
           <nav className="flex flex-1 flex-col items-start justify-center gap-2 px-6">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="w-full border-b border-line py-5 font-display text-2xl tracking-wide text-ink transition-colors hover:text-brass"
-              >
-                {link.label}
-              </a>
-            ))}
+            {NAV_LINKS.map((link) =>
+              link.href.startsWith("#") ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="w-full border-b border-line py-5 font-display text-2xl tracking-wide text-ink transition-colors hover:text-brass"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="w-full border-b border-line py-5 font-display text-2xl tracking-wide text-ink transition-colors hover:text-brass"
+                >
+                  {link.label}
+                </Link>
+              ),
+            )}
           </nav>
 
           <div className="px-6 pb-10">
             <button
               type="button"
-              onClick={() => { openCart(); setMobileOpen(false); }}
+              onClick={() => {
+                openCart();
+                setMobileOpen(false);
+              }}
               className="flex w-full items-center justify-center gap-2 rounded-full bg-ink py-4 text-sm font-medium text-cream"
             >
               <ShoppingBag aria-hidden="true" className="h-4 w-4" />
@@ -79,28 +91,34 @@ export function Header() {
       )}
 
       <header className="fixed inset-x-0 top-4 z-40 flex justify-center px-4 pointer-events-none">
-        <div
-          className={`pointer-events-auto flex items-center gap-1 rounded-full border px-3 h-14 shadow-sm backdrop-blur transition-all duration-300 ${
-            scrolled ? "border-line bg-card/95" : "border-white/20 bg-white/10"
-          }`}
-        >
+        <div className="pointer-events-auto flex items-center gap-1 rounded-full border border-line bg-card/95 px-3 h-14 shadow-sm backdrop-blur">
           <Link
-            href="#"
-            className={`shrink-0 px-3 font-display text-base tracking-[0.18em] transition-colors duration-300 ${scrolled ? "text-ink" : "text-white"}`}
+            href="/"
+            className="shrink-0 px-3 font-display text-base tracking-[0.18em] text-ink"
           >
             Arini Lock
           </Link>
 
           <nav className="hidden items-center md:flex">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className={`px-3 text-[13px] transition-colors duration-300 ${scrolled ? "text-muted-foreground hover:text-ink" : "text-white/80 hover:text-white"}`}
-              >
-                {link.label}
-              </a>
-            ))}
+            {NAV_LINKS.map((link) =>
+              link.href.startsWith("#") ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="px-3 text-[13px] text-muted-foreground transition-colors hover:text-ink"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="px-3 text-[13px] text-muted-foreground transition-colors hover:text-ink"
+                >
+                  {link.label}
+                </Link>
+              ),
+            )}
           </nav>
 
           {/* Hamburger — mobile only */}
@@ -108,9 +126,7 @@ export function Header() {
             type="button"
             onClick={() => setMobileOpen(true)}
             aria-label="Ouvrir le menu"
-            className={`ml-1 flex h-10 w-10 items-center justify-center rounded-full transition-colors md:hidden ${
-              scrolled ? "text-ink hover:bg-line" : "text-white hover:bg-white/15"
-            }`}
+            className="ml-1 flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-line md:hidden"
           >
             <Menu className="h-5 w-5" />
           </button>

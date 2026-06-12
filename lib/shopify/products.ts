@@ -40,6 +40,19 @@ export async function getMainProduct(): Promise<Product> {
   return normalizeProduct(data.product);
 }
 
+export async function getProductByHandle(handle: string): Promise<Product | null> {
+  if (!isShopifyConfigured) {
+    const all = [MOCK_PRODUCT, ...MOCK_ACCESSORIES];
+    return all.find((p) => p.handle === handle) ?? null;
+  }
+  const data = await shopifyFetch<{ product: RawProduct | null }>(
+    PRODUCT_BY_HANDLE_QUERY,
+    { handle },
+  );
+  if (!data.product) return null;
+  return normalizeProduct(data.product);
+}
+
 export async function getAccessories(): Promise<Product[]> {
   if (!isShopifyConfigured) return MOCK_ACCESSORIES;
 
