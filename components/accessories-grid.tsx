@@ -129,13 +129,19 @@ export function AccessoriesGrid() {
         className="mb-12 font-display2 uppercase leading-none text-ink"
         style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
       >
-        Pensé pour<br />durer plus<br />longtemps.
+        Pensé pour durer plus
+        <br />
+        longtemps.
       </h2>
 
       {isLoading && (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[0, 1, 2].map((i) => (
-            <Skeleton key={i} className="w-full rounded-2xl" style={{ aspectRatio: "3/4" }} />
+            <Skeleton
+              key={i}
+              className="w-full rounded-2xl"
+              style={{ aspectRatio: "3/4" }}
+            />
           ))}
         </div>
       )}

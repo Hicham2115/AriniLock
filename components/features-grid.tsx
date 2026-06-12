@@ -80,7 +80,11 @@ export function FeaturesGrid() {
             className="font-display2 uppercase leading-[0.88] text-ink"
             style={{ fontSize: "clamp(2.8rem, 7.5vw, 6.5rem)" }}
           >
-            Quatre<br />façons<br />d&apos;entrer.
+            Quatre
+            <br />
+            façons
+            <br />
+            d&apos;entrer.
           </h2>
         </div>
 
@@ -113,33 +117,6 @@ export function FeaturesGrid() {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Gold accent card at bottom — like forge's 0→1 card */}
-          <div className="mt-8 flex items-center justify-between rounded-2xl border border-gold/30 bg-gold/10 p-8">
-            <div>
-              <p
-                className="font-display2 uppercase leading-none text-ink"
-                style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
-              >
-                5
-              </p>
-              <p className="mt-1 text-sm font-medium text-ink">
-                façons d&apos;entrer
-              </p>
-              <p className="mt-0.5 text-xs text-muted-foreground">
-                01 Empreinte · 02 Code · 03 App · 04 RFID · 05 Clé
-              </p>
-            </div>
-            <div className="relative h-20 w-20 shrink-0">
-              <div className="scan-sweep animate-scan-sweep" />
-              <div className="scan-ring" />
-              <div className="scan-ring scan-ring--2" />
-              <div className="scan-ring scan-ring--3" />
-              <div className="absolute inset-3 flex items-center justify-center rounded-full border border-gold/50 bg-card/90">
-                <Fingerprint aria-hidden="true" className="h-6 w-6 text-brass" />
-              </div>
-            </div>
           </div>
         </div>
       </div>

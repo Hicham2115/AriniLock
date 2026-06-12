@@ -32,7 +32,7 @@ export function Footer() {
             Arini Lock
           </p>
           <p className="text-xs uppercase tracking-[0.25em] text-cream/50">
-            // Est. 2026 // Maison connectée · Conçu pour le Maroc
+            {`// Est. ${new Date().getFullYear()} // Maison connectée · Conçu pour le Maroc`}
           </p>
         </div>
 

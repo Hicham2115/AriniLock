@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 const STEPS = [
   {
     num: "01",
@@ -32,22 +36,76 @@ export function HowItWorks() {
         className="mb-12 font-display2 uppercase leading-none text-ink"
         style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
       >
-        Installée en<br />moins de<br />15 minutes.
+        Installée en moins de
+        <br />
+        15 minutes.
       </h2>
 
       <div className="divide-y divide-line">
         {STEPS.map((step) => (
-          <div key={step.num} className="flex items-start gap-8 py-8">
-            <span className="w-10 shrink-0 font-display2 text-sm text-muted-foreground">
+          <motion.div
+            key={step.num}
+            whileHover="hovered"
+            initial="rest"
+            animate="rest"
+            className="group relative flex cursor-default items-start gap-8 overflow-hidden py-8"
+          >
+            {/* Background fill — slides in from left */}
+            <motion.div
+              variants={{
+                rest: { scaleX: 0 },
+                hovered: { scaleX: 1 },
+              }}
+              transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+              className="absolute inset-0 origin-left bg-gold/5"
+            />
+
+            {/* Left accent line */}
+            <motion.div
+              variants={{
+                rest: { scaleY: 0 },
+                hovered: { scaleY: 1 },
+              }}
+              transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+              className="absolute left-0 top-0 h-full w-px origin-top bg-gold/60"
+            />
+
+            {/* Step number */}
+            <motion.span
+              variants={{
+                rest: { color: "var(--color-muted-foreground)" },
+                hovered: { color: "#c49a65" },
+              }}
+              transition={{ duration: 0.2 }}
+              className="relative w-10 shrink-0 font-display2 text-sm"
+            >
               {step.num}
-            </span>
-            <div className="grid flex-1 gap-2 sm:grid-cols-[1fr_2fr]">
-              <h3 className="font-semibold text-ink">{step.title}</h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">
+            </motion.span>
+
+            {/* Content */}
+            <div className="relative grid flex-1 gap-2 sm:grid-cols-[1fr_2fr]">
+              <motion.h3
+                variants={{
+                  rest: { x: 0 },
+                  hovered: { x: 6 },
+                }}
+                transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                className="font-semibold text-ink"
+              >
+                {step.title}
+              </motion.h3>
+              <motion.p
+                variants={{
+                  rest: { opacity: 0.6 },
+                  hovered: { opacity: 1 },
+                }}
+                transition={{ duration: 0.25 }}
+                className="text-sm leading-relaxed text-black"
+              >
                 {step.description}
-              </p>
+              </motion.p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

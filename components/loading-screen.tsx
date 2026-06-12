@@ -49,7 +49,7 @@ export function LoadingScreen() {
           >
             <div className="flex items-center justify-between text-[10px] uppercase tracking-widest2 text-cream/25">
               <span>Arini Lock</span>
-              <span>Est. 2026</span>
+              <span>Est. {new Date().getFullYear()}</span>
             </div>
             <motion.p
               initial={{ opacity: 0, x: -12 }}
@@ -73,13 +73,6 @@ export function LoadingScreen() {
                 className="text-[10px] uppercase tracking-[0.3em] text-gold/50"
               >
                 // La porte qui vous reconnaît
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { delay: 0.7, duration: 0.5 } }}
-                className="text-[10px] uppercase tracking-[0.25em] text-cream/20"
-              >
-                Conçu pour le foyer marocain
               </motion.p>
             </div>
           </motion.div>

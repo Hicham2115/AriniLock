@@ -33,10 +33,11 @@ export default function HomePage() {
           trackClassName="text-sm uppercase tracking-[0.25em] text-muted-foreground"
         />
         <StatsSection />
+        <AccessoriesGrid />
+
         <FeaturesGrid />
         {/* <ProductShowcase /> */}
         <HowItWorks />
-        <AccessoriesGrid />
         <Reviews />
         <Faq />
         <OfferNewsletter />
