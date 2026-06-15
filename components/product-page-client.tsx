@@ -67,12 +67,12 @@ const ACCORDION_ITEMS = [
 function GallerySkeleton() {
   return (
     <div className="flex flex-col gap-3 lg:flex-row">
-      <div className="flex gap-2 lg:flex-col">
+      <Skeleton className="aspect-square w-full flex-1 rounded-2xl sm:aspect-4/5" />
+      <div className="flex gap-2 lg:hidden">
         {[0, 1, 2, 3].map((i) => (
           <Skeleton key={i} className="h-12 w-12 shrink-0 rounded-lg" />
         ))}
       </div>
-      <Skeleton className="aspect-4/5 w-full flex-1 rounded-2xl" />
     </div>
   );
 }
@@ -153,10 +153,10 @@ export function ProductPageClient({
       <Header />
       <CartDrawer />
 
-      <main className="min-h-screen bg-background">
+      <main className="min-h-screen bg-background pb-safe">
         {/* Breadcrumb */}
         <div className="border-b border-line bg-background">
-          <div className="mx-auto max-w-7xl px-6 pb-6 pt-24 md:pt-28 lg:px-10">
+          <div className="mx-auto max-w-7xl px-4 pb-4 pt-20 sm:px-6 md:pt-28 lg:px-10">
             <nav
               aria-label="Fil d'Ariane"
               className="flex items-center gap-2 text-xs text-muted-foreground"
@@ -172,14 +172,16 @@ export function ProductPageClient({
                 Boutique
               </Link>
               <span>/</span>
-              <span className="text-ink">{product?.title ?? "…"}</span>
+              <span className="max-w-40 truncate text-ink sm:max-w-none">
+                {product?.title ?? "…"}
+              </span>
             </nav>
           </div>
         </div>
 
         {/* Main grid */}
-        <div className="mx-auto max-w-7xl px-6 py-8 lg:px-10 lg:py-10">
-          <div className="grid gap-8 lg:grid-cols-[1fr_420px] lg:gap-16">
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-10 lg:py-10">
+          <div className="grid gap-6 lg:grid-cols-[1fr_420px] lg:gap-16">
             {/* ── Left: Gallery ── */}
             <div className="lg:sticky lg:top-28 lg:self-start">
               {isLoading ? (
@@ -302,7 +304,7 @@ export function ProductPageClient({
 
                   {/* Price */}
                   <div className="flex items-baseline gap-3">
-                    <span className="font-display2 text-3xl leading-none text-gold">
+                    <span className="font-display2 text-2xl leading-none text-gold sm:text-3xl">
                       {formatMoney(variant!.price)}
                     </span>
                     {variant?.compareAtPrice && (
@@ -381,8 +383,8 @@ export function ProductPageClient({
                   )}
 
                   {/* Quantity + CTA */}
-                  <div className="flex flex-col gap-3 sm:flex-row">
-                    <div className="flex h-14 items-center rounded-full border border-line">
+                  <div className="flex gap-3">
+                    <div className="flex h-12 items-center rounded-full border border-line sm:h-14">
                       <button
                         type="button"
                         onClick={() => setQty((q) => Math.max(1, q - 1))}
@@ -413,7 +415,7 @@ export function ProductPageClient({
                           { merchandiseId: variant.id, quantity: qty },
                         ])
                       }
-                      className="flex h-14 flex-1 items-center justify-center gap-2 rounded-full bg-ink text-sm font-medium text-cream transition-colors hover:bg-ink/80 disabled:opacity-50"
+                      className="flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-ink text-sm font-medium text-cream transition-colors hover:bg-ink/80 disabled:opacity-50 sm:h-14"
                     >
                       <ShoppingBag aria-hidden="true" className="h-4 w-4" />
                       {isPending ? "Ajout…" : "Ajouter au panier"}
@@ -450,7 +452,7 @@ export function ProductPageClient({
                         <AccordionTrigger className="text-sm font-medium text-ink hover:text-gold hover:no-underline">
                           {item.trigger}
                         </AccordionTrigger>
-                        <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
+                        <AccordionContent className="text-sm leading-relaxed text-black/70">
                           {item.content}
                         </AccordionContent>
                       </AccordionItem>
@@ -465,7 +467,7 @@ export function ProductPageClient({
         {/* Related products */}
         {(relatedProducts.length > 0 || loadingAcc) && (
           <div className="border-t border-line">
-            <div className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-16">
+            <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-10 lg:py-16">
               <div className="mb-6 flex items-center gap-4">
                 <span className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                   Vous aimerez aussi

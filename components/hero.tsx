@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import lockImg from "@/app/assets/nano-banana-2_3D_render_of_a_premium_smart_door_lock_handle_brushed_gold_and_matte_black_finis-0.jpg";
 import mobileHeroImg from "@/app/assets/mobile hero.png";
-import { Skeleton } from "@/components/ui/skeleton";
 import { useAddToCart } from "@/hooks/use-cart";
 import { useMainProduct } from "@/hooks/use-product";
 import { useUiStore } from "@/stores/ui-store";
@@ -63,24 +62,10 @@ export function Hero() {
         {/* Gradient: transparent top → heavy bottom */}
         <div className="absolute inset-0 bg-linear-to-b from-black/20 via-transparent to-black/90" />
 
-        {/* Top bar */}
-        <motion.div
-          {...fadeUp(ready, 0.15)}
-          className="relative flex items-center justify-between px-5 pt-6 text-[10px] uppercase tracking-[0.25em] text-white/60"
-        >
-          <span>Arini Lock</span>
-          <span>Marque marocaine</span>
-        </motion.div>
-
         <div className="flex-1" />
 
         {/* Bottom content panel */}
         <div className="relative px-5 pb-8">
-          {/* Eyebrow */}
-          <motion.p {...fadeUp(ready, 0.3)} className="mb-4 text-[10px] uppercase tracking-[0.3em] text-white/50">
-            Édition de lancement · Maroc
-          </motion.p>
-
           {/* Headline */}
           <motion.h1
             {...fadeUp(ready, 0.45)}
@@ -113,19 +98,21 @@ export function Hero() {
 
           {/* CTAs */}
           <motion.div {...fadeUp(ready, 0.88)} className="flex flex-col gap-3">
-            {isLoading || !variant ? (
-              <Skeleton className="h-14 w-full rounded-full" />
-            ) : (
-              <button
-                type="button"
-                disabled={isPending}
-                onClick={() => addToCart([{ merchandiseId: variant.id, quantity: 1 }])}
-                className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-gold text-sm font-semibold text-dark transition-colors disabled:opacity-60"
-              >
-                Commander — {formatMoney(variant.price)}
-                <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
-              </button>
-            )}
+            <button
+              type="button"
+              disabled={isPending || isLoading || !variant}
+              onClick={() => variant && addToCart([{ merchandiseId: variant.id, quantity: 1 }])}
+              className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-gold text-sm font-semibold text-dark transition-colors disabled:opacity-70"
+            >
+              {isLoading ? (
+                <span className="h-4 w-4 animate-spin rounded-full border-2 border-dark/30 border-t-dark" />
+              ) : (
+                <>
+                  Commander{variant ? ` — ${formatMoney(variant.price)}` : ""}
+                  <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+                </>
+              )}
+            </button>
             <a
               href="#fonctionnalites"
               className="flex h-12 w-full items-center justify-center rounded-full border border-white/25 text-sm font-medium text-white/80 backdrop-blur-sm"
@@ -203,22 +190,24 @@ export function Hero() {
           {...fadeUp(ready, 0.82)}
           className="flex flex-wrap items-center justify-center gap-4 pb-12"
         >
-          {isLoading || !variant ? (
-            <Skeleton className="h-14 w-60 rounded-full" />
-          ) : (
-            <button
-              type="button"
-              disabled={isPending}
-              onClick={() => addToCart([{ merchandiseId: variant.id, quantity: 1 }])}
-              className="inline-flex h-14 items-center gap-2 rounded-full group bg-ink px-8 text-sm font-medium cursor-pointer text-cream transition-colors disabled:opacity-60"
-            >
-              Commander — {formatMoney(variant.price)}
-              <ArrowUpRight
-                aria-hidden="true"
-                className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300"
-              />
-            </button>
-          )}
+          <button
+            type="button"
+            disabled={isPending || isLoading || !variant}
+            onClick={() => variant && addToCart([{ merchandiseId: variant.id, quantity: 1 }])}
+            className="group inline-flex h-14 cursor-pointer items-center gap-2 rounded-full bg-ink px-8 text-sm font-medium text-cream transition-colors disabled:opacity-70"
+          >
+            {isLoading ? (
+              <span className="h-4 w-4 animate-spin rounded-full border-2 border-cream/30 border-t-cream" />
+            ) : (
+              <>
+                Commander{variant ? ` — ${formatMoney(variant.price)}` : ""}
+                <ArrowUpRight
+                  aria-hidden="true"
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                />
+              </>
+            )}
+          </button>
           <a
             href="#fonctionnalites"
             className="inline-flex group h-14 items-center rounded-full border border-white/25 bg-white/10 px-8 text-sm font-medium text-white backdrop-blur transition-colors hover:border-white/50"

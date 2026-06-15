@@ -12,7 +12,6 @@ import { Marquee } from "@/components/marquee";
 import { OfferNewsletter } from "@/components/offer-newsletter";
 import { Reviews } from "@/components/reviews";
 import { StatsSection } from "@/components/stats-section";
-import { StickyBuyBar } from "@/components/sticky-buy-bar";
 
 export const metadata: Metadata = {
   title: "Arini Lock — La porte qui vous reconnaît",
@@ -154,7 +153,6 @@ export default function HomePage() {
         <OfferNewsletter />
       </main>
       <Footer />
-      <StickyBuyBar />
       <CartDrawer />
       <ChatWidget />
     </>

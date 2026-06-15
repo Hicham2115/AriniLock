@@ -45,16 +45,16 @@ export function LoadingScreen() {
           {/* ── Top panel ── */}
           <motion.div
             exit={{ y: "-100%", transition: { duration: 0.9, ease: EASE } }}
-            className="absolute inset-x-0 top-0 flex h-1/2 flex-col justify-between bg-ink px-6 pb-5 pt-8 sm:px-12"
+            className="absolute inset-x-0 top-0 flex h-1/2 flex-col justify-between bg-ink px-5 pb-5 pt-6 sm:px-12 sm:pt-8"
           >
             <div className="flex items-center justify-between text-[10px] uppercase tracking-widest2 text-cream/25">
               <span>Arini Lock</span>
-              <span>Marque marocaine</span>
+              <span className="hidden sm:inline">Marque marocaine</span>
             </div>
             <motion.p
               initial={{ opacity: 0, x: -12 }}
               animate={{ opacity: 1, x: 0, transition: { delay: 0.35, duration: 0.55 } }}
-              className="text-xs uppercase tracking-[0.25em] text-cream/30"
+              className="text-[10px] uppercase tracking-[0.2em] text-cream/30 sm:text-xs sm:tracking-[0.25em]"
             >
               Reconnaissance en cours…
             </motion.p>
@@ -63,41 +63,37 @@ export function LoadingScreen() {
           {/* ── Bottom panel ── */}
           <motion.div
             exit={{ y: "100%", transition: { duration: 0.9, ease: EASE, delay: 0.06 } }}
-            className="absolute inset-x-0 bottom-0 flex h-1/2 flex-col justify-between bg-ink px-6 pb-10 pt-5 sm:px-12"
+            className="absolute inset-x-0 bottom-0 flex h-1/2 flex-col justify-between bg-ink px-5 pb-8 pt-5 sm:px-12 sm:pb-10"
           >
             <div className="h-px w-full bg-cream/8" />
-            <div className="flex flex-col gap-1">
-              <motion.p
-                initial={{ opacity: 0, x: -12 }}
-                animate={{ opacity: 1, x: 0, transition: { delay: 0.5, duration: 0.55 } }}
-                className="text-[10px] uppercase tracking-[0.3em] text-gold/50"
-              >
-                // La porte qui vous reconnaît
-              </motion.p>
-            </div>
+            <motion.p
+              initial={{ opacity: 0, x: -12 }}
+              animate={{ opacity: 1, x: 0, transition: { delay: 0.5, duration: 0.55 } }}
+              className="text-[10px] uppercase tracking-[0.25em] text-gold/50"
+            >
+              // La porte qui vous reconnaît
+            </motion.p>
           </motion.div>
 
           {/* ── Centre overlay — fingerprint ── */}
           <motion.div
             exit={{ opacity: 0, transition: { duration: 0.25 } }}
-            className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-5"
+            className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-4 sm:gap-5"
           >
-            {/* Ring + fingerprint */}
+            {/* Ring + fingerprint — scaled down on small screens */}
             <motion.div
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1, transition: { duration: 0.6, ease: EASE } }}
-              className="relative flex items-center justify-center"
+              className="relative flex items-center justify-center scale-[0.8] sm:scale-100"
             >
               {/* SVG progress ring */}
               <svg width="144" height="144" className="-rotate-90">
-                {/* Track */}
                 <circle
                   cx="72" cy="72" r={RADIUS}
                   fill="none"
                   stroke="rgba(247,243,236,0.07)"
                   strokeWidth="1.5"
                 />
-                {/* Progress arc */}
                 <motion.circle
                   cx="72" cy="72" r={RADIUS}
                   fill="none"
@@ -110,7 +106,6 @@ export function LoadingScreen() {
                 />
               </svg>
 
-              {/* Pulsing glow when complete */}
               {isComplete && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -120,7 +115,6 @@ export function LoadingScreen() {
                 />
               )}
 
-              {/* Fingerprint icon */}
               <motion.div
                 className="absolute"
                 animate={{
