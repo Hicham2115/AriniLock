@@ -57,11 +57,11 @@ export function OfferNewsletter() {
   ];
 
   return (
-    <section className="mx-auto max-w-7xl border-t border-line px-6 py-24 lg:px-10">
+    <section className="mx-auto max-w-7xl border-t border-line px-6 py-16 lg:px-10 lg:py-24">
       <Reveal>
-      <div className="rounded-3xl bg-dark px-8 py-16 lg:px-16">
+      <div className="rounded-3xl bg-dark px-5 py-10 sm:px-8 sm:py-14 lg:px-16 lg:py-16">
         {/* Section label */}
-        <div className="mb-10 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-cream/50">
+        <div className="mb-8 flex flex-wrap items-start justify-between gap-4 text-xs uppercase tracking-[0.25em] text-cream/50 lg:mb-10">
           <span>07 — Offre de lancement</span>
           <span>-300 MAD</span>
         </div>

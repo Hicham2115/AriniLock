@@ -61,17 +61,17 @@ export function FeaturesGrid() {
   return (
     <section
       id="fonctionnalites"
-      className="mx-auto max-w-7xl scroll-mt-20 border-t border-line px-6 py-24 lg:px-10"
+      className="mx-auto max-w-7xl scroll-mt-20 border-t border-line px-6 py-16 lg:px-10 lg:py-24"
     >
       {/* Section label */}
       <Reveal>
-        <div className="mb-12 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
+        <div className="mb-8 flex flex-wrap items-start justify-between gap-4 text-xs uppercase tracking-[0.25em] text-muted-foreground lg:mb-12">
           <span>03 — Fonctionnalités</span>
           <span>Sécurité nouvelle génération</span>
         </div>
       </Reveal>
 
-      <div className="grid items-start gap-12 lg:grid-cols-[2fr_3fr]">
+      <div className="grid items-start gap-8 lg:grid-cols-[2fr_3fr] lg:gap-12">
         {/* Left: sticky large headline */}
         <div className="lg:sticky lg:top-28">
           <Reveal delay={0.1}>

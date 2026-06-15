@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import lockImg from "@/app/assets/nano-banana-2_3D_render_of_a_premium_smart_door_lock_handle_brushed_gold_and_matte_black_finis-0.jpg";
+import mobileHeroImg from "@/app/assets/mobile hero.png";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAddToCart } from "@/hooks/use-cart";
 import { useMainProduct } from "@/hooks/use-product";
@@ -37,12 +38,22 @@ export function Hero() {
         animate={ready ? { scale: 1 } : { scale: 1.07 }}
         transition={{ duration: 2.2, ease: [0.25, 0.1, 0.25, 1] }}
       >
+        {/* Mobile hero image */}
+        <Image
+          src={mobileHeroImg}
+          alt=""
+          aria-hidden="true"
+          fill
+          className="object-cover object-center md:hidden"
+          priority
+        />
+        {/* Desktop hero image */}
         <Image
           src={lockImg}
           alt=""
           aria-hidden="true"
           fill
-          className="object-cover object-[center_30%] md:object-center"
+          className="hidden object-cover object-[center_30%] md:block md:object-center"
           priority
         />
       </motion.div>

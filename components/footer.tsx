@@ -24,23 +24,19 @@ const NAV_COLS = [
 export function Footer() {
   return (
     <footer className="bg-ink text-cream overflow-hidden">
-      {/* Giant background wordmark */}
-      <div
-        aria-hidden="true"
-        className="relative select-none overflow-hidden border-b border-cream/6 min-h-105 lg:min-h-120"
-      >
+      {/* Giant background wordmark + content */}
+      <div className="relative overflow-hidden border-b border-cream/6">
+        {/* Decorative wordmark — purely visual, behind content */}
         <p
-          className="whitespace-nowrap font-display2 uppercase leading-none text-cream/3"
-          style={{
-            fontSize: "clamp(6rem, 18vw, 16rem)",
-            letterSpacing: "-0.02em",
-          }}
+          aria-hidden="true"
+          className="pointer-events-none absolute top-0 select-none whitespace-nowrap font-display2 uppercase leading-none text-cream/3"
+          style={{ fontSize: "clamp(6rem, 18vw, 16rem)", letterSpacing: "-0.02em" }}
         >
           Arini Lock
         </p>
 
-        {/* Overlay content */}
-        <div className="absolute inset-0 flex flex-col justify-between px-6 py-16 lg:px-10 lg:py-20">
+        {/* Content — in normal flow so height is content-driven */}
+        <div className="relative flex flex-col gap-10 px-6 py-14 lg:px-10 lg:py-20">
           {/* Brand + tagline row */}
           <div className="flex items-start justify-between gap-6">
             <div>
@@ -59,7 +55,7 @@ export function Footer() {
           </div>
 
           {/* Gold divider */}
-          <div className="my-8 flex items-center gap-4">
+          <div className="flex items-center gap-4">
             <div className="h-px flex-1 bg-cream/8" />
             <div className="h-1 w-1 rounded-full bg-gold/60" />
             <div className="h-px flex-1 bg-cream/8" />
@@ -68,7 +64,7 @@ export function Footer() {
           {/* Nav grid */}
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {/* Brand blurb */}
-            <div className="lg:col-span-2">
+            <div className="sm:col-span-2 lg:col-span-2">
               <p className="mb-6 max-w-xs text-sm leading-relaxed text-cream/45">
                 La serrure connectée qui s'ouvre par empreinte, code ou
                 smartphone. Sécurité intelligente, sans compromis sur le style.
@@ -96,7 +92,7 @@ export function Footer() {
             </div>
 
             {NAV_COLS.map((col) => (
-              <div key={col.title} className="">
+              <div key={col.title}>
                 <p className="mb-5 text-[10px] uppercase tracking-[0.3em] text-gold/70">
                   {col.title}
                 </p>

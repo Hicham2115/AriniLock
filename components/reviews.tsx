@@ -105,12 +105,12 @@ export function Reviews() {
   return (
     <section
       id="avis"
-      className="scroll-mt-20 border-t border-line py-24"
+      className="scroll-mt-20 border-t border-line py-16 lg:py-24"
     >
       {/* Inner header — respects page padding */}
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal>
-          <div className="mb-10 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
+          <div className="mb-8 flex flex-wrap items-start justify-between gap-4 text-xs uppercase tracking-[0.25em] text-muted-foreground lg:mb-10">
             <span>05 — Avis clients</span>
             <span>Vérifié · 312 foyers</span>
           </div>

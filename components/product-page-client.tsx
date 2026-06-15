@@ -12,7 +12,8 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
+import { toast } from "sonner";
 import {
   Accordion,
   AccordionContent,
@@ -95,8 +96,24 @@ export function ProductPageClient({
 }) {
   const { handle } = use(params);
   const { data: product, isLoading, isError } = useProduct(handle);
-  const { data: accessories, isLoading: loadingAcc } = useAccessories();
+  const {
+    data: accessories,
+    isLoading: loadingAcc,
+    isError: isErrorAcc,
+  } = useAccessories();
   const { addToCart, isPending } = useAddToCart();
+
+  useEffect(() => {
+    if (isError)
+      toast.error("Produit introuvable", {
+        description: "Vérifiez l'URL ou revenez à la boutique.",
+      });
+  }, [isError]);
+
+  useEffect(() => {
+    if (isErrorAcc)
+      toast.error("Impossible de charger les produits similaires");
+  }, [isErrorAcc]);
 
   const [activeVariantId, setActiveVariantId] = useState<string | null>(null);
   const [activeImageIdx, setActiveImageIdx] = useState(0);
@@ -139,7 +156,7 @@ export function ProductPageClient({
       <main className="min-h-screen bg-background">
         {/* Breadcrumb */}
         <div className="border-b border-line bg-background">
-          <div className="mx-auto max-w-7xl px-6 pb-8 pt-28 lg:px-10">
+          <div className="mx-auto max-w-7xl px-6 pb-6 pt-24 md:pt-28 lg:px-10">
             <nav
               aria-label="Fil d'Ariane"
               className="flex items-center gap-2 text-xs text-muted-foreground"
@@ -161,8 +178,8 @@ export function ProductPageClient({
         </div>
 
         {/* Main grid */}
-        <div className="mx-auto max-w-7xl px-6 py-10 lg:px-10">
-          <div className="grid gap-12 lg:grid-cols-[1fr_420px] lg:gap-16">
+        <div className="mx-auto max-w-7xl px-6 py-8 lg:px-10 lg:py-10">
+          <div className="grid gap-8 lg:grid-cols-[1fr_420px] lg:gap-16">
             {/* ── Left: Gallery ── */}
             <div className="lg:sticky lg:top-28 lg:self-start">
               {isLoading ? (
@@ -200,8 +217,8 @@ export function ProductPageClient({
                   {/* Main image */}
                   <div
                     className={cn(
-                      "order-1 relative flex-1 overflow-hidden rounded-2xl bg-[#f5f3f0] lg:order-2",
-                      "aspect-4/5",
+                      "order-1 relative flex-1 overflow-hidden rounded-2xl bg-white lg:order-2",
+                      "aspect-square sm:aspect-4/5",
                     )}
                   >
                     {mainImage ? (
@@ -234,7 +251,7 @@ export function ProductPageClient({
                   </Link>
                 </div>
               ) : (
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-5">
                   {/* Title + rating */}
                   <div>
                     <p className="mb-1 text-xs uppercase tracking-[0.25em] text-muted-foreground">
@@ -247,13 +264,17 @@ export function ProductPageClient({
                       <button
                         type="button"
                         onClick={() => toggle(product)}
-                        aria-label={liked ? "Retirer des favoris" : "Ajouter aux favoris"}
+                        aria-label={
+                          liked ? "Retirer des favoris" : "Ajouter aux favoris"
+                        }
                         className="mt-1 shrink-0 rounded-full border border-line p-2 transition-colors hover:border-gold"
                       >
                         <Heart
                           className={cn(
                             "h-5 w-5 transition-colors",
-                            liked ? "fill-gold text-gold" : "text-muted-foreground",
+                            liked
+                              ? "fill-gold text-gold"
+                              : "text-muted-foreground",
                           )}
                         />
                       </button>
@@ -400,22 +421,24 @@ export function ProductPageClient({
                   </div>
 
                   {/* Trust strip */}
-                  <div className="grid grid-cols-3 divide-x divide-line rounded-xl border border-line">
+                  <div className="grid divide-y divide-line rounded-xl border border-line sm:grid-cols-3 sm:divide-x sm:divide-y-0">
                     {TRUST.map(({ icon: Icon, label, sub }) => (
                       <div
                         key={label}
-                        className="flex flex-col items-center gap-1 px-3 py-4 text-center"
+                        className="flex items-center gap-3 px-4 py-3 sm:flex-col sm:items-center sm:gap-1 sm:px-3 sm:py-4 sm:text-center"
                       >
                         <Icon
                           aria-hidden="true"
-                          className="h-4 w-4 text-gold"
+                          className="h-4 w-4 shrink-0 text-gold"
                         />
-                        <p className="text-[11px] font-medium leading-tight text-ink">
-                          {label}
-                        </p>
-                        <p className="text-[10px] text-muted-foreground">
-                          {sub}
-                        </p>
+                        <div className="sm:contents">
+                          <p className="text-[11px] font-medium leading-tight text-ink">
+                            {label}
+                          </p>
+                          <p className="hidden text-[10px] text-muted-foreground sm:block">
+                            {sub}
+                          </p>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -442,14 +465,14 @@ export function ProductPageClient({
         {/* Related products */}
         {(relatedProducts.length > 0 || loadingAcc) && (
           <div className="border-t border-line">
-            <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
-              <div className="mb-8 flex items-center gap-4">
+            <div className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-16">
+              <div className="mb-6 flex items-center gap-4">
                 <span className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                   Vous aimerez aussi
                 </span>
                 <div className="h-px flex-1 bg-line" />
               </div>
-              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
                 {loadingAcc
                   ? [0, 1, 2, 3].map((i) => <ProductCardSkeleton key={i} />)
                   : relatedProducts.map((p) => (

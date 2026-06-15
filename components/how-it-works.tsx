@@ -26,10 +26,10 @@ const STEPS = [
 
 export function HowItWorks() {
   return (
-    <section className="mx-auto max-w-7xl border-t border-line px-6 py-24 lg:px-10">
+    <section className="mx-auto max-w-7xl border-t border-line px-6 py-16 lg:px-10 lg:py-24">
       {/* Section label */}
       <Reveal>
-        <div className="mb-12 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
+        <div className="mb-8 flex flex-wrap items-start justify-between gap-4 text-xs uppercase tracking-[0.25em] text-muted-foreground lg:mb-12">
           <span>04 — Mise en service</span>
           <span>Cycle : 0 → 1 en 15 min</span>
         </div>
@@ -37,7 +37,7 @@ export function HowItWorks() {
 
       <Reveal delay={0.1}>
         <h2
-          className="mb-12 font-display2 uppercase leading-none text-ink"
+          className="mb-8 font-display2 uppercase leading-none text-ink lg:mb-12"
           style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
         >
           Installée en moins de
@@ -53,7 +53,7 @@ export function HowItWorks() {
             whileHover="hovered"
             initial="rest"
             animate="rest"
-            className="group relative flex cursor-default items-start gap-8 overflow-hidden py-8"
+            className="group relative flex cursor-default items-start gap-4 overflow-hidden py-6 sm:gap-8 sm:py-8"
           >
             {/* Background fill — slides in from left */}
             <motion.div

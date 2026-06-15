@@ -31,10 +31,10 @@ const DETAILS = [
 
 export function StatsSection() {
   return (
-    <section className="mx-auto max-w-7xl border-t border-line px-6 py-24 lg:px-10">
+    <section className="mx-auto max-w-7xl border-t border-line px-6 py-16 lg:px-10 lg:py-24">
       {/* Section label row */}
       <Reveal>
-        <div className="mb-12 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
+        <div className="mb-8 flex flex-wrap items-start justify-between gap-4 text-xs uppercase tracking-[0.25em] text-muted-foreground lg:mb-12">
           <span>01 — En chiffres</span>
           <span>Snapshot — Édition lancement</span>
         </div>
@@ -43,7 +43,7 @@ export function StatsSection() {
       {/* Big headline */}
       <Reveal delay={0.1}>
         <h2
-          className="mb-12 font-display2 font-light uppercase leading-none text-ink"
+          className="mb-8 font-display2 font-light uppercase leading-none text-ink lg:mb-12"
           style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
         >
           Ce qui la rend
