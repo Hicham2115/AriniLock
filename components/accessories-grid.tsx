@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Plus, RotateCcw } from "lucide-react";
 import { Reveal } from "@/components/reveal";
@@ -8,87 +9,44 @@ import { useAddToCart } from "@/hooks/use-cart";
 import { useAccessories } from "@/hooks/use-product";
 import { formatMoney, type Product } from "@/types/shopify";
 
-function getCardLetter(title: string): string {
-  const t = title.toLowerCase();
-  if (t.includes("pile") || t.includes("batterie")) return "P";
-  if (t.includes("finition") || t.includes("plaque")) return "F";
-  if (t.includes("rfid") || t.includes("carte")) return "C";
-  return title[0].toUpperCase();
-}
-
-function AccessoryCard({
-  accessory,
-  accent,
-}: {
-  accessory: Product;
-  accent?: boolean;
-}) {
+function AccessoryCard({ accessory }: { accessory: Product }) {
   const { addToCart, isPending } = useAddToCart();
   const variant = accessory.variants[0];
-  const letter = getCardLetter(accessory.title);
+  const image = variant?.image ?? accessory.images[0];
 
   return (
     <div
-      className={`group relative overflow-hidden rounded-2xl ${
-        accent ? "bg-gold" : "bg-dark"
-      }`}
+      className="group relative overflow-hidden rounded-2xl bg-dark"
       style={{ aspectRatio: "3/4" }}
     >
-      {/* Giant letter background */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden"
-      >
-        <span
-          className={`select-none font-display2 leading-none ${
-            accent ? "text-dark/20" : "text-white/[0.07]"
-          }`}
-          style={{ fontSize: "clamp(8rem, 22vw, 18rem)" }}
-        >
-          {letter}
-        </span>
-      </div>
+      {/* Product image */}
+      {image ? (
+        <Image
+          src={image.url}
+          alt={image.altText ?? accessory.title}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        />
+      ) : (
+        <div className="absolute inset-0 bg-line" />
+      )}
 
-      {/* Stage badge — top left */}
-      <div className="absolute left-4 top-4">
-        <span
-          className={`rounded-full border px-3 py-1 text-xs ${
-            accent
-              ? "border-dark/20 bg-dark/15 text-dark"
-              : "border-white/20 bg-white/10 text-cream"
-          }`}
-        >
-          Accessoire
-        </span>
-      </div>
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
 
       {/* Price — top right */}
       {variant && (
-        <p
-          className={`absolute right-4 top-4 text-sm font-medium ${
-            accent ? "text-dark" : "text-cream/80"
-          }`}
-        >
+        <p className="absolute right-4 top-4 text-sm font-medium text-cream/90">
           {formatMoney(variant.price)}
         </p>
       )}
 
       {/* Product name — bottom left */}
       <div className="absolute bottom-4 left-4 right-16">
-        <h3
-          className={`font-display text-lg leading-tight ${
-            accent ? "text-dark" : "text-cream"
-          }`}
-        >
+        <h3 className="font-display text-lg leading-tight text-cream">
           {accessory.title}
         </h3>
-        <p
-          className={`mt-0.5 text-xs ${
-            accent ? "text-dark/70" : "text-cream/60"
-          }`}
-        >
-          {accessory.description}
-        </p>
       </div>
 
       {/* Quick-add — bottom right, appears on hover */}
@@ -170,7 +128,7 @@ export function AccessoriesGrid() {
 
       {accessories && (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {accessories.map((accessory, index) => (
+          {accessories.slice(0, 6).map((accessory, index) => (
             <motion.div
               key={accessory.id}
               initial={{ opacity: 0, y: 24 }}
@@ -178,10 +136,7 @@ export function AccessoriesGrid() {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.65, ease: [0.25, 0.1, 0.25, 1], delay: index * 0.1 }}
             >
-              <AccessoryCard
-                accessory={accessory}
-                accent={index === 1}
-              />
+              <AccessoryCard accessory={accessory} />
             </motion.div>
           ))}
         </div>

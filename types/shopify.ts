@@ -27,6 +27,8 @@ export const productSchema = z.object({
   handle: z.string(),
   title: z.string(),
   description: z.string(),
+  descriptionHtml: z.string().optional(),
+  tags: z.array(z.string()).optional(),
   images: z.array(imageSchema),
   variants: z.array(variantSchema),
 });

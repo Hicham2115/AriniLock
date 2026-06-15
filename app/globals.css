@@ -125,3 +125,12 @@
     rgba(196, 154, 101, 0) 24%
   );
 }
+
+/* Shopify description HTML styling */
+.shopify-description p { margin-bottom: 0.75rem; }
+.shopify-description p:last-child { margin-bottom: 0; }
+.shopify-description ul { list-style: disc; padding-left: 1.25rem; margin-bottom: 0.75rem; }
+.shopify-description ol { list-style: decimal; padding-left: 1.25rem; margin-bottom: 0.75rem; }
+.shopify-description li { margin-bottom: 0.25rem; }
+.shopify-description strong { color: var(--color-ink); font-weight: 600; }
+.shopify-description h1,.shopify-description h2,.shopify-description h3 { color: var(--color-ink); font-weight: 600; margin-bottom: 0.5rem; margin-top: 0.75rem; }

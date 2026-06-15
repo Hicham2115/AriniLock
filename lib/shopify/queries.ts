@@ -39,7 +39,9 @@ export const PRODUCT_BY_HANDLE_QUERY = /* GraphQL */ `
       handle
       title
       description
-      images(first: 8) {
+      descriptionHtml
+      tags
+      images(first: 12) {
         nodes {
           ...ImageFields
         }

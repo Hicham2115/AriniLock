@@ -1,8 +1,7 @@
 "use client";
 
 import {
-  ChevronLeft,
-  ChevronRight,
+  ChevronDown,
   Minus,
   Plus,
   ShieldCheck,
@@ -43,12 +42,6 @@ const TRUST = [
 
 const ACCORDION_ITEMS = [
   {
-    value: "description",
-    trigger: "Description",
-    content:
-      "La poignée connectée Arini Lock s'ouvre par empreinte digitale, code secret ou smartphone. Conçue pour s'adapter à votre porte existante sans perçage, elle allie sécurité bancaire et esthétique premium.",
-  },
-  {
     value: "specs",
     trigger: "Spécifications techniques",
     content:
@@ -70,13 +63,13 @@ const ACCORDION_ITEMS = [
 
 function GallerySkeleton() {
   return (
-    <div className="flex flex-col gap-3">
-      <Skeleton className="aspect-square w-full rounded-2xl" />
-      <div className="flex gap-2">
+    <div className="flex flex-col gap-3 lg:flex-row">
+      <div className="flex gap-2 lg:flex-col">
         {[0, 1, 2, 3].map((i) => (
-          <Skeleton key={i} className="h-16 w-16 shrink-0 rounded-lg" />
+          <Skeleton key={i} className="h-12 w-12 shrink-0 rounded-lg" />
         ))}
       </div>
+      <Skeleton className="aspect-4/5 w-full flex-1 rounded-2xl" />
     </div>
   );
 }
@@ -106,6 +99,7 @@ export function ProductPageClient({
   const [activeVariantId, setActiveVariantId] = useState<string | null>(null);
   const [activeImageIdx, setActiveImageIdx] = useState(0);
   const [qty, setQty] = useState(1);
+  const [descExpanded, setDescExpanded] = useState(false);
 
   const variant =
     product?.variants.find(
@@ -113,17 +107,20 @@ export function ProductPageClient({
     ) ?? product?.variants[0];
 
   const images = product?.images ?? [];
-  const mainImage = variant?.image ?? images[activeImageIdx];
+  // Always drive the gallery from activeImageIdx — never let variant.image override
+  const mainImage = images[activeImageIdx] ?? images[0];
+
+  function selectVariant(id: string) {
+    setActiveVariantId(id);
+    const v = product?.variants.find((v) => v.id === id);
+    if (v?.image) {
+      const idx = images.findIndex((img) => img.url === v.image!.url);
+      if (idx >= 0) setActiveImageIdx(idx);
+    }
+  }
 
   const relatedProducts =
     accessories?.filter((a) => a.handle !== handle).slice(0, 4) ?? [];
-
-  function prev() {
-    setActiveImageIdx((i) => (i === 0 ? images.length - 1 : i - 1));
-  }
-  function next() {
-    setActiveImageIdx((i) => (i === images.length - 1 ? 0 : i + 1));
-  }
 
   const hasVariants =
     (product?.variants.length ?? 0) > 1 &&
@@ -137,8 +134,11 @@ export function ProductPageClient({
       <main className="min-h-screen bg-background">
         {/* Breadcrumb */}
         <div className="border-b border-line bg-background">
-          <div className="mx-auto max-w-7xl px-6 pb-10 pt-28 lg:px-10">
-            <nav aria-label="Fil d'Ariane" className="flex items-center gap-2 text-xs text-muted-foreground">
+          <div className="mx-auto max-w-7xl px-6 pb-8 pt-28 lg:px-10">
+            <nav
+              aria-label="Fil d'Ariane"
+              className="flex items-center gap-2 text-xs text-muted-foreground"
+            >
               <Link href="/" className="transition-colors hover:text-ink">
                 Accueil
               </Link>
@@ -157,103 +157,67 @@ export function ProductPageClient({
 
         {/* Main grid */}
         <div className="mx-auto max-w-7xl px-6 py-10 lg:px-10">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            {/* ── Gallery ── */}
+          <div className="grid gap-12 lg:grid-cols-[1fr_420px] lg:gap-16">
+            {/* ── Left: Gallery ── */}
             <div className="lg:sticky lg:top-28 lg:self-start">
               {isLoading ? (
                 <GallerySkeleton />
               ) : (
-                <div className="flex flex-col gap-3">
-                  {/* Main image */}
-                  <div className="group relative aspect-square overflow-hidden rounded-2xl bg-ink">
-                    {mainImage ? (
-                      <Image
-                        key={mainImage.url}
-                        src={mainImage.url}
-                        alt={mainImage.altText ?? product?.title ?? ""}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                        className="object-cover"
-                        priority
-                      />
-                    ) : (
-                      <div className="absolute inset-0 bg-line" />
-                    )}
-
-                    {/* Nav arrows */}
-                    {images.length > 1 && (
-                      <>
-                        <button
-                          type="button"
-                          onClick={prev}
-                          aria-label="Image précédente"
-                          className="absolute left-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-card/80 text-ink opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100"
-                        >
-                          <ChevronLeft className="h-4 w-4" />
-                        </button>
-                        <button
-                          type="button"
-                          onClick={next}
-                          aria-label="Image suivante"
-                          className="absolute right-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-card/80 text-ink opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100"
-                        >
-                          <ChevronRight className="h-4 w-4" />
-                        </button>
-                      </>
-                    )}
-
-                    {/* Dot indicators */}
-                    {images.length > 1 && (
-                      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-1.5">
-                        {images.map((_, i) => (
-                          <button
-                            key={i}
-                            type="button"
-                            onClick={() => setActiveImageIdx(i)}
-                            aria-label={`Image ${i + 1}`}
-                            className={cn(
-                              "h-1.5 rounded-full transition-all duration-300",
-                              i === activeImageIdx
-                                ? "w-5 bg-gold"
-                                : "w-1.5 bg-white/50",
-                            )}
-                          />
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Thumbnails */}
+                <div className="flex flex-col gap-3 lg:flex-row lg:gap-3">
+                  {/* Thumbnails — horizontal on mobile, vertical on desktop */}
                   {images.length > 1 && (
-                    <div className="flex gap-2 overflow-x-auto pb-1">
+                    <div className="order-2 flex gap-2 overflow-x-auto pb-1 lg:order-1 lg:flex-col lg:overflow-visible lg:pb-0">
                       {images.map((img, i) => (
                         <button
                           key={img.url}
                           type="button"
                           onClick={() => setActiveImageIdx(i)}
+                          aria-label={img.altText ?? `Image ${i + 1}`}
                           className={cn(
-                            "relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border-2 transition-all",
+                            "relative h-12 w-12 shrink-0 overflow-hidden rounded-lg border-2 transition-all",
                             i === activeImageIdx
-                              ? "border-gold"
-                              : "border-transparent opacity-60 hover:opacity-100",
+                              ? "border-gold opacity-100"
+                              : "border-transparent opacity-50 hover:opacity-80",
                           )}
                         >
                           <Image
                             src={img.url}
                             alt={img.altText ?? `Image ${i + 1}`}
                             fill
-                            sizes="64px"
-                            className="object-cover"
+                            sizes="48px"
+                            className="object-contain"
                           />
                         </button>
                       ))}
                     </div>
                   )}
+
+                  {/* Main image */}
+                  <div
+                    className={cn(
+                      "order-1 relative flex-1 overflow-hidden rounded-2xl bg-[#f5f3f0] lg:order-2",
+                      "aspect-4/5",
+                    )}
+                  >
+                    {mainImage ? (
+                      <Image
+                        key={mainImage.url}
+                        src={mainImage.url}
+                        alt={mainImage.altText ?? product?.title ?? ""}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 55vw"
+                        className="object-contain"
+                        priority
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-line" />
+                    )}
+                  </div>
                 </div>
               )}
             </div>
 
-            {/* ── Info ── */}
+            {/* ── Right: Info ── */}
             <div>
               {isLoading ? (
                 <InfoSkeleton />
@@ -266,7 +230,7 @@ export function ProductPageClient({
                 </div>
               ) : (
                 <div className="flex flex-col gap-6">
-                  {/* Title + rating + price */}
+                  {/* Title + rating */}
                   <div>
                     <p className="mb-1 text-xs uppercase tracking-[0.25em] text-muted-foreground">
                       Arini Lock
@@ -312,6 +276,35 @@ export function ProductPageClient({
                     )}
                   </div>
 
+                  {/* Description — formatted HTML from Shopify */}
+                  {(product.descriptionHtml || product.description) && (
+                    <div>
+                      <div
+                        className={cn(
+                          "shopify-description text-sm leading-relaxed text-black",
+                          !descExpanded && "line-clamp-4",
+                        )}
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            product.descriptionHtml ?? product.description,
+                        }}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setDescExpanded((v) => !v)}
+                        className="mt-1 flex items-center gap-1 text-xs text-gold hover:underline"
+                      >
+                        {descExpanded ? "Réduire" : "Lire la suite"}
+                        <ChevronDown
+                          className={cn(
+                            "h-3 w-3 transition-transform",
+                            descExpanded && "rotate-180",
+                          )}
+                        />
+                      </button>
+                    </div>
+                  )}
+
                   {/* Variant swatches */}
                   {hasVariants && (
                     <div>
@@ -326,7 +319,7 @@ export function ProductPageClient({
                           <button
                             key={v.id}
                             type="button"
-                            onClick={() => setActiveVariantId(v.id)}
+                            onClick={() => selectVariant(v.id)}
                             aria-label={`Finition ${v.title}`}
                             aria-pressed={
                               v.id ===
@@ -348,7 +341,6 @@ export function ProductPageClient({
 
                   {/* Quantity + CTA */}
                   <div className="flex flex-col gap-3 sm:flex-row">
-                    {/* Stepper */}
                     <div className="flex h-14 items-center rounded-full border border-line">
                       <button
                         type="button"
@@ -371,7 +363,6 @@ export function ProductPageClient({
                       </button>
                     </div>
 
-                    {/* Add to cart */}
                     <button
                       type="button"
                       disabled={isPending || !variant?.availableForSale}

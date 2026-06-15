@@ -15,6 +15,8 @@ interface RawProduct {
   handle: string;
   title: string;
   description: string;
+  descriptionHtml?: string;
+  tags?: string[];
   images: { nodes: unknown[] };
   variants: { nodes: unknown[] };
 }
