@@ -68,10 +68,11 @@ export const newsletterSchema = z.object({
 
 export type NewsletterPayload = z.infer<typeof newsletterSchema>;
 
-export function formatMoney(money: Money): string {
+export function formatMoney(money: Money, currencyLabel?: string): string {
   const value = Number.parseFloat(money.amount);
   const formatted = new Intl.NumberFormat("fr-FR", {
     maximumFractionDigits: value % 1 === 0 ? 0 : 2,
   }).format(value);
-  return `${formatted} ${money.currencyCode === "MAD" ? "MAD" : money.currencyCode}`;
+  const label = currencyLabel ?? (money.currencyCode === "MAD" ? "MAD" : money.currencyCode);
+  return `${formatted} ${label}`;
 }

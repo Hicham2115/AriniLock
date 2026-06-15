@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { Reveal } from "@/components/reveal";
+import { useT } from "@/hooks/use-t";
 import {
   Carousel,
   CarouselContent,
@@ -14,48 +15,9 @@ import {
 const RATING_BARS = [
   { stars: "5★", pct: "86%", count: 268 },
   { stars: "4★", pct: "10%", count: 31 },
-  { stars: "3★", pct: "3%", count: 9 },
-  { stars: "2★", pct: "1%", count: 3 },
-  { stars: "1★", pct: "0.5%", count: 1 },
-] as const;
-
-const TESTIMONIALS = [
-  {
-    title: "« Je n'ai plus jamais cherché mes clés »",
-    body: "Installation faite en 10 minutes par mon mari, sans perceuse. L'app est simple, même ma mère l'utilise pour entrer chez moi avec son propre code.",
-    author: "Salma B.",
-    city: "Casablanca",
-  },
-  {
-    title: "« Finition premium, pas un gadget »",
-    body: "La finition or s'accorde parfaitement avec ma porte d'entrée. La batterie tient vraiment plusieurs mois, et les notifications d'alerte sont rassurantes en voyage.",
-    author: "Youssef A.",
-    city: "Marrakech",
-  },
-  {
-    title: "« On ne retourne pas en arrière »",
-    body: "Depuis qu'on a installé Arini Lock, on n'a plus sorti une clé physique. Les enfants rentrent seuls après l'école, on reçoit une notif à chaque ouverture.",
-    author: "Karim M.",
-    city: "Rabat",
-  },
-  {
-    title: "« Service client au top »",
-    body: "Une petite question d'installation, réponse en moins d'une heure. Le produit est solide, l'app intuitive, et la garantie 2 ans rassure vraiment.",
-    author: "Nadia E.",
-    city: "Agadir",
-  },
-  {
-    title: "« Idéal pour les locations »",
-    body: "Je gère trois appartements en location courte durée. Avec Arini Lock, j'envoie un code temporaire à chaque locataire. Fini les remises de clés en main propre.",
-    author: "Hassan T.",
-    city: "Fès",
-  },
-  {
-    title: "« Mon père de 72 ans l'utilise sans souci »",
-    body: "Mes parents sont âgés et j'avais peur que ce soit trop technique. En réalité, l'empreinte digitale est la méthode la plus simple qui soit. Ils adorent.",
-    author: "Imane R.",
-    city: "Tanger",
-  },
+  { stars: "3★", pct: "3%",  count: 9 },
+  { stars: "2★", pct: "1%",  count: 3 },
+  { stars: "1★", pct: "0.5%",count: 1 },
 ] as const;
 
 function Stars() {
@@ -68,7 +30,9 @@ function Stars() {
   );
 }
 
-function ReviewCard({ review }: { review: typeof TESTIMONIALS[number] }) {
+type Testimonial = { title: string; body: string; author: string; city: string };
+
+function ReviewCard({ review }: { review: Testimonial }) {
   return (
     <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-card p-6 transition-shadow duration-300 hover:shadow-[0_8px_40px_rgba(196,154,101,0.1)]">
       <div className="absolute inset-x-0 top-0 h-px bg-gold/0 transition-all duration-500 group-hover:bg-gold/60" />
@@ -102,6 +66,11 @@ function ReviewCard({ review }: { review: typeof TESTIMONIALS[number] }) {
 }
 
 export function Reviews() {
+  const t = useT();
+  const s = t.sections.reviews;
+  const testimonials = s.testimonials;
+  const carouselOpts = { align: "start" as const, loop: true, ...(t.dir === "rtl" ? { direction: "rtl" as const } : {}) };
+
   return (
     <section
       id="avis"
@@ -111,8 +80,8 @@ export function Reviews() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal>
           <div className="mb-8 flex flex-wrap items-start justify-between gap-4 text-xs uppercase tracking-[0.25em] text-muted-foreground lg:mb-10">
-            <span>05 — Avis clients</span>
-            <span>Vérifié · 312 foyers</span>
+            <span>{s.label}</span>
+            <span>{s.right}</span>
           </div>
         </Reveal>
 
@@ -124,7 +93,7 @@ export function Reviews() {
                 className="mb-6 font-display2 uppercase leading-none text-ink"
                 style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
               >
-                Ce qu&apos;en<br />disent 312<br />foyers.
+                {s.headline[0]}<br />{s.headline[1]}<br />{s.headline[2]}
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
@@ -161,17 +130,26 @@ export function Reviews() {
 
           {/* Desktop carousel */}
           <div className="col-span-2">
-            <Carousel opts={{ align: "start", loop: true }} className="w-full">
+            <Carousel opts={carouselOpts} className="w-full">
               <CarouselContent>
-                {TESTIMONIALS.map((review) => (
+                {testimonials.map((review) => (
                   <CarouselItem key={review.author} className="basis-1/2">
                     <ReviewCard review={review} />
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <div className="mt-5 flex gap-2">
-                <CarouselPrevious className="relative left-0 top-0 translate-x-0 translate-y-0 border-line bg-card hover:border-gold hover:bg-card" />
-                <CarouselNext className="relative left-0 top-0 translate-x-0 translate-y-0 border-line bg-card hover:border-gold hover:bg-card" />
+              <div className="mt-5 flex gap-2" dir="ltr">
+                {t.dir === "rtl" ? (
+                  <>
+                    <CarouselNext className="relative left-0 top-0 translate-x-0 translate-y-0 border-line bg-card hover:border-gold hover:bg-card [&_svg]:scale-x-[-1]" />
+                    <CarouselPrevious className="relative left-0 top-0 translate-x-0 translate-y-0 border-line bg-card hover:border-gold hover:bg-card [&_svg]:scale-x-[-1]" />
+                  </>
+                ) : (
+                  <>
+                    <CarouselPrevious className="relative left-0 top-0 translate-x-0 translate-y-0 border-line bg-card hover:border-gold hover:bg-card" />
+                    <CarouselNext className="relative left-0 top-0 translate-x-0 translate-y-0 border-line bg-card hover:border-gold hover:bg-card" />
+                  </>
+                )}
               </div>
             </Carousel>
           </div>
@@ -182,28 +160,34 @@ export function Reviews() {
           <span className="font-display2 text-5xl text-ink">4.8</span>
           <div>
             <Stars />
-            <p className="mt-0.5 text-xs text-muted-foreground">312 avis vérifiés</p>
+            <p className="mt-0.5 text-xs text-muted-foreground">{s.count}</p>
           </div>
         </div>
       </div>
 
       {/* Mobile carousel — full bleed to allow peek beyond padding */}
       <div className="mt-8 lg:hidden">
-        <Carousel
-          opts={{ align: "start", loop: true }}
-          className="w-full"
-        >
+        <Carousel opts={carouselOpts} className="w-full">
           <CarouselContent className="pl-6">
-            {TESTIMONIALS.map((review) => (
+            {testimonials.map((review) => (
               <CarouselItem key={review.author} className="basis-[82%] pr-4 sm:basis-[45%]">
                 <ReviewCard review={review} />
               </CarouselItem>
             ))}
           </CarouselContent>
 
-          <div className="mt-5 flex gap-2 px-6">
-            <CarouselPrevious className="relative left-0 top-0 translate-x-0 translate-y-0 border-line bg-card hover:border-gold hover:bg-card" />
-            <CarouselNext className="relative left-0 top-0 translate-x-0 translate-y-0 border-line bg-card hover:border-gold hover:bg-card" />
+          <div className="mt-5 flex gap-2 px-6" dir="ltr">
+            {t.dir === "rtl" ? (
+              <>
+                <CarouselNext className="relative left-0 top-0 translate-x-0 translate-y-0 border-line bg-card hover:border-gold hover:bg-card [&_svg]:scale-x-[-1]" />
+                <CarouselPrevious className="relative left-0 top-0 translate-x-0 translate-y-0 border-line bg-card hover:border-gold hover:bg-card [&_svg]:scale-x-[-1]" />
+              </>
+            ) : (
+              <>
+                <CarouselPrevious className="relative left-0 top-0 translate-x-0 translate-y-0 border-line bg-card hover:border-gold hover:bg-card" />
+                <CarouselNext className="relative left-0 top-0 translate-x-0 translate-y-0 border-line bg-card hover:border-gold hover:bg-card" />
+              </>
+            )}
           </div>
         </Carousel>
       </div>

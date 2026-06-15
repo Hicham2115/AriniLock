@@ -6,8 +6,10 @@ import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useCart } from "@/hooks/use-cart";
+import { useFormatMoney } from "@/hooks/use-format-money";
+import { useT } from "@/hooks/use-t";
 import { cn } from "@/lib/utils";
-import { formatMoney, type Cart } from "@/types/shopify";
+import type { Cart } from "@/types/shopify";
 
 function computeSubtotal(lines: Cart["lines"]) {
   if (!lines.length) return null;
@@ -36,6 +38,8 @@ interface FormState {
 const EMPTY: FormState = { fullName: "", phone: "", city: "", address: "", notes: "" };
 
 export function CheckoutClient() {
+  const t = useT();
+  const formatMoney = useFormatMoney();
   const { data: cart, isLoading } = useCart();
   const [form, setForm] = useState<FormState>(EMPTY);
   const [errors, setErrors] = useState<Partial<FormState>>({});
@@ -52,11 +56,11 @@ export function CheckoutClient() {
 
   function validate(): boolean {
     const e: Partial<FormState> = {};
-    if (form.fullName.trim().length < 2) e.fullName = "Nom complet requis";
+    if (form.fullName.trim().length < 2) e.fullName = t.checkout.errors.name;
     if (!/^(\+212|0)[5-7]\d{8}$/.test(form.phone.replace(/\s/g, "")))
-      e.phone = "Numéro marocain invalide (ex: 0612345678)";
-    if (!form.city) e.city = "Veuillez choisir une ville";
-    if (form.address.trim().length < 5) e.address = "Adresse complète requise";
+      e.phone = t.checkout.errors.phone;
+    if (!form.city) e.city = t.checkout.errors.city;
+    if (form.address.trim().length < 5) e.address = t.checkout.errors.address;
     setErrors(e);
     return Object.keys(e).length === 0;
   }
@@ -84,7 +88,7 @@ export function CheckoutClient() {
       const data: { ok: boolean; orderRef: string } = await res.json();
       if (data.ok) setOrderRef(data.orderRef);
     } catch {
-      toast.error("Erreur lors de la commande. Veuillez réessayer.");
+      toast.error(t.checkout.errors.failed);
     } finally {
       setSubmitting(false);
     }
@@ -97,19 +101,19 @@ export function CheckoutClient() {
           <CheckCircle2 className="h-8 w-8 text-gold" />
         </div>
         <div>
-          <h2 className="font-display2 text-2xl text-ink">Commande confirmée</h2>
+          <h2 className="font-display2 text-2xl text-ink">{t.checkout.successTitle}</h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Référence : <span className="font-medium text-ink">{orderRef}</span>
+            {t.checkout.successRef} <span className="font-medium text-ink">{orderRef}</span>
           </p>
           <p className="mt-1 text-sm text-muted-foreground">
-            Notre équipe vous contactera sous 24h pour confirmer la livraison.
+            {t.checkout.successNote}
           </p>
         </div>
         <Link
           href="/"
           className="rounded-full bg-ink px-8 py-3 text-sm font-medium text-cream transition-colors hover:bg-ink/80"
         >
-          Retour à l&apos;accueil
+          {t.checkout.backHome}
         </Link>
       </div>
     );
@@ -123,36 +127,36 @@ export function CheckoutClient() {
         <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-8">
           <div>
             <h1 className="font-display2 text-3xl uppercase text-ink">
-              Finaliser la commande
+              {t.checkout.title}
             </h1>
             <p className="mt-2 text-sm text-muted-foreground">
-              Paiement à la livraison — aucune carte requise
+              {t.checkout.subtitle}
             </p>
           </div>
 
           {/* Personal info */}
           <fieldset className="flex flex-col gap-4">
             <legend className="mb-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-              Informations personnelles
+              {t.checkout.fields.personal}
             </legend>
 
-            <Field label="Nom complet" error={errors.fullName}>
+            <Field label={t.checkout.fields.name} error={errors.fullName}>
               <input
                 type="text"
                 value={form.fullName}
                 onChange={(e) => set("fullName", e.target.value)}
-                placeholder="Mohammed Alami"
+                placeholder={t.checkout.fields.namePlaceholder}
                 autoComplete="name"
                 className={inputCls(!!errors.fullName)}
               />
             </Field>
 
-            <Field label="Téléphone" error={errors.phone}>
+            <Field label={t.checkout.fields.phone} error={errors.phone}>
               <input
                 type="tel"
                 value={form.phone}
                 onChange={(e) => set("phone", e.target.value)}
-                placeholder="0612 345 678"
+                placeholder={t.checkout.fields.phonePlaceholder}
                 autoComplete="tel"
                 className={inputCls(!!errors.phone)}
               />
@@ -162,17 +166,17 @@ export function CheckoutClient() {
           {/* Delivery info */}
           <fieldset className="flex flex-col gap-4">
             <legend className="mb-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-              Adresse de livraison
+              {t.checkout.fields.delivery}
             </legend>
 
-            <Field label="Ville" error={errors.city}>
+            <Field label={t.checkout.fields.city} error={errors.city}>
               <div className="relative">
                 <select
                   value={form.city}
                   onChange={(e) => set("city", e.target.value)}
                   className={cn(inputCls(!!errors.city), "appearance-none pr-10")}
                 >
-                  <option value="">Choisir une ville…</option>
+                  <option value="">{t.checkout.fields.cityPlaceholder}</option>
                   {MOROCCAN_CITIES.map((c) => (
                     <option key={c} value={c}>{c}</option>
                   ))}
@@ -181,22 +185,22 @@ export function CheckoutClient() {
               </div>
             </Field>
 
-            <Field label="Adresse complète" error={errors.address}>
+            <Field label={t.checkout.fields.address} error={errors.address}>
               <input
                 type="text"
                 value={form.address}
                 onChange={(e) => set("address", e.target.value)}
-                placeholder="N° rue, quartier, immeuble…"
+                placeholder={t.checkout.fields.addressPlaceholder}
                 autoComplete="street-address"
                 className={inputCls(!!errors.address)}
               />
             </Field>
 
-            <Field label="Notes (optionnel)">
+            <Field label={t.checkout.fields.notes}>
               <textarea
                 value={form.notes}
                 onChange={(e) => set("notes", e.target.value)}
-                placeholder="Étage, code d'entrée, instructions particulières…"
+                placeholder={t.checkout.fields.notesPlaceholder}
                 rows={3}
                 className={cn(inputCls(false), "resize-none")}
               />
@@ -213,7 +217,7 @@ export function CheckoutClient() {
             ) : (
               <>
                 <ShoppingBag className="h-4 w-4" />
-                Confirmer la commande
+                {t.checkout.submit}
                 {total && <span>— {formatMoney(total)}</span>}
               </>
             )}
@@ -224,7 +228,7 @@ export function CheckoutClient() {
         <div className="lg:sticky lg:top-28 lg:self-start">
           <div className="rounded-2xl border border-line bg-card p-6">
             <h2 className="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-              Récapitulatif
+              {t.checkout.summary}
             </h2>
 
             {isLoading ? (
@@ -241,9 +245,9 @@ export function CheckoutClient() {
               </div>
             ) : lines.length === 0 ? (
               <p className="py-8 text-center text-sm text-muted-foreground">
-                Votre panier est vide.{" "}
+                {t.checkout.emptyCart}{" "}
                 <Link href="/produits" className="text-gold underline">
-                  Voir les produits
+                  {t.checkout.seeProducts}
                 </Link>
               </p>
             ) : (
@@ -271,7 +275,7 @@ export function CheckoutClient() {
                           <p className="text-xs text-muted-foreground">{line.merchandise.title}</p>
                         )}
                         <div className="mt-1 flex items-center justify-between">
-                          <p className="text-xs text-muted-foreground">Qté {qty}</p>
+                          <p className="text-xs text-muted-foreground">{t.checkout.qty} {qty}</p>
                           <p className="text-sm text-brass">{formatMoney(line.merchandise.price)}</p>
                         </div>
                       </div>
@@ -284,25 +288,22 @@ export function CheckoutClient() {
             {total && (
               <div className="mt-6 space-y-2 border-t border-line pt-4">
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Sous-total</span>
+                  <span className="text-muted-foreground">{t.checkout.subtotal}</span>
                   <span className="text-ink">{formatMoney(total)}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Livraison</span>
-                  <span className="text-green-600">Gratuite</span>
+                  <span className="text-muted-foreground">{t.checkout.shipping}</span>
+                  <span className="text-green-600">{t.checkout.freeShipping}</span>
                 </div>
                 <div className="flex justify-between pt-2 text-base font-semibold">
-                  <span className="text-ink">Total</span>
+                  <span className="text-ink">{t.checkout.total}</span>
                   <span className="text-gold">{formatMoney(total)}</span>
                 </div>
               </div>
             )}
 
             <div className="mt-6 rounded-xl bg-surface px-4 py-3">
-              <p className="text-xs text-muted-foreground">
-                💳 Paiement à la livraison — vous payez uniquement à la réception
-                de votre commande.
-              </p>
+              <p className="text-xs text-muted-foreground">{t.checkout.cod}</p>
             </div>
           </div>
         </div>

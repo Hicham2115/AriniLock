@@ -66,6 +66,8 @@
   --font-display2: var(--font-cormorant), 'Cormorant Garamond', ui-serif, Georgia, serif;
   /* Caveat — handwritten accent */
   --font-script: var(--font-caveat), cursive;
+  /* Noto Sans Arabic — clean professional Arabic */
+  --font-arabic: var(--font-amiri), 'Noto Sans Arabic', ui-sans-serif, system-ui, sans-serif;
 
   --tracking-widest2: 0.35em;
 
@@ -124,6 +126,29 @@
     rgba(196, 154, 101, 0.55) 12%,
     rgba(196, 154, 101, 0) 24%
   );
+}
+
+/* ── Arabic (RTL) overrides ─────────────────────────────────────── */
+[dir="rtl"] body,
+[dir="rtl"] p,
+[dir="rtl"] span,
+[dir="rtl"] li,
+[dir="rtl"] a,
+[dir="rtl"] button,
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] label {
+  font-family: var(--font-arabic);
+  letter-spacing: 0;
+}
+
+/* Display / headline text in Arabic */
+[dir="rtl"] .font-display,
+[dir="rtl"] .font-display2,
+[dir="rtl"] .font-script {
+  font-family: var(--font-arabic);
+  font-style: normal;
+  letter-spacing: 0;
 }
 
 /* Shopify description HTML styling */

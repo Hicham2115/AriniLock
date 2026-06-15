@@ -4,6 +4,7 @@ import {
   Cormorant_Garamond,
   Lato,
   Inter,
+  Noto_Sans_Arabic,
 } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
@@ -31,6 +32,12 @@ const caveat = Caveat({
   variable: "--font-caveat",
   subsets: ["latin"],
   weight: ["500", "700"],
+});
+
+const notoArabic = Noto_Sans_Arabic({
+  variable: "--font-amiri",
+  subsets: ["arabic"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -96,7 +103,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${inter.variable} ${lato.variable} ${cormorant.variable} ${caveat.variable} h-full antialiased`}
+      className={`${inter.variable} ${lato.variable} ${cormorant.variable} ${caveat.variable} ${notoArabic.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Providers>{children}</Providers>

@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Accordion,
   AccordionContent,
@@ -5,31 +7,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Reveal } from "@/components/reveal";
-
-const FAQ_ITEMS = [
-  {
-    q: "Arini Lock est-elle compatible avec toutes les portes ?",
-    a: "Arini Lock s'adapte à la majorité des portes intérieures et d'entrée standards en bois et métal. Un guide de compatibilité détaillé est fourni avant l'achat.",
-  },
-  {
-    q: "Que se passe-t-il en cas de coupure de courant ou de panne ?",
-    a: "Arini Lock fonctionne sur piles, indépendamment du réseau électrique. En cas de panne complète, une clé physique de secours fournie avec votre serrure permet toujours d'ouvrir la porte.",
-  },
-  {
-    q: "Combien de temps dure la batterie ?",
-    a: "Avec un usage quotidien moyen, les 4 piles AA tiennent environ 12 mois. L'application vous alerte automatiquement plusieurs semaines avant épuisement.",
-  },
-  {
-    q: "Puis-je l'installer moi-même ?",
-    a: "Oui. L'installation se fait sans perçage ni outils spécifiques, en suivant le guide illustré fourni — comptez environ 15 minutes.",
-  },
-  {
-    q: "Livrez-vous partout au Maroc ?",
-    a: "Oui, nous livrons dans toutes les villes du Maroc, avec paiement à la livraison disponible. Le délai moyen est de 2 à 4 jours ouvrés.",
-  },
-] as const;
+import { useT } from "@/hooks/use-t";
 
 export function Faq() {
+  const t = useT();
+  const s = t.sections.faq;
+
   return (
     <section
       id="faq"
@@ -38,8 +21,8 @@ export function Faq() {
       {/* Section label */}
       <Reveal>
         <div className="mb-8 flex flex-wrap items-start justify-between gap-4 text-xs uppercase tracking-[0.25em] text-muted-foreground lg:mb-12">
-          <span>06 — FAQ</span>
-          <span>Questions fréquentes</span>
+          <span>{s.label}</span>
+          <span>{s.right}</span>
         </div>
       </Reveal>
 
@@ -51,14 +34,14 @@ export function Faq() {
               className="font-display2 uppercase leading-none text-ink"
               style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
             >
-              Tout ce<br />qu&apos;il faut<br />savoir.
+              {s.headline[0]}<br />{s.headline[1]}<br />{s.headline[2]}
             </h2>
           </Reveal>
         </div>
 
         {/* Right: accordion as divider list */}
         <Accordion type="single" collapsible>
-          {FAQ_ITEMS.map((item) => (
+          {s.items.map((item) => (
             <AccordionItem
               key={item.q}
               value={item.q}

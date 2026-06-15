@@ -10,10 +10,13 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { useFormatMoney } from "@/hooks/use-format-money";
+import { useT } from "@/hooks/use-t";
 import { useFavoritesStore } from "@/stores/favorites-store";
-import { formatMoney } from "@/types/shopify";
 
 export function FavoritesDrawer() {
+  const t = useT();
+  const formatMoney = useFormatMoney();
   const { items, drawerOpen, closeDrawer, toggle } = useFavoritesStore();
 
   return (
@@ -24,7 +27,7 @@ export function FavoritesDrawer() {
       >
         <SheetHeader className="border-b border-line px-6 py-6">
           <SheetTitle className="font-display text-xl font-normal text-ink">
-            Favoris
+            {t.favorites.title}
           </SheetTitle>
           <SheetDescription className="sr-only">
             Vos produits Arini Lock enregistrés
@@ -36,7 +39,7 @@ export function FavoritesDrawer() {
             <div className="flex flex-col items-center gap-3 py-20 text-center">
               <Heart aria-hidden="true" className="h-8 w-8 text-muted-foreground" />
               <p className="text-sm text-muted-foreground">
-                Aucun produit sauvegardé.
+                {t.favorites.empty}
               </p>
             </div>
           ) : (
@@ -80,11 +83,11 @@ export function FavoritesDrawer() {
                       <button
                         type="button"
                         onClick={() => toggle(product)}
-                        aria-label="Retirer des favoris"
+                        aria-label={t.favorites.remove}
                         className="flex w-fit items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-destructive"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
-                        Retirer
+                        {t.favorites.removeBtn}
                       </button>
                     </div>
                   </li>

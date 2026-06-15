@@ -26,11 +26,11 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { ProductCard, ProductCardSkeleton } from "@/components/product-card";
 import { useAddToCart } from "@/hooks/use-cart";
+import { useFormatMoney } from "@/hooks/use-format-money";
 import { useAccessories, useProduct } from "@/hooks/use-product";
 import { useT } from "@/hooks/use-t";
 import { cn } from "@/lib/utils";
 import { useFavoritesStore } from "@/stores/favorites-store";
-import { formatMoney } from "@/types/shopify";
 
 const SWATCH_BG: Record<string, string> = {
   "Noir Mat": "bg-[#1E1B18]",
@@ -39,26 +39,6 @@ const SWATCH_BG: Record<string, string> = {
 };
 
 
-const ACCORDION_ITEMS = [
-  {
-    value: "specs",
-    trigger: "Spécifications techniques",
-    content:
-      "Empreintes : jusqu'à 100 · Codes PIN : jusqu'à 50 · Autonomie : 12 mois (4× AA) · Protocole : Bluetooth 5.0 + Wi-Fi (optionnel) · Certifications : IP65, EN 1634 · Dimensions : 245 × 70 × 28 mm",
-  },
-  {
-    value: "installation",
-    trigger: "Installation",
-    content:
-      "Compatible portes standard (60–80 mm d'épaisseur). Fixation adhésive 3M haute résistance — aucun perçage nécessaire. Un tutoriel vidéo est inclus, installation en moins de 15 minutes.",
-  },
-  {
-    value: "warranty",
-    trigger: "Garantie & retours",
-    content:
-      "Garantie constructeur 2 ans couvrant tout défaut de fabrication. Retours acceptés sous 30 jours si le produit est dans son état d'origine. Assistance 7j/7 par WhatsApp.",
-  },
-];
 
 function GallerySkeleton() {
   return (
@@ -91,6 +71,7 @@ export function ProductPageClient({
   params: Promise<{ handle: string }>;
 }) {
   const t = useT();
+  const formatMoney = useFormatMoney();
 
   const TRUST = [
     { icon: Truck, label: t.trust.delivery, sub: t.trust.deliverySub },
@@ -318,24 +299,26 @@ export function ProductPageClient({
                     )}
                     {variant?.compareAtPrice && (
                       <span className="rounded-full bg-gold/15 px-2.5 py-0.5 text-xs font-semibold text-brass">
-                        Promo
+                        {t.product.promo}
                       </span>
                     )}
                   </div>
 
-                  {/* Description — formatted HTML from Shopify */}
-                  {(product.descriptionHtml || product.description) && (
+                  {/* Description */}
+                  {(product.descriptionHtml || product.description || t.product.description) && (
                     <div>
                       <div
                         className={cn(
                           "shopify-description text-sm leading-relaxed text-black",
                           !descExpanded && "line-clamp-4",
                         )}
-                        dangerouslySetInnerHTML={{
-                          __html:
-                            product.descriptionHtml ?? product.description,
-                        }}
-                      />
+                      >
+                        {product.descriptionHtml ? (
+                          <span dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
+                        ) : (
+                          t.product.description || product.description
+                        )}
+                      </div>
                       <button
                         type="button"
                         onClick={() => setDescExpanded((v) => !v)}
@@ -451,7 +434,7 @@ export function ProductPageClient({
 
                   {/* Accordion */}
                   <Accordion type="single" collapsible className="w-full">
-                    {ACCORDION_ITEMS.map((item) => (
+                    {t.product.accordion.map((item) => (
                       <AccordionItem key={item.value} value={item.value}>
                         <AccordionTrigger className="text-sm font-medium text-ink hover:text-gold hover:no-underline">
                           {item.trigger}

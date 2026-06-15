@@ -53,15 +53,15 @@ export function ProduitsPageClient() {
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div>
                 <p className="mb-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-                  Collection — {new Date().getFullYear()}
+                  {t.sections.produits.collection} — {new Date().getFullYear()}
                 </p>
                 <h1
                   className="font-display2 uppercase leading-none text-ink"
                   style={{ fontSize: "clamp(2.4rem, 8vw, 6rem)" }}
                 >
-                  Nos
-                  <br />
-                  Produits.
+                  {t.sections.produits.title.split("\n").map((line, i, arr) => (
+                    <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+                  ))}
                 </h1>
               </div>
 
@@ -69,10 +69,10 @@ export function ProduitsPageClient() {
               {!isLoading && (
                 <div className="self-start md:self-auto">
                   <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground md:text-right">
-                    {visible.length} modèle{visible.length !== 1 ? "s" : ""}
+                    {t.sections.produits.models(visible.length)}
                   </p>
                   <p className="mt-1 text-sm text-muted-foreground md:text-right">
-                    Livraison partout au Maroc
+                    {t.sections.produits.delivery}
                   </p>
                 </div>
               )}
@@ -118,12 +118,7 @@ export function ProduitsPageClient() {
         {/* Bottom trust bar */}
         <div className="border-t border-line">
           <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-line md:grid-cols-4">
-            {[
-              { label: "Livraison partout au Maroc", sub: "2–4 jours ouvrés" },
-              { label: "Paiement à la livraison",   sub: "Disponible sur tout le Maroc" },
-              { label: "Garantie 2 ans",             sub: "Constructeur" },
-              { label: "Installation sans perçage",  sub: "En moins de 15 minutes" },
-            ].map((item) => (
+            {t.sections.produits.trust.map((item) => (
               <div key={item.label} className="flex flex-col gap-1 bg-background px-4 py-6 md:px-6 md:py-8">
                 <p className="text-sm font-medium text-ink">{item.label}</p>
                 <p className="text-xs text-muted-foreground">{item.sub}</p>

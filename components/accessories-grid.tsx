@@ -7,12 +7,16 @@ import { Heart, Plus, RotateCcw } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAddToCart } from "@/hooks/use-cart";
+import { useFormatMoney } from "@/hooks/use-format-money";
 import { useAccessories } from "@/hooks/use-product";
+import { useT } from "@/hooks/use-t";
 import { cn } from "@/lib/utils";
 import { useFavoritesStore } from "@/stores/favorites-store";
-import { formatMoney, type Product } from "@/types/shopify";
+import type { Product } from "@/types/shopify";
 
 function AccessoryCard({ accessory }: { accessory: Product }) {
+  const t = useT();
+  const formatMoney = useFormatMoney();
   const { addToCart, isPending } = useAddToCart();
   const { toggle, isFavorite } = useFavoritesStore();
   const variant = accessory.variants[0];
@@ -45,7 +49,7 @@ function AccessoryCard({ accessory }: { accessory: Product }) {
       <button
         type="button"
         onClick={(e) => { e.preventDefault(); toggle(accessory); }}
-        aria-label={liked ? "Retirer des favoris" : "Ajouter aux favoris"}
+        aria-label={liked ? t.favorites.remove : t.favorites.add}
         className="absolute left-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm transition-all hover:bg-black/50"
       >
         <Heart className={cn("h-4 w-4 transition-colors", liked ? "fill-gold text-gold" : "text-white")} />
@@ -74,10 +78,10 @@ function AccessoryCard({ accessory }: { accessory: Product }) {
             onClick={(e) => {
               e.preventDefault();
               addToCart([{ merchandiseId: variant.id, quantity: 1 }], {
-                successMessage: `${accessory.title} ajouté`,
+                successMessage: `${accessory.title} ${t.product.addedMsg}`,
               });
             }}
-            aria-label={`Ajouter ${accessory.title} au panier`}
+            aria-label={`${t.product.addToCart}: ${accessory.title}`}
             className="flex h-10 w-10 items-center justify-center rounded-full bg-card text-ink shadow-lg transition-colors hover:bg-gold disabled:opacity-60"
           >
             <Plus aria-hidden="true" className="h-4 w-4" />
@@ -89,6 +93,8 @@ function AccessoryCard({ accessory }: { accessory: Product }) {
 }
 
 export function AccessoriesGrid() {
+  const t = useT();
+  const s = t.sections.accessories;
   const { data: accessories, isLoading, isError, refetch } = useAccessories();
 
   return (
@@ -99,8 +105,8 @@ export function AccessoriesGrid() {
       {/* Section label */}
       <Reveal>
         <div className="mb-8 flex flex-wrap items-start justify-between gap-4 text-xs uppercase tracking-[0.25em] text-muted-foreground lg:mb-12">
-          <span>02 — Accessoires</span>
-          <span>Complétez l&apos;installation</span>
+          <span>{s.label}</span>
+          <span>{s.right}</span>
         </div>
       </Reveal>
 
@@ -109,9 +115,9 @@ export function AccessoriesGrid() {
           className="mb-8 font-display2 uppercase leading-none text-ink lg:mb-12"
           style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
         >
-          Pensé pour durer plus
+          {s.headline[0]}
           <br />
-          longtemps.
+          {s.headline[1]}
         </h2>
       </Reveal>
 
@@ -130,7 +136,7 @@ export function AccessoriesGrid() {
       {isError && (
         <div className="flex flex-col items-center gap-4 py-12 text-center">
           <p className="text-sm text-muted-foreground">
-            Impossible de charger les accessoires.
+            {t.errors.loadAccessories}
           </p>
           <button
             type="button"
@@ -138,7 +144,7 @@ export function AccessoriesGrid() {
             className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-6 py-3 text-sm font-medium text-ink transition-colors hover:border-gold"
           >
             <RotateCcw aria-hidden="true" className="h-4 w-4" />
-            Réessayer
+            {t.errors.retry}
           </button>
         </div>
       )}

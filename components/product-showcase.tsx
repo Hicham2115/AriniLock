@@ -5,10 +5,10 @@ import { ProductGallery } from "@/components/product-gallery";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAddToCart } from "@/hooks/use-cart";
+import { useFormatMoney } from "@/hooks/use-format-money";
 import { useMainProduct } from "@/hooks/use-product";
 import { cn } from "@/lib/utils";
 import { useUiStore } from "@/stores/ui-store";
-import { formatMoney } from "@/types/shopify";
 
 const SWATCH_COLORS: Record<string, string> = {
   "Noir Mat": "bg-[#1E1B18]",
@@ -25,6 +25,7 @@ const SPECS = [
 ] as const;
 
 export function ProductShowcase() {
+  const formatMoney = useFormatMoney();
   const { data: product, isLoading, isError, error, refetch } = useMainProduct();
   const { addToCart, isPending } = useAddToCart();
 

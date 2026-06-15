@@ -5,9 +5,11 @@ import { ArrowUpRight, Heart } from "lucide-react";
 import { useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAddToCart } from "@/hooks/use-cart";
+import { useFormatMoney } from "@/hooks/use-format-money";
+import { useT } from "@/hooks/use-t";
 import { cn } from "@/lib/utils";
 import { useFavoritesStore } from "@/stores/favorites-store";
-import { formatMoney, type Product } from "@/types/shopify";
+import type { Product } from "@/types/shopify";
 
 const SWATCH_COLORS: Record<string, string> = {
   "Noir Mat": "bg-[#1E1B18]",
@@ -24,6 +26,8 @@ export function ProductCardSkeleton() {
 }
 
 export function ProductCard({ product }: { product: Product }) {
+  const t = useT();
+  const formatMoney = useFormatMoney();
   const { addToCart, isPending } = useAddToCart();
   const [activeVariantId, setActiveVariantId] = useState(product.variants[0]?.id);
   const { toggle, isFavorite } = useFavoritesStore();
@@ -64,7 +68,7 @@ export function ProductCard({ product }: { product: Product }) {
       <button
         type="button"
         onClick={(e) => { e.preventDefault(); toggle(product); }}
-        aria-label={liked ? "Retirer des favoris" : "Ajouter aux favoris"}
+        aria-label={liked ? t.favorites.remove : t.favorites.add}
         className="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm transition-all hover:bg-black/50"
       >
         <Heart
@@ -76,7 +80,7 @@ export function ProductCard({ product }: { product: Product }) {
       {variant?.compareAtPrice && (
         <div className="absolute left-4 top-4">
           <span className="rounded-full bg-gold px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-dark">
-            Promo
+            {t.product.promo}
           </span>
         </div>
       )}
@@ -107,7 +111,7 @@ export function ProductCard({ product }: { product: Product }) {
 
         {/* Title */}
         <p className="mb-0.5 text-[10px] uppercase tracking-[0.25em] text-white/50">
-          Arini Lock
+          {t.product.brand}
         </p>
         <h3 className="font-display text-base font-medium leading-tight text-cream">
           {product.title}
@@ -136,7 +140,7 @@ export function ProductCard({ product }: { product: Product }) {
               variant && addToCart([{ merchandiseId: variant.id, quantity: 1 }])
             }
             className="flex h-9 w-9 translate-y-2 items-center justify-center rounded-full bg-gold opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 disabled:opacity-50"
-            aria-label={`Ajouter ${product.title} au panier`}
+            aria-label={`${t.product.addToCart}: ${product.title}`}
           >
             <ArrowUpRight aria-hidden="true" className="h-4 w-4 text-dark" />
           </button>

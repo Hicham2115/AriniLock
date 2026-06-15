@@ -6,10 +6,10 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import lockImg from "@/app/assets/nano-banana-2_3D_render_of_a_premium_smart_door_lock_handle_brushed_gold_and_matte_black_finis-0.jpg";
 import mobileHeroImg from "@/app/assets/mobile hero.png";
 import { useAddToCart } from "@/hooks/use-cart";
+import { useFormatMoney } from "@/hooks/use-format-money";
 import { useMainProduct } from "@/hooks/use-product";
 import { useT } from "@/hooks/use-t";
 import { useUiStore } from "@/stores/ui-store";
-import { formatMoney } from "@/types/shopify";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 const HIDDEN = { opacity: 0, y: 22 } as const;
@@ -25,6 +25,7 @@ function fadeUp(ready: boolean, delay = 0) {
 
 export function Hero() {
   const t = useT();
+  const formatMoney = useFormatMoney();
   const { data: product, isLoading } = useMainProduct();
   const { addToCart, isPending } = useAddToCart();
   const variant = product?.variants[0];
@@ -74,14 +75,14 @@ export function Hero() {
             className="mb-1 font-display leading-[0.9] text-white"
             style={{ fontSize: "clamp(3.8rem, 18vw, 5.5rem)", letterSpacing: "-0.03em" }}
           >
-            Votre
+            {t.hero.headline1}
           </motion.h1>
           <motion.h1
             {...fadeUp(ready, 0.58)}
             className="font-display leading-[0.9] text-white"
             style={{ fontSize: "clamp(3.8rem, 18vw, 5.5rem)", letterSpacing: "-0.03em" }}
           >
-            Porte.
+            {t.hero.headline2}
           </motion.h1>
           <motion.p
             {...fadeUp(ready, 0.72)}
@@ -95,7 +96,7 @@ export function Hero() {
               filter: "drop-shadow(0 2px 12px rgba(196,154,101,0.5))",
             }}
           >
-            Réinventée.
+            {t.hero.tagline}
           </motion.p>
 
           {/* CTAs */}
@@ -146,7 +147,7 @@ export function Hero() {
           className="mt-10 font-display leading-none text-white drop-shadow-lg lg:mt-20"
           style={{ fontSize: "clamp(3rem, 12vw, 11rem)", letterSpacing: "-0.02em" }}
         >
-          Votre
+          {t.hero.headline1}
         </motion.h1>
         <div className="text-right">
           <motion.span
@@ -154,7 +155,7 @@ export function Hero() {
             className="block font-display -mt-1 leading-none text-white drop-shadow-lg"
             style={{ fontSize: "clamp(3rem, 12vw, 11rem)", letterSpacing: "-0.02em" }}
           >
-            Porte.
+            {t.hero.headline2}
           </motion.span>
           <motion.p
             {...fadeUp(ready, 0.65)}
@@ -168,7 +169,7 @@ export function Hero() {
               filter: "drop-shadow(0 4px 24px rgba(196,154,101,0.55))",
             }}
           >
-            Réinventée.
+            {t.hero.tagline}
           </motion.p>
         </div>
       </div>
@@ -179,10 +180,10 @@ export function Hero() {
           className="flex items-center justify-between py-6"
         >
           <p className="text-xs uppercase tracking-[0.25em] text-white/90">
-            Édition de lancement · Maroc
+            {t.hero.editionLabel}
           </p>
           <p className="hidden text-xs uppercase tracking-[0.25em] text-white/90 lg:block">
-            Maroc
+            {t.hero.countryLabel}
           </p>
         </motion.div>
 
@@ -227,10 +228,10 @@ export function Hero() {
           className="flex items-center justify-between border-t border-white/20 py-5 text-xs uppercase tracking-[0.2em] text-white/80"
         >
           <div className="flex items-center gap-6">
-            <span>Marque marocaine</span>
-            <span>// Arini Lock</span>
+            <span>{t.hero.brandLine}</span>
+            <span>{t.hero.brandSlug}</span>
           </div>
-          <span>Maison connectée · Conçu pour le Maroc</span>
+          <span>{t.hero.bottomLine}</span>
         </motion.div>
       </div>
     </section>

@@ -1,11 +1,12 @@
 "use client";
 
 import { useAddToCart } from "@/hooks/use-cart";
+import { useFormatMoney } from "@/hooks/use-format-money";
 import { useMainProduct } from "@/hooks/use-product";
 import { useUiStore } from "@/stores/ui-store";
-import { formatMoney } from "@/types/shopify";
 
 export function StickyBuyBar() {
+  const formatMoney = useFormatMoney();
   const { data: product } = useMainProduct();
   const { addToCart, isPending } = useAddToCart();
   const selectedVariantId = useUiStore((s) => s.selectedVariantId);

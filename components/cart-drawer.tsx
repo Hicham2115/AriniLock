@@ -20,21 +20,13 @@ import {
   useUpdateCartLine,
 } from "@/hooks/use-cart";
 import { useUiStore } from "@/stores/ui-store";
-import { formatMoney, type Cart, type CartLine } from "@/types/shopify";
+import { type Cart, type CartLine } from "@/types/shopify";
 import { useT } from "@/hooks/use-t";
-
-function computeSubtotal(lines: Cart["lines"]): string {
-  if (!lines.length) return "0 MAD";
-  const total = lines.reduce((sum, line) => {
-    const qty = Math.max(line.quantity, 1);
-    return sum + parseFloat(line.merchandise.price.amount) * qty;
-  }, 0);
-  const currency = lines[0]!.merchandise.price.currencyCode;
-  return formatMoney({ amount: total.toFixed(2), currencyCode: currency });
-}
+import { useFormatMoney } from "@/hooks/use-format-money";
 
 function CartLineRow({ line }: { line: CartLine }) {
   const t = useT();
+  const formatMoney = useFormatMoney();
   const updateLine = useUpdateCartLine();
   const removeLine = useRemoveCartLine();
   const busy = updateLine.isPending || removeLine.isPending;
@@ -114,10 +106,21 @@ function CartLineRow({ line }: { line: CartLine }) {
 
 export function CartDrawer() {
   const t = useT();
+  const formatMoney = useFormatMoney();
   const open = useUiStore((s) => s.cartOpen);
   const setOpen = useUiStore((s) => s.setCartOpen);
   const { data: cart, isLoading, isError } = useCart();
   const router = useRouter();
+
+  function computeSubtotal(lines: Cart["lines"]): string {
+    if (!lines.length) return `0 ${t.product.currencyLabel}`;
+    const total = lines.reduce((sum, line) => {
+      const qty = Math.max(line.quantity, 1);
+      return sum + parseFloat(line.merchandise.price.amount) * qty;
+    }, 0);
+    const currency = lines[0]!.merchandise.price.currencyCode;
+    return formatMoney({ amount: total.toFixed(2), currencyCode: currency });
+  }
 
   const handleCheckout = () => {
     if (!cart?.lines.length) return;
