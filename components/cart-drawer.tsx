@@ -21,6 +21,7 @@ import {
 } from "@/hooks/use-cart";
 import { useUiStore } from "@/stores/ui-store";
 import { formatMoney, type Cart, type CartLine } from "@/types/shopify";
+import { useT } from "@/hooks/use-t";
 
 function computeSubtotal(lines: Cart["lines"]): string {
   if (!lines.length) return "0 MAD";
@@ -33,6 +34,7 @@ function computeSubtotal(lines: Cart["lines"]): string {
 }
 
 function CartLineRow({ line }: { line: CartLine }) {
+  const t = useT();
   const updateLine = useUpdateCartLine();
   const removeLine = useRemoveCartLine();
   const busy = updateLine.isPending || removeLine.isPending;
@@ -74,7 +76,7 @@ function CartLineRow({ line }: { line: CartLine }) {
               onClick={() =>
                 updateLine.mutate({ lineId: line.id, quantity: displayQty - 1 })
               }
-              aria-label="Réduire la quantité"
+              aria-label={t.cart.decrease}
               className="flex h-8 w-8 items-center justify-center text-ink transition-colors hover:text-brass disabled:opacity-40"
             >
               <Minus aria-hidden="true" className="h-3.5 w-3.5" />
@@ -88,7 +90,7 @@ function CartLineRow({ line }: { line: CartLine }) {
               onClick={() =>
                 updateLine.mutate({ lineId: line.id, quantity: displayQty + 1 })
               }
-              aria-label="Augmenter la quantité"
+              aria-label={t.cart.increase}
               className="flex h-8 w-8 items-center justify-center text-ink transition-colors hover:text-brass disabled:opacity-40"
             >
               <Plus aria-hidden="true" className="h-3.5 w-3.5" />
@@ -99,7 +101,7 @@ function CartLineRow({ line }: { line: CartLine }) {
             type="button"
             disabled={busy}
             onClick={() => removeLine.mutate(line.id)}
-            aria-label="Retirer cet article"
+            aria-label={t.cart.remove}
             className="text-muted-foreground transition-colors hover:text-destructive disabled:opacity-40"
           >
             <Trash2 aria-hidden="true" className="h-4 w-4" />
@@ -111,6 +113,7 @@ function CartLineRow({ line }: { line: CartLine }) {
 }
 
 export function CartDrawer() {
+  const t = useT();
   const open = useUiStore((s) => s.cartOpen);
   const setOpen = useUiStore((s) => s.setCartOpen);
   const { data: cart, isLoading, isError } = useCart();
@@ -130,7 +133,7 @@ export function CartDrawer() {
       >
         <SheetHeader className="border-b border-line px-6 py-6">
           <SheetTitle className="font-display text-xl font-normal text-ink">
-            Votre panier
+            {t.cart.title}
           </SheetTitle>
           <SheetDescription className="sr-only">
             Articles de votre panier Arini Lock
@@ -160,7 +163,7 @@ export function CartDrawer() {
 
           {isError && (
             <p className="text-sm text-muted-foreground">
-              Impossible de charger votre panier. Veuillez réessayer.
+              {t.errors.loadProducts}
             </p>
           )}
 
@@ -171,7 +174,7 @@ export function CartDrawer() {
                 className="h-8 w-8 text-muted-foreground"
               />
               <p className="text-sm text-muted-foreground">
-                Votre panier est vide.
+                {t.cart.empty}
               </p>
             </div>
           )}
@@ -184,20 +187,20 @@ export function CartDrawer() {
         <SheetFooter className="border-t border-line bg-card px-6 py-6">
           <div className="w-full">
             <div className="mb-2 flex justify-between text-sm text-muted-foreground">
-              <span>Sous-total</span>
+              <span>{t.cart.subtotal}</span>
               <span className="text-ink">
                 {cart ? computeSubtotal(cart.lines) : "—"}
               </span>
             </div>
             <p className="mb-4 text-xs text-muted-foreground">
-              Livraison calculée à l&apos;étape suivante.
+              {t.cart.shippingNote}
             </p>
             <Button
               onClick={handleCheckout}
               disabled={!cart || cart.lines.length === 0}
               className="h-13 w-full rounded-full bg-gold py-4 font-medium text-dark hover:bg-goldhover"
             >
-              Passer commande
+              {t.cart.checkout}
             </Button>
           </div>
         </SheetFooter>

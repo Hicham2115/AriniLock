@@ -7,6 +7,7 @@ import lockImg from "@/app/assets/nano-banana-2_3D_render_of_a_premium_smart_doo
 import mobileHeroImg from "@/app/assets/mobile hero.png";
 import { useAddToCart } from "@/hooks/use-cart";
 import { useMainProduct } from "@/hooks/use-product";
+import { useT } from "@/hooks/use-t";
 import { useUiStore } from "@/stores/ui-store";
 import { formatMoney } from "@/types/shopify";
 
@@ -23,6 +24,7 @@ function fadeUp(ready: boolean, delay = 0) {
 }
 
 export function Hero() {
+  const t = useT();
   const { data: product, isLoading } = useMainProduct();
   const { addToCart, isPending } = useAddToCart();
   const variant = product?.variants[0];
@@ -108,7 +110,7 @@ export function Hero() {
                 <span className="h-4 w-4 animate-spin rounded-full border-2 border-dark/30 border-t-dark" />
               ) : (
                 <>
-                  Commander{variant ? ` — ${formatMoney(variant.price)}` : ""}
+                  {t.hero.buy}{variant ? ` — ${formatMoney(variant.price)}` : ""}
                   <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
                 </>
               )}
@@ -117,7 +119,7 @@ export function Hero() {
               href="#fonctionnalites"
               className="flex h-12 w-full items-center justify-center rounded-full border border-white/25 text-sm font-medium text-white/80 backdrop-blur-sm"
             >
-              Découvrir les fonctionnalités →
+              {t.hero.discover} →
             </a>
           </motion.div>
 
@@ -126,11 +128,11 @@ export function Hero() {
             {...fadeUp(ready, 1.02)}
             className="mt-6 flex items-center gap-4 text-[10px] uppercase tracking-[0.2em] text-white/35"
           >
-            <span>Wifi · BT</span>
+            <span>{t.hero.trust[0]}</span>
             <span>·</span>
-            <span>12 mois batterie</span>
+            <span>{t.hero.trust[1]}</span>
             <span>·</span>
-            <span>Garantie 2 ans</span>
+            <span>{t.hero.trust[2]}</span>
           </motion.div>
         </div>
       </div>
@@ -200,7 +202,7 @@ export function Hero() {
               <span className="h-4 w-4 animate-spin rounded-full border-2 border-cream/30 border-t-cream" />
             ) : (
               <>
-                Commander{variant ? ` — ${formatMoney(variant.price)}` : ""}
+                {t.hero.buy}{variant ? ` — ${formatMoney(variant.price)}` : ""}
                 <ArrowUpRight
                   aria-hidden="true"
                   className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
@@ -212,7 +214,7 @@ export function Hero() {
             href="#fonctionnalites"
             className="inline-flex group h-14 items-center rounded-full border border-white/25 bg-white/10 px-8 text-sm font-medium text-white backdrop-blur transition-colors hover:border-white/50"
           >
-            Fonctionnalités
+            {t.hero.discover}
             <ArrowRight
               aria-hidden="true"
               className="h-4 w-4 ml-1 opacity-80 group-hover:translate-x-1 transition-transform duration-300"

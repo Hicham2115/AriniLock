@@ -27,6 +27,7 @@ import { Header } from "@/components/header";
 import { ProductCard, ProductCardSkeleton } from "@/components/product-card";
 import { useAddToCart } from "@/hooks/use-cart";
 import { useAccessories, useProduct } from "@/hooks/use-product";
+import { useT } from "@/hooks/use-t";
 import { cn } from "@/lib/utils";
 import { useFavoritesStore } from "@/stores/favorites-store";
 import { formatMoney } from "@/types/shopify";
@@ -37,11 +38,6 @@ const SWATCH_BG: Record<string, string> = {
   Or: "bg-[#C49A65]",
 };
 
-const TRUST = [
-  { icon: Truck, label: "Livraison 2–4 jours", sub: "Partout au Maroc" },
-  { icon: ShieldCheck, label: "Garantie 2 ans", sub: "Constructeur" },
-  { icon: Zap, label: "Installation < 15 min", sub: "Sans perçage" },
-];
 
 const ACCORDION_ITEMS = [
   {
@@ -94,6 +90,14 @@ export function ProductPageClient({
 }: {
   params: Promise<{ handle: string }>;
 }) {
+  const t = useT();
+
+  const TRUST = [
+    { icon: Truck, label: t.trust.delivery, sub: t.trust.deliverySub },
+    { icon: ShieldCheck, label: t.trust.warranty, sub: t.trust.warrantySub },
+    { icon: Zap, label: t.trust.install, sub: t.trust.installSub },
+  ];
+
   const { handle } = use(params);
   const { data: product, isLoading, isError } = useProduct(handle);
   const {
@@ -105,15 +109,15 @@ export function ProductPageClient({
 
   useEffect(() => {
     if (isError)
-      toast.error("Produit introuvable", {
-        description: "Vérifiez l'URL ou revenez à la boutique.",
+      toast.error(t.errors.notFound, {
+        description: t.errors.backToShop,
       });
-  }, [isError]);
+  }, [isError, t]);
 
   useEffect(() => {
     if (isErrorAcc)
-      toast.error("Impossible de charger les produits similaires");
-  }, [isErrorAcc]);
+      toast.error(t.errors.loadProducts);
+  }, [isErrorAcc, t]);
 
   const [activeVariantId, setActiveVariantId] = useState<string | null>(null);
   const [activeImageIdx, setActiveImageIdx] = useState(0);
@@ -162,14 +166,14 @@ export function ProductPageClient({
               className="flex items-center gap-2 text-xs text-muted-foreground"
             >
               <Link href="/" className="transition-colors hover:text-ink">
-                Accueil
+                {t.breadcrumb.home}
               </Link>
               <span>/</span>
               <Link
                 href="/produits"
                 className="transition-colors hover:text-ink"
               >
-                Boutique
+                {t.breadcrumb.shop}
               </Link>
               <span>/</span>
               <span className="max-w-40 truncate text-ink sm:max-w-none">
@@ -247,9 +251,9 @@ export function ProductPageClient({
                 <InfoSkeleton />
               ) : isError || !product ? (
                 <div className="py-12 text-center text-sm text-muted-foreground">
-                  Produit introuvable.{" "}
+                  {t.errors.notFound}{" "}
                   <Link href="/produits" className="text-ink underline">
-                    Retour à la boutique
+                    {t.errors.backToShop}
                   </Link>
                 </div>
               ) : (
@@ -257,7 +261,7 @@ export function ProductPageClient({
                   {/* Title + rating */}
                   <div>
                     <p className="mb-1 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-                      Arini Lock
+                      {t.product.brand}
                     </p>
                     <div className="flex items-start justify-between gap-4">
                       <h1 className="font-display2 text-2xl uppercase leading-tight text-ink md:text-3xl">
@@ -267,7 +271,7 @@ export function ProductPageClient({
                         type="button"
                         onClick={() => toggle(product)}
                         aria-label={
-                          liked ? "Retirer des favoris" : "Ajouter aux favoris"
+                          liked ? t.favorites.remove : t.favorites.add
                         }
                         className="mt-1 shrink-0 rounded-full border border-line p-2 transition-colors hover:border-gold"
                       >
@@ -297,7 +301,7 @@ export function ProductPageClient({
                         ))}
                       </div>
                       <span className="text-xs text-muted-foreground">
-                        4.8 · 312 avis
+                        4.8 · 312 {t.product.reviews}
                       </span>
                     </div>
                   </div>
@@ -337,7 +341,7 @@ export function ProductPageClient({
                         onClick={() => setDescExpanded((v) => !v)}
                         className="mt-1 flex items-center gap-1 text-xs text-gold hover:underline"
                       >
-                        {descExpanded ? "Réduire" : "Lire la suite"}
+                        {descExpanded ? t.product.readLess : t.product.readMore}
                         <ChevronDown
                           className={cn(
                             "h-3 w-3 transition-transform",
@@ -352,7 +356,7 @@ export function ProductPageClient({
                   {hasVariants && (
                     <div>
                       <p className="mb-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                        Finition —{" "}
+                        {t.product.finish} —{" "}
                         <span className="text-ink">
                           {variant?.selectedOptions[0]?.value}
                         </span>
@@ -418,7 +422,7 @@ export function ProductPageClient({
                       className="flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-ink text-sm font-medium text-cream transition-colors hover:bg-ink/80 disabled:opacity-50 sm:h-14"
                     >
                       <ShoppingBag aria-hidden="true" className="h-4 w-4" />
-                      {isPending ? "Ajout…" : "Ajouter au panier"}
+                      {isPending ? t.product.adding : t.product.addToCart}
                     </button>
                   </div>
 
@@ -470,7 +474,7 @@ export function ProductPageClient({
             <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-10 lg:py-16">
               <div className="mb-6 flex items-center gap-4">
                 <span className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                  Vous aimerez aussi
+                  {t.product.relatedTitle}
                 </span>
                 <div className="h-px flex-1 bg-line" />
               </div>

@@ -4,26 +4,37 @@ import Link from "next/link";
 import { RotateCcw } from "lucide-react";
 import { useEffect } from "react";
 import { toast } from "sonner";
+import { useQueryClient } from "@tanstack/react-query";
 import { CartDrawer } from "@/components/cart-drawer";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { ProductCard, ProductCardSkeleton } from "@/components/product-card";
 import { useAccessories, useMainProduct } from "@/hooks/use-product";
+import { useT } from "@/hooks/use-t";
+import { queryKeys } from "@/lib/query-keys";
+import { MAIN_PRODUCT_HANDLE } from "@/lib/shopify/products";
 import type { Product } from "@/types/shopify";
 
 export function ProduitsPageClient() {
-  const { data: mainProduct, isLoading: loadingMain, isError: errorMain, refetch: refetchMain } = useMainProduct();
-  const { data: accessories, isLoading: loadingAcc, isError: errorAcc, refetch: refetchAcc } = useAccessories();
+  const t = useT();
+  const queryClient = useQueryClient();
+  const { data: mainProduct, isLoading: loadingMain, isError: errorMain } = useMainProduct();
+  const { data: accessories, isLoading: loadingAcc, isError: errorAcc } = useAccessories();
   const isLoading = loadingMain || loadingAcc;
   const isError = errorMain || errorAcc;
 
+  function handleRetry() {
+    void queryClient.resetQueries({ queryKey: queryKeys.product(MAIN_PRODUCT_HANDLE) });
+    void queryClient.resetQueries({ queryKey: queryKeys.accessories });
+  }
+
   useEffect(() => {
     if (isError) {
-      toast.error("Impossible de charger les produits", {
-        description: "Vérifiez votre connexion et réessayez.",
+      toast.error(t.errors.loadProducts, {
+        description: t.errors.loadProductsDesc,
       });
     }
-  }, [isError]);
+  }, [isError, t]);
 
   const visible: Product[] = [
     ...(mainProduct ? [mainProduct] : []),
@@ -78,15 +89,15 @@ export function ProduitsPageClient() {
           ) : isError ? (
             <div className="flex flex-col items-center gap-5 py-24 text-center">
               <p className="text-sm text-muted-foreground">
-                Une erreur est survenue lors du chargement des produits.
+                {t.errors.loadError}
               </p>
               <button
                 type="button"
-                onClick={() => { void refetchMain(); void refetchAcc(); }}
+                onClick={handleRetry}
                 className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-6 py-3 text-sm font-medium text-ink transition-colors hover:border-gold"
               >
                 <RotateCcw aria-hidden="true" className="h-4 w-4" />
-                Réessayer
+                {t.errors.retry}
               </button>
             </div>
           ) : visible.length === 0 ? (

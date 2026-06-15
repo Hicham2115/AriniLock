@@ -7,14 +7,10 @@ import { useEffect, useState } from "react";
 import { useCart } from "@/hooks/use-cart";
 import { useFavoritesStore } from "@/stores/favorites-store";
 import { useUiStore } from "@/stores/ui-store";
+import { useLanguageStore, type Locale } from "@/stores/language-store";
+import { useT } from "@/hooks/use-t";
 
-const NAV_LINKS = [
-  { href: "/produits", label: "Boutique" },
-  { href: "#fonctionnalites", label: "Fonctionnalités" },
-  { href: "#accessoires", label: "Accessoires" },
-  { href: "#avis", label: "Avis" },
-  { href: "#faq", label: "FAQ" },
-];
+const LOCALES: Locale[] = ["fr", "en", "ar"];
 
 export function Header() {
   const openCart = useUiStore((s) => s.openCart);
@@ -25,6 +21,17 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const locale = useLanguageStore((s) => s.locale);
+  const setLocale = useLanguageStore((s) => s.setLocale);
+  const t = useT();
+
+  const NAV_LINKS = [
+    { href: "/produits",       label: t.nav.shop },
+    { href: "#fonctionnalites", label: t.nav.features },
+    { href: "#accessoires",    label: t.nav.accessories },
+    { href: "#avis",           label: t.nav.reviews },
+    { href: "#faq",            label: t.nav.faq },
+  ];
 
   // Resolve href: on non-home pages, hash links become /#section
   function resolveHref(href: string) {
@@ -52,7 +59,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setMobileOpen(false)}
-              aria-label="Fermer le menu"
+              aria-label={t.nav.closeMenu}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink"
             >
               <X className="h-5 w-5" />
@@ -102,7 +109,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
-            aria-label="Ouvrir le menu"
+            aria-label={t.nav.openMenu}
             className="ml-1 flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-line md:hidden"
           >
             <Menu className="h-5 w-5" />
@@ -112,7 +119,7 @@ export function Header() {
           <button
             type="button"
             onClick={openFavorites}
-            aria-label={`Favoris (${favCount})`}
+            aria-label={`${t.nav.favorites} (${favCount})`}
             className="relative ml-1 flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-line"
           >
             <Heart className="h-4 w-4" />
@@ -130,13 +137,32 @@ export function Header() {
             className="ml-1 flex h-10 items-center gap-2 rounded-full bg-ink px-4 text-sm text-cream transition-colors hover:bg-ink/80"
           >
             <ShoppingBag aria-hidden="true" className="h-4 w-4" />
-            <span className="hidden sm:inline">Panier</span>
+            <span className="hidden sm:inline">{t.nav.cart}</span>
             {count > 0 && (
               <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gold text-[10px] font-semibold text-dark">
                 {count}
               </span>
             )}
           </button>
+
+          {/* Language switcher */}
+          <div className="ml-1 flex h-10 items-center rounded-full border border-line px-1 gap-0.5">
+            {LOCALES.map((loc) => (
+              <button
+                key={loc}
+                type="button"
+                onClick={() => setLocale(loc)}
+                aria-label={loc.toUpperCase()}
+                className={`flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-semibold uppercase transition-colors ${
+                  locale === loc
+                    ? "bg-gold text-dark"
+                    : "text-muted-foreground hover:text-ink"
+                }`}
+              >
+                {loc}
+              </button>
+            ))}
+          </div>
         </div>
       </header>
     </>
