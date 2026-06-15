@@ -141,6 +141,7 @@ const fr = {
     submit: "S'inscrire",
     submitting: "Envoi…",
   },
+  marquee: "Empreinte digitale ✦ Application mobile ✦ Alertes temps réel ✦ Installation sans perçage ✦ Garantie 2 ans ✦ Livraison Maroc ✦",
   sections: {
     accessories: {
       label: "02 — Accessoires",
@@ -450,6 +451,7 @@ What's in the box
     submit: "Subscribe",
     submitting: "Sending…",
   },
+  marquee: "Fingerprint ✦ Mobile app ✦ Real-time alerts ✦ No-drill install ✦ 2-year warranty ✦ Morocco delivery ✦",
   sections: {
     accessories: {
       label: "02 — Accessories",
@@ -759,6 +761,7 @@ const ar: typeof fr = {
     submit: "اشترك",
     submitting: "جارٍ الإرسال…",
   },
+  marquee: "بصمة الإصبع ✦ تطبيق الهاتف ✦ تنبيهات فورية ✦ تركيب بدون حفر ✦ ضمان سنتين ✦ توصيل بالمغرب ✦",
   sections: {
     accessories: {
       label: "02 — الملحقات",

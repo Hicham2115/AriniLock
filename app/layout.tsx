@@ -5,6 +5,7 @@ import {
   Lato,
   Inter,
   Noto_Sans_Arabic,
+  Noto_Naskh_Arabic,
 } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
@@ -38,6 +39,12 @@ const notoArabic = Noto_Sans_Arabic({
   variable: "--font-amiri",
   subsets: ["arabic"],
   weight: ["300", "400", "500", "600", "700"],
+});
+
+const notoSerifArabic = Noto_Naskh_Arabic({
+  variable: "--font-noto-serif-ar",
+  subsets: ["arabic"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -103,7 +110,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${inter.variable} ${lato.variable} ${cormorant.variable} ${caveat.variable} ${notoArabic.variable} h-full antialiased`}
+      className={`${inter.variable} ${lato.variable} ${cormorant.variable} ${caveat.variable} ${notoArabic.variable} ${notoSerifArabic.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Providers>{children}</Providers>

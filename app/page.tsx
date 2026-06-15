@@ -8,7 +8,7 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { HowItWorks } from "@/components/how-it-works";
-import { Marquee } from "@/components/marquee";
+import { LocalizedMarquee } from "@/components/localized-marquee";
 import { OfferNewsletter } from "@/components/offer-newsletter";
 import { Reviews } from "@/components/reviews";
 import { StatsSection } from "@/components/stats-section";
@@ -137,11 +137,7 @@ export default function HomePage() {
       <main>
         <Hero />
         {/* Feature marquee band — separator between hero and content */}
-        <Marquee
-          text="Empreinte digitale ✦ Application mobile ✦ Alertes en temps réel ✦ Installation sans perçage ✦ Garantie 2 ans ✦"
-          className="border-y border-line bg-surface py-4"
-          trackClassName="text-sm uppercase tracking-[0.25em] text-muted-foreground"
-        />
+        <LocalizedMarquee />
         <StatsSection />
         <AccessoriesGrid />
 

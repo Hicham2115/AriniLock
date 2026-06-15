@@ -66,8 +66,10 @@
   --font-display2: var(--font-cormorant), 'Cormorant Garamond', ui-serif, Georgia, serif;
   /* Caveat — handwritten accent */
   --font-script: var(--font-caveat), cursive;
-  /* Noto Sans Arabic — clean professional Arabic */
+  /* Noto Sans Arabic — body & UI text */
   --font-arabic: var(--font-amiri), 'Noto Sans Arabic', ui-sans-serif, system-ui, sans-serif;
+  /* Noto Serif Arabic — editorial display headings */
+  --font-arabic-display: var(--font-noto-serif-ar), 'Noto Serif Arabic', Georgia, serif;
 
   --tracking-widest2: 0.35em;
 
@@ -142,9 +144,21 @@
   letter-spacing: 0;
 }
 
-/* Display / headline text in Arabic */
-[dir="rtl"] .font-display,
-[dir="rtl"] .font-display2,
+/* Body / UI text in Arabic */
+[dir="rtl"] .font-display {
+  font-family: var(--font-arabic);
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+/* Luxury editorial display headlines → Noto Serif Arabic */
+[dir="rtl"] .font-display2 {
+  font-family: var(--font-arabic-display);
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+/* Script / handwritten — fall back to body Arabic */
 [dir="rtl"] .font-script {
   font-family: var(--font-arabic);
   font-style: normal;

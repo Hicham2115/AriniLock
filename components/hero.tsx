@@ -62,50 +62,61 @@ export function Hero() {
 
       {/* ─── MOBILE LAYOUT (hidden on md+) ─── */}
       <div className="relative flex min-h-svh flex-col md:hidden">
-        {/* Gradient: transparent top → heavy bottom */}
-        <div className="absolute inset-0 bg-linear-to-b from-black/20 via-transparent to-black/90" />
+        {/* Multi-stop gradient for richer depth */}
+        <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/10 via-40% to-black/95" />
 
         <div className="flex-1" />
 
         {/* Bottom content panel */}
-        <div className="relative px-5 pb-8">
+        <div className="relative px-5 pb-10">
+          {/* Edition badge */}
+          <motion.div
+            {...fadeUp(ready, 0.32)}
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-3 py-1 backdrop-blur-sm"
+          >
+            <span className="h-1 w-1 rounded-full bg-gold" />
+            <span className="text-[10px] uppercase tracking-[0.25em] text-gold/90">
+              {t.hero.editionLabel}
+            </span>
+          </motion.div>
+
           {/* Headline */}
           <motion.h1
             {...fadeUp(ready, 0.45)}
-            className="mb-1 font-display leading-[0.9] text-white"
-            style={{ fontSize: "clamp(3.8rem, 18vw, 5.5rem)", letterSpacing: "-0.03em" }}
+            className="mb-0 font-display leading-[0.88] text-white"
+            style={{ fontSize: "clamp(4rem, 20vw, 6rem)", letterSpacing: "-0.03em" }}
           >
             {t.hero.headline1}
           </motion.h1>
           <motion.h1
-            {...fadeUp(ready, 0.58)}
-            className="font-display leading-[0.9] text-white"
-            style={{ fontSize: "clamp(3.8rem, 18vw, 5.5rem)", letterSpacing: "-0.03em" }}
+            {...fadeUp(ready, 0.56)}
+            className="font-display leading-[0.88] text-white"
+            style={{ fontSize: "clamp(4rem, 20vw, 6rem)", letterSpacing: "-0.03em" }}
           >
             {t.hero.headline2}
           </motion.h1>
           <motion.p
-            {...fadeUp(ready, 0.72)}
-            className="mb-8 ml-1 mt-2 -rotate-1 font-script leading-none"
+            {...fadeUp(ready, 0.68)}
+            className="mb-8 ml-1 mt-3 -rotate-1 font-script leading-none"
             style={{
-              fontSize: "clamp(1.8rem, 8vw, 2.8rem)",
+              fontSize: "clamp(2rem, 9vw, 3rem)",
               background: "linear-gradient(135deg, #fdf3e0 0%, #f0d9a8 50%, #e0c080 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
-              filter: "drop-shadow(0 2px 12px rgba(196,154,101,0.5))",
+              filter: "drop-shadow(0 2px 16px rgba(196,154,101,0.6))",
             }}
           >
             {t.hero.tagline}
           </motion.p>
 
           {/* CTAs */}
-          <motion.div {...fadeUp(ready, 0.88)} className="flex flex-col gap-3">
+          <motion.div {...fadeUp(ready, 0.82)} className="flex flex-col gap-3">
             <button
               type="button"
               disabled={isPending || isLoading || !variant}
               onClick={() => variant && addToCart([{ merchandiseId: variant.id, quantity: 1 }])}
-              className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-gold text-sm font-semibold text-dark transition-colors disabled:opacity-70"
+              className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-gold text-sm font-semibold text-dark shadow-[0_8px_32px_rgba(196,154,101,0.4)] transition-colors disabled:opacity-70"
             >
               {isLoading ? (
                 <span className="h-4 w-4 animate-spin rounded-full border-2 border-dark/30 border-t-dark" />
@@ -118,22 +129,25 @@ export function Hero() {
             </button>
             <a
               href="#fonctionnalites"
-              className="flex h-12 w-full items-center justify-center rounded-full border border-white/25 text-sm font-medium text-white/80 backdrop-blur-sm"
+              className="flex h-12 w-full items-center justify-center rounded-full border border-white/20 text-sm font-medium text-white/75 backdrop-blur-sm"
             >
               {t.hero.discover} →
             </a>
           </motion.div>
 
-          {/* Trust strip */}
+          {/* Trust pills */}
           <motion.div
-            {...fadeUp(ready, 1.02)}
-            className="mt-6 flex items-center gap-4 text-[10px] uppercase tracking-[0.2em] text-white/35"
+            {...fadeUp(ready, 0.96)}
+            className="mt-6 flex flex-wrap items-center gap-2"
           >
-            <span>{t.hero.trust[0]}</span>
-            <span>·</span>
-            <span>{t.hero.trust[1]}</span>
-            <span>·</span>
-            <span>{t.hero.trust[2]}</span>
+            {t.hero.trust.map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-white/40 backdrop-blur-sm"
+              >
+                {item}
+              </span>
+            ))}
           </motion.div>
         </div>
       </div>
