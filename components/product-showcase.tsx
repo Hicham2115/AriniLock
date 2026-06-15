@@ -7,6 +7,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useAddToCart } from "@/hooks/use-cart";
 import { useFormatMoney } from "@/hooks/use-format-money";
 import { useMainProduct } from "@/hooks/use-product";
+import { useT } from "@/hooks/use-t";
 import { cn } from "@/lib/utils";
 import { useUiStore } from "@/stores/ui-store";
 
@@ -16,16 +17,10 @@ const SWATCH_COLORS: Record<string, string> = {
   Or: "bg-[#C49A65]",
 };
 
-const SPECS = [
-  ["Connectivité", "Wifi + Bluetooth"],
-  ["Alimentation", "4x piles AA · ~12 mois"],
-  ["Matériaux", "Alliage de zinc, finition anti-traces"],
-  ["Installation", "Sans perçage, portes standards"],
-  ["Garantie", "2 ans"],
-] as const;
-
 export function ProductShowcase() {
+  const t = useT();
   const formatMoney = useFormatMoney();
+  const s = t.sections.showcase;
   const { data: product, isLoading, isError, error, refetch } = useMainProduct();
   const { addToCart, isPending } = useAddToCart();
 
@@ -46,8 +41,8 @@ export function ProductShowcase() {
     >
       {/* Section label */}
       <div className="mb-12 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
-        <span>04 — Le produit</span>
-        <span>Arini Lock — Édition Signature</span>
+        <span>{s.label}</span>
+        <span>{s.right}</span>
       </div>
 
       {isLoading && (
@@ -76,7 +71,8 @@ export function ProductShowcase() {
       {isError && (
         <div className="flex flex-col items-center gap-4 py-16 text-center">
           <p className="text-sm text-muted-foreground">
-            Impossible de charger le produit : {(error as Error).message}
+            {t.errors.loadError}{" "}
+            {error instanceof Error ? error.message : ""}
           </p>
           <button
             type="button"
@@ -84,7 +80,7 @@ export function ProductShowcase() {
             className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-6 py-3 text-sm font-medium text-ink transition-colors hover:border-gold"
           >
             <RotateCcw aria-hidden="true" className="h-4 w-4" />
-            Réessayer
+            {t.errors.retry}
           </button>
         </div>
       )}
@@ -101,7 +97,7 @@ export function ProductShowcase() {
               className="mb-4 font-display leading-none text-ink"
               style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
             >
-              Poignée connectée
+              {s.productTitle}
             </h2>
 
             <div className="mb-6 flex items-center gap-2">
@@ -111,7 +107,7 @@ export function ProductShowcase() {
                 ))}
               </div>
               <span className="text-sm text-muted-foreground">
-                4.8 / 5 — 312 avis
+                {s.rating} 312 {t.product.reviews}
               </span>
             </div>
 
@@ -126,14 +122,14 @@ export function ProductShowcase() {
                 </span>
               )}
               <Badge className="rounded-full bg-gold/15 px-3 py-1 text-xs uppercase tracking-widest text-brass hover:bg-gold/15">
-                Offre de lancement
+                {s.launchBadge}
               </Badge>
             </div>
 
             {/* Variant swatches */}
             <div className="mb-8">
               <p className="mb-3 text-sm text-muted-foreground">
-                Finition —{" "}
+                {t.product.finish} —{" "}
                 <span className="text-ink">{variant.title}</span>
               </p>
               <div className="flex gap-3">
@@ -142,7 +138,7 @@ export function ProductShowcase() {
                     key={v.id}
                     type="button"
                     onClick={() => setSelectedVariantId(v.id)}
-                    aria-label={`Finition ${v.title}`}
+                    aria-label={`${t.product.finish} ${v.title}`}
                     aria-pressed={v.id === variant.id}
                     className={cn(
                       "h-10 w-10 rounded-full border-2 transition-all",
@@ -162,7 +158,7 @@ export function ProductShowcase() {
                 <button
                   type="button"
                   onClick={decrementQuantity}
-                  aria-label="Réduire la quantité"
+                  aria-label={t.cart.decrease}
                   className="flex h-11 w-11 items-center justify-center text-ink transition-colors hover:text-brass"
                 >
                   <Minus aria-hidden="true" className="h-4 w-4" />
@@ -171,7 +167,7 @@ export function ProductShowcase() {
                 <button
                   type="button"
                   onClick={incrementQuantity}
-                  aria-label="Augmenter la quantité"
+                  aria-label={t.cart.increase}
                   className="flex h-11 w-11 items-center justify-center text-ink transition-colors hover:text-brass"
                 >
                   <Plus aria-hidden="true" className="h-4 w-4" />
@@ -185,16 +181,16 @@ export function ProductShowcase() {
                 }
                 className="flex-1 rounded-full bg-ink px-8 py-4 font-medium text-cream transition-colors hover:bg-ink/80 disabled:opacity-60 sm:min-w-50"
               >
-                {isPending ? "Ajout en cours…" : "Ajouter au panier"}
+                {isPending ? t.product.adding : t.product.addToCart}
               </button>
             </div>
 
             {/* Specs */}
             <dl className="divide-y divide-line">
-              {SPECS.map(([label, value]) => (
-                <div key={label} className="flex justify-between py-3 text-sm">
-                  <dt className="text-muted-foreground">{label}</dt>
-                  <dd className="text-right text-ink">{value}</dd>
+              {s.specs.map((spec) => (
+                <div key={spec.label} className="flex justify-between py-3 text-sm">
+                  <dt className="text-muted-foreground">{spec.label}</dt>
+                  <dd className="text-right text-ink">{spec.value}</dd>
                 </div>
               ))}
             </dl>

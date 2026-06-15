@@ -304,19 +304,24 @@ export function ProductPageClient({
                     )}
                   </div>
 
-                  {/* Description */}
-                  {(product.descriptionHtml || product.description || t.product.description) && (
+                  {/* Description: Shopify HTML for FR, translated plain text for EN/AR */}
+                  {(t.product.description || product.descriptionHtml || product.description) && (
                     <div>
                       <div
                         className={cn(
-                          "shopify-description text-sm leading-relaxed text-black",
+                          "text-sm leading-relaxed text-black",
                           !descExpanded && "line-clamp-4",
                         )}
                       >
-                        {product.descriptionHtml ? (
-                          <span dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
+                        {t.product.description ? (
+                          <span className="whitespace-pre-line">{t.product.description}</span>
                         ) : (
-                          t.product.description || product.description
+                          <span
+                            className="shopify-description"
+                            dangerouslySetInnerHTML={{
+                              __html: product.descriptionHtml ?? product.description,
+                            }}
+                          />
                         )}
                       </div>
                       <button

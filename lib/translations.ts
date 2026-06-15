@@ -38,7 +38,7 @@ const fr = {
     reviews: "avis",
     addedMsg: "ajouté",
     currencyLabel: "MAD",
-    description: "La poignée connectée qui s'ouvre par empreinte digitale, code secret ou smartphone — sans perçage, sans clé qui traîne, sans compromis sur le style.",
+    description: "",
     accordion: [
       {
         value: "specs",
@@ -259,6 +259,20 @@ const fr = {
         { label: "Installation sans perçage",  sub: "En moins de 15 minutes" },
       ],
     },
+    showcase: {
+      label: "04 — Le produit",
+      right: "Arini Lock — Édition Signature",
+      productTitle: "Poignée connectée",
+      rating: "4.8 / 5 —",
+      launchBadge: "Offre de lancement",
+      specs: [
+        { label: "Connectivité",  value: "Wifi + Bluetooth" },
+        { label: "Alimentation",  value: "4× piles AA · ~12 mois" },
+        { label: "Matériaux",     value: "Alliage de zinc, finition anti-traces" },
+        { label: "Installation",  value: "Sans perçage, portes standards" },
+        { label: "Garantie",      value: "2 ans" },
+      ],
+    },
   },
 };
 
@@ -300,7 +314,40 @@ const en: typeof fr = {
     reviews: "reviews",
     addedMsg: "added",
     currencyLabel: "MAD",
-    description: "The connected handle that opens by fingerprint, PIN code or smartphone — no drilling, no keys to lose, no compromise on style.",
+    description: `Discover the Arini Intelligent Lock X5, a premium security solution designed for modern villas and residences. Combining elegant design, advanced technology and smart control, it transforms your door into a secure, smooth and fully connected access point.
+
+5 unlocking modes
+• Ultra-precise fingerprint (99.8% reliability, < 1 second)
+• Anti-spy touchscreen PIN code
+• Contactless RFID card
+• Mobile app (Tuya / Smart Life via WiFi)
+• Emergency mechanical key (2 keys included)
+
+Connectivity & smart control
+• 2.4 GHz WiFi for remote control
+• Real-time smartphone notifications
+• Manage up to 200 users with custom permissions
+• Temporary passwords for visitors
+• Full access history
+• Compatible with Alexa & Google Home
+
+Enhanced security
+• Double-lock interior mechanism
+• Anti-intrusion alarm system
+• Anti-corrosion aluminium alloy structure
+• Secure communications with advanced encryption
+
+Technical specifications
+• Available finishes: Gold, Black, Silver
+• Door compatibility: 40–70 mm thickness
+• Power: 4 AAA batteries (~3 months) + emergency USB port
+• Reversible handle (left or right installation)
+
+What's in the box
+• Express delivery throughout Morocco
+• Professional installation by our team
+• 2-year parts & service warranty
+• 2 mechanical keys · 2 RFID cards · Complete installation kit`,
     accordion: [
       {
         value: "specs",
@@ -521,6 +568,20 @@ const en: typeof fr = {
         { label: "No-drill installation",    sub: "In under 15 minutes" },
       ],
     },
+    showcase: {
+      label: "04 — The product",
+      right: "Arini Lock — Signature Edition",
+      productTitle: "Smart door lock",
+      rating: "4.8 / 5 —",
+      launchBadge: "Launch offer",
+      specs: [
+        { label: "Connectivity",   value: "WiFi + Bluetooth" },
+        { label: "Power",          value: "4× AA batteries · ~12 months" },
+        { label: "Materials",      value: "Zinc alloy, fingerprint-resistant finish" },
+        { label: "Installation",   value: "No drilling, standard doors" },
+        { label: "Warranty",       value: "2 years" },
+      ],
+    },
   },
 };
 
@@ -562,7 +623,40 @@ const ar: typeof fr = {
     reviews: "تقييم",
     addedMsg: "أُضيف",
     currencyLabel: "درهم",
-    description: "المقبض الذكي الذي يفتح بالبصمة أو الرمز السري أو الهاتف — بدون حفر، بدون مفاتيح تضيع، بدون تنازل عن الأناقة.",
+    description: `اكتشف قفل أريني الذكي X5، حلّ أمني متميز مصمم للفيلات والمساكن الراقية. يجمع بين التصميم الأنيق والتكنولوجيا المتقدمة والتحكم الذكي ليحوّل بابك إلى نقطة وصول آمنة وسلسة ومتصلة بالكامل.
+
+5 طرق لفتح الباب
+• بصمة الإصبع فائقة الدقة (موثوقية 99.8%، أقل من ثانية)
+• رمز PIN لمسي مع حماية ضد التجسس
+• بطاقة RFID بدون تلامس
+• تطبيق الهاتف (Tuya / Smart Life عبر WiFi)
+• مفتاح ميكانيكي احتياطي (مفتاحان مرفقان)
+
+الاتصال والتحكم الذكي
+• WiFi 2.4 غيغاهرتز للتحكم عن بُعد
+• إشعارات فورية على الهاتف الذكي
+• إدارة ما يصل إلى 200 مستخدم بصلاحيات مخصصة
+• كلمات مرور مؤقتة للزوار
+• سجل كامل لعمليات الدخول
+• متوافق مع Alexa وGoogle Home
+
+أمان معزز
+• قفل داخلي بنظام أمان مزدوج
+• نظام إنذار ضد الاقتحام
+• هيكل من سبيكة الألومنيوم المقاومة للتآكل
+• اتصالات آمنة بتشفير متقدم
+
+المواصفات التقنية
+• الألوان المتاحة: ذهبي، أسود، فضي
+• توافق الباب: سماكة 40–70 ملم
+• الطاقة: 4 بطاريات AAA (حوالي 3 أشهر) + منفذ USB احتياطي
+• مقبض قابل للعكس (تركيب أيسر أو أيمن)
+
+محتويات الصندوق
+• توصيل سريع في جميع أنحاء المغرب
+• تركيب احترافي من قِبل فريقنا
+• ضمان سنتان على القطع والخدمة
+• مفتاحان ميكانيكيان · بطاقتا RFID · طقم تركيب كامل`,
     accordion: [
       {
         value: "specs",
@@ -781,6 +875,20 @@ const ar: typeof fr = {
         { label: "الدفع عند الاستلام",           sub: "متاح في كل المغرب" },
         { label: "ضمان سنتين",                   sub: "الصانع" },
         { label: "تركيب بدون حفر",               sub: "في أقل من 15 دقيقة" },
+      ],
+    },
+    showcase: {
+      label: "04 — المنتج",
+      right: "أريني لوك — الإصدار المميز",
+      productTitle: "مقبض ذكي",
+      rating: "4.8 / 5 —",
+      launchBadge: "عرض الإطلاق",
+      specs: [
+        { label: "الاتصال",        value: "واي فاي + بلوتوث" },
+        { label: "الطاقة",         value: "4 بطاريات AA · ~12 شهرًا" },
+        { label: "المواد",          value: "سبيكة الزنك، تشطيب مقاوم للبصمات" },
+        { label: "التركيب",        value: "بدون حفر، أبواب قياسية" },
+        { label: "الضمان",         value: "سنتان" },
       ],
     },
   },
