@@ -2,6 +2,7 @@
 
 import { Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,14 +19,24 @@ import {
   useRemoveCartLine,
   useUpdateCartLine,
 } from "@/hooks/use-cart";
-import { isShopifyConfigured } from "@/lib/shopify/client";
 import { useUiStore } from "@/stores/ui-store";
-import { formatMoney, type CartLine } from "@/types/shopify";
+import { formatMoney, type Cart, type CartLine } from "@/types/shopify";
+
+function computeSubtotal(lines: Cart["lines"]): string {
+  if (!lines.length) return "0 MAD";
+  const total = lines.reduce((sum, line) => {
+    const qty = Math.max(line.quantity, 1);
+    return sum + parseFloat(line.merchandise.price.amount) * qty;
+  }, 0);
+  const currency = lines[0]!.merchandise.price.currencyCode;
+  return formatMoney({ amount: total.toFixed(2), currencyCode: currency });
+}
 
 function CartLineRow({ line }: { line: CartLine }) {
   const updateLine = useUpdateCartLine();
   const removeLine = useRemoveCartLine();
   const busy = updateLine.isPending || removeLine.isPending;
+  const displayQty = Math.max(line.quantity, 1);
 
   return (
     <div className="flex gap-4">
@@ -61,7 +72,7 @@ function CartLineRow({ line }: { line: CartLine }) {
               type="button"
               disabled={busy}
               onClick={() =>
-                updateLine.mutate({ lineId: line.id, quantity: line.quantity - 1 })
+                updateLine.mutate({ lineId: line.id, quantity: displayQty - 1 })
               }
               aria-label="Réduire la quantité"
               className="flex h-8 w-8 items-center justify-center text-ink transition-colors hover:text-brass disabled:opacity-40"
@@ -69,13 +80,13 @@ function CartLineRow({ line }: { line: CartLine }) {
               <Minus aria-hidden="true" className="h-3.5 w-3.5" />
             </button>
             <span className="w-7 text-center text-sm font-medium">
-              {line.quantity}
+              {displayQty}
             </span>
             <button
               type="button"
               disabled={busy}
               onClick={() =>
-                updateLine.mutate({ lineId: line.id, quantity: line.quantity + 1 })
+                updateLine.mutate({ lineId: line.id, quantity: displayQty + 1 })
               }
               aria-label="Augmenter la quantité"
               className="flex h-8 w-8 items-center justify-center text-ink transition-colors hover:text-brass disabled:opacity-40"
@@ -103,16 +114,12 @@ export function CartDrawer() {
   const open = useUiStore((s) => s.cartOpen);
   const setOpen = useUiStore((s) => s.setCartOpen);
   const { data: cart, isLoading, isError } = useCart();
+  const router = useRouter();
 
   const handleCheckout = () => {
-    if (!isShopifyConfigured || !cart?.checkoutUrl) {
-      toast.info("Boutique de démonstration", {
-        description:
-          "Connectez votre boutique Shopify (.env) pour activer le paiement.",
-      });
-      return;
-    }
-    window.location.href = cart.checkoutUrl;
+    if (!cart?.lines.length) return;
+    setOpen(false);
+    router.push("/checkout");
   };
 
   return (
@@ -179,7 +186,7 @@ export function CartDrawer() {
             <div className="mb-2 flex justify-between text-sm text-muted-foreground">
               <span>Sous-total</span>
               <span className="text-ink">
-                {cart ? formatMoney(cart.cost.subtotalAmount) : "—"}
+                {cart ? computeSubtotal(cart.lines) : "—"}
               </span>
             </div>
             <p className="mb-4 text-xs text-muted-foreground">

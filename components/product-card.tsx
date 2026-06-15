@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Heart } from "lucide-react";
 import { useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAddToCart } from "@/hooks/use-cart";
 import { cn } from "@/lib/utils";
+import { useFavoritesStore } from "@/stores/favorites-store";
 import { formatMoney, type Product } from "@/types/shopify";
 
 const SWATCH_COLORS: Record<string, string> = {
@@ -25,6 +26,8 @@ export function ProductCardSkeleton() {
 export function ProductCard({ product }: { product: Product }) {
   const { addToCart, isPending } = useAddToCart();
   const [activeVariantId, setActiveVariantId] = useState(product.variants[0]?.id);
+  const { toggle, isFavorite } = useFavoritesStore();
+  const liked = isFavorite(product.id);
 
   const variant = product.variants.find((v) => v.id === activeVariantId) ?? product.variants[0];
   const image   = variant?.image ?? product.images[0];
@@ -56,6 +59,18 @@ export function ProductCard({ product }: { product: Product }) {
 
       {/* Gold border on hover */}
       <div className="absolute inset-0 rounded-xl ring-1 ring-transparent transition-all duration-300 group-hover:ring-gold/60" />
+
+      {/* Heart / favorite */}
+      <button
+        type="button"
+        onClick={(e) => { e.preventDefault(); toggle(product); }}
+        aria-label={liked ? "Retirer des favoris" : "Ajouter aux favoris"}
+        className="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm transition-all hover:bg-black/50"
+      >
+        <Heart
+          className={cn("h-4 w-4 transition-colors", liked ? "fill-gold text-gold" : "text-white")}
+        />
+      </button>
 
       {/* Compare-at badge */}
       {variant?.compareAtPrice && (
@@ -116,7 +131,7 @@ export function ProductCard({ product }: { product: Product }) {
           {/* CTA — slides up on hover */}
           <button
             type="button"
-            disabled={isPending || !variant?.availableForSale}
+            disabled={isPending}
             onClick={() =>
               variant && addToCart([{ merchandiseId: variant.id, quantity: 1 }])
             }

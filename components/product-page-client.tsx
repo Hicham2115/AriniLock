@@ -2,6 +2,7 @@
 
 import {
   ChevronDown,
+  Heart,
   Minus,
   Plus,
   ShieldCheck,
@@ -26,6 +27,7 @@ import { ProductCard, ProductCardSkeleton } from "@/components/product-card";
 import { useAddToCart } from "@/hooks/use-cart";
 import { useAccessories, useProduct } from "@/hooks/use-product";
 import { cn } from "@/lib/utils";
+import { useFavoritesStore } from "@/stores/favorites-store";
 import { formatMoney } from "@/types/shopify";
 
 const SWATCH_BG: Record<string, string> = {
@@ -125,6 +127,9 @@ export function ProductPageClient({
   const hasVariants =
     (product?.variants.length ?? 0) > 1 &&
     product?.variants[0]?.selectedOptions?.[0]?.name !== "Default";
+
+  const { toggle, isFavorite } = useFavoritesStore();
+  const liked = product ? isFavorite(product.id) : false;
 
   return (
     <>
@@ -235,9 +240,24 @@ export function ProductPageClient({
                     <p className="mb-1 text-xs uppercase tracking-[0.25em] text-muted-foreground">
                       Arini Lock
                     </p>
-                    <h1 className="font-display2 text-2xl uppercase leading-tight text-ink md:text-3xl">
-                      {product.title}
-                    </h1>
+                    <div className="flex items-start justify-between gap-4">
+                      <h1 className="font-display2 text-2xl uppercase leading-tight text-ink md:text-3xl">
+                        {product.title}
+                      </h1>
+                      <button
+                        type="button"
+                        onClick={() => toggle(product)}
+                        aria-label={liked ? "Retirer des favoris" : "Ajouter aux favoris"}
+                        className="mt-1 shrink-0 rounded-full border border-line p-2 transition-colors hover:border-gold"
+                      >
+                        <Heart
+                          className={cn(
+                            "h-5 w-5 transition-colors",
+                            liked ? "fill-gold text-gold" : "text-muted-foreground",
+                          )}
+                        />
+                      </button>
+                    </div>
                     <div className="mt-2 flex items-center gap-2">
                       <div
                         className="flex text-gold"
@@ -365,7 +385,7 @@ export function ProductPageClient({
 
                     <button
                       type="button"
-                      disabled={isPending || !variant?.availableForSale}
+                      disabled={isPending}
                       onClick={() =>
                         variant &&
                         addToCart([

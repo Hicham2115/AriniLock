@@ -2,6 +2,7 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
+import { FavoritesDrawer } from "@/components/favorites-drawer";
 import { LenisProvider } from "@/components/lenis-provider";
 import { LoadingScreen } from "@/components/loading-screen";
 import { Toaster } from "@/components/ui/sonner";
@@ -21,6 +22,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       <LenisProvider>
         <LoadingScreen />
         {children}
+        <FavoritesDrawer />
         <Toaster position="bottom-center" />
       </LenisProvider>
     </QueryClientProvider>

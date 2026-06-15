@@ -1,10 +1,11 @@
 "use client";
 
-import { Menu, ShoppingBag, X } from "lucide-react";
+import { Heart, Menu, ShoppingBag, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useCart } from "@/hooks/use-cart";
+import { useFavoritesStore } from "@/stores/favorites-store";
 import { useUiStore } from "@/stores/ui-store";
 
 const NAV_LINKS = [
@@ -19,6 +20,8 @@ export function Header() {
   const openCart = useUiStore((s) => s.openCart);
   const { data: cart } = useCart();
   const count = cart?.totalQuantity ?? 0;
+  const { openDrawer: openFavorites, items: favoriteItems } = useFavoritesStore();
+  const favCount = favoriteItems.length;
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
@@ -103,6 +106,21 @@ export function Header() {
             className="ml-1 flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-line md:hidden"
           >
             <Menu className="h-5 w-5" />
+          </button>
+
+          {/* Favorites */}
+          <button
+            type="button"
+            onClick={openFavorites}
+            aria-label={`Favoris (${favCount})`}
+            className="relative ml-1 flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-line"
+          >
+            <Heart className="h-4 w-4" />
+            {favCount > 0 && (
+              <span className="absolute right-1.5 top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-gold text-[9px] font-semibold text-dark">
+                {favCount}
+              </span>
+            )}
           </button>
 
           <button

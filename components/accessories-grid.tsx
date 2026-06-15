@@ -1,22 +1,28 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Plus, RotateCcw } from "lucide-react";
+import { Heart, Plus, RotateCcw } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAddToCart } from "@/hooks/use-cart";
 import { useAccessories } from "@/hooks/use-product";
+import { cn } from "@/lib/utils";
+import { useFavoritesStore } from "@/stores/favorites-store";
 import { formatMoney, type Product } from "@/types/shopify";
 
 function AccessoryCard({ accessory }: { accessory: Product }) {
   const { addToCart, isPending } = useAddToCart();
+  const { toggle, isFavorite } = useFavoritesStore();
   const variant = accessory.variants[0];
   const image = variant?.image ?? accessory.images[0];
+  const liked = isFavorite(accessory.id);
 
   return (
-    <div
-      className="group relative overflow-hidden rounded-2xl bg-dark"
+    <Link
+      href={`/produits/${accessory.handle}`}
+      className="group relative block overflow-hidden rounded-2xl bg-dark"
       style={{ aspectRatio: "3/4" }}
     >
       {/* Product image */}
@@ -34,6 +40,16 @@ function AccessoryCard({ accessory }: { accessory: Product }) {
 
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+
+      {/* Heart — top left */}
+      <button
+        type="button"
+        onClick={(e) => { e.preventDefault(); toggle(accessory); }}
+        aria-label={liked ? "Retirer des favoris" : "Ajouter aux favoris"}
+        className="absolute left-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm transition-all hover:bg-black/50"
+      >
+        <Heart className={cn("h-4 w-4 transition-colors", liked ? "fill-gold text-gold" : "text-white")} />
+      </button>
 
       {/* Price — top right */}
       {variant && (
@@ -55,11 +71,12 @@ function AccessoryCard({ accessory }: { accessory: Product }) {
           <button
             type="button"
             disabled={isPending}
-            onClick={() =>
+            onClick={(e) => {
+              e.preventDefault();
               addToCart([{ merchandiseId: variant.id, quantity: 1 }], {
                 successMessage: `${accessory.title} ajouté`,
-              })
-            }
+              });
+            }}
             aria-label={`Ajouter ${accessory.title} au panier`}
             className="flex h-10 w-10 items-center justify-center rounded-full bg-card text-ink shadow-lg transition-colors hover:bg-gold disabled:opacity-60"
           >
@@ -67,7 +84,7 @@ function AccessoryCard({ accessory }: { accessory: Product }) {
           </button>
         </div>
       )}
-    </div>
+    </Link>
   );
 }
 
