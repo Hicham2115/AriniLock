@@ -95,7 +95,7 @@ export async function POST(req: NextRequest) {
 
   const parsed = BodySchema.safeParse(body);
   if (!parsed.success) {
-    const message = parsed.error.errors[0]?.message ?? "Requête invalide.";
+    const message = parsed.error.issues[0]?.message ?? "Requête invalide.";
     return NextResponse.json({ error: message }, { status: 400 });
   }
 
