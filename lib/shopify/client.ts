@@ -9,7 +9,10 @@ const apiVersion =
  * Sans identifiants Shopify, le site bascule sur des données de
  * démonstration (lib/shopify/mock.ts) pour rester fonctionnel en local.
  */
-export const isShopifyConfigured = Boolean(domain && token);
+export const isShopifyConfigured =
+  Boolean(domain && token) &&
+  domain !== "votre-boutique.myshopify.com" &&
+  token !== "votre_token_storefront";
 
 const storefront = axios.create({
   baseURL: `https://${domain}/api/${apiVersion}/graphql.json`,

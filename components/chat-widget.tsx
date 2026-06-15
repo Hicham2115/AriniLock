@@ -1,5 +1,7 @@
 "use client";
 
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 import { AnimatePresence, motion } from "framer-motion";
 import { MessageCircle, Send, X, Loader2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -30,6 +32,79 @@ function TypingDots() {
   );
 }
 
+// Lightweight markdown renderer — handles bold, bullets, numbered lists, line breaks
+function Markdown({ text }: { text: string }) {
+  const paragraphs = text.split(/\n{2,}/);
+
+  return (
+    <div className="space-y-2">
+      {paragraphs.map((block, pi) => {
+        const lines = block.split("\n");
+
+        // Bullet list block
+        const isBulletList = lines.every((l) => /^[-*•]\s/.test(l.trim()) || l.trim() === "");
+        if (isBulletList && lines.some((l) => /^[-*•]\s/.test(l.trim()))) {
+          return (
+            <ul key={pi} className="space-y-1 pl-1">
+              {lines
+                .filter((l) => /^[-*•]\s/.test(l.trim()))
+                .map((l, li) => (
+                  <li key={li} className="flex gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+                    <span>{inlineParse(l.replace(/^[-*•]\s+/, ""))}</span>
+                  </li>
+                ))}
+            </ul>
+          );
+        }
+
+        // Numbered list block
+        const isNumberedList = lines.every((l) => /^\d+\.\s/.test(l.trim()) || l.trim() === "");
+        if (isNumberedList && lines.some((l) => /^\d+\.\s/.test(l.trim()))) {
+          return (
+            <ol key={pi} className="space-y-1 pl-1">
+              {lines
+                .filter((l) => /^\d+\.\s/.test(l.trim()))
+                .map((l, li) => (
+                  <li key={li} className="flex gap-2">
+                    <span className="shrink-0 font-medium text-gold">{li + 1}.</span>
+                    <span>{inlineParse(l.replace(/^\d+\.\s+/, ""))}</span>
+                  </li>
+                ))}
+            </ol>
+          );
+        }
+
+        // Plain paragraph — render each line
+        return (
+          <p key={pi}>
+            {lines.map((line, li) => (
+              <span key={li}>
+                {inlineParse(line)}
+                {li < lines.length - 1 && <br />}
+              </span>
+            ))}
+          </p>
+        );
+      })}
+    </div>
+  );
+}
+
+// Handles **bold** and *italic* inline
+function inlineParse(text: string): React.ReactNode[] {
+  const parts = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g);
+  return parts.map((part, i) => {
+    if (/^\*\*[^*]+\*\*$/.test(part)) {
+      return <strong key={i} className="font-semibold text-ink">{part.slice(2, -2)}</strong>;
+    }
+    if (/^\*[^*]+\*$/.test(part)) {
+      return <em key={i}>{part.slice(1, -1)}</em>;
+    }
+    return part;
+  });
+}
+
 function BotMessage({ content }: { content: string }) {
   return (
     <div className="flex items-start gap-2">
@@ -37,7 +112,7 @@ function BotMessage({ content }: { content: string }) {
         A
       </div>
       <div className="max-w-[80%] rounded-2xl rounded-tl-sm bg-ink/5 px-4 py-2.5 text-sm leading-relaxed text-ink">
-        {content}
+        <Markdown text={content} />
       </div>
     </div>
   );
@@ -53,6 +128,15 @@ function UserMessage({ content }: { content: string }) {
   );
 }
 
+const MAX_INPUT = 500;
+
+function sanitizeInput(raw: string): string {
+  return raw
+    .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "")
+    .trim()
+    .slice(0, MAX_INPUT);
+}
+
 export function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
@@ -63,51 +147,49 @@ export function ChatWidget() {
     },
   ]);
   const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
+  const mutation = useMutation({
+    mutationFn: (msgs: Message[]) =>
+      axios
+        .post<{ content: string }>("/api/chat", { messages: msgs })
+        .then((r) => r.data),
+    onSuccess: (data, msgs) => {
+      setMessages([...msgs, { role: "assistant", content: data.content }]);
+    },
+    onError: (err, msgs) => {
+      const msg = axios.isAxiosError(err)
+        ? (err.response?.data as { error?: string })?.error ?? err.message
+        : err instanceof Error
+          ? err.message
+          : "Erreur inconnue";
+      setMessages([...msgs, { role: "assistant", content: `⚠️ ${msg}` }]);
+    },
+  });
+
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, loading]);
+  }, [messages, mutation.isPending]);
 
   useEffect(() => {
-    if (open) setTimeout(() => inputRef.current?.focus(), 300);
+    if (open) {
+      document.body.style.overflow = "hidden";
+      setTimeout(() => inputRef.current?.focus(), 300);
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
   }, [open]);
 
-  async function send(text: string) {
-    const trimmed = text.trim();
-    if (!trimmed || loading) return;
-
-    const userMsg: Message = { role: "user", content: trimmed };
-    const next = [...messages, userMsg];
+  function send(text: string) {
+    const clean = sanitizeInput(text);
+    if (!clean || mutation.isPending) return;
+    const next: Message[] = [...messages, { role: "user", content: clean }];
     setMessages(next);
     setInput("");
-    setLoading(true);
-
-    try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: next }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.error ?? `Erreur ${res.status}`);
-      }
-      setMessages([...next, { role: "assistant", content: data.content }]);
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : "Erreur inconnue";
-      setMessages([
-        ...next,
-        {
-          role: "assistant",
-          content: `⚠️ ${msg}`,
-        },
-      ]);
-    } finally {
-      setLoading(false);
-    }
+    mutation.mutate(next);
   }
 
   function handleKey(e: React.KeyboardEvent<HTMLTextAreaElement>) {
@@ -132,14 +214,14 @@ export function ChatWidget() {
             className="flex h-[520px] w-[340px] flex-col overflow-hidden rounded-2xl border border-line bg-cream shadow-[0_20px_60px_rgba(26,23,20,0.18)]"
           >
             {/* Header */}
-            <div className="flex items-center gap-3 border-b border-line bg-ink px-4 py-3.5">
+            <div className="flex shrink-0 items-center gap-3 border-b border-line bg-ink px-4 py-3.5">
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gold/20">
                 <span className="text-xs font-bold text-gold">A</span>
               </div>
               <div className="flex-1">
                 <p className="text-sm font-semibold text-cream">Assistant Arini</p>
                 <p className="text-[10px] uppercase tracking-[0.2em] text-cream/40">
-                  En ligne · Répond en français
+                  En ligne 
                 </p>
               </div>
               <button
@@ -151,8 +233,11 @@ export function ChatWidget() {
               </button>
             </div>
 
-            {/* Messages */}
-            <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4">
+            {/* Messages — min-h-0 fixes flex overflow scroll */}
+            <div
+              ref={scrollRef}
+              className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4"
+            >
               {messages.map((m, i) =>
                 m.role === "assistant" ? (
                   <BotMessage key={i} content={m.content} />
@@ -161,7 +246,7 @@ export function ChatWidget() {
                 )
               )}
 
-              {loading && (
+              {mutation.isPending && (
                 <div className="flex items-start gap-2">
                   <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gold/15 text-xs font-bold text-gold">
                     A
@@ -172,8 +257,7 @@ export function ChatWidget() {
                 </div>
               )}
 
-              {/* Suggested questions */}
-              {showSuggested && !loading && (
+              {showSuggested && !mutation.isPending && (
                 <div className="space-y-2 pt-1">
                   {SUGGESTED.map((q) => (
                     <button
@@ -191,7 +275,7 @@ export function ChatWidget() {
             </div>
 
             {/* Input */}
-            <div className="border-t border-line bg-cream px-3 py-3">
+            <div className="shrink-0 border-t border-line bg-cream px-3 py-3">
               <div className="flex items-end gap-2 rounded-xl border border-line bg-white px-3 py-2 focus-within:border-gold/50">
                 <textarea
                   ref={inputRef}
@@ -205,11 +289,11 @@ export function ChatWidget() {
                 />
                 <button
                   onClick={() => send(input)}
-                  disabled={!input.trim() || loading}
+                  disabled={!input.trim() || mutation.isPending}
                   aria-label="Envoyer"
                   className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gold text-dark transition-colors hover:bg-gold/80 disabled:opacity-40"
                 >
-                  {loading ? (
+                  {mutation.isPending ? (
                     <Loader2 className="h-3.5 w-3.5 animate-spin" />
                   ) : (
                     <Send className="h-3.5 w-3.5" />
@@ -256,7 +340,6 @@ export function ChatWidget() {
           )}
         </AnimatePresence>
 
-        {/* Pulse ring */}
         {!open && (
           <motion.span
             className="absolute inset-0 rounded-full bg-gold"
