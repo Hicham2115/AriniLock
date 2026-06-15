@@ -49,7 +49,7 @@ export function LoadingScreen() {
           >
             <div className="flex items-center justify-between text-[10px] uppercase tracking-widest2 text-cream/25">
               <span>Arini Lock</span>
-              <span>Est. {new Date().getFullYear()}</span>
+              <span>Marque marocaine</span>
             </div>
             <motion.p
               initial={{ opacity: 0, x: -12 }}

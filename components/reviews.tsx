@@ -111,7 +111,7 @@ export function Reviews() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal>
           <div className="mb-10 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
-            <span>06 — Avis clients</span>
+            <span>05 — Avis clients</span>
             <span>Vérifié · 312 foyers</span>
           </div>
         </Reveal>

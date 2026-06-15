@@ -62,7 +62,7 @@ export function OfferNewsletter() {
       <div className="rounded-3xl bg-dark px-8 py-16 lg:px-16">
         {/* Section label */}
         <div className="mb-10 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-cream/50">
-          <span>08 — Offre de lancement</span>
+          <span>07 — Offre de lancement</span>
           <span>-300 MAD</span>
         </div>
 

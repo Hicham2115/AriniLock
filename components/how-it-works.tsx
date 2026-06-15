@@ -30,7 +30,7 @@ export function HowItWorks() {
       {/* Section label */}
       <Reveal>
         <div className="mb-12 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
-          <span>03 — Mise en service</span>
+          <span>04 — Mise en service</span>
           <span>Cycle : 0 → 1 en 15 min</span>
         </div>
       </Reveal>

@@ -124,7 +124,7 @@ export function AccessoriesGrid() {
       {/* Section label */}
       <Reveal>
         <div className="mb-12 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
-          <span>05 — Accessoires</span>
+          <span>02 — Accessoires</span>
           <span>Complétez l&apos;installation</span>
         </div>
       </Reveal>

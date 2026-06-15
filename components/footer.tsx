@@ -48,7 +48,7 @@ export function Footer() {
                 Arini Lock
               </p>
               <p className="mt-1 text-[10px] uppercase tracking-[0.3em] text-gold/60">
-                Maison connectée · Est. {new Date().getFullYear()}
+                Maison connectée · Casablanca, Maroc
               </p>
             </div>
             <div className="hidden text-right md:block">

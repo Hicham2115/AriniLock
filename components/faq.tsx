@@ -38,7 +38,7 @@ export function Faq() {
       {/* Section label */}
       <Reveal>
         <div className="mb-12 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
-          <span>07 — FAQ</span>
+          <span>06 — FAQ</span>
           <span>Questions fréquentes</span>
         </div>
       </Reveal>

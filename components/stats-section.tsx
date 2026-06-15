@@ -36,7 +36,7 @@ export function StatsSection() {
       <Reveal>
         <div className="mb-12 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
           <span>01 — En chiffres</span>
-          <span>Snapshot — {new Date().getFullYear()}</span>
+          <span>Snapshot — Édition lancement</span>
         </div>
       </Reveal>
 

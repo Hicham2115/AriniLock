@@ -3,12 +3,11 @@
 import { motion } from "framer-motion";
 import {
   ArrowUpRight,
-  BatteryFull,
+  CreditCard,
   Fingerprint,
+  Key,
   KeyRound,
-  ShieldAlert,
   Smartphone,
-  Wifi,
   type LucideIcon,
 } from "lucide-react";
 import { Reveal } from "@/components/reveal";
@@ -26,42 +25,35 @@ const FEATURES: Feature[] = [
     icon: Fingerprint,
     title: "Empreinte digitale",
     description:
-      "Jusqu'à 100 empreintes enregistrées. Reconnaissance et ouverture en moins d'une seconde.",
+      "Jusqu'à 100 empreintes enregistrées. Déverrouillage en moins d'une seconde, même avec les mains légèrement humides.",
   },
   {
     num: "02",
     icon: KeyRound,
     title: "Code PIN",
     description:
-      "Un code personnel à 4–8 chiffres, modifiable à tout moment depuis l'application.",
+      "Code personnel de 4 à 8 chiffres, modifiable depuis l'app. Codes temporaires pour invités, femme de ménage ou livreur.",
   },
   {
     num: "03",
     icon: Smartphone,
     title: "Application mobile",
     description:
-      "Verrouillez, déverrouillez et suivez l'activité de votre porte où que vous soyez.",
+      "Verrouillez, déverrouillez et consultez l'historique complet de votre porte, où que vous soyez dans le monde.",
   },
   {
     num: "04",
-    icon: Wifi,
-    title: "Connectée 24/7",
+    icon: CreditCard,
+    title: "Carte RFID",
     description:
-      "Wifi et Bluetooth intégrés pour un contrôle à distance et des mises à jour automatiques.",
+      "Badges NFC ultra-rapides pour un accès instantané. Compatible avec la plupart des cartes existantes. Fonctionne sans connexion internet.",
   },
   {
     num: "05",
-    icon: BatteryFull,
-    title: "Autonomie 12 mois",
+    icon: Key,
+    title: "Clé physique de secours",
     description:
-      "4 piles AA standards. Une alerte vous prévient automatiquement avant épuisement.",
-  },
-  {
-    num: "06",
-    icon: ShieldAlert,
-    title: "Alertes intrusion",
-    description:
-      "Notification immédiate sur votre téléphone en cas de tentative d'effraction.",
+      "Une clé mécanique fournie avec chaque serrure — pour toute urgence : batterie épuisée, panne de téléphone ou coupure réseau.",
   },
 ];
 
@@ -74,7 +66,7 @@ export function FeaturesGrid() {
       {/* Section label */}
       <Reveal>
         <div className="mb-12 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
-          <span>02 — Fonctionnalités</span>
+          <span>03 — Fonctionnalités</span>
           <span>Sécurité nouvelle génération</span>
         </div>
       </Reveal>
@@ -87,7 +79,7 @@ export function FeaturesGrid() {
               className="font-display2 uppercase leading-[0.88] text-ink"
               style={{ fontSize: "clamp(2.8rem, 7.5vw, 6.5rem)" }}
             >
-              Quatre
+              Cinq
               <br />
               façons
               <br />

@@ -58,7 +58,7 @@ export function Hero() {
           className="relative flex items-center justify-between px-5 pt-6 text-[10px] uppercase tracking-[0.25em] text-white/60"
         >
           <span>Arini Lock</span>
-          <span>Est. {new Date().getFullYear()}</span>
+          <span>Marque marocaine</span>
         </motion.div>
 
         <div className="flex-1" />
@@ -179,7 +179,7 @@ export function Hero() {
           className="flex items-center justify-between py-6"
         >
           <p className="text-xs uppercase tracking-[0.25em] text-white/90">
-            Édition de lancement · {new Date().getFullYear()}
+            Édition de lancement · Maroc
           </p>
           <p className="hidden text-xs uppercase tracking-[0.25em] text-white/90 lg:block">
             Maroc
@@ -208,13 +208,16 @@ export function Hero() {
               />
             </button>
           )}
-          <button className="inline-flex group h-14 items-center rounded-full border border-white/25 bg-white/10 px-8 text-sm font-medium text-white backdrop-blur transition-colors border-white/50">
+          <a
+            href="#fonctionnalites"
+            className="inline-flex group h-14 items-center rounded-full border border-white/25 bg-white/10 px-8 text-sm font-medium text-white backdrop-blur transition-colors hover:border-white/50"
+          >
             Fonctionnalités
             <ArrowRight
               aria-hidden="true"
               className="h-4 w-4 ml-1 opacity-80 group-hover:translate-x-1 transition-transform duration-300"
             />
-          </button>
+          </a>
         </motion.div>
 
         <motion.div
@@ -222,7 +225,7 @@ export function Hero() {
           className="flex items-center justify-between border-t border-white/20 py-5 text-xs uppercase tracking-[0.2em] text-white/80"
         >
           <div className="flex items-center gap-6">
-            <span>Est. {new Date().getFullYear()}</span>
+            <span>Marque marocaine</span>
             <span>// Arini Lock</span>
           </div>
           <span>Maison connectée · Conçu pour le Maroc</span>
