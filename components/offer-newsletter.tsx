@@ -2,6 +2,7 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { useNewsletter } from "@/hooks/use-newsletter";
+import { Reveal } from "@/components/reveal";
 
 const OFFER_DURATION_MS =
   (4 * 24 * 60 * 60 + 12 * 3600 + 45 * 60 + 10) * 1000;
@@ -57,6 +58,7 @@ export function OfferNewsletter() {
 
   return (
     <section className="mx-auto max-w-7xl border-t border-line px-6 py-24 lg:px-10">
+      <Reveal>
       <div className="rounded-3xl bg-dark px-8 py-16 lg:px-16">
         {/* Section label */}
         <div className="mb-10 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-cream/50">
@@ -135,6 +137,7 @@ export function OfferNewsletter() {
           </div>
         </div>
       </div>
+      </Reveal>
     </section>
   );
 }

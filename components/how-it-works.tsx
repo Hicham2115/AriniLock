@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Reveal } from "@/components/reveal";
 
 const STEPS = [
   {
@@ -27,19 +28,23 @@ export function HowItWorks() {
   return (
     <section className="mx-auto max-w-7xl border-t border-line px-6 py-24 lg:px-10">
       {/* Section label */}
-      <div className="mb-12 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
-        <span>03 — Mise en service</span>
-        <span>Cycle : 0 → 1 en 15 min</span>
-      </div>
+      <Reveal>
+        <div className="mb-12 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
+          <span>03 — Mise en service</span>
+          <span>Cycle : 0 → 1 en 15 min</span>
+        </div>
+      </Reveal>
 
-      <h2
-        className="mb-12 font-display2 uppercase leading-none text-ink"
-        style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
-      >
-        Installée en moins de
-        <br />
-        15 minutes.
-      </h2>
+      <Reveal delay={0.1}>
+        <h2
+          className="mb-12 font-display2 uppercase leading-none text-ink"
+          style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
+        >
+          Installée en moins de
+          <br />
+          15 minutes.
+        </h2>
+      </Reveal>
 
       <div className="divide-y divide-line">
         {STEPS.map((step) => (

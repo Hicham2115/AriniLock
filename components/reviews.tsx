@@ -1,6 +1,8 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { Reveal } from "@/components/reveal";
 import {
   Carousel,
   CarouselContent,
@@ -107,33 +109,52 @@ export function Reviews() {
     >
       {/* Inner header — respects page padding */}
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="mb-10 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
-          <span>06 — Avis clients</span>
-          <span>Vérifié · 312 foyers</span>
-        </div>
+        <Reveal>
+          <div className="mb-10 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
+            <span>06 — Avis clients</span>
+            <span>Vérifié · 312 foyers</span>
+          </div>
+        </Reveal>
 
         {/* Desktop: 3-col grid with sticky sidebar */}
         <div className="hidden lg:grid lg:grid-cols-3 lg:gap-16">
           <div className="lg:sticky lg:top-28 lg:self-start">
-            <h2
-              className="mb-6 font-display2 uppercase leading-none text-ink"
-              style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
-            >
-              Ce qu&apos;en<br />disent 312<br />foyers.
-            </h2>
-            <div className="mb-6 flex items-baseline gap-2">
-              <span className="font-display2 text-6xl text-ink">4.8</span>
-              <span className="text-muted-foreground">/ 5</span>
-            </div>
+            <Reveal delay={0.1}>
+              <h2
+                className="mb-6 font-display2 uppercase leading-none text-ink"
+                style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
+              >
+                Ce qu&apos;en<br />disent 312<br />foyers.
+              </h2>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <div className="mb-6 flex items-baseline gap-2">
+                <span className="font-display2 text-6xl text-ink">4.8</span>
+                <span className="text-muted-foreground">/ 5</span>
+              </div>
+            </Reveal>
             <div className="space-y-2">
-              {RATING_BARS.map((bar) => (
-                <div key={bar.stars} className="flex items-center gap-3 text-sm text-muted-foreground">
+              {RATING_BARS.map((bar, i) => (
+                <motion.div
+                  key={bar.stars}
+                  initial={{ opacity: 0, x: -12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1], delay: 0.25 + i * 0.06 }}
+                  className="flex items-center gap-3 text-sm text-muted-foreground"
+                >
                   <span className="w-8">{bar.stars}</span>
                   <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-line">
-                    <div className="h-full rounded-full bg-gold" style={{ width: bar.pct }} />
+                    <motion.div
+                      className="h-full rounded-full bg-gold"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: bar.pct }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.35 + i * 0.06 }}
+                    />
                   </div>
                   <span className="w-8 text-right">{bar.count}</span>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Reveal } from "@/components/reveal";
 
 const STATS = [
   { value: "100", unit: "", label: "Empreintes", sub: "enregistrées max" },
@@ -32,37 +33,44 @@ export function StatsSection() {
   return (
     <section className="mx-auto max-w-7xl border-t border-line px-6 py-24 lg:px-10">
       {/* Section label row */}
-      <div className="mb-12 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
-        <span>01 — En chiffres</span>
-        <span>Snapshot — {new Date().getFullYear()}</span>
-      </div>
+      <Reveal>
+        <div className="mb-12 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
+          <span>01 — En chiffres</span>
+          <span>Snapshot — {new Date().getFullYear()}</span>
+        </div>
+      </Reveal>
 
       {/* Big headline */}
-      <h2
-        className="mb-12 font-display2 font-light uppercase leading-none text-ink"
-        style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
-      >
-        Ce qui la rend
-        <br />
-        différente.
-      </h2>
+      <Reveal delay={0.1}>
+        <h2
+          className="mb-12 font-display2 font-light uppercase leading-none text-ink"
+          style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
+        >
+          Ce qui la rend
+          <br />
+          différente.
+        </h2>
+      </Reveal>
 
       {/* Stats row */}
       <div className="border-t border-ink/15">
         <div className="grid grid-cols-2 lg:grid-cols-4">
           {STATS.map((stat, i) => (
-            <motion.div
+            <Reveal
               key={stat.label}
-              whileHover="hovered"
-              initial="rest"
-              animate="rest"
+              delay={i * 0.09}
               className={[
-                "relative cursor-default overflow-hidden py-8 px-4 lg:px-6",
                 i % 2 !== 0 ? "border-l border-ink/10" : "",
                 i >= 2 ? "border-t border-ink/10" : "",
                 i > 0 ? "lg:border-l lg:border-ink/10" : "",
                 i >= 2 ? "lg:border-t-0" : "",
               ].filter(Boolean).join(" ")}
+            >
+            <motion.div
+              whileHover="hovered"
+              initial="rest"
+              animate="rest"
+              className="relative cursor-default overflow-hidden py-8 px-4 lg:px-6"
             >
               {/* Background fill — slides up on hover */}
               <motion.div
@@ -114,6 +122,7 @@ export function StatsSection() {
               <p className="relative text-sm font-medium text-ink">{stat.label}</p>
               <p className="relative text-xs text-muted-foreground">{stat.sub}</p>
             </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -121,9 +130,9 @@ export function StatsSection() {
       {/* Detail columns */}
       <div className="border-t border-ink/15 pt-8">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {DETAILS.map((detail) => (
+          {DETAILS.map((detail, i) => (
+            <Reveal key={detail.title} delay={i * 0.08}>
             <motion.div
-              key={detail.title}
               whileHover="hovered"
               initial="rest"
               animate="rest"
@@ -155,6 +164,7 @@ export function StatsSection() {
                 {detail.body}
               </p>
             </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>

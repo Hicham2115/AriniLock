@@ -1,6 +1,8 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Plus, RotateCcw } from "lucide-react";
+import { Reveal } from "@/components/reveal";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAddToCart } from "@/hooks/use-cart";
 import { useAccessories } from "@/hooks/use-product";
@@ -120,19 +122,23 @@ export function AccessoriesGrid() {
       className="mx-auto max-w-7xl scroll-mt-20 border-t border-line px-6 py-24 lg:px-10"
     >
       {/* Section label */}
-      <div className="mb-12 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
-        <span>05 — Accessoires</span>
-        <span>Complétez l&apos;installation</span>
-      </div>
+      <Reveal>
+        <div className="mb-12 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
+          <span>05 — Accessoires</span>
+          <span>Complétez l&apos;installation</span>
+        </div>
+      </Reveal>
 
-      <h2
-        className="mb-12 font-display2 uppercase leading-none text-ink"
-        style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
-      >
-        Pensé pour durer plus
-        <br />
-        longtemps.
-      </h2>
+      <Reveal delay={0.1}>
+        <h2
+          className="mb-12 font-display2 uppercase leading-none text-ink"
+          style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
+        >
+          Pensé pour durer plus
+          <br />
+          longtemps.
+        </h2>
+      </Reveal>
 
       {isLoading && (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -165,11 +171,18 @@ export function AccessoriesGrid() {
       {accessories && (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {accessories.map((accessory, index) => (
-            <AccessoryCard
+            <motion.div
               key={accessory.id}
-              accessory={accessory}
-              accent={index === 1}
-            />
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.65, ease: [0.25, 0.1, 0.25, 1], delay: index * 0.1 }}
+            >
+              <AccessoryCard
+                accessory={accessory}
+                accent={index === 1}
+              />
+            </motion.div>
           ))}
         </div>
       )}

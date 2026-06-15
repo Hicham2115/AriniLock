@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { AccessoriesGrid } from "@/components/accessories-grid";
 import { CartDrawer } from "@/components/cart-drawer";
+import { ChatWidget } from "@/components/chat-widget";
 import { Faq } from "@/components/faq";
 import { FeaturesGrid } from "@/components/features-grid";
 import { Footer } from "@/components/footer";
@@ -9,7 +10,6 @@ import { Hero } from "@/components/hero";
 import { HowItWorks } from "@/components/how-it-works";
 import { Marquee } from "@/components/marquee";
 import { OfferNewsletter } from "@/components/offer-newsletter";
-import { ProductShowcase } from "@/components/product-showcase";
 import { Reviews } from "@/components/reviews";
 import { StatsSection } from "@/components/stats-section";
 import { StickyBuyBar } from "@/components/sticky-buy-bar";
@@ -45,6 +45,7 @@ export default function HomePage() {
       <Footer />
       <StickyBuyBar />
       <CartDrawer />
+      <ChatWidget />
     </>
   );
 }

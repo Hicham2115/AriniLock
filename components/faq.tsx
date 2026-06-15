@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Reveal } from "@/components/reveal";
 
 const FAQ_ITEMS = [
   {
@@ -35,20 +36,24 @@ export function Faq() {
       className="mx-auto max-w-7xl scroll-mt-20 border-t border-line px-6 py-24 lg:px-10"
     >
       {/* Section label */}
-      <div className="mb-12 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
-        <span>07 — FAQ</span>
-        <span>Questions fréquentes</span>
-      </div>
+      <Reveal>
+        <div className="mb-12 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
+          <span>07 — FAQ</span>
+          <span>Questions fréquentes</span>
+        </div>
+      </Reveal>
 
       <div className="grid gap-16 lg:grid-cols-[2fr_3fr]">
         {/* Left: sticky headline */}
         <div className="lg:sticky lg:top-28">
-          <h2
-            className="font-display2 uppercase leading-none text-ink"
-            style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
-          >
-            Tout ce<br />qu&apos;il faut<br />savoir.
-          </h2>
+          <Reveal delay={0.1}>
+            <h2
+              className="font-display2 uppercase leading-none text-ink"
+              style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
+            >
+              Tout ce<br />qu&apos;il faut<br />savoir.
+            </h2>
+          </Reveal>
         </div>
 
         {/* Right: accordion as divider list */}

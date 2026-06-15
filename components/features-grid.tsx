@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import {
   ArrowUpRight,
   BatteryFull,
@@ -8,6 +11,7 @@ import {
   Wifi,
   type LucideIcon,
 } from "lucide-react";
+import { Reveal } from "@/components/reveal";
 
 interface Feature {
   num: string;
@@ -68,32 +72,44 @@ export function FeaturesGrid() {
       className="mx-auto max-w-7xl scroll-mt-20 border-t border-line px-6 py-24 lg:px-10"
     >
       {/* Section label */}
-      <div className="mb-12 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
-        <span>02 — Fonctionnalités</span>
-        <span>Sécurité nouvelle génération</span>
-      </div>
+      <Reveal>
+        <div className="mb-12 flex items-start justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
+          <span>02 — Fonctionnalités</span>
+          <span>Sécurité nouvelle génération</span>
+        </div>
+      </Reveal>
 
       <div className="grid items-start gap-12 lg:grid-cols-[2fr_3fr]">
         {/* Left: sticky large headline */}
         <div className="lg:sticky lg:top-28">
-          <h2
-            className="font-display2 uppercase leading-[0.88] text-ink"
-            style={{ fontSize: "clamp(2.8rem, 7.5vw, 6.5rem)" }}
-          >
-            Quatre
-            <br />
-            façons
-            <br />
-            d&apos;entrer.
-          </h2>
+          <Reveal delay={0.1}>
+            <h2
+              className="font-display2 uppercase leading-[0.88] text-ink"
+              style={{ fontSize: "clamp(2.8rem, 7.5vw, 6.5rem)" }}
+            >
+              Quatre
+              <br />
+              façons
+              <br />
+              d&apos;entrer.
+            </h2>
+          </Reveal>
         </div>
 
         {/* Right: numbered divider list */}
         <div>
           <div className="divide-y divide-line">
-            {FEATURES.map((feature) => (
-              <div
+            {FEATURES.map((feature, index) => (
+              <motion.div
                 key={feature.title}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{
+                  duration: 0.6,
+                  ease: [0.25, 0.1, 0.25, 1],
+                  delay: index * 0.07,
+                }}
                 className="group flex items-start gap-5 py-6"
               >
                 <span className="w-8 shrink-0 pt-0.5 font-display2 text-sm text-muted-foreground">
@@ -115,7 +131,7 @@ export function FeaturesGrid() {
                     />
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
