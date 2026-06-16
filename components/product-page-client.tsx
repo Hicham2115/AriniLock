@@ -89,7 +89,7 @@ export function ProductPageClient({
     { icon: ShieldCheck, label: t.trust.warranty, sub: t.trust.warrantySub },
     { icon: Zap, label: t.trust.install, sub: t.trust.installSub },
   ];
-
+ 
   const { handle } = use(params);
   const { data: product, isLoading, isError } = useProduct(handle);
   const {
