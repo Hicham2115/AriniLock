@@ -16,8 +16,8 @@ export function Footer() {
         {/* Ghost wordmark behind headline */}
         <p
           aria-hidden="true"
-          className="pointer-events-none absolute -bottom-4 left-0 select-none whitespace-nowrap font-display2 uppercase leading-none text-cream/3"
-          style={{ fontSize: "clamp(5rem, 16vw, 14rem)", letterSpacing: "-0.02em" }}
+          className="pointer-events-none absolute -bottom-4 left-0 select-none font-display2 uppercase leading-none text-cream/3"
+          style={{ fontSize: "clamp(2.5rem, 16vw, 14rem)", letterSpacing: "-0.02em", whiteSpace: "nowrap", transform: "translateX(0)" }}
         >
           Arini Lock
         </p>
@@ -84,8 +84,8 @@ export function Footer() {
                 { icon: Phone, text: "+212 6 00 00 00 00" },
                 { icon: Mail,  text: "hello@arinilock.ma" },
               ].map(({ icon: Icon, text }) => (
-                <li key={text} className="flex items-center gap-3 text-sm text-cream/45">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full border border-gold/20 bg-gold/8">
+                <li key={text} className="flex items-center gap-3 text-sm text-cream/45 whitespace-nowrap">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-gold/20 bg-gold/8">
                     <Icon aria-hidden="true" className="h-3.5 w-3.5 text-gold" />
                   </span>
                   {text}
