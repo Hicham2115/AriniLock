@@ -95,6 +95,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://arinilock.ma",
   },
+  icons: {
+    icon: "/favicon.ico",
+  },
   robots: {
     index: true,
     follow: true,
