@@ -70,7 +70,7 @@ export function Hero() {
         {/* Bottom content panel */}
         <div className="relative px-5 pb-10">
           {/* Edition badge */}
-          <motion.div
+          {/* <motion.div
             {...fadeUp(ready, 0.32)}
             className="mb-5 inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-3 py-1 backdrop-blur-sm"
           >
@@ -78,20 +78,26 @@ export function Hero() {
             <span className="text-[10px] uppercase tracking-[0.25em] text-gold/90">
               {t.hero.editionLabel}
             </span>
-          </motion.div>
+          </motion.div> */}
 
           {/* Headline */}
           <motion.h1
             {...fadeUp(ready, 0.45)}
             className="mb-0 font-display leading-[0.88] text-white"
-            style={{ fontSize: "clamp(4rem, 20vw, 6rem)", letterSpacing: "-0.03em" }}
+            style={{
+              fontSize: "clamp(4rem, 20vw, 6rem)",
+              letterSpacing: "-0.03em",
+            }}
           >
             {t.hero.headline1}
           </motion.h1>
           <motion.h1
             {...fadeUp(ready, 0.56)}
             className="font-display leading-[0.88] text-white"
-            style={{ fontSize: "clamp(4rem, 20vw, 6rem)", letterSpacing: "-0.03em" }}
+            style={{
+              fontSize: "clamp(4rem, 20vw, 6rem)",
+              letterSpacing: "-0.03em",
+            }}
           >
             {t.hero.headline2}
           </motion.h1>
@@ -100,7 +106,8 @@ export function Hero() {
             className="mb-8 ml-1 mt-3 -rotate-1 font-script leading-none"
             style={{
               fontSize: "clamp(2rem, 9vw, 3rem)",
-              background: "linear-gradient(135deg, #fdf3e0 0%, #f0d9a8 50%, #e0c080 100%)",
+              background:
+                "linear-gradient(135deg, #fdf3e0 0%, #f0d9a8 50%, #e0c080 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -115,14 +122,18 @@ export function Hero() {
             <button
               type="button"
               disabled={isPending || isLoading || !variant}
-              onClick={() => variant && addToCart([{ merchandiseId: variant.id, quantity: 1 }])}
+              onClick={() =>
+                variant &&
+                addToCart([{ merchandiseId: variant.id, quantity: 1 }])
+              }
               className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-gold text-sm font-semibold text-dark shadow-[0_8px_32px_rgba(196,154,101,0.4)] transition-colors disabled:opacity-70"
             >
               {isLoading ? (
                 <span className="h-4 w-4 animate-spin rounded-full border-2 border-dark/30 border-t-dark" />
               ) : (
                 <>
-                  {t.hero.buy}{variant ? ` — ${formatMoney(variant.price)}` : ""}
+                  {t.hero.buy}
+                  {variant ? ` — ${formatMoney(variant.price)}` : ""}
                   <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
                 </>
               )}
@@ -159,7 +170,10 @@ export function Hero() {
         <motion.h1
           {...fadeUp(ready, 0.35)}
           className="mt-10 font-display leading-none text-white drop-shadow-lg lg:mt-20"
-          style={{ fontSize: "clamp(3rem, 12vw, 11rem)", letterSpacing: "-0.02em" }}
+          style={{
+            fontSize: "clamp(3rem, 12vw, 11rem)",
+            letterSpacing: "-0.02em",
+          }}
         >
           {t.hero.headline1}
         </motion.h1>
@@ -167,7 +181,10 @@ export function Hero() {
           <motion.span
             {...fadeUp(ready, 0.5)}
             className="block font-display -mt-1 leading-none text-white drop-shadow-lg"
-            style={{ fontSize: "clamp(3rem, 12vw, 11rem)", letterSpacing: "-0.02em" }}
+            style={{
+              fontSize: "clamp(3rem, 12vw, 11rem)",
+              letterSpacing: "-0.02em",
+            }}
           >
             {t.hero.headline2}
           </motion.span>
@@ -176,7 +193,8 @@ export function Hero() {
             className="mt-2 -rotate-2 font-script leading-none"
             style={{
               fontSize: "clamp(1.8rem, 7vw, 6.5rem)",
-              background: "linear-gradient(135deg, #fdf3e0 0%, #f0d9a8 45%, #e0c080 100%)",
+              background:
+                "linear-gradient(135deg, #fdf3e0 0%, #f0d9a8 45%, #e0c080 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -210,14 +228,17 @@ export function Hero() {
           <button
             type="button"
             disabled={isPending || isLoading || !variant}
-            onClick={() => variant && addToCart([{ merchandiseId: variant.id, quantity: 1 }])}
+            onClick={() =>
+              variant && addToCart([{ merchandiseId: variant.id, quantity: 1 }])
+            }
             className="group inline-flex h-14 cursor-pointer items-center gap-2 rounded-full bg-ink px-8 text-sm font-medium text-cream transition-colors disabled:opacity-70"
           >
             {isLoading ? (
               <span className="h-4 w-4 animate-spin rounded-full border-2 border-cream/30 border-t-cream" />
             ) : (
               <>
-                {t.hero.buy}{variant ? ` — ${formatMoney(variant.price)}` : ""}
+                {t.hero.buy}
+                {variant ? ` — ${formatMoney(variant.price)}` : ""}
                 <ArrowUpRight
                   aria-hidden="true"
                   className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"

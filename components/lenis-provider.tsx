@@ -8,11 +8,11 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const lenisRef = useRef<Lenis | null>(null);
 
-  // Create once — never destroyed on navigation
   useEffect(() => {
-    const lenis = new Lenis({ lerp: 0.12 });
+    const lenis = new Lenis({ lerp: 0.1 });
     lenisRef.current = lenis;
 
+    // RAF loop
     let frame: number;
     const raf = (time: number) => {
       lenis.raf(time);
@@ -20,18 +20,32 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
     };
     frame = requestAnimationFrame(raf);
 
-    // Stop Lenis when a Sheet/Dialog locks body scroll, restart when it unlocks
-    const bodyObserver = new MutationObserver(() => {
-      const locked = document.body.style.overflow === "hidden" ||
+    // Recalculate scroll limit when async content changes page height.
+    // Lenis's built-in ResizeObserver targets <html> which has height:100% (fixed),
+    // so it never fires on content growth. Watching <body> catches it.
+    const bodyResizeObserver = new ResizeObserver(() => {
+      lenis.resize();
+    });
+    bodyResizeObserver.observe(document.body);
+
+    // Pause/resume around modals and drawers (Radix sets data-scroll-locked on body;
+    // header/chat set body.style.overflow = "hidden").
+    // Re-evaluate on every mutation rather than trying to track deltas.
+    const syncScrollLock = () => {
+      const locked =
+        document.body.style.overflow === "hidden" ||
         document.body.hasAttribute("data-scroll-locked");
       if (locked) lenis.stop();
       else lenis.start();
-    });
+    };
+
+    const bodyObserver = new MutationObserver(syncScrollLock);
     bodyObserver.observe(document.body, {
       attributes: true,
       attributeFilter: ["style", "data-scroll-locked"],
     });
 
+    // Anchor-link smooth scroll
     const handleClick = (e: MouseEvent) => {
       const anchor = (e.target as Element).closest?.("a") as HTMLAnchorElement | null;
       if (!anchor) return;
@@ -42,13 +56,13 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
       e.preventDefault();
       e.stopPropagation();
       history.pushState(null, "", href);
-      lenis.scrollTo(el as HTMLElement, { offset: -72, lerp: 0.1, duration: 1.6 });
+      lenis.scrollTo(el as HTMLElement, { offset: -72, lerp: 0.1, duration: 1.4 });
     };
-
     document.addEventListener("click", handleClick, { capture: true });
 
     return () => {
       cancelAnimationFrame(frame);
+      bodyResizeObserver.disconnect();
       bodyObserver.disconnect();
       document.removeEventListener("click", handleClick, { capture: true });
       lenis.destroy();
@@ -56,12 +70,11 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  // On navigation: jump to top, then recalculate scroll height after paint
+  // On navigation: jump to top, resize after paint
   useEffect(() => {
     const lenis = lenisRef.current;
     if (!lenis) return;
     lenis.scrollTo(0, { immediate: true });
-    // Two rAF frames to ensure new page DOM is fully laid out before resize
     let id1: number;
     let id2: number;
     id1 = requestAnimationFrame(() => {
