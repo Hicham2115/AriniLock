@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import NextLink from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import lockImg from "@/app/assets/Untitled design_LE_upscale_prime.png";
@@ -142,7 +143,10 @@ export function Hero() {
               href="#fonctionnalites"
               className="flex h-12 w-full items-center justify-center gap-2 rounded-full border border-white/20 text-sm font-medium text-white/75 backdrop-blur-sm"
             >
-              <ArrowRight aria-hidden="true" className="h-4 w-4 order-last rtl:order-first" />
+              <ArrowRight
+                aria-hidden="true"
+                className="h-4 w-4 order-last rtl:order-first"
+              />
               {t.hero.discover}
             </a>
           </motion.div>
@@ -226,27 +230,18 @@ export function Hero() {
           {...fadeUp(ready, 0.82)}
           className="flex flex-wrap items-center justify-center gap-4 pb-12"
         >
-          <button
-            type="button"
-            disabled={isPending || isLoading || !variant}
-            onClick={() =>
-              variant && addToCart([{ merchandiseId: variant.id, quantity: 1 }])
-            }
-            className="group inline-flex h-14 cursor-pointer items-center gap-2 rounded-full bg-ink px-8 text-sm font-medium text-cream transition-colors disabled:opacity-70"
-          >
-            {isLoading ? (
-              <span className="h-4 w-4 animate-spin rounded-full border-2 border-cream/30 border-t-cream" />
-            ) : (
-              <>
-                {t.hero.buy}
-                {variant ? ` — ${formatMoney(variant.price)}` : ""}
-                <ArrowUpRight
-                  aria-hidden="true"
-                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </>
-            )}
-          </button>
+          
+            <NextLink
+              href="/produits"
+              className="group inline-flex h-14 cursor-pointer items-center gap-2 rounded-full bg-ink px-8 text-sm font-medium text-cream transition-colors"
+            >
+              {t.hero.buy}
+              {variant ? ` — ${formatMoney(variant.price)}` : ""}
+              <ArrowUpRight
+                aria-hidden="true"
+                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </NextLink>
           <a
             href="#fonctionnalites"
             className="inline-flex group h-14 items-center gap-2 rounded-full border border-white/25 bg-white/10 px-8 text-sm font-medium text-white backdrop-blur transition-colors hover:border-white/50"

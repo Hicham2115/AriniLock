@@ -375,24 +375,24 @@ export function ProductPageClient({
                   )}
 
                   {/* Quantity + CTA */}
-                  <div className="flex gap-3">
-                    <div className="flex h-12 items-center rounded-full border border-line sm:h-14">
+                  <div className="flex flex-col gap-3 sm:flex-row">
+                    <div className="flex h-14 items-center rounded-full border border-line">
                       <button
                         type="button"
                         onClick={() => setQty((q) => Math.max(1, q - 1))}
                         aria-label="Diminuer la quantité"
-                        className="flex h-full w-12 items-center justify-center text-muted-foreground transition-colors hover:text-ink"
+                        className="flex h-full w-14 items-center justify-center text-muted-foreground transition-colors hover:text-ink"
                       >
                         <Minus className="h-4 w-4" />
                       </button>
-                      <span className="w-8 text-center text-sm font-medium text-ink">
+                      <span className="w-10 text-center text-sm font-medium text-ink">
                         {qty}
                       </span>
                       <button
                         type="button"
                         onClick={() => setQty((q) => q + 1)}
                         aria-label="Augmenter la quantité"
-                        className="flex h-full w-12 items-center justify-center text-muted-foreground transition-colors hover:text-ink"
+                        className="flex h-full w-14 items-center justify-center text-muted-foreground transition-colors hover:text-ink"
                       >
                         <Plus className="h-4 w-4" />
                       </button>
@@ -407,7 +407,7 @@ export function ProductPageClient({
                           { merchandiseId: variant.id, quantity: qty },
                         ])
                       }
-                      className="flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-ink text-sm font-medium text-cream transition-colors hover:bg-ink/80 disabled:opacity-50 sm:h-14"
+                      className="flex h-14 flex-1 items-center justify-center gap-2 rounded-full bg-ink text-sm font-medium text-cream transition-colors hover:bg-ink/80 disabled:opacity-50"
                     >
                       <ShoppingBag aria-hidden="true" className="h-4 w-4" />
                       {isPending ? t.product.adding : t.product.addToCart}
@@ -415,24 +415,19 @@ export function ProductPageClient({
                   </div>
 
                   {/* Trust strip */}
-                  <div className="grid divide-y divide-line rounded-xl border border-line sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+                  <div className="grid grid-cols-3 divide-x divide-line rounded-xl border border-line">
                     {TRUST.map(({ icon: Icon, label, sub }) => (
                       <div
                         key={label}
-                        className="flex items-center gap-3 px-4 py-3 sm:flex-col sm:items-center sm:gap-1 sm:px-3 sm:py-4 sm:text-center"
+                        className="flex flex-col items-center gap-1 px-2 py-4 text-center"
                       >
-                        <Icon
-                          aria-hidden="true"
-                          className="h-4 w-4 shrink-0 text-gold"
-                        />
-                        <div className="sm:contents">
-                          <p className="text-[11px] font-medium leading-tight text-ink">
-                            {label}
-                          </p>
-                          <p className="hidden text-[10px] text-muted-foreground sm:block">
-                            {sub}
-                          </p>
-                        </div>
+                        <Icon aria-hidden="true" className="h-4 w-4 shrink-0 text-gold" />
+                        <p className="text-[10px] font-medium leading-tight text-ink">
+                          {label}
+                        </p>
+                        <p className="text-[9px] leading-tight text-muted-foreground">
+                          {sub}
+                        </p>
                       </div>
                     ))}
                   </div>
