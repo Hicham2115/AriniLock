@@ -100,7 +100,7 @@ export function HowItWorks() {
                   }}
                   initial="rest"
                   transition={{ duration: 0.25 }}
-                  className="text-sm leading-relaxed text-muted-foreground"
+                  className="text-sm leading-relaxed text-ink/55"
                 >
                   {step.description}
                 </motion.p>
