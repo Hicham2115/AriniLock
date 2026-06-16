@@ -52,7 +52,7 @@ export function Footer() {
           >
             <p className="text-sm leading-relaxed text-cream/45">{s.blurb}</p>
             <a
-              href="#produit"
+              href="/produits"
               className="group inline-flex items-center gap-2 self-start rounded-full border border-gold/40 bg-gold/10 px-6 py-3 text-sm font-medium text-gold transition-colors hover:bg-gold hover:text-dark lg:self-end"
             >
               {s.closingCta}

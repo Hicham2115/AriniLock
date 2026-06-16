@@ -166,6 +166,27 @@
 }
 
 /* Shopify description HTML styling */
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1714;
+}
+::-webkit-scrollbar-thumb {
+  background: #c49a65;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4ae82;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c49a65 #1a1714;
+}
+
+/* Shopify description HTML styling */
 .shopify-description p { margin-bottom: 0.75rem; }
 .shopify-description p:last-child { margin-bottom: 0; }
 .shopify-description ul { list-style: disc; padding-left: 1.25rem; margin-bottom: 0.75rem; }
