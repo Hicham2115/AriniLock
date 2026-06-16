@@ -10,6 +10,7 @@ import { Hero } from "@/components/hero";
 import { HowItWorks } from "@/components/how-it-works";
 import { LocalizedMarquee } from "@/components/localized-marquee";
 import { OfferNewsletter } from "@/components/offer-newsletter";
+import { PhotoBreak } from "@/components/photo-break";
 import { Reviews } from "@/components/reviews";
 import { StatsSection } from "@/components/stats-section";
 
@@ -55,10 +56,23 @@ const productSchema = {
       shippingRate: { "@type": "MonetaryAmount", value: "0", currency: "MAD" },
       deliveryTime: {
         "@type": "ShippingDeliveryTime",
-        businessDays: { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday"] },
+        businessDays: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        },
         cutoffTime: "17:00:00+01:00",
-        handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 1, unitCode: "DAY" },
-        transitTime: { "@type": "QuantitativeValue", minValue: 2, maxValue: 4, unitCode: "DAY" },
+        handlingTime: {
+          "@type": "QuantitativeValue",
+          minValue: 0,
+          maxValue: 1,
+          unitCode: "DAY",
+        },
+        transitTime: {
+          "@type": "QuantitativeValue",
+          minValue: 2,
+          maxValue: 4,
+          unitCode: "DAY",
+        },
       },
     },
   },
@@ -144,6 +158,7 @@ export default function HomePage() {
         <FeaturesGrid />
         {/* <ProductShowcase /> */}
         <HowItWorks />
+        {/* <PhotoBreak /> */}
         <Reviews />
         <Faq />
         <OfferNewsletter />

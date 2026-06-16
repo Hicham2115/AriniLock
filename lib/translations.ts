@@ -247,6 +247,14 @@ const fr = {
       ],
       copyright: "Arini Lock. Tous droits réservés.",
       payment: ["CMI", "Visa", "Mastercard", "Paiement livraison"],
+      closing: ["La porte", "qui vous", "reconnaît."] as [string, string, string],
+      closingCta: "Voir le produit",
+    },
+    photoBreak: {
+      stat: "312",
+      statLabel: "foyers",
+      line: "font déjà confiance à Arini Lock",
+      cta: "Commander maintenant",
     },
     produits: {
       title: "Nos\nProduits.",
@@ -557,6 +565,14 @@ What's in the box
       ],
       copyright: "Arini Lock. All rights reserved.",
       payment: ["CMI", "Visa", "Mastercard", "Cash on delivery"],
+      closing: ["The door", "that knows", "you."] as [string, string, string],
+      closingCta: "View the product",
+    },
+    photoBreak: {
+      stat: "312",
+      statLabel: "homes",
+      line: "already trust Arini Lock",
+      cta: "Order now",
     },
     produits: {
       title: "Our\nProducts.",
@@ -867,6 +883,14 @@ const ar: typeof fr = {
       ],
       copyright: "أريني لوك. جميع الحقوق محفوظة.",
       payment: ["CMI", "Visa", "Mastercard", "الدفع عند الاستلام"],
+      closing: ["الباب", "الذي", "يعرفك."] as [string, string, string],
+      closingCta: "عرض المنتج",
+    },
+    photoBreak: {
+      stat: "٣١٢",
+      statLabel: "منزلًا",
+      line: "يثق بأريني لوك",
+      cta: "اطلب الآن",
     },
     produits: {
       title: "منتجاتنا.",
