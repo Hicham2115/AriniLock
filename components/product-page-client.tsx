@@ -376,12 +376,12 @@ export function ProductPageClient({
 
                   {/* Quantity + CTA */}
                   <div className="flex flex-col gap-3 sm:flex-row">
-                    <div className="flex h-14 items-center rounded-full border border-line">
+                    <div className="flex h-14 w-full items-center rounded-full border border-line sm:w-auto">
                       <button
                         type="button"
                         onClick={() => setQty((q) => Math.max(1, q - 1))}
                         aria-label="Diminuer la quantité"
-                        className="flex h-full w-14 items-center justify-center text-muted-foreground transition-colors hover:text-ink"
+                        className="flex h-full flex-1 items-center justify-center sm:w-14 sm:flex-none text-muted-foreground transition-colors hover:text-ink"
                       >
                         <Minus className="h-4 w-4" />
                       </button>
@@ -392,7 +392,7 @@ export function ProductPageClient({
                         type="button"
                         onClick={() => setQty((q) => q + 1)}
                         aria-label="Augmenter la quantité"
-                        className="flex h-full w-14 items-center justify-center text-muted-foreground transition-colors hover:text-ink"
+                        className="flex h-full flex-1 items-center justify-center sm:w-14 sm:flex-none text-muted-foreground transition-colors hover:text-ink"
                       >
                         <Plus className="h-4 w-4" />
                       </button>
@@ -407,7 +407,7 @@ export function ProductPageClient({
                           { merchandiseId: variant.id, quantity: qty },
                         ])
                       }
-                      className="flex h-14 flex-1 items-center justify-center gap-2 rounded-full bg-ink text-sm font-medium text-cream transition-colors hover:bg-ink/80 disabled:opacity-50"
+                      className="flex h-14 w-full flex-1 items-center justify-center gap-2 rounded-full bg-ink text-sm font-medium text-cream transition-colors hover:bg-ink/80 disabled:opacity-50"
                     >
                       <ShoppingBag aria-hidden="true" className="h-4 w-4" />
                       {isPending ? t.product.adding : t.product.addToCart}

@@ -110,9 +110,9 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${inter.variable} ${lato.variable} ${cormorant.variable} ${caveat.variable} ${notoArabic.variable} ${notoSerifArabic.variable} h-full antialiased`}
+      className={`${inter.variable} ${lato.variable} ${cormorant.variable} ${caveat.variable} ${notoArabic.variable} ${notoSerifArabic.variable} h-full antialiased overflow-x-clip`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col overflow-x-clip">
         <Providers>{children}</Providers>
       </body>
     </html>

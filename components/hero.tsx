@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import lockImg from "@/app/assets/Untitled design_LE_upscale_prime.png";
 import mobileHeroImg from "@/app/assets/mobile hero.png";
-import { useAddToCart } from "@/hooks/use-cart";
 import { useFormatMoney } from "@/hooks/use-format-money";
 import { useMainProduct } from "@/hooks/use-product";
 import { useT } from "@/hooks/use-t";
@@ -27,8 +26,7 @@ function fadeUp(ready: boolean, delay = 0) {
 export function Hero() {
   const t = useT();
   const formatMoney = useFormatMoney();
-  const { data: product, isLoading } = useMainProduct();
-  const { addToCart, isPending } = useAddToCart();
+  const { data: product } = useMainProduct();
   const variant = product?.variants[0];
   const ready = useUiStore((s) => s.loadingScreenDone);
 
@@ -120,25 +118,14 @@ export function Hero() {
 
           {/* CTAs */}
           <motion.div {...fadeUp(ready, 0.82)} className="flex flex-col gap-3">
-            <button
-              type="button"
-              disabled={isPending || isLoading || !variant}
-              onClick={() =>
-                variant &&
-                addToCart([{ merchandiseId: variant.id, quantity: 1 }])
-              }
-              className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-gold text-sm font-semibold text-dark shadow-[0_8px_32px_rgba(196,154,101,0.4)] transition-colors disabled:opacity-70"
+            <NextLink
+              href="/produits"
+              className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-gold text-sm font-semibold text-dark shadow-[0_8px_32px_rgba(196,154,101,0.4)] transition-colors"
             >
-              {isLoading ? (
-                <span className="h-4 w-4 animate-spin rounded-full border-2 border-dark/30 border-t-dark" />
-              ) : (
-                <>
-                  {t.hero.buy}
-                  {variant ? ` — ${formatMoney(variant.price)}` : ""}
-                  <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
-                </>
-              )}
-            </button>
+              {t.hero.buy}
+              {variant ? ` — ${formatMoney(variant.price)}` : ""}
+              <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+            </NextLink>
             <a
               href="#fonctionnalites"
               className="flex h-12 w-full items-center justify-center gap-2 rounded-full border border-white/20 text-sm font-medium text-white/75 backdrop-blur-sm"
