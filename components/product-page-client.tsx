@@ -175,13 +175,13 @@ function InfoCards({ accordion }: { accordion: { trigger: string; content: strin
             {/* Card content */}
             <div className="border-t border-border px-5 py-4">
               {isSpecs ? (
-                <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+                <div className="divide-y divide-border">
                   {specPairs.map(({ label, value }) => (
-                    <div key={label} className="flex items-baseline gap-2">
-                      <span className="min-w-0 shrink-0 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+                    <div key={label} className="flex items-start justify-between gap-4 py-2.5">
+                      <span className="shrink-0 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
                         {label}
                       </span>
-                      <span className="truncate text-xs font-medium text-foreground">{value}</span>
+                      <span className="text-right text-xs font-medium text-foreground">{value}</span>
                     </div>
                   ))}
                 </div>
@@ -355,7 +355,7 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
       {/* ═══════ MOBILE ═══════ */}
       <div className="md:hidden">
         {/* Full-bleed image gallery */}
-        <div className="relative w-full bg-secondary" style={{ paddingTop: "110%" }}>
+        <div className="relative w-full" style={{ paddingTop: "110%" }}>
           {isLoading ? (
             <Skeleton className="absolute inset-0" />
           ) : mainImage ? (
@@ -553,7 +553,7 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
                         ))}
                       </div>
                     )}
-                    <div className={cn("order-1 relative flex-1 overflow-hidden rounded-2xl bg-secondary lg:order-2", "aspect-4/5")}>
+                    <div className={cn("order-1 relative flex-1 overflow-hidden rounded-2xl lg:order-2", "aspect-4/5")}>
                       {mainImage ? (
                         <Image key={mainImage.url} src={mainImage.url} alt={mainImage.altText ?? product?.title ?? ""} fill sizes="55vw" className="object-contain" priority />
                       ) : (

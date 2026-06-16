@@ -3,6 +3,7 @@ import { z } from "zod";
 import { readFileSync } from "fs";
 import { join } from "path";
 import { NextRequest, NextResponse } from "next/server";
+import { MAIN_PRODUCT_HANDLE } from "@/lib/shopify/products";
 
 // ── Validation schema ────────────────────────────────────────────────────────
 
@@ -51,9 +52,15 @@ function checkRateLimit(ip: string): boolean {
 
 // ── Knowledge + hardened system prompt ──────────────────────────────────────
 
-const knowledge = readFileSync(
+const rawKnowledge = readFileSync(
   join(process.cwd(), "lib/chatbot/knowledge.md"),
   "utf-8"
+);
+
+// Replace the placeholder handle with the real Shopify product handle
+const knowledge = rawKnowledge.replaceAll(
+  "poignee-connectee-smart-door-lock",
+  MAIN_PRODUCT_HANDLE
 );
 
 const SYSTEM_PROMPT = `${knowledge}

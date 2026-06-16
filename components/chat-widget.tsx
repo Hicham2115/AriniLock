@@ -3,7 +3,7 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { AnimatePresence, motion } from "framer-motion";
-import { MessageCircle, Send, X, Loader2 } from "lucide-react";
+import { MessageCircle, Send, X, Loader2, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 interface Message {
@@ -209,6 +209,11 @@ export function ChatWidget() {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
+  function clearChat() {
+    setMessages([WELCOME]);
+    try { localStorage.removeItem(STORAGE_KEY); } catch {}
+  }
+
   function send(text: string) {
     const clean = sanitizeInput(text);
     if (!clean || mutation.isPending) return;
@@ -247,6 +252,13 @@ export function ChatWidget() {
                 <p className="text-sm font-semibold text-white">Assistant Arini</p>
                 <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">En ligne</p>
               </div>
+              <button
+                onClick={clearChat}
+                aria-label="Effacer la conversation"
+                className="flex h-7 w-7 items-center justify-center rounded-full text-white/50 transition-colors hover:bg-white/10 hover:text-white"
+              >
+                <Trash2 className="h-3.5 w-3.5" />
+              </button>
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Fermer le chat"

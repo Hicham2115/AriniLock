@@ -44,26 +44,33 @@ export async function getMainProduct(): Promise<Product> {
 
 export async function getProductByHandle(handle: string): Promise<Product | null> {
   const mockAll = [MOCK_PRODUCT, ...MOCK_ACCESSORIES];
-  if (!isShopifyConfigured) {
-    return mockAll.find((p) => p.handle === handle) ?? null;
+  // For the main product handle, always fall back to MOCK_PRODUCT so the page never 404s
+  const mockFallback =
+    mockAll.find((p) => p.handle === handle) ??
+    (handle === MAIN_PRODUCT_HANDLE ? MOCK_PRODUCT : null);
+  if (!isShopifyConfigured) return mockFallback;
+  try {
+    const data = await shopifyFetch<{ product: RawProduct | null }>(
+      PRODUCT_BY_HANDLE_QUERY,
+      { handle },
+    );
+    if (!data.product) return mockFallback;
+    return normalizeProduct(data.product);
+  } catch {
+    return mockFallback;
   }
-  const data = await shopifyFetch<{ product: RawProduct | null }>(
-    PRODUCT_BY_HANDLE_QUERY,
-    { handle },
-  );
-  if (!data.product) {
-    // Shopify doesn't have this product yet — fall back to mock
-    return mockAll.find((p) => p.handle === handle) ?? null;
-  }
-  return normalizeProduct(data.product);
 }
 
 export async function getAccessories(): Promise<Product[]> {
   if (!isShopifyConfigured) return MOCK_ACCESSORIES;
-
-  const data = await shopifyFetch<{ products: { nodes: RawProduct[] } }>(
-    ACCESSORIES_QUERY,
-    { query: ACCESSORIES_TAG_QUERY },
-  );
-  return data.products.nodes.map(normalizeProduct);
+  try {
+    const data = await shopifyFetch<{ products: { nodes: RawProduct[] } }>(
+      ACCESSORIES_QUERY,
+      { query: ACCESSORIES_TAG_QUERY },
+    );
+    const products = data.products.nodes.map(normalizeProduct);
+    return products.length > 0 ? products : MOCK_ACCESSORIES;
+  } catch {
+    return MOCK_ACCESSORIES;
+  }
 }
