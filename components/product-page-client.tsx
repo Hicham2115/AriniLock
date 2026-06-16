@@ -434,25 +434,25 @@ export function ProductPageClient({
           <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-line bg-white/95 px-4 pb-6 pt-3 backdrop-blur-md">
             <div className="flex items-center gap-3">
               {/* Qty stepper */}
-              <div className="flex h-12 items-center rounded-full border border-line">
+              <div className="flex h-12 shrink-0 items-center rounded-full border border-line">
                 <button
                   type="button"
                   onClick={() => setQty((q) => Math.max(1, q - 1))}
                   aria-label="Diminuer"
-                  className="flex h-full w-11 items-center justify-center text-muted-foreground"
+                  className="flex h-full w-9 items-center justify-center text-muted-foreground"
                 >
-                  <Minus className="h-3.5 w-3.5" />
+                  <Minus className="h-3 w-3" />
                 </button>
-                <span className="w-7 text-center text-sm font-medium text-ink">
+                <span className="w-6 text-center text-sm font-medium text-ink">
                   {qty}
                 </span>
                 <button
                   type="button"
                   onClick={() => setQty((q) => q + 1)}
                   aria-label="Augmenter"
-                  className="flex h-full w-11 items-center justify-center text-muted-foreground"
+                  className="flex h-full w-9 items-center justify-center text-muted-foreground"
                 >
-                  <Plus className="h-3.5 w-3.5" />
+                  <Plus className="h-3 w-3" />
                 </button>
               </div>
 
@@ -464,12 +464,12 @@ export function ProductPageClient({
                   variant &&
                   addToCart([{ merchandiseId: variant.id, quantity: qty }])
                 }
-                className="flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-ink text-sm font-medium text-cream transition-colors hover:bg-ink/80 disabled:opacity-50"
+                className="flex h-12 flex-1 items-center justify-center gap-1.5 rounded-full bg-ink text-xs font-medium text-cream transition-colors hover:bg-ink/80 disabled:opacity-50"
               >
-                <ShoppingBag aria-hidden="true" className="h-4 w-4" />
-                {isPending ? t.product.adding : t.product.addToCart}
+                <ShoppingBag aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
+                <span className="whitespace-nowrap">{isPending ? t.product.adding : t.product.addToCart}</span>
                 {variant && (
-                  <span className="ml-1 text-cream/60">
+                  <span className="whitespace-nowrap text-cream/60">
                     · {formatMoney(variant.price)}
                   </span>
                 )}
