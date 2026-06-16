@@ -45,16 +45,16 @@ export function LoadingScreen() {
           {/* ── Top panel ── */}
           <motion.div
             exit={{ y: "-100%", transition: { duration: 0.9, ease: EASE } }}
-            className="absolute inset-x-0 top-0 flex h-1/2 flex-col justify-between bg-ink px-5 pb-5 pt-6 sm:px-12 sm:pt-8"
+            className="absolute inset-x-0 top-0 flex h-1/2 flex-col justify-between bg-black px-5 pb-5 pt-6 sm:px-12 sm:pt-8"
           >
-            <div className="flex items-center justify-between text-[10px] uppercase tracking-widest2 text-cream/25">
-              <span>Arini Lock</span>
+            <div className="flex items-center justify-between text-[10px] uppercase tracking-widest2 text-white/25">
+              <span>AriniLock</span>
               <span className="hidden sm:inline">Marque marocaine</span>
             </div>
             <motion.p
               initial={{ opacity: 0, x: -12 }}
               animate={{ opacity: 1, x: 0, transition: { delay: 0.35, duration: 0.55 } }}
-              className="text-[10px] uppercase tracking-[0.2em] text-cream/30 sm:text-xs sm:tracking-[0.25em]"
+              className="text-[10px] uppercase tracking-[0.2em] text-white/30 sm:text-xs sm:tracking-[0.25em]"
             >
               Reconnaissance en cours…
             </motion.p>
@@ -63,13 +63,13 @@ export function LoadingScreen() {
           {/* ── Bottom panel ── */}
           <motion.div
             exit={{ y: "100%", transition: { duration: 0.9, ease: EASE, delay: 0.06 } }}
-            className="absolute inset-x-0 bottom-0 flex h-1/2 flex-col justify-between bg-ink px-5 pb-8 pt-5 sm:px-12 sm:pb-10"
+            className="absolute inset-x-0 bottom-0 flex h-1/2 flex-col justify-between bg-black px-5 pb-8 pt-5 sm:px-12 sm:pb-10"
           >
-            <div className="h-px w-full bg-cream/8" />
+            <div className="h-px w-full bg-white/8" />
             <motion.p
               initial={{ opacity: 0, x: -12 }}
               animate={{ opacity: 1, x: 0, transition: { delay: 0.5, duration: 0.55 } }}
-              className="text-[10px] uppercase tracking-[0.25em] text-gold/50"
+              className="text-[10px] uppercase tracking-[0.25em] text-white/40"
             >
               // La porte qui vous reconnaît
             </motion.p>
@@ -91,13 +91,13 @@ export function LoadingScreen() {
                 <circle
                   cx="72" cy="72" r={RADIUS}
                   fill="none"
-                  stroke="rgba(247,243,236,0.07)"
+                  stroke="rgba(255,255,255,0.07)"
                   strokeWidth="1.5"
                 />
                 <motion.circle
                   cx="72" cy="72" r={RADIUS}
                   fill="none"
-                  stroke="#c49a65"
+                  stroke="#ffffff"
                   strokeWidth="1.5"
                   strokeLinecap="round"
                   strokeDasharray={CIRCUMFERENCE}
@@ -111,16 +111,16 @@ export function LoadingScreen() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: [0, 0.35, 0], scale: [0.8, 1.4, 1.8] }}
                   transition={{ duration: 0.7, ease: "easeOut" }}
-                  className="absolute h-24 w-24 rounded-full bg-gold"
+                  className="absolute h-24 w-24 rounded-full bg-white"
                 />
               )}
 
               <motion.div
                 className="absolute"
                 animate={{
-                  color: isComplete ? "#c49a65" : "rgba(247,243,236,0.55)",
+                  color: isComplete ? "#ffffff" : "rgba(255,255,255,0.55)",
                   filter: isComplete
-                    ? "drop-shadow(0 0 14px rgba(196,154,101,0.7))"
+                    ? "drop-shadow(0 0 14px rgba(255,255,255,0.7))"
                     : "none",
                 }}
                 transition={{ duration: 0.4 }}
@@ -133,9 +133,9 @@ export function LoadingScreen() {
             <motion.p
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0, transition: { delay: 0.25, duration: 0.55 } }}
-              className="font-display text-sm uppercase tracking-widest2 text-cream/35"
+              className="font-display text-sm uppercase tracking-widest2 text-white/35"
             >
-              Arini Lock
+              AriniLock
             </motion.p>
           </motion.div>
 

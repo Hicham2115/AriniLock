@@ -26,10 +26,9 @@ function AccessoryCard({ accessory }: { accessory: Product }) {
   return (
     <Link
       href={`/produits/${accessory.handle}`}
-      className="group relative block overflow-hidden rounded-2xl bg-dark"
+      className="group relative block overflow-hidden rounded-2xl bg-primary"
       style={{ aspectRatio: "3/4" }}
     >
-      {/* Product image */}
       {image ? (
         <Image
           src={image.url}
@@ -39,37 +38,36 @@ function AccessoryCard({ accessory }: { accessory: Product }) {
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
       ) : (
-        <div className="absolute inset-0 bg-line" />
+        <div className="absolute inset-0 bg-border" />
       )}
 
-      {/* Gradient overlay */}
       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
 
-      {/* Heart — top left */}
+      {/* Heart */}
       <button
         type="button"
         onClick={(e) => { e.preventDefault(); toggle(accessory); }}
         aria-label={liked ? t.favorites.remove : t.favorites.add}
         className="absolute left-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm transition-all hover:bg-black/50"
       >
-        <Heart className={cn("h-4 w-4 transition-colors", liked ? "fill-gold text-gold" : "text-white")} />
+        <Heart className={cn("h-4 w-4 transition-colors", liked ? "fill-white text-white" : "text-white")} />
       </button>
 
-      {/* Price — top right */}
+      {/* Price */}
       {variant && (
-        <p className="absolute right-4 top-4 text-sm font-medium text-cream/90">
+        <p className="absolute right-4 top-4 text-sm font-medium text-white/90">
           {formatMoney(variant.price)}
         </p>
       )}
 
-      {/* Product name — bottom left */}
+      {/* Product name */}
       <div className="absolute bottom-4 left-4 right-16">
-        <h3 className="font-display text-lg leading-tight text-cream">
+        <h3 className="font-display text-lg leading-tight text-white">
           {accessory.title}
         </h3>
       </div>
 
-      {/* Quick-add — bottom right, appears on hover */}
+      {/* Quick-add */}
       {variant && (
         <div className="absolute bottom-4 right-4 translate-y-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100">
           <button
@@ -82,7 +80,7 @@ function AccessoryCard({ accessory }: { accessory: Product }) {
               });
             }}
             aria-label={`${t.product.addToCart}: ${accessory.title}`}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-card text-ink shadow-lg transition-colors hover:bg-gold disabled:opacity-60"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-primary shadow-lg transition-colors hover:bg-primary hover:text-white disabled:opacity-60"
           >
             <Plus aria-hidden="true" className="h-4 w-4" />
           </button>
@@ -100,9 +98,8 @@ export function AccessoriesGrid() {
   return (
     <section
       id="accessoires"
-      className="mx-auto max-w-7xl scroll-mt-20 border-t border-line px-6 py-16 lg:px-10 lg:py-24"
+      className="mx-auto max-w-7xl scroll-mt-20 border-t border-border px-6 py-16 lg:px-10 lg:py-24"
     >
-      {/* Section label */}
       <Reveal>
         <div className="mb-8 flex flex-wrap items-start justify-between gap-4 text-xs uppercase tracking-[0.25em] text-muted-foreground lg:mb-12">
           <span>{s.label}</span>
@@ -112,7 +109,7 @@ export function AccessoriesGrid() {
 
       <Reveal delay={0.1}>
         <h2
-          className="mb-8 font-display2 uppercase leading-none text-ink lg:mb-12"
+          className="mb-8 font-display2 uppercase leading-none text-foreground lg:mb-12"
           style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
         >
           {s.headline[0]}
@@ -124,24 +121,18 @@ export function AccessoriesGrid() {
       {isLoading && (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[0, 1, 2].map((i) => (
-            <Skeleton
-              key={i}
-              className="w-full rounded-2xl"
-              style={{ aspectRatio: "3/4" }}
-            />
+            <Skeleton key={i} className="w-full rounded-2xl" style={{ aspectRatio: "3/4" }} />
           ))}
         </div>
       )}
 
       {isError && (
         <div className="flex flex-col items-center gap-4 py-12 text-center">
-          <p className="text-sm text-muted-foreground">
-            {t.errors.loadAccessories}
-          </p>
+          <p className="text-sm text-muted-foreground">{t.errors.loadAccessories}</p>
           <button
             type="button"
             onClick={() => refetch()}
-            className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-6 py-3 text-sm font-medium text-ink transition-colors hover:border-gold"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
           >
             <RotateCcw aria-hidden="true" className="h-4 w-4" />
             {t.errors.retry}

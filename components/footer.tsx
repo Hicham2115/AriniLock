@@ -1,131 +1,166 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import { Phone, MessageCircle } from "lucide-react";
+import Link from "next/link";
+import { LogoMark } from "@/components/logo-mark";
 import { useT } from "@/hooks/use-t";
+
+const SOCIAL = [
+  { letter: "f", href: "#", label: "Facebook" },
+  { letter: "in", href: "#", label: "Instagram" },
+  { letter: "li", href: "#", label: "LinkedIn" },
+  { letter: "X", href: "#", label: "X / Twitter" },
+  { letter: "yt", href: "#", label: "YouTube" },
+];
 
 export function Footer() {
   const t = useT();
   const s = t.sections.footer;
 
+  const extraCols = [
+    {
+      title: "Nos sélections",
+      links: [
+        { href: "#accessoires", label: "Collections" },
+        { href: "#",            label: "Promotions" },
+        { href: "/produits",    label: "Nouveautés" },
+      ],
+    },
+  ];
+
+  const allCols = [...s.cols, ...extraCols];
+
   return (
-    <footer className="bg-ink text-cream overflow-hidden">
+    <footer className="bg-white">
 
-      {/* ── Closing statement ── */}
-      <div className="relative overflow-hidden border-b border-cream/6 px-6 py-16 lg:px-10 lg:py-24">
-        {/* Ghost wordmark behind headline */}
-        <p
-          aria-hidden="true"
-          className="pointer-events-none absolute -bottom-4 left-0 select-none font-display2 uppercase leading-none text-cream/3"
-          style={{ fontSize: "clamp(2.5rem, 16vw, 14rem)", letterSpacing: "-0.02em", whiteSpace: "nowrap", transform: "translateX(0)" }}
+      {/* ── Floating card ── */}
+      <div className="px-4 pt-4 pb-0 sm:px-6 lg:px-8">
+        <div
+          className="relative overflow-hidden rounded-2xl text-white shadow-2xl shadow-[#032245]/25"
+          style={{ background: "linear-gradient(135deg, #010d1a 0%, #032245 40%, #053d7a 75%, #021a36 100%)" }}
         >
-          Arini Lock
-        </p>
+          {/* Decorative glows */}
+          <div className="pointer-events-none absolute -left-40 -top-40 h-125 w-125 rounded-full opacity-20" style={{ background: "radial-gradient(circle, #2a5fa8 0%, transparent 70%)" }} />
+          <div className="pointer-events-none absolute -right-20 bottom-10 h-100 w-100 rounded-full opacity-15" style={{ background: "radial-gradient(circle, #053d7a 0%, transparent 70%)" }} />
 
-        <div className="relative flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          {/* Big headline */}
-          <div>
-            {s.closing.map((line, i) => (
-              <motion.p
-                key={line}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.12 }}
-                className="font-display2 uppercase leading-[0.9] text-cream"
-                style={{ fontSize: "clamp(3.5rem, 9vw, 8.5rem)", letterSpacing: "-0.02em" }}
-              >
-                {i === s.closing.length - 1 ? (
-                  <span className="text-gold">{line}</span>
-                ) : line}
-              </motion.p>
+          {/* Top accent line */}
+          <div className="relative h-px w-full" style={{ background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 30%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.2) 70%, transparent 100%)" }} />
+
+          {/* Main grid */}
+          <div className="relative mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-20">
+            <div className="grid gap-12 lg:grid-cols-[auto_1fr_1fr_1fr_auto]">
+
+              {/* Logo + tagline */}
+              <div className="flex flex-col gap-5">
+                <LogoMark className="h-10" inverted />
+                <p className="max-w-40 text-xs leading-relaxed text-white/35">
+                  La serrure intelligente made in Morocco.
+                </p>
+              </div>
+
+              {/* Link columns */}
+              {allCols.map((col) => (
+                <div key={col.title}>
+                  <p className="mb-5 text-[10px] font-bold uppercase tracking-[0.25em] text-white/40">
+                    {col.title}
+                  </p>
+                  <ul className="space-y-3">
+                    {col.links.map((link) => (
+                      <li key={link.label}>
+                        <Link
+                          href={link.href}
+                          className="group flex items-center gap-2 text-sm text-white/65 transition-all hover:text-white"
+                        >
+                          <span className="h-px w-0 bg-white/60 transition-all duration-300 group-hover:w-3" />
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+
+              {/* Right — service CTAs + socials */}
+              <div className="flex flex-col gap-4 lg:min-w-57.5">
+                <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/40">
+                  AriniLock à votre service
+                </p>
+
+                <a
+                  href="tel:+212600000000"
+                  className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-5 py-3.5 text-sm font-medium text-white backdrop-blur-sm transition-all hover:border-white/25 hover:bg-white/10"
+                >
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/10">
+                    <Phone className="h-3.5 w-3.5 text-white/80" aria-hidden="true" />
+                  </span>
+                  +212 6 00 00 00 00
+                </a>
+
+                <a
+                  href="#faq"
+                  className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-5 py-3.5 text-sm font-medium text-white backdrop-blur-sm transition-all hover:border-white/25 hover:bg-white/10"
+                >
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/10">
+                    <MessageCircle className="h-3.5 w-3.5 text-white/80" aria-hidden="true" />
+                  </span>
+                  Besoin d&apos;aide ?
+                </a>
+
+                {/* Social icons */}
+                <div className="mt-1 flex items-center gap-2">
+                  {SOCIAL.map(({ letter, href, label }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      aria-label={label}
+                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-[11px] font-bold text-white/60 backdrop-blur-sm transition-all hover:border-white/30 hover:bg-white/12 hover:text-white"
+                    >
+                      {letter}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Partners bar — full width, sticks to page ── */}
+      <div className="border-t border-gray-100 bg-white px-6 py-8 lg:px-10">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-col items-center gap-5 sm:flex-row sm:gap-8">
+            <p className="shrink-0 text-[10px] font-bold uppercase tracking-[0.25em] text-gray-400">
+              Nos partenaires
+            </p>
+            <div className="hidden h-px flex-1 bg-gray-100 sm:block" />
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-end">
+              {s.payment.map((m) => (
+                <span
+                  key={m}
+                  className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-1.5 text-xs font-semibold tracking-wide text-gray-500"
+                >
+                  {m}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Legal bottom bar — full width, sticks to page ── */}
+      <div className="border-t border-gray-100 bg-white px-6 py-5 lg:px-10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-2 text-center text-xs text-gray-400">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+            {["CGV", "Mentions légales", "Politique de confidentialité", "Cookies"].map((link) => (
+              <a key={link} href="#" className="transition-colors hover:text-gray-700">
+                {link}
+              </a>
             ))}
           </div>
-
-          {/* Right column: blurb + CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: 0.4 }}
-            className="flex max-w-xs flex-col gap-6 lg:mb-2 lg:text-right"
-          >
-            <p className="text-sm leading-relaxed text-cream/45">{s.blurb}</p>
-            <a
-              href="/produits"
-              className="group inline-flex items-center gap-2 self-start rounded-full border border-gold/40 bg-gold/10 px-6 py-3 text-sm font-medium text-gold transition-colors hover:bg-gold hover:text-dark lg:self-end"
-            >
-              {s.closingCta}
-              <ArrowUpRight aria-hidden="true" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-          </motion.div>
-        </div>
-
-        {/* Gold divider */}
-        <div className="relative mt-12 flex items-center gap-4">
-          <div className="h-px flex-1 bg-cream/8" />
-          <div className="h-1 w-1 rounded-full bg-gold/60" />
-          <div className="h-px flex-1 bg-cream/8" />
+          <p>© {new Date().getFullYear()} {s.copyright}</p>
         </div>
       </div>
 
-      {/* ── Nav grid ── */}
-      <div className="relative border-b border-cream/6 px-6 py-14 lg:px-10 lg:py-16">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Brand block */}
-          <div className="sm:col-span-2 lg:col-span-2">
-            <div className="mb-6">
-              <p className="font-display text-lg tracking-[0.18em] text-cream">Arini Lock</p>
-              <p className="mt-1 text-[10px] uppercase tracking-[0.3em] text-gold/60">{s.tagline}</p>
-            </div>
-            <ul className="space-y-3">
-              {[
-                { icon: MapPin, text: "Casablanca, Maroc" },
-                { icon: Phone, text: "+212 6 00 00 00 00" },
-                { icon: Mail,  text: "hello@arinilock.ma" },
-              ].map(({ icon: Icon, text }) => (
-                <li key={text} className="flex items-center gap-3 text-sm text-cream/45 whitespace-nowrap">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-gold/20 bg-gold/8">
-                    <Icon aria-hidden="true" className="h-3.5 w-3.5 text-gold" />
-                  </span>
-                  {text}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {s.cols.map((col) => (
-            <div key={col.title}>
-              <p className="mb-5 text-[10px] uppercase tracking-[0.3em] text-gold/70">{col.title}</p>
-              <ul className="space-y-3">
-                {col.links.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="group flex items-center gap-2 text-sm text-cream/45 transition-colors hover:text-cream"
-                    >
-                      <span className="h-px w-3 bg-cream/20 transition-all duration-300 group-hover:w-5 group-hover:bg-gold" />
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ── Bottom bar ── */}
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-5 text-[11px] text-cream/25 sm:flex-row lg:px-10">
-        <p>© {new Date().getFullYear()} {s.copyright}</p>
-        <div className="flex flex-wrap items-center gap-4 uppercase tracking-[0.2em]">
-          {s.payment.map((m) => (
-            <span key={m} className="border-l border-cream/10 pl-4 first:border-0 first:pl-0">
-              {m}
-            </span>
-          ))}
-        </div>
-      </div>
     </footer>
   );
 }

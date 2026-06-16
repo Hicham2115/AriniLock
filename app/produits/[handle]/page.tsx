@@ -25,7 +25,7 @@ export async function generateMetadata({
     description,
     alternates: { canonical: `https://arinilock.ma/produits/${handle}` },
     openGraph: {
-      title: `${product.title} | Arini Lock`,
+      title: `${product.title} | AriniLock`,
       description,
       images: image
         ? [{ url: image.url, width: image.width ?? 900, height: image.height ?? 900, alt: image.altText ?? product.title }]
@@ -33,7 +33,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${product.title} | Arini Lock`,
+      title: `${product.title} | AriniLock`,
       description,
       images: image ? [image.url] : ["/og-image.jpg"],
     },

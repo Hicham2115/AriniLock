@@ -30,7 +30,7 @@ export function FavoritesDrawer() {
             {t.favorites.title}
           </SheetTitle>
           <SheetDescription className="sr-only">
-            Vos produits Arini Lock enregistrés
+            Vos produits AriniLock enregistrés
           </SheetDescription>
         </SheetHeader>
 

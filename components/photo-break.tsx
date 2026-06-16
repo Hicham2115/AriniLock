@@ -46,7 +46,7 @@ export function PhotoBreak() {
           transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
           className="mb-2 text-[10px] uppercase tracking-widest2 text-gold/70"
         >
-          Arini Lock
+          AriniLock
         </motion.p>
 
         <motion.div

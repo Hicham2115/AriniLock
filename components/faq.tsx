@@ -16,9 +16,8 @@ export function Faq() {
   return (
     <section
       id="faq"
-      className="mx-auto max-w-7xl scroll-mt-20 border-t border-line px-6 py-16 lg:px-10 lg:py-24"
+      className="mx-auto max-w-7xl scroll-mt-20 border-t border-border px-6 py-16 lg:px-10 lg:py-24"
     >
-      {/* Section label */}
       <Reveal>
         <div className="mb-8 flex flex-wrap items-start justify-between gap-4 text-xs uppercase tracking-[0.25em] text-muted-foreground lg:mb-12">
           <span>{s.label}</span>
@@ -27,11 +26,10 @@ export function Faq() {
       </Reveal>
 
       <div className="grid gap-8 lg:grid-cols-[2fr_3fr] lg:gap-16">
-        {/* Left: sticky headline */}
         <div className="lg:sticky lg:top-28">
           <Reveal delay={0.1}>
             <h2
-              className="font-display2 uppercase leading-none text-ink"
+              className="font-display2 uppercase leading-none text-foreground"
               style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
             >
               {s.headline[0]}<br />{s.headline[1]}<br />{s.headline[2]}
@@ -39,15 +37,14 @@ export function Faq() {
           </Reveal>
         </div>
 
-        {/* Right: accordion as divider list */}
         <Accordion type="single" collapsible>
           {s.items.map((item) => (
             <AccordionItem
               key={item.q}
               value={item.q}
-              className="border-b border-line last:border-b-0"
+              className="border-b border-border last:border-b-0"
             >
-              <AccordionTrigger className="py-5 text-left text-base font-medium text-ink hover:no-underline">
+              <AccordionTrigger className="py-5 text-left text-base font-medium text-foreground hover:text-primary hover:no-underline transition-colors">
                 {item.q}
               </AccordionTrigger>
               <AccordionContent className="pb-6 text-sm leading-relaxed text-muted-foreground">

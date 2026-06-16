@@ -21,7 +21,7 @@ There are no tests configured in this project.
 
 ## Architecture Overview
 
-**Arini Lock** is a single-page product landing site for a Moroccan smart door lock. All content lives on one route (`app/page.tsx`), assembled from section components.
+**AriniLock** is a single-page product landing site for a Moroccan smart door lock. All content lives on one route (`app/page.tsx`), assembled from section components.
 
 ### Data layer — Shopify + mock fallback
 

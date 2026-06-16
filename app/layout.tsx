@@ -50,8 +50,8 @@ const notoSerifArabic = Noto_Naskh_Arabic({
 export const metadata: Metadata = {
   metadataBase: new URL("https://arinilock.ma"),
   title: {
-    default: "Arini Lock — La porte qui vous reconnaît",
-    template: "%s | Arini Lock",
+    default: "AriniLock — La porte qui vous reconnaît",
+    template: "%s | AriniLock",
   },
   description:
     "La poignée connectée qui s'ouvre par empreinte digitale, code secret ou smartphone — sans perçage, sans clé qui traîne. Conçue pour le Maroc, livraison partout au Maroc.",
@@ -65,15 +65,15 @@ export const metadata: Metadata = {
     "serrure intelligente",
     "porte connectée",
     "sécurité maison",
-    "Arini Lock",
+    "AriniLock",
   ],
-  authors: [{ name: "Arini Lock", url: "https://arinilock.ma" }],
-  creator: "Arini Lock",
+  authors: [{ name: "AriniLock", url: "https://arinilock.ma" }],
+  creator: "AriniLock",
   openGraph: {
     type: "website",
     locale: "fr_MA",
-    siteName: "Arini Lock",
-    title: "Arini Lock — La porte qui vous reconnaît",
+    siteName: "AriniLock",
+    title: "AriniLock — La porte qui vous reconnaît",
     description:
       "Poignée connectée premium : empreinte digitale, code PIN, app mobile et carte RFID. Installation sans perçage, garantie 2 ans.",
     images: [
@@ -81,13 +81,13 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Arini Lock — Poignée connectée premium",
+        alt: "AriniLock — Poignée connectée premium",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arini Lock — La porte qui vous reconnaît",
+    title: "AriniLock — La porte qui vous reconnaît",
     description:
       "Poignée connectée : empreinte digitale, code PIN, app mobile. Installation sans perçage, livraison partout au Maroc.",
     images: ["/og-image.jpg"],

@@ -43,15 +43,18 @@ export async function getMainProduct(): Promise<Product> {
 }
 
 export async function getProductByHandle(handle: string): Promise<Product | null> {
+  const mockAll = [MOCK_PRODUCT, ...MOCK_ACCESSORIES];
   if (!isShopifyConfigured) {
-    const all = [MOCK_PRODUCT, ...MOCK_ACCESSORIES];
-    return all.find((p) => p.handle === handle) ?? null;
+    return mockAll.find((p) => p.handle === handle) ?? null;
   }
   const data = await shopifyFetch<{ product: RawProduct | null }>(
     PRODUCT_BY_HANDLE_QUERY,
     { handle },
   );
-  if (!data.product) return null;
+  if (!data.product) {
+    // Shopify doesn't have this product yet — fall back to mock
+    return mockAll.find((p) => p.handle === handle) ?? null;
+  }
   return normalizeProduct(data.product);
 }
 

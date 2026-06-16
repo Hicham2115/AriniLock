@@ -9,12 +9,12 @@ export function StatsSection() {
   const s = t.sections.stats;
 
   return (
-    <section className="border-t border-cream/10 bg-ink">
+    <section className="border-t border-primary/10 bg-white">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
 
         {/* Section label */}
         <Reveal>
-          <div className="mb-10 flex flex-wrap items-start justify-between gap-4 text-xs uppercase tracking-[0.25em] text-cream/25 lg:mb-16">
+          <div className="mb-10 flex flex-wrap items-start justify-between gap-4 text-xs uppercase tracking-[0.25em] text-ink/25 lg:mb-16">
             <span>{s.label}</span>
             <span>{s.right}</span>
           </div>
@@ -23,26 +23,26 @@ export function StatsSection() {
         {/* Headline */}
         <Reveal delay={0.1}>
           <h2
-            className="mb-12 font-display2 font-light uppercase leading-none text-cream lg:mb-16"
+            className="mb-12 font-display2 font-light uppercase leading-none text-ink lg:mb-16"
             style={{ fontSize: "clamp(2.8rem, 8vw, 7rem)" }}
           >
             {s.headline[0]}
             <br />
-            <span className="text-gold/80">{s.headline[1]}</span>
+            <span className="text-primary/80">{s.headline[1]}</span>
           </h2>
         </Reveal>
 
         {/* Stats grid */}
-        <div className="mb-16 border-t border-cream/10">
+        <div className="mb-16 border-t border-primary/10">
           <div className="grid grid-cols-2 lg:grid-cols-4">
             {s.items.map((stat, i) => (
               <Reveal
                 key={stat.label}
                 delay={i * 0.08}
                 className={[
-                  i % 2 !== 0 ? "border-l border-cream/10" : "",
-                  i >= 2 ? "border-t border-cream/10" : "",
-                  i > 0 ? "lg:border-l lg:border-cream/10" : "",
+                  i % 2 !== 0 ? "border-l border-primary/10" : "",
+                  i >= 2 ? "border-t border-primary/10" : "",
+                  i > 0 ? "lg:border-l lg:border-primary/10" : "",
                   i >= 2 ? "lg:border-t-0" : "",
                 ].filter(Boolean).join(" ")}
               >
@@ -52,22 +52,22 @@ export function StatsSection() {
                   animate="rest"
                   className="group relative cursor-default overflow-hidden px-4 py-10 lg:px-8"
                 >
-                  {/* Gold sweep on hover */}
+                  {/* Navy sweep on hover */}
                   <motion.div
                     variants={{ rest: { opacity: 0 }, hovered: { opacity: 1 } }}
                     transition={{ duration: 0.4 }}
-                    className="absolute inset-0 bg-gold/8"
+                    className="absolute inset-0 bg-primary/5"
                   />
                   <motion.div
                     variants={{ rest: { scaleX: 0 }, hovered: { scaleX: 1 } }}
                     transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-                    className="absolute bottom-0 left-0 h-0.5 w-full origin-left bg-gold"
+                    className="absolute bottom-0 left-0 h-0.5 w-full origin-left bg-primary"
                   />
 
                   {/* Number */}
                   <div className="relative mb-2 flex items-baseline gap-1.5">
                     <motion.span
-                      variants={{ rest: { color: "#f7f3ec" }, hovered: { color: "#c49a65" } }}
+                      variants={{ rest: { color: "#032245" }, hovered: { color: "#053d7a" } }}
                       transition={{ duration: 0.3 }}
                       className="font-display2 font-light leading-none"
                       style={{ fontSize: "clamp(3.5rem, 9vw, 5.5rem)" }}
@@ -76,7 +76,7 @@ export function StatsSection() {
                     </motion.span>
                     {stat.unit && (
                       <motion.span
-                        variants={{ rest: { color: "#c49a65" }, hovered: { color: "#e0b880" } }}
+                        variants={{ rest: { color: "#2a5fa8" }, hovered: { color: "#032245" } }}
                         transition={{ duration: 0.3 }}
                         className="font-display text-xl"
                       >
@@ -85,8 +85,8 @@ export function StatsSection() {
                     )}
                   </div>
 
-                  <p className="relative text-sm font-medium text-cream/80">{stat.label}</p>
-                  <p className="relative text-xs text-cream/35">{stat.sub}</p>
+                  <p className="relative text-sm font-medium text-ink/70">{stat.label}</p>
+                  <p className="relative text-xs text-ink/35">{stat.sub}</p>
                 </motion.div>
               </Reveal>
             ))}
@@ -94,7 +94,7 @@ export function StatsSection() {
         </div>
 
         {/* Detail columns */}
-        <div className="grid gap-8 border-t border-cream/10 pt-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 border-t border-primary/10 pt-12 sm:grid-cols-2 lg:grid-cols-4">
           {s.details.map((detail, i) => (
             <Reveal key={detail.title} delay={i * 0.08}>
               <motion.div
@@ -104,7 +104,7 @@ export function StatsSection() {
                 className="cursor-default"
               >
                 <motion.p
-                  variants={{ rest: { color: "#c49a65" }, hovered: { color: "#e0b880" } }}
+                  variants={{ rest: { color: "#032245" }, hovered: { color: "#053d7a" } }}
                   transition={{ duration: 0.2 }}
                   className="mb-3 text-[10px] font-medium uppercase tracking-[0.3em]"
                 >
@@ -114,10 +114,10 @@ export function StatsSection() {
                 <motion.div
                   variants={{ rest: { scaleX: 0 }, hovered: { scaleX: 1 } }}
                   transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="mb-4 h-px origin-left bg-gold/40"
+                  className="mb-4 h-px origin-left bg-primary/30"
                 />
 
-                <p className="text-sm leading-relaxed text-cream/40">
+                <p className="text-sm leading-relaxed text-ink/40">
                   {detail.body}
                 </p>
               </motion.div>

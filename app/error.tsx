@@ -12,7 +12,7 @@ export default function ErrorPage({
 }) {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-6 bg-cream px-6 text-center">
-      <p className="text-xs uppercase tracking-widest2 text-brass">Arini Lock</p>
+      <p className="text-xs uppercase tracking-widest2 text-brass">AriniLock</p>
       <h1 className="font-display text-3xl text-ink sm:text-4xl">
         Une erreur est survenue.
       </h1>

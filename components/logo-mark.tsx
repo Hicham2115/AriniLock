@@ -1,0 +1,24 @@
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+import logoIcon from "@/app/assets/logo-icon.png";
+
+interface LogoMarkProps {
+  className?: string;
+  inverted?: boolean;
+}
+
+export function LogoMark({ className, inverted }: LogoMarkProps) {
+  return (
+    <div className={cn("flex select-none items-center gap-3", className)}>
+      <Image
+        src={logoIcon}
+        alt="AriniLock icon"
+        className={cn("h-10 w-auto shrink-0 object-contain", inverted && "brightness-0 invert")}
+        priority
+      />
+      <span className={cn("font-display2 text-[1.35rem] font-bold tracking-[0.18em]", inverted ? "text-white" : "text-[#162847]")}>
+        ARINILOCK
+      </span>
+    </div>
+  );
+}

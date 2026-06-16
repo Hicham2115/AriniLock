@@ -6,7 +6,8 @@
       "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\(Object.keys\\(p.dependencies\\).join\\('\\\\n'\\)\\)\")",
       "Bash(npm install *)",
       "Bash(npm run *)",
-      "Bash(node -e \"const f = require\\('next/font/google'\\); console.log\\(Object.keys\\(f\\).join\\('\\\\n'\\)\\)\")"
+      "Bash(node -e \"const f = require\\('next/font/google'\\); console.log\\(Object.keys\\(f\\).join\\('\\\\n'\\)\\)\")",
+      "Bash(node -e \"const l = require\\('lucide-react'\\); console.log\\(Object.keys\\(l\\).filter\\(k => /social|share|globe|link|external/i.test\\(k\\)\\).join\\(', '\\)\\)\")"
     ]
   }
 }
