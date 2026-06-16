@@ -93,7 +93,7 @@ export function ProductPageClient({
   const { handle } = use(params);
   const { data: product, isLoading, isError } = useProduct(handle);
   const {
-    data: accessories,
+    data: accessories, 
     isLoading: loadingAcc,
     isError: isErrorAcc,
   } = useAccessories();
