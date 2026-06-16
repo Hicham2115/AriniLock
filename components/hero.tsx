@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import lockImg from "@/app/assets/nano-banana-2_3D_render_of_a_premium_smart_door_lock_handle_brushed_gold_and_matte_black_finis-0.jpg";
+import lockImg from "@/app/assets/Untitled design_LE_upscale_prime.png";
 import mobileHeroImg from "@/app/assets/mobile hero.png";
 import { useAddToCart } from "@/hooks/use-cart";
 import { useFormatMoney } from "@/hooks/use-format-money";
@@ -36,8 +36,8 @@ export function Hero() {
       {/* Background image with subtle zoom-in — starts when loading screen exits */}
       <motion.div
         className="absolute inset-0"
-        initial={{ scale: 1.07 }}
-        animate={ready ? { scale: 1 } : { scale: 1.07 }}
+        initial={{ scale: 1.02 }}
+        animate={ready ? { scale: 1 } : { scale: 1.02 }}
         transition={{ duration: 2.2, ease: [0.25, 0.1, 0.25, 1] }}
       >
         {/* Mobile hero image */}
@@ -55,7 +55,7 @@ export function Hero() {
           alt=""
           aria-hidden="true"
           fill
-          className="hidden object-cover object-[center_30%] md:block md:object-center"
+          className="hidden object-cover object-center md:block"
           priority
         />
       </motion.div>
@@ -140,9 +140,10 @@ export function Hero() {
             </button>
             <a
               href="#fonctionnalites"
-              className="flex h-12 w-full items-center justify-center rounded-full border border-white/20 text-sm font-medium text-white/75 backdrop-blur-sm"
+              className="flex h-12 w-full items-center justify-center gap-2 rounded-full border border-white/20 text-sm font-medium text-white/75 backdrop-blur-sm"
             >
-              {t.hero.discover} →
+              <ArrowRight aria-hidden="true" className="h-4 w-4 order-last rtl:order-first" />
+              {t.hero.discover}
             </a>
           </motion.div>
 
@@ -166,7 +167,7 @@ export function Hero() {
       {/* ─── DESKTOP LAYOUT (hidden below md) ─── */}
       <div className="absolute inset-0 hidden bg-linear-to-b from-black/30 via-black/10 to-black/40 md:block" />
 
-      <div className="pointer-events-none absolute inset-0 hidden select-none items-start justify-between px-8 pt-32 md:flex lg:px-16 lg:pt-44">
+      <div className="pointer-events-none absolute inset-0 hidden select-none items-start justify-between px-8 pt-32 md:flex lg:px-16 lg:pt-44 rtl:pr-[10vw] lg:rtl:pr-[12vw]">
         <motion.h1
           {...fadeUp(ready, 0.35)}
           className="mt-10 font-display leading-none text-white drop-shadow-lg lg:mt-20"
@@ -177,7 +178,7 @@ export function Hero() {
         >
           {t.hero.headline1}
         </motion.h1>
-        <div className="text-right">
+        <div className="text-right rtl:text-left rtl:mr-[26vw]">
           <motion.span
             {...fadeUp(ready, 0.5)}
             className="block font-display -mt-1 leading-none text-white drop-shadow-lg"
@@ -190,7 +191,7 @@ export function Hero() {
           </motion.span>
           <motion.p
             {...fadeUp(ready, 0.65)}
-            className="mt-2 -rotate-2 font-script leading-none"
+            className="mt-2 -rotate-2 font-script leading-none rtl:translate-x-[10vw]"
             style={{
               fontSize: "clamp(1.8rem, 7vw, 6.5rem)",
               background:
@@ -248,13 +249,13 @@ export function Hero() {
           </button>
           <a
             href="#fonctionnalites"
-            className="inline-flex group h-14 items-center rounded-full border border-white/25 bg-white/10 px-8 text-sm font-medium text-white backdrop-blur transition-colors hover:border-white/50"
+            className="inline-flex group h-14 items-center gap-2 rounded-full border border-white/25 bg-white/10 px-8 text-sm font-medium text-white backdrop-blur transition-colors hover:border-white/50"
           >
-            {t.hero.discover}
             <ArrowRight
               aria-hidden="true"
-              className="h-4 w-4 ml-1 opacity-80 group-hover:translate-x-1 transition-transform duration-300"
+              className="h-4 w-4 opacity-80 order-last rtl:order-first transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180"
             />
+            {t.hero.discover}
           </a>
         </motion.div>
 

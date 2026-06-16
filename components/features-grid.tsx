@@ -13,17 +13,20 @@ import {
 import { Reveal } from "@/components/reveal";
 import { useT } from "@/hooks/use-t";
 
-const ICONS: LucideIcon[] = [Fingerprint, KeyRound, Smartphone, CreditCard, Key];
+const ICONS: LucideIcon[] = [
+  Fingerprint,
+  KeyRound,
+  Smartphone,
+  CreditCard,
+  Key,
+];
 
 export function FeaturesGrid() {
   const t = useT();
   const s = t.sections.features;
 
   return (
-    <section
-      id="fonctionnalites"
-      className="scroll-mt-20 border-t border-line"
-    >
+    <section id="fonctionnalites" className="scroll-mt-20 border-t border-line">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
         {/* Section label */}
         <Reveal>
@@ -79,7 +82,10 @@ export function FeaturesGrid() {
                   {/* Icon bubble */}
                   <motion.div
                     variants={{
-                      hovered: { backgroundColor: "rgb(196 154 101 / 0.15)", color: "#c49a65" },
+                      hovered: {
+                        backgroundColor: "rgb(196 154 101 / 0.15)",
+                        color: "#c49a65",
+                      },
                     }}
                     transition={{ duration: 0.25 }}
                     className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line bg-surface text-muted-foreground transition-colors"
@@ -92,9 +98,9 @@ export function FeaturesGrid() {
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <div className="mb-1 flex items-baseline gap-2">
-                          <span className="font-display2 text-xs text-muted-foreground/50">
+                          {/* <span className="font-display2 text-xs text-muted-foreground/50">
                             0{index + 1}
-                          </span>
+                          </span> */}
                           <motion.h3
                             variants={{ hovered: { color: "#c49a65" } }}
                             transition={{ duration: 0.2 }}

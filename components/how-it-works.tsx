@@ -37,7 +37,11 @@ export function HowItWorks() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.1 }}
+              transition={{
+                duration: 0.6,
+                ease: [0.25, 0.1, 0.25, 1],
+                delay: i * 0.1,
+              }}
               whileHover="hovered"
               className="group relative flex cursor-default items-start gap-6 overflow-hidden py-8 sm:py-10"
             >
@@ -58,17 +62,20 @@ export function HowItWorks() {
               />
 
               {/* Giant decorative number — background layer */}
-              <div
+              {/* <div
                 aria-hidden="true"
                 className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none font-display2 font-light leading-none text-ink/4 transition-colors duration-300 group-hover:text-gold/8"
                 style={{ fontSize: "clamp(6rem, 18vw, 14rem)" }}
               >
                 0{i + 1}
-              </div>
+              </div> */}
 
               {/* Step number */}
               <motion.span
-                variants={{ rest: { color: "var(--color-muted-foreground)" }, hovered: { color: "#c49a65" } }}
+                variants={{
+                  rest: { color: "var(--color-muted-foreground)" },
+                  hovered: { color: "#c49a65" },
+                }}
                 initial="rest"
                 transition={{ duration: 0.2 }}
                 className="relative w-10 shrink-0 pt-1 font-display2 text-sm"
@@ -87,7 +94,10 @@ export function HowItWorks() {
                   {step.title}
                 </motion.h3>
                 <motion.p
-                  variants={{ rest: { opacity: 0.55 }, hovered: { opacity: 1 } }}
+                  variants={{
+                    rest: { opacity: 0.55 },
+                    hovered: { opacity: 1 },
+                  }}
                   initial="rest"
                   transition={{ duration: 0.25 }}
                   className="text-sm leading-relaxed text-muted-foreground"
