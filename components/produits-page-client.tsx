@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { RotateCcw } from "lucide-react";
-import { useEffect } from "react";
+import { RotateCcw, Search, SlidersHorizontal } from "lucide-react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
 import { CartDrawer } from "@/components/cart-drawer";
@@ -15,6 +15,20 @@ import { queryKeys } from "@/lib/query-keys";
 import { MAIN_PRODUCT_HANDLE } from "@/lib/shopify/products";
 import type { Product } from "@/types/shopify";
 
+const PRICE_RANGES = [
+  { label: "Tous les prix", min: 0, max: Infinity },
+  { label: "Moins de 500 MAD", min: 0, max: 500 },
+  { label: "500 – 1 500 MAD", min: 500, max: 1500 },
+  { label: "1 500 – 3 000 MAD", min: 1500, max: 3000 },
+  { label: "Plus de 3 000 MAD", min: 3000, max: Infinity },
+];
+
+const COLOR_OPTIONS = [
+  { label: "Noir Mat", bg: "bg-[#1E1B18]" },
+  { label: "Argent",   bg: "bg-[#C7C9CC]" },
+  { label: "Or",       bg: "bg-[#C49A65]" },
+];
+
 export function ProduitsPageClient() {
   const t = useT();
   const queryClient = useQueryClient();
@@ -22,6 +36,16 @@ export function ProduitsPageClient() {
   const { data: accessories, isLoading: loadingAcc, isError: errorAcc } = useAccessories();
   const isLoading = loadingMain || loadingAcc;
   const isError = errorMain || errorAcc;
+
+  const [search, setSearch] = useState("");
+  const [priceIdx, setPriceIdx] = useState(0);
+  const [activeColors, setActiveColors] = useState<string[]>([]);
+
+  function toggleColor(label: string) {
+    setActiveColors((prev) =>
+      prev.includes(label) ? prev.filter((c) => c !== label) : [...prev, label]
+    );
+  }
 
   function handleRetry() {
     void queryClient.resetQueries({ queryKey: queryKeys.product(MAIN_PRODUCT_HANDLE) });
@@ -36,10 +60,22 @@ export function ProduitsPageClient() {
     }
   }, [isError, t]);
 
-  const visible: Product[] = [
+  const allProducts: Product[] = [
     ...(mainProduct ? [mainProduct] : []),
     ...(accessories?.filter((a) => a.handle !== mainProduct?.handle) ?? []),
   ];
+
+  const range = PRICE_RANGES[priceIdx];
+  const visible = allProducts.filter((p) => {
+    const price = parseFloat(p.variants[0]?.price.amount ?? "0");
+    if (price < range.min || price > range.max) return false;
+    if (search && !p.title.toLowerCase().includes(search.toLowerCase())) return false;
+    if (activeColors.length > 0) {
+      const titles = p.variants.map((v) => v.title);
+      if (!activeColors.some((c) => titles.includes(c))) return false;
+    }
+    return true;
+  });
 
   return (
     <>
@@ -48,15 +84,28 @@ export function ProduitsPageClient() {
       <main className="min-h-screen bg-background">
 
         {/* Hero header */}
-        <div className="border-b border-line bg-background">
-          <div className="mx-auto max-w-7xl px-6 pb-10 pt-24 md:pt-32 lg:px-10">
+        <div
+          className="relative overflow-hidden pb-16 pt-32 md:pb-20 md:pt-40"
+          style={{ background: "linear-gradient(135deg, #010d1a 0%, #032245 50%, #053d7a 100%)" }}
+        >
+          {/* Decorative glows */}
+          <div
+            className="pointer-events-none absolute -top-32 left-1/3 h-96 w-96 rounded-full opacity-25"
+            style={{ background: "radial-gradient(circle, #2a5fa8 0%, transparent 70%)" }}
+          />
+          <div
+            className="pointer-events-none absolute right-0 bottom-0 h-64 w-64 rounded-full opacity-20"
+            style={{ background: "radial-gradient(circle, #053d7a 0%, transparent 70%)" }}
+          />
+
+          <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div>
-                <p className="mb-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">
+                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-white/40">
                   {t.sections.produits.collection} — {new Date().getFullYear()}
                 </p>
                 <h1
-                  className="font-display2 uppercase leading-none text-ink"
+                  className="font-display2 uppercase leading-none text-white"
                   style={{ fontSize: "clamp(2.4rem, 8vw, 6rem)" }}
                 >
                   {t.sections.produits.title.split("\n").map((line, i, arr) => (
@@ -68,13 +117,84 @@ export function ProduitsPageClient() {
               {/* Product count badge */}
               {!isLoading && (
                 <div className="self-start md:self-auto">
-                  <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground md:text-right">
-                    {t.sections.produits.models(visible.length)}
+                  <p className="text-xs uppercase tracking-[0.25em] text-white/40 md:text-right">
+                    {t.sections.produits.models(allProducts.length)}
                   </p>
-                  <p className="mt-1 text-sm text-muted-foreground md:text-right">
+                  <p className="mt-1 text-sm text-white/60 md:text-right">
                     {t.sections.produits.delivery}
                   </p>
                 </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* ── Filter bar ── */}
+        <div className="sticky top-16 z-20 border-b border-line bg-background/95 backdrop-blur-sm">
+          <div className="mx-auto max-w-7xl px-6 lg:px-10">
+            <div className="flex flex-wrap items-center gap-3 py-4">
+
+              {/* Search */}
+              <div className="relative flex-1 min-w-44">
+                <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
+                <input
+                  type="search"
+                  placeholder="Rechercher…"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="h-9 w-full rounded-full border border-line bg-white pl-9 pr-4 text-sm text-ink placeholder:text-muted-foreground outline-none transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/10"
+                />
+              </div>
+
+              {/* Divider */}
+              <div className="hidden h-5 w-px bg-line sm:block" />
+
+              {/* Prix */}
+              <div className="flex items-center gap-2">
+                <SlidersHorizontal className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
+                <select
+                  value={priceIdx}
+                  onChange={(e) => setPriceIdx(Number(e.target.value))}
+                  className="h-9 rounded-full border border-line bg-white px-3 text-sm text-ink outline-none transition-colors focus:border-primary/50 cursor-pointer"
+                >
+                  {PRICE_RANGES.map((r, i) => (
+                    <option key={i} value={i}>{r.label}</option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Divider */}
+              <div className="hidden h-5 w-px bg-line sm:block" />
+
+              {/* Colors */}
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Couleur</span>
+                <div className="flex gap-1.5">
+                  {COLOR_OPTIONS.map((col) => (
+                    <button
+                      key={col.label}
+                      type="button"
+                      title={col.label}
+                      onClick={() => toggleColor(col.label)}
+                      className={`h-5 w-5 rounded-full border-2 transition-all ${col.bg} ${
+                        activeColors.includes(col.label)
+                          ? "border-primary scale-110"
+                          : "border-transparent hover:border-line"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Reset */}
+              {(search || priceIdx !== 0 || activeColors.length > 0) && (
+                <button
+                  type="button"
+                  onClick={() => { setSearch(""); setPriceIdx(0); setActiveColors([]); }}
+                  className="ml-auto text-xs text-muted-foreground underline-offset-2 hover:text-ink hover:underline"
+                >
+                  Réinitialiser
+                </button>
               )}
             </div>
           </div>
@@ -102,7 +222,7 @@ export function ProduitsPageClient() {
             </div>
           ) : visible.length === 0 ? (
             <div className="py-24 text-center text-sm text-muted-foreground">
-              Aucun produit disponible.
+              Aucun produit ne correspond à vos filtres.
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">

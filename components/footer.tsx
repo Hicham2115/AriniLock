@@ -17,18 +17,7 @@ export function Footer() {
   const t = useT();
   const s = t.sections.footer;
 
-  const extraCols = [
-    {
-      title: "Nos sélections",
-      links: [
-        { href: "#accessoires", label: "Collections" },
-        { href: "#",            label: "Promotions" },
-        { href: "/produits",    label: "Nouveautés" },
-      ],
-    },
-  ];
-
-  const allCols = [...s.cols, ...extraCols];
+  const allCols = [...s.cols, s.selectionCol];
 
   return (
     <footer className="bg-white">
@@ -54,7 +43,7 @@ export function Footer() {
               <div className="flex flex-col gap-5">
                 <LogoMark className="h-10" inverted />
                 <p className="max-w-40 text-xs leading-relaxed text-white/35">
-                  La serrure intelligente made in Morocco.
+                  {s.taglineShort}
                 </p>
               </div>
 
@@ -83,7 +72,7 @@ export function Footer() {
               {/* Right — service CTAs + socials */}
               <div className="flex flex-col gap-4 lg:min-w-57.5">
                 <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/40">
-                  AriniLock à votre service
+                  {s.serviceTitle}
                 </p>
 
                 <a
@@ -103,7 +92,7 @@ export function Footer() {
                   <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/10">
                     <MessageCircle className="h-3.5 w-3.5 text-white/80" aria-hidden="true" />
                   </span>
-                  Besoin d&apos;aide ?
+                  {s.helpLink}
                 </a>
 
                 {/* Social icons */}
@@ -130,7 +119,7 @@ export function Footer() {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col items-center gap-5 sm:flex-row sm:gap-8">
             <p className="shrink-0 text-[10px] font-bold uppercase tracking-[0.25em] text-gray-400">
-              Nos partenaires
+              {s.partners}
             </p>
             <div className="hidden h-px flex-1 bg-gray-100 sm:block" />
             <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-end">
@@ -151,7 +140,7 @@ export function Footer() {
       <div className="border-t border-gray-100 bg-white px-6 py-5 lg:px-10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-2 text-center text-xs text-gray-400">
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
-            {["CGV", "Mentions légales", "Politique de confidentialité", "Cookies"].map((link) => (
+            {s.legal.map((link) => (
               <a key={link} href="#" className="transition-colors hover:text-gray-700">
                 {link}
               </a>

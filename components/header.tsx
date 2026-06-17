@@ -42,6 +42,7 @@ export function Header() {
     { href: "#accessoires", label: t.nav.accessories },
     { href: "#avis", label: t.nav.reviews },
     { href: "#faq", label: t.nav.faq },
+    { href: "/contact", label: t.nav.contact },
   ];
 
   function resolveHref(href: string) {
