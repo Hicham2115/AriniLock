@@ -72,7 +72,7 @@ export function ProductCard({ product }: { product: Product }) {
         className="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm transition-all hover:bg-black/50"
       >
         <Heart
-          className={cn("h-4 w-4 transition-colors", liked ? "fill-gold text-gold" : "text-white")}
+          className={cn("h-4 w-4 transition-colors", liked ? "fill-[#4a90d9] text-[#4a90d9]" : "text-white")}
         />
       </button>
 
@@ -121,7 +121,7 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="mt-2 flex items-center justify-between">
           <div className="flex items-baseline gap-2">
             {variant && (
-              <span className="font-display2 text-lg leading-none text-gold">
+              <span className="font-display2 text-lg leading-none text-white">
                 {formatMoney(variant.price)}
               </span>
             )}
@@ -139,7 +139,7 @@ export function ProductCard({ product }: { product: Product }) {
             onClick={() =>
               variant && addToCart([{ merchandiseId: variant.id, quantity: 1 }])
             }
-            className="flex h-9 w-9 translate-y-2 items-center justify-center rounded-full bg-gold opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 disabled:opacity-50"
+            className="flex h-9 w-9 translate-y-2 items-center justify-center rounded-full bg-[#4a90d9] opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 disabled:opacity-50"
             aria-label={`${t.product.addToCart}: ${product.title}`}
           >
             <ArrowUpRight aria-hidden="true" className="h-4 w-4 text-dark" />
