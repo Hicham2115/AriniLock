@@ -69,9 +69,9 @@ export function StickyOffer() {
     return () => clearInterval(id);
   }, [open]);
 
-  /* ── Shared card content ── */
+  /* ── Desktop card content ── */
   const cardContent = (
-    <div className="overflow-hidden bg-[#162847] shadow-2xl rounded-t-2xl sm:rounded-2xl w-full sm:w-72">
+    <div className="overflow-hidden bg-[#162847] shadow-2xl rounded-2xl w-72">
       {/* Header */}
       <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10">
         <Tag className="h-3.5 w-3.5 text-white/60" />
@@ -148,6 +148,54 @@ export function StickyOffer() {
     </div>
   );
 
+  /* ── Mobile compact card ── */
+  const mobileCardContent = (
+    <div className="overflow-hidden bg-[#162847] shadow-2xl rounded-t-2xl w-full">
+      {/* Header */}
+      <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/10">
+        <div className="flex items-center gap-2">
+          <Tag className="h-3 w-3 text-white/60" />
+          <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60">
+            {s.label}
+          </span>
+        </div>
+        <button
+          type="button"
+          onClick={() => setOpen(false)}
+          className="text-[10px] uppercase tracking-widest text-white/30 hover:text-white/60 transition-colors"
+        >
+          Réduire
+        </button>
+      </div>
+
+      {/* Body */}
+      <div className="px-4 py-3">
+        <div className="flex items-center justify-between gap-3 mb-3">
+          <h3 className="font-display2 text-base font-bold leading-tight text-white">
+            {s.headline[0]} {s.headline[1]}
+          </h3>
+          {/* Compact countdown */}
+          <div className="flex items-center gap-1 rounded-lg bg-white/8 px-2.5 py-1.5 shrink-0">
+            <Clock className="h-3 w-3 text-white/50" />
+            <span className="font-display2 text-sm font-bold tabular-nums text-white">
+              {timeLeft.hours}:{timeLeft.mins}:{timeLeft.secs}
+            </span>
+          </div>
+        </div>
+
+        {/* CTA */}
+        <Link
+          href="/produits"
+          onClick={() => setOpen(false)}
+          className="group flex h-9 w-full items-center justify-center gap-2 rounded-full bg-white text-sm font-semibold text-[#162847] transition-colors hover:bg-white/90"
+        >
+          Commander maintenant
+          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+        </Link>
+      </div>
+    </div>
+  );
+
   return (
     <>
       {/* ── Desktop: bottom-left corner ── */}
@@ -187,7 +235,7 @@ export function StickyOffer() {
         </AnimatePresence>
       </div>
 
-      {/* ── Mobile: full-width bottom sheet / bar ── */}
+      {/* ── Mobile: compact bottom sheet / bar ── */}
       <div className="sm:hidden fixed bottom-0 inset-x-0 z-50">
         <AnimatePresence mode="wait">
           {open ? (
@@ -198,7 +246,7 @@ export function StickyOffer() {
               exit={{ y: "100%" }}
               transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              {cardContent}
+              {mobileCardContent}
             </motion.div>
           ) : (
             <motion.button

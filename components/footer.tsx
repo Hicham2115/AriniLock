@@ -36,11 +36,11 @@ export function Footer() {
           <div className="relative h-px w-full" style={{ background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 30%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.2) 70%, transparent 100%)" }} />
 
           {/* Main grid */}
-          <div className="relative mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-20">
-            <div className="grid gap-12 lg:grid-cols-[auto_1fr_1fr_1fr_auto]">
+          <div className="relative mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-20">
+            <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[auto_1fr_1fr_1fr_auto] lg:gap-12">
 
               {/* Logo + tagline */}
-              <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-5 sm:col-span-2 lg:col-span-1">
                 <LogoMark className="h-10" inverted />
                 <p className="max-w-40 text-xs leading-relaxed text-white/35">
                   {s.taglineShort}
@@ -70,7 +70,7 @@ export function Footer() {
               ))}
 
               {/* Right — service CTAs + socials */}
-              <div className="flex flex-col gap-4 lg:min-w-57.5">
+              <div className="flex flex-col gap-4 sm:col-span-2 lg:col-span-1 lg:min-w-57.5">
                 <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/40">
                   {s.serviceTitle}
                 </p>

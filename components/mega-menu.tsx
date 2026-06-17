@@ -86,15 +86,18 @@ interface MegaMenuProps {
 
 export function MegaMenu({ open, onClose }: MegaMenuProps) {
   const [activeIndex, setActiveIndex] = useState(firstWithSub);
+  const [mobileAccordion, setMobileAccordion] = useState<number | null>(null);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
-  // Reset active to first-with-sub whenever menu opens
   useEffect(() => {
-    if (open) setActiveIndex(firstWithSub);
+    if (open) {
+      setActiveIndex(firstWithSub);
+      setMobileAccordion(null);
+    }
   }, [open]);
 
   if (!open) return null;
@@ -110,12 +113,15 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
         aria-hidden="true"
       />
 
-      {/* Panel — full height, capped width like Kitea */}
-      <div className="fixed inset-y-0 left-0 z-60 flex w-full max-w-[860px] overflow-hidden shadow-2xl">
-        {/* Left — category list */}
-        <div className="flex w-[300px] shrink-0 flex-col overflow-y-auto bg-white">
+      {/* Panel */}
+      <div className="fixed inset-y-0 left-0 z-60 flex w-full max-w-215 overflow-hidden shadow-2xl">
+        {/* Left — category list (full width on mobile, 300px on desktop) */}
+        <div className="flex w-full md:w-75 shrink-0 flex-col overflow-y-auto bg-white">
           {/* Close row */}
-          <div className="flex items-center justify-end border-b border-gray-100 px-4 py-4">
+          <div className="flex items-center justify-between border-b border-gray-100 px-4 py-4 md:justify-end">
+            <span className="font-display text-sm font-semibold uppercase tracking-widest text-gray-400 md:hidden">
+              Menu
+            </span>
             <button
               type="button"
               onClick={onClose}
@@ -129,46 +135,66 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
           <nav className="flex flex-col">
             {CATEGORIES.map((cat, i) => {
               const isActive = i === activeIndex;
+              const isMobileExpanded = mobileAccordion === i;
               return (
-                <button
-                  key={cat.label}
-                  type="button"
-                  onMouseEnter={() => setActiveIndex(i)}
-                  onClick={() => {
-                    if (!cat.sub) {
-                      onClose();
-                    } else {
-                      setActiveIndex(i);
-                    }
-                  }}
-                  className={`flex w-full items-center justify-between border-b border-gray-100 px-6 py-4 text-left text-[15px] font-semibold transition-colors ${
-                    isActive
-                      ? "border-l-[3px] border-l-ink bg-gray-50 text-ink"
-                      : "border-l-[3px] border-l-transparent text-gray-700 hover:bg-gray-50 hover:text-ink"
-                  }`}
-                >
-                  {cat.sub ? (
-                    <>
-                      <span>{cat.label}</span>
-                      <ChevronRight className="h-4 w-4 shrink-0 text-gray-400" />
-                    </>
-                  ) : (
-                    <Link
-                      href={cat.href ?? "/"}
-                      onClick={onClose}
-                      className="w-full"
-                    >
-                      {cat.label}
-                    </Link>
+                <div key={cat.label}>
+                  <button
+                    type="button"
+                    onMouseEnter={() => setActiveIndex(i)}
+                    onClick={() => {
+                      if (!cat.sub) {
+                        onClose();
+                      } else {
+                        setActiveIndex(i);
+                        setMobileAccordion(isMobileExpanded ? null : i);
+                      }
+                    }}
+                    className={`flex w-full items-center justify-between border-b border-gray-100 px-5 py-4 text-left text-[15px] font-semibold transition-colors md:px-6 ${
+                      isActive
+                        ? "border-l-[3px] border-l-ink bg-gray-50 text-ink"
+                        : "border-l-[3px] border-l-transparent text-gray-700 hover:bg-gray-50 hover:text-ink"
+                    }`}
+                  >
+                    {cat.sub ? (
+                      <>
+                        <span>{cat.label}</span>
+                        <ChevronRight
+                          className={`h-4 w-4 shrink-0 text-gray-400 transition-transform ${
+                            isMobileExpanded ? "rotate-90 md:rotate-0" : ""
+                          }`}
+                        />
+                      </>
+                    ) : (
+                      <Link href={cat.href ?? "/"} onClick={onClose} className="w-full">
+                        {cat.label}
+                      </Link>
+                    )}
+                  </button>
+
+                  {/* Mobile accordion sub-items */}
+                  {cat.sub && isMobileExpanded && (
+                    <div className="md:hidden border-b border-gray-100 bg-gray-50 pl-8 pr-4">
+                      {cat.sub.map((item) => (
+                        <Link
+                          key={item.label}
+                          href={item.href}
+                          onClick={onClose}
+                          className="flex items-center justify-between border-b border-gray-100 py-3 text-sm text-gray-600 last:border-b-0 hover:text-ink"
+                        >
+                          <span>{item.label}</span>
+                          <ChevronRight className="h-3.5 w-3.5 shrink-0 text-gray-300" />
+                        </Link>
+                      ))}
+                    </div>
                   )}
-                </button>
+                </div>
               );
             })}
           </nav>
         </div>
 
-        {/* Right — subcategory panel */}
-        <div className="flex flex-1 flex-col overflow-y-auto bg-white px-10 py-8">
+        {/* Right — subcategory panel (desktop only) */}
+        <div className="hidden md:flex flex-1 flex-col overflow-y-auto bg-white px-10 py-8">
           {active.sub ? (
             <>
               <h2 className="mb-3 font-display text-xl tracking-widest text-ink uppercase">
