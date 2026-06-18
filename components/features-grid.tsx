@@ -20,7 +20,7 @@ export function FeaturesGrid() {
   const s = t.sections.features;
 
   return (
-    <section id="fonctionnalites" className="scroll-mt-20 border-t border-border">
+    <section id="fonctionnalites" className="scroll-mt-28 border-t border-border">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
         <Reveal>
           <div className="mb-8 flex flex-wrap items-start justify-between gap-4 text-xs uppercase tracking-[0.25em] text-muted-foreground lg:mb-12">

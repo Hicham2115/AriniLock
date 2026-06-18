@@ -98,7 +98,7 @@ export function AccessoriesGrid() {
   return (
     <section
       id="accessoires"
-      className="mx-auto max-w-7xl scroll-mt-20 border-t border-border px-6 py-16 lg:px-10 lg:py-24"
+      className="mx-auto max-w-7xl scroll-mt-28 border-t border-border px-6 py-16 lg:px-10 lg:py-24"
     >
       <Reveal>
         <div className="mb-8 flex flex-wrap items-start justify-between gap-4 text-xs uppercase tracking-[0.25em] text-muted-foreground lg:mb-12">

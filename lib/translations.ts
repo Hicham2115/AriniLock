@@ -2,6 +2,11 @@ import type { Locale } from "@/stores/language-store";
 
 const fr = {
   dir: "ltr" as "ltr" | "rtl",
+  keyBadges: [
+    "Prix à partir de 1 590 DH",
+    "Certifié ANRT · Agréé Maroc",
+    "Livraison & installation offertes",
+  ] as [string, string, string],
   nav: {
     shop: "Boutique",
     features: "Fonctionnalités",
@@ -17,7 +22,7 @@ const fr = {
   hero: {
     buy: "Commander",
     discover: "Découvrir les fonctionnalités",
-    trust: ["Wifi · BT", "12 mois batterie", "Garantie 2 ans"] as [string, string, string],
+    trust: ["À partir de 1 590 DH", "Certifié ANRT", "Livraison & install. offertes"] as [string, string, string],
     headline1: "Votre",
     headline2: "Porte.",
     tagline: "Réinventée.",
@@ -179,7 +184,7 @@ const fr = {
       { q: "Quelle est la durée de garantie ?",  a: "2 ans constructeur couvrant tout défaut de fabrication." },
     ],
   },
-  marquee: "Empreinte digitale ✦ Application mobile ✦ Alertes temps réel ✦ Installation sans perçage ✦ Garantie 2 ans ✦ Livraison Maroc ✦",
+  marquee: "À partir de 1 590 DH ✦ Certifié ANRT · Agréé Maroc ✦ Livraison & installation offertes ✦ Empreinte digitale ✦ Application mobile ✦ Alertes temps réel ✦ Garantie 2 ans ✦ Paiement à la livraison ✦",
   sections: {
     accessories: {
       label: "02 — Accessoires",
@@ -243,7 +248,7 @@ const fr = {
       headline: ["L'offre se", "termine dans"],
       unitLabels: ["Jours", "Heures", "Min", "Sec"] as [string, string, string, string],
       description: "Inscrivez-vous pour recevoir les offres exclusives en avant-première et être alerté à chaque baisse de prix.",
-      details: ["Installation sans perçage", "Garantie 2 ans", "Livraison partout au Maroc", "Paiement à la livraison"],
+      details: ["À partir de 1 590 DH", "Certifié ANRT", "Livraison & install. offertes", "Paiement à la livraison"],
     },
     reviews: {
       label: "05 — Avis clients",
@@ -338,6 +343,11 @@ const fr = {
 
 const en: typeof fr = {
   dir: "ltr",
+  keyBadges: [
+    "From 1 590 MAD",
+    "ANRT certified · Morocco approved",
+    "Free delivery & installation",
+  ],
   nav: {
     shop: "Shop",
     features: "Features",
@@ -353,7 +363,7 @@ const en: typeof fr = {
   hero: {
     buy: "Order now",
     discover: "Discover features",
-    trust: ["WiFi · BT", "12-month battery", "2-year warranty"],
+    trust: ["From 1 590 MAD", "ANRT certified", "Free delivery & install"],
     headline1: "Your",
     headline2: "Door.",
     tagline: "Reinvented.",
@@ -548,7 +558,7 @@ What's in the box
       { q: "What is the warranty period?",          a: "2-year manufacturer warranty covering all defects." },
     ],
   },
-  marquee: "Fingerprint ✦ Mobile app ✦ Real-time alerts ✦ No-drill install ✦ 2-year warranty ✦ Morocco delivery ✦",
+  marquee: "From 1 590 MAD ✦ ANRT certified · Morocco approved ✦ Free delivery & installation ✦ Fingerprint ✦ Mobile app ✦ Real-time alerts ✦ 2-year warranty ✦ Cash on delivery ✦",
   sections: {
     accessories: {
       label: "02 — Accessories",
@@ -612,7 +622,7 @@ What's in the box
       headline: ["This offer", "ends in"],
       unitLabels: ["Days", "Hours", "Min", "Sec"],
       description: "Subscribe to receive exclusive offers first and be notified of every price drop.",
-      details: ["No-drill installation", "2-year warranty", "Delivery across Morocco", "Cash on delivery"],
+      details: ["From 1 590 MAD", "ANRT certified", "Free delivery & install", "Cash on delivery"],
     },
     reviews: {
       label: "05 — Customer reviews",
@@ -707,6 +717,11 @@ What's in the box
 
 const ar: typeof fr = {
   dir: "rtl",
+  keyBadges: [
+    "ابتداءً من 1 590 درهم",
+    "معتمد ANRT · مرخص بالمغرب",
+    "توصيل وتركيب مجانيان",
+  ],
   nav: {
     shop: "المتجر",
     features: "المميزات",
@@ -722,7 +737,7 @@ const ar: typeof fr = {
   hero: {
     buy: "اطلب الآن",
     discover: "اكتشف المميزات",
-    trust: ["واي فاي · بلوتوث", "12 شهرًا بطارية", "ضمان سنتين"],
+    trust: ["من 1 590 درهم", "معتمد ANRT", "توصيل وتركيب مجاني"],
     headline1: "بيتك",
     headline2: "يستاهل.",
     tagline: "الأفضل.",
@@ -917,7 +932,7 @@ const ar: typeof fr = {
       { q: "ما مدة الضمان؟",                   a: "ضمان الصانع لمدة سنتين يشمل جميع عيوب التصنيع." },
     ],
   },
-  marquee: "بصمة الإصبع ✦ تطبيق الهاتف ✦ تنبيهات فورية ✦ تركيب بدون حفر ✦ ضمان سنتين ✦ توصيل بالمغرب ✦",
+  marquee: "من 1 590 درهم ✦ معتمد ANRT · مرخص بالمغرب ✦ توصيل وتركيب مجانيان ✦ بصمة الإصبع ✦ تطبيق الهاتف ✦ تنبيهات فورية ✦ ضمان سنتين ✦ الدفع عند الاستلام ✦",
   sections: {
     accessories: {
       label: "02 — الملحقات",
@@ -981,7 +996,7 @@ const ar: typeof fr = {
       headline: ["ينتهي العرض", "خلال"],
       unitLabels: ["يوم", "ساعة", "دقيقة", "ثانية"],
       description: "اشترك لتصل إليك العروض الحصرية أولًا وتُخطَر بكل تخفيض في الأسعار.",
-      details: ["تركيب بدون حفر", "ضمان سنتين", "توصيل في كل المغرب", "الدفع عند الاستلام"],
+      details: ["من 1 590 درهم", "معتمد ANRT", "توصيل وتركيب مجانيان", "الدفع عند الاستلام"],
     },
     reviews: {
       label: "05 — آراء العملاء",

@@ -23,6 +23,8 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [barDismissed, setBarDismissed] = useState(false);
+  const [barIndex, setBarIndex] = useState(0);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -54,6 +56,12 @@ export function Header() {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
+
+  useEffect(() => {
+    if (barDismissed) return;
+    const id = setInterval(() => setBarIndex((i) => (i + 1) % 3), 4000);
+    return () => clearInterval(id);
+  }, [barDismissed]);
 
   const linkClass = "px-3 text-[13px] text-foreground/50 transition-colors hover:text-primary";
   const mobileLinkClass = "w-full border-b border-border py-4 font-display text-xl tracking-wide text-foreground transition-colors hover:text-primary";
@@ -126,6 +134,38 @@ export function Header() {
       <MegaMenu open={megaOpen} onClose={() => setMegaOpen(false)} />
 
       <header className={`fixed inset-x-0 top-0 z-40 border-b border-border transition-all duration-300 ${scrolled ? "bg-white/70 backdrop-blur-md shadow-md" : "bg-white shadow-sm"}`}>
+        {/* Announcement bar */}
+        {!barDismissed && (
+          <div className="flex items-center justify-between gap-2 border-b border-primary/15 bg-primary px-4 py-1.5">
+            <div className="flex flex-1 items-center justify-center gap-2 min-w-0">
+              <span className="truncate text-center text-[11px] font-semibold tracking-wide text-white/90">
+                {t.keyBadges[barIndex]}
+              </span>
+            </div>
+            <div className="flex shrink-0 items-center gap-2">
+              {/* Dot indicators */}
+              <div className="hidden items-center gap-1 sm:flex">
+                {[0, 1, 2].map((i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => setBarIndex(i)}
+                    aria-label={t.keyBadges[i]}
+                    className={`h-1.5 w-1.5 rounded-full transition-all ${barIndex === i ? "bg-white" : "bg-white/30 hover:bg-white/60"}`}
+                  />
+                ))}
+              </div>
+              <button
+                type="button"
+                onClick={() => setBarDismissed(true)}
+                aria-label="Fermer"
+                className="flex h-5 w-5 items-center justify-center rounded text-white/50 transition-colors hover:text-white"
+              >
+                <X className="h-3 w-3" />
+              </button>
+            </div>
+          </div>
+        )}
         <div className="mx-auto flex h-16 max-w-7xl items-center gap-1 px-4 sm:px-6 lg:px-8">
           {/* Mega-menu trigger — desktop only */}
           <button

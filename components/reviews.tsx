@@ -34,7 +34,7 @@ type Testimonial = { title: string; body: string; author: string; city: string }
 
 function ReviewCard({ review }: { review: Testimonial }) {
   return (
-    <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-secondary p-6 shadow-sm transition-shadow duration-300 hover:shadow-[0_8px_40px_rgba(22,40,71,0.12)]">
+    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-secondary p-6 shadow-sm transition-shadow duration-300 hover:shadow-[0_8px_40px_rgba(22,40,71,0.12)]">
       <div className="absolute inset-x-0 top-0 h-px bg-primary/0 transition-all duration-500 group-hover:bg-primary/40" />
 
       <div className="flex items-start justify-between">
@@ -72,7 +72,7 @@ export function Reviews() {
   const carouselOpts = { align: "start" as const, loop: true, ...(t.dir === "rtl" ? { direction: "rtl" as const } : {}) };
 
   return (
-    <section id="avis" className="scroll-mt-20 border-t border-border py-16 lg:py-24">
+    <section id="avis" className="scroll-mt-28 border-t border-border py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal>
           <div className="mb-8 flex flex-wrap items-start justify-between gap-4 text-xs uppercase tracking-[0.25em] text-muted-foreground lg:mb-10">
@@ -81,8 +81,9 @@ export function Reviews() {
           </div>
         </Reveal>
 
-        {/* Desktop: 3-col grid with sticky sidebar */}
+        {/* Desktop: sidebar + 2-col card grid */}
         <div className="hidden lg:grid lg:grid-cols-3 lg:gap-16">
+          {/* Left sticky sidebar */}
           <div className="lg:sticky lg:top-28 lg:self-start">
             <Reveal delay={0.1}>
               <h2
@@ -124,29 +125,21 @@ export function Reviews() {
             </div>
           </div>
 
-          <div className="col-span-2">
-            <Carousel opts={carouselOpts} className="w-full">
-              <CarouselContent>
-                {testimonials.map((review) => (
-                  <CarouselItem key={review.author} className="basis-1/2">
-                    <ReviewCard review={review} />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <div className="mt-5 flex gap-2" dir="ltr">
-                {t.dir === "rtl" ? (
-                  <>
-                    <CarouselNext className="relative left-0 top-0 translate-x-0 translate-y-0 border-border bg-secondary hover:border-primary hover:bg-secondary [&_svg]:scale-x-[-1]" />
-                    <CarouselPrevious className="relative left-0 top-0 translate-x-0 translate-y-0 border-border bg-secondary hover:border-primary hover:bg-secondary [&_svg]:scale-x-[-1]" />
-                  </>
-                ) : (
-                  <>
-                    <CarouselPrevious className="relative left-0 top-0 translate-x-0 translate-y-0 border-border bg-secondary hover:border-primary hover:bg-secondary" />
-                    <CarouselNext className="relative left-0 top-0 translate-x-0 translate-y-0 border-border bg-secondary hover:border-primary hover:bg-secondary" />
-                  </>
-                )}
-              </div>
-            </Carousel>
+          {/* Right: 2-column grid of all review cards */}
+          <div className="col-span-2 min-w-0">
+            <div className="grid grid-cols-2 gap-5">
+              {testimonials.map((review, index) => (
+                <motion.div
+                  key={review.author}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.55, ease: [0.25, 0.1, 0.25, 1], delay: index * 0.07 }}
+                >
+                  <ReviewCard review={review} />
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -163,7 +156,7 @@ export function Reviews() {
       {/* Mobile carousel */}
       <div className="mt-8 lg:hidden">
         <Carousel opts={carouselOpts} className="w-full">
-          <CarouselContent className="pl-6">
+          <CarouselContent className="pl-6 items-stretch">
             {testimonials.map((review) => (
               <CarouselItem key={review.author} className="basis-[82%] pr-4 sm:basis-[45%]">
                 <ReviewCard review={review} />

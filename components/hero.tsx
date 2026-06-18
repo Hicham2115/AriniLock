@@ -4,7 +4,7 @@ import Image from "next/image";
 import NextLink from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import lockImg from "@/app/assets/Untitled design_LE_upscale_prime.png";
+import lockImg from "@/app/assets/Gemini_Generated_Image_ftfrrhftfrrhftfr.png";
 import mobileHeroImg from "@/app/assets/mobile hero.png";
 import { useFormatMoney } from "@/hooks/use-format-money";
 import { useMainProduct } from "@/hooks/use-product";
@@ -51,7 +51,7 @@ export function Hero() {
           alt=""
           aria-hidden="true"
           fill
-          className="hidden object-cover object-center md:block"
+          className="hidden object-contain object-center md:block"
           priority
         />
       </motion.div>
@@ -61,17 +61,23 @@ export function Hero() {
         <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/10 via-40% to-black/95" />
         <div className="flex-1" />
         <div className="relative px-5 pb-10">
-          <motion.h1
+          {/* <motion.h1
             {...fadeUp(ready, 0.45)}
             className="mb-0 font-display leading-[0.88] text-white"
-            style={{ fontSize: "clamp(4rem, 20vw, 6rem)", letterSpacing: "-0.03em" }}
+            style={{
+              fontSize: "clamp(4rem, 20vw, 6rem)",
+              letterSpacing: "-0.03em",
+            }}
           >
             {t.hero.headline1}
           </motion.h1>
           <motion.h1
             {...fadeUp(ready, 0.56)}
             className="font-display leading-[0.88] text-white"
-            style={{ fontSize: "clamp(4rem, 20vw, 6rem)", letterSpacing: "-0.03em" }}
+            style={{
+              fontSize: "clamp(4rem, 20vw, 6rem)",
+              letterSpacing: "-0.03em",
+            }}
           >
             {t.hero.headline2}
           </motion.h1>
@@ -84,7 +90,7 @@ export function Hero() {
             }}
           >
             {t.hero.tagline}
-          </motion.p>
+          </motion.p> */}
 
           <motion.div {...fadeUp(ready, 0.82)} className="flex flex-col gap-3">
             <NextLink
@@ -99,12 +105,15 @@ export function Hero() {
               href="#fonctionnalites"
               className="flex h-12 w-full items-center justify-center gap-2 rounded-full border border-white/20 text-sm font-medium text-white/75 backdrop-blur-sm"
             >
-              <ArrowRight aria-hidden="true" className="h-4 w-4 order-last rtl:order-first" />
+              <ArrowRight
+                aria-hidden="true"
+                className="h-4 w-4 order-last rtl:order-first"
+              />
               {t.hero.discover}
             </a>
           </motion.div>
 
-          <motion.div
+          {/* <motion.div
             {...fadeUp(ready, 0.96)}
             className="mt-6 flex flex-wrap items-center gap-2"
           >
@@ -116,18 +125,21 @@ export function Hero() {
                 {item}
               </span>
             ))}
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
 
       {/* ─── DESKTOP LAYOUT ─── */}
       <div className="absolute inset-0 hidden bg-linear-to-b from-black/30 via-black/10 to-black/40 md:block" />
 
-      <div className="pointer-events-none absolute inset-0 hidden select-none items-start justify-between px-8 pt-32 md:flex lg:px-16 lg:pt-44 rtl:pr-[10vw] lg:rtl:pr-[12vw]">
+      {/* <div className="pointer-events-none absolute inset-0 hidden select-none items-start justify-between px-8 pt-32 md:flex lg:px-16 lg:pt-44 rtl:pr-[10vw] lg:rtl:pr-[12vw]">
         <motion.h1
           {...fadeUp(ready, 0.35)}
           className="mt-10 font-display leading-none text-white drop-shadow-lg lg:mt-20"
-          style={{ fontSize: "clamp(3rem, 12vw, 11rem)", letterSpacing: "-0.02em" }}
+          style={{
+            fontSize: "clamp(3rem, 12vw, 11rem)",
+            letterSpacing: "-0.02em",
+          }}
         >
           {t.hero.headline1}
         </motion.h1>
@@ -135,7 +147,10 @@ export function Hero() {
           <motion.span
             {...fadeUp(ready, 0.5)}
             className="block font-display -mt-1 leading-none text-white drop-shadow-lg"
-            style={{ fontSize: "clamp(3rem, 12vw, 11rem)", letterSpacing: "-0.02em" }}
+            style={{
+              fontSize: "clamp(3rem, 12vw, 11rem)",
+              letterSpacing: "-0.02em",
+            }}
           >
             {t.hero.headline2}
           </motion.span>
@@ -150,16 +165,20 @@ export function Hero() {
             {t.hero.tagline}
           </motion.p>
         </div>
-      </div>
+      </div> */}
 
       <div className="relative mx-auto hidden min-h-screen max-w-7xl flex-col px-6 pt-24 md:flex lg:px-10">
-        <motion.div
+        {/* <motion.div
           {...fadeUp(ready, 0.2)}
           className="flex items-center justify-between py-6"
         >
-          <p className="text-xs uppercase tracking-[0.25em] text-white/90">{t.hero.editionLabel}</p>
-          <p className="hidden text-xs uppercase tracking-[0.25em] text-white/90 lg:block">{t.hero.countryLabel}</p>
-        </motion.div>
+          <p className="text-xs uppercase tracking-[0.25em] text-white/90">
+            {t.hero.editionLabel}
+          </p>
+          <p className="hidden text-xs uppercase tracking-[0.25em] text-white/90 lg:block">
+            {t.hero.countryLabel}
+          </p>
+        </motion.div> */}
 
         <div className="flex-1" />
 
@@ -173,18 +192,24 @@ export function Hero() {
           >
             {t.hero.buy}
             {variant ? ` — ${formatMoney(variant.price)}` : ""}
-            <ArrowUpRight aria-hidden="true" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            <ArrowUpRight
+              aria-hidden="true"
+              className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+            />
           </NextLink>
           <a
             href="#fonctionnalites"
             className="inline-flex group h-14 items-center gap-2 rounded-full border border-white/25 bg-white/10 px-8 text-sm font-medium text-white backdrop-blur transition-colors hover:border-white/50"
           >
-            <ArrowRight aria-hidden="true" className="h-4 w-4 opacity-80 order-last rtl:order-first transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180" />
+            <ArrowRight
+              aria-hidden="true"
+              className="h-4 w-4 opacity-80 order-last rtl:order-first transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180"
+            />
             {t.hero.discover}
           </a>
         </motion.div>
 
-        <motion.div
+        {/* <motion.div
           {...fadeUp(ready, 0.96)}
           className="flex items-center justify-between border-t border-white/20 py-5 text-xs uppercase tracking-[0.2em] text-white/80"
         >
@@ -193,7 +218,7 @@ export function Hero() {
             <span>{t.hero.brandSlug}</span>
           </div>
           <span>{t.hero.bottomLine}</span>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );
