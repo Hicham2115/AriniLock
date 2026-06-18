@@ -48,7 +48,7 @@ export function Hero() {
         />
         <Image
           src={lockImg}
-          alt=""
+          alt="" 
           aria-hidden="true"
           fill
           className="hidden object-contain object-center md:block"
