@@ -43,7 +43,7 @@ export function Hero() {
           alt=""
           aria-hidden="true"
           fill
-          className="object-cover object-center md:hidden"
+          className="object-contain object-center md:hidden"
           priority
         />
         <Image
