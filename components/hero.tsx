@@ -5,7 +5,7 @@ import NextLink from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import lockImg from "@/app/assets/Gemini_Generated_Image_ftfrrhftfrrhftfr.png";
-import mobileHeroImg from "@/app/assets/mobile hero.png";
+import mobileHero2Img from "@/app/assets/mobile hero2.png";
 import { useFormatMoney } from "@/hooks/use-format-money";
 import { useMainProduct } from "@/hooks/use-product";
 import { useT } from "@/hooks/use-t";
@@ -39,7 +39,7 @@ export function Hero() {
         transition={{ duration: 2.2, ease: [0.25, 0.1, 0.25, 1] }}
       >
         <Image
-          src={mobileHeroImg}
+          src={mobileHero2Img}
           alt=""
           aria-hidden="true"
           fill
