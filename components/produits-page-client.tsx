@@ -114,13 +114,10 @@ export function ProduitsPageClient() {
                 </h1>
               </div>
 
-              {/* Product count badge */}
+              {/* Delivery info */}
               {!isLoading && (
                 <div className="self-start md:self-auto">
-                  <p className="text-xs uppercase tracking-[0.25em] text-white/40 md:text-right">
-                    {t.sections.produits.models(allProducts.length)}
-                  </p>
-                  <p className="mt-1 text-sm text-white/60 md:text-right">
+                  <p className="text-sm text-white/60 md:text-right">
                     {t.sections.produits.delivery}
                   </p>
                 </div>

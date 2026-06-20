@@ -62,10 +62,10 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   /* Lato — brand / product sans-serif for headlines */
   --font-display: var(--font-lato), 'Lato', ui-sans-serif, system-ui, sans-serif;
-  /* Cormorant Garamond — luxury editorial headlines */
-  --font-display2: var(--font-cormorant), 'Cormorant Garamond', ui-serif, Georgia, serif;
-  /* Caveat — handwritten accent */
-  --font-script: var(--font-caveat), cursive;
+  /* Display 2 — clean sans-serif (no luxury serif) */
+  --font-display2: var(--font-lato), 'Lato', ui-sans-serif, system-ui, sans-serif;
+  /* Script — fall back to sans */
+  --font-script: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   /* Noto Sans Arabic — body & UI text */
   --font-arabic: var(--font-amiri), 'Noto Sans Arabic', ui-sans-serif, system-ui, sans-serif;
   /* Noto Serif Arabic — editorial display headings */

@@ -13,53 +13,48 @@ type Category = {
 
 const CATEGORIES: Category[] = [
   {
-    label: "Serrures connectées",
+    label: "Solutions pour bureau",
     sub: [
-      { label: "Serrure Arini Pro", href: "/produits" },
-      { label: "Cylindre électronique", href: "/produits" },
-      { label: "Serrure à empreinte digitale", href: "/produits" },
-      { label: "Serrure à code PIN", href: "/produits" },
-      { label: "Serrure multi-accès", href: "/produits" },
+      { label: "Serrure connectée bureau", href: "/produits" },
+      { label: "Contrôle d'accès multi-utilisateurs", href: "/produits" },
+      { label: "Historique des entrées/sorties", href: "/produits" },
+      { label: "Badges RFID employés", href: "#accessoires" },
     ],
   },
   {
-    label: "Accessoires",
+    label: "Solutions pour Airbnb",
     sub: [
-      { label: "Claviers numériques", href: "#accessoires" },
-      { label: "Lecteurs d'empreintes", href: "#accessoires" },
-      { label: "Badges RFID", href: "#accessoires" },
-      { label: "Câbles & connecteurs", href: "#accessoires" },
+      { label: "Accès temporaires par code", href: "/produits" },
+      { label: "Gestion à distance", href: "/produits" },
+      { label: "Notifications à chaque ouverture", href: "/produits" },
+      { label: "Sans remise de clés en main propre", href: "/produits" },
     ],
   },
   {
-    label: "Fonctionnalités",
+    label: "Solutions pour promoteurs",
     sub: [
-      { label: "Accès à distance", href: "#fonctionnalites" },
-      { label: "Gestion multi-utilisateurs", href: "#fonctionnalites" },
-      { label: "Historique des accès", href: "#fonctionnalites" },
-      { label: "Notifications en temps réel", href: "#fonctionnalites" },
-      { label: "Intégration domotique", href: "#fonctionnalites" },
+      { label: "Solutions sur mesure", href: "/contact" },
+      { label: "Intégration projets immobiliers", href: "/contact" },
+      { label: "Installation en lot", href: "/contact" },
+      { label: "Nous contacter", href: "/contact" },
     ],
   },
   {
-    label: "Installation & Guides",
+    label: "Solutions pour hôtels",
     sub: [
-      { label: "Guide d'installation", href: "#faq" },
-      { label: "Vidéos tutoriels", href: "#faq" },
-      { label: "FAQ technique", href: "#faq" },
-      { label: "Support téléphonique", href: "#faq" },
+      { label: "Serrures pour chambres d'hôtel", href: "/produits" },
+      { label: "Cartes RFID clients", href: "#accessoires" },
+      { label: "Gestion centralisée", href: "/produits" },
+      { label: "Audit d'accès en temps réel", href: "/produits" },
     ],
   },
   {
-    label: "Avis clients",
-    href: "#avis",
-  },
-  {
-    label: "Packs & Offres",
+    label: "Solutions pour villas & appartements",
     sub: [
-      { label: "Pack Starter", href: "/produits" },
-      { label: "Pack Pro", href: "/produits" },
-      { label: "Pack Entreprise", href: "/produits" },
+      { label: "Serrure d'entrée principale", href: "/produits" },
+      { label: "Empreinte digitale & code PIN", href: "/produits" },
+      { label: "Application mobile", href: "/produits" },
+      { label: "Clé physique de secours", href: "/produits" },
     ],
   },
   {
@@ -67,12 +62,12 @@ const CATEGORIES: Category[] = [
     href: "/produits",
   },
   {
-    label: "À propos",
+    label: "Contact & Support",
     sub: [
-      { label: "Notre histoire", href: "/" },
-      { label: "Showroom Maroc", href: "/" },
-      { label: "Blog & Actualités", href: "/" },
-      { label: "Nous contacter", href: "/" },
+      { label: "Nous contacter", href: "/contact" },
+      { label: "FAQ", href: "#faq" },
+      { label: "Guide d'installation", href: "#faq" },
+      { label: "Avis clients", href: "#avis" },
     ],
   },
 ];

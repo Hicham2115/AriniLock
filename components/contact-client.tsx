@@ -5,6 +5,7 @@ import {
   ArrowRight,
   Clock,
   Mail,
+  MapPin,
   MessageCircle,
   Phone,
   Send,
@@ -19,12 +20,12 @@ import { useT } from "@/hooks/use-t";
 const CHANNEL_META = [
   {
     icon: MessageCircle,
-    href: "https://wa.me/212600000000",
+    href: "https://wa.me/212668898860",
     light: "bg-emerald-50 text-emerald-600",
   },
   {
     icon: Phone,
-    href: "tel:+212600000000",
+    href: "tel:+212668898860",
     light: "bg-primary/8 text-primary",
   },
   {
@@ -283,9 +284,21 @@ export function ContactClient() {
                 </div>
               </div>
 
+              {/* Address */}
+              <div className="flex items-start gap-3 rounded-2xl border border-border bg-white p-5">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/8 text-primary">
+                  <MapPin className="h-4 w-4" aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">{c.addressTitle}</p>
+                  <p className="mt-1 text-sm font-medium text-foreground">{c.address}</p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">{c.hours}</p>
+                </div>
+              </div>
+
               {/* WhatsApp CTA */}
               <a
-                href="https://wa.me/212600000000"
+                href="https://wa.me/212668898860"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 rounded-2xl bg-emerald-500 p-5 text-white transition-opacity hover:opacity-90"
