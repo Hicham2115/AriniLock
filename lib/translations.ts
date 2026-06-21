@@ -157,6 +157,7 @@ const fr = {
     channels: [
       { label: "WhatsApp",   value: "+212 6 68 89 88 60", sub: "Réponse en moins d'1 heure" },
       { label: "Téléphone",  value: "+212 6 68 89 88 60", sub: "Lun–Ven · 9h–18h" },
+      { label: "Téléphone 2", value: "+212 6 60 64 81 95", sub: "Lun–Ven · 9h–18h" },
       { label: "Email",      value: "support@arinilock.ma", sub: "Réponse sous 24h" },
     ],
     formPre: "Formulaire",
@@ -212,13 +213,15 @@ const fr = {
     features: {
       label: "03 — Fonctionnalités",
       right: "Sécurité nouvelle génération",
-      headline: ["Cinq", "façons", "d'entrer."] as [string, string, string],
+      headline: ["Sept", "façons", "d'entrer."] as [string, string, string],
       items: [
         { title: "Empreinte digitale",       description: "Jusqu'à 100 empreintes enregistrées. Déverrouillage en moins d'une seconde, même avec les mains légèrement humides." },
         { title: "Code PIN",                 description: "Code personnel de 4 à 8 chiffres, modifiable depuis l'app. Codes temporaires pour invités, femme de ménage ou livreur." },
         { title: "Application mobile",       description: "Verrouillez, déverrouillez et consultez l'historique complet de votre porte, où que vous soyez dans le monde." },
         { title: "Carte RFID",               description: "Badges NFC ultra-rapides pour un accès instantané. Compatible avec la plupart des cartes existantes. Fonctionne sans connexion internet." },
         { title: "Clé physique de secours",  description: "Une clé mécanique fournie avec chaque serrure — pour toute urgence : batterie épuisée, panne de téléphone ou coupure réseau." },
+        { title: "Face ID",                  description: "Reconnaissance faciale 3D pour un accès instantané et sécurisé. Fonctionne de jour comme de nuit grâce aux capteurs infrarouges." },
+        { title: "Pomme de main",            description: "Poignée intégrée ergonomique permettant d'ouvrir la porte d'un seul geste, même les mains occupées." },
       ],
     },
     howItWorks: {
@@ -533,6 +536,7 @@ What's in the box
     channels: [
       { label: "WhatsApp",  value: "+212 6 68 89 88 60", sub: "Response in under 1 hour" },
       { label: "Phone",     value: "+212 6 68 89 88 60", sub: "Mon–Fri · 9am–6pm" },
+      { label: "Phone 2",   value: "+212 6 60 64 81 95", sub: "Mon–Fri · 9am–6pm" },
       { label: "Email",     value: "support@arinilock.ma", sub: "Response within 24h" },
     ],
     formPre: "Form",
@@ -588,13 +592,15 @@ What's in the box
     features: {
       label: "03 — Features",
       right: "Next-generation security",
-      headline: ["Five", "ways", "to enter."],
+      headline: ["Seven", "ways", "to enter."],
       items: [
         { title: "Fingerprint",      description: "Up to 100 stored fingerprints. Unlocks in under a second, even with slightly damp hands." },
         { title: "PIN code",         description: "Personal 4–8 digit code, changeable from the app. Temporary codes for guests, cleaners or delivery staff." },
         { title: "Mobile app",       description: "Lock, unlock, and view your full door history from anywhere in the world." },
         { title: "RFID card",        description: "Ultra-fast NFC badges for instant access. Works with most existing cards. No internet required." },
         { title: "Physical key",     description: "A mechanical key shipped with every lock — for any emergency: dead battery, lost phone, or network outage." },
+        { title: "Face ID",          description: "3D facial recognition for instant, secure access. Works day and night thanks to infrared sensors." },
+        { title: "Door handle",      description: "Integrated ergonomic handle — open the door in one gesture, even with your hands full." },
       ],
     },
     howItWorks: {
@@ -909,6 +915,7 @@ const ar: typeof fr = {
     channels: [
       { label: "واتساب",  value: "+212 6 68 89 88 60", sub: "رد في أقل من ساعة" },
       { label: "الهاتف",  value: "+212 6 68 89 88 60", sub: "الاثنين–الجمعة · 9ص–6م" },
+      { label: "الهاتف 2", value: "+212 6 60 64 81 95", sub: "الاثنين–الجمعة · 9ص–6م" },
       { label: "البريد",  value: "support@arinilock.ma", sub: "رد خلال 24 ساعة" },
     ],
     formPre: "نموذج",
@@ -964,13 +971,15 @@ const ar: typeof fr = {
     features: {
       label: "03 — المميزات",
       right: "أمان الجيل القادم",
-      headline: ["خمس", "طرق", "للدخول."],
+      headline: ["سبع", "طرق", "للدخول."],
       items: [
         { title: "البصمة الرقمية",    description: "تخزين حتى 100 بصمة. فتح في أقل من ثانية حتى مع اليدين المبللتين قليلًا." },
         { title: "الرمز السري",       description: "رمز شخصي من 4 إلى 8 أرقام، قابل للتغيير من التطبيق. رموز مؤقتة للضيوف والعمالة المنزلية." },
         { title: "التطبيق المحمول",   description: "قفّل أو افتح الباب واطّلع على السجل الكامل من أي مكان في العالم." },
         { title: "بطاقة RFID",        description: "بطاقات NFC فائقة السرعة للوصول الفوري. متوافقة مع معظم البطاقات الموجودة. تعمل بدون إنترنت." },
         { title: "مفتاح احتياطي",     description: "مفتاح ميكانيكي مرفق مع كل قفل — لأي طارئ: بطارية فارغة أو هاتف معطل أو انقطاع الشبكة." },
+        { title: "Face ID",            description: "التعرف على الوجه ثلاثي الأبعاد للوصول الفوري والآمن. يعمل ليلًا ونهارًا بفضل أجهزة الاستشعار بالأشعة تحت الحمراء." },
+        { title: "مقبض الباب",        description: "مقبض مدمج مريح يتيح فتح الباب بحركة واحدة حتى وأنت مشغول اليدين." },
       ],
     },
     howItWorks: {

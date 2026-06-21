@@ -29,6 +29,11 @@ const CHANNEL_META = [
     light: "bg-primary/8 text-primary",
   },
   {
+    icon: Phone,
+    href: "tel:+212660648195",
+    light: "bg-primary/8 text-primary",
+  },
+  {
     icon: Mail,
     href: "mailto:support@arinilock.ma",
     light: "bg-violet-50 text-violet-600",

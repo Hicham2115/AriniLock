@@ -4,16 +4,18 @@ import { motion } from "framer-motion";
 import {
   ArrowUpRight,
   CreditCard,
+  DoorOpen,
   Fingerprint,
   Key,
   KeyRound,
+  ScanFace,
   Smartphone,
   type LucideIcon,
 } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { useT } from "@/hooks/use-t";
 
-const ICONS: LucideIcon[] = [Fingerprint, KeyRound, Smartphone, CreditCard, Key];
+const ICONS: LucideIcon[] = [Fingerprint, KeyRound, Smartphone, CreditCard, Key, ScanFace, DoorOpen];
 
 export function FeaturesGrid() {
   const t = useT();

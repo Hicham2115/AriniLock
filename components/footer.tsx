@@ -114,6 +114,19 @@ export function Footer() {
                 </a>
 
                 <a
+                  href="tel:+212660648195"
+                  className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-5 py-3.5 text-sm font-medium text-white backdrop-blur-sm transition-all hover:border-white/25 hover:bg-white/10"
+                >
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/10">
+                    <Phone
+                      className="h-3.5 w-3.5 text-white/80"
+                      aria-hidden="true"
+                    />
+                  </span>
+                  +212 6 60 64 81 95
+                </a>
+
+                <a
                   href="#faq"
                   className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-5 py-3.5 text-sm font-medium text-white backdrop-blur-sm transition-all hover:border-white/25 hover:bg-white/10"
                 >
