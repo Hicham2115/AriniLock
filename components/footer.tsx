@@ -11,13 +11,7 @@ import Link from "next/link";
 import { LogoMark } from "@/components/logo-mark";
 import { useT } from "@/hooks/use-t";
 
-const SOCIAL = [
-  { letter: "f", href: "#", label: "Facebook" },
-  { letter: "in", href: "#", label: "Instagram" },
-  { letter: "li", href: "#", label: "LinkedIn" },
-  { letter: "X", href: "#", label: "X / Twitter" },
-  { letter: "yt", href: "#", label: "YouTube" },
-];
+
 
 export function Footer() {
   const t = useT();
@@ -139,19 +133,6 @@ export function Footer() {
                   {s.helpLink}
                 </a>
 
-                {/* Social icons */}
-                <div className="mt-1 flex items-center gap-2">
-                  {SOCIAL.map(({ letter, href, label }) => (
-                    <a
-                      key={label}
-                      href={href}
-                      aria-label={label}
-                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-[11px] font-bold text-white/60 backdrop-blur-sm transition-all hover:border-white/30 hover:bg-white/12 hover:text-white"
-                    >
-                      {letter}
-                    </a>
-                  ))}
-                </div>
               </div>
             </div>
           </div>
