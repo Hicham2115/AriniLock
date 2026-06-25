@@ -41,6 +41,7 @@ import i60img9 from "./assets/1.png";
 import i60gemA from "./assets/2.png";
 import i60gemB from "./assets/Gemini_Generated_Image_8buncu8buncu8bun.png";
 import i60gemC from "./assets/5.png";
+import img9 from "./assets/9.png";
 import i60gemD from "./assets/3.png";
 import { CartDrawer } from "@/components/cart-drawer";
 import { Footer } from "@/components/footer";
@@ -633,7 +634,7 @@ export function I60Client() {
                 </Reveal>
                 <Reveal delay={0.15}>
                   <Img
-                    src={i60gemB}
+                    src={img9}
                     label="Écran LCD intérieur couleur"
                     className="aspect-2/3 w-full"
                   />
