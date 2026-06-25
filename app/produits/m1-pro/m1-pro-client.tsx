@@ -38,7 +38,7 @@ import { useEffect, useRef, useState } from "react";
 import img5 from "./assets/Gemini_Generated_Image_jd7j31jd7j31jd7j.png";
 import img6 from "./6.png";
 import img7 from "./7.png";
-import img8 from "./8.png";
+import img8 from "./assets/Gemini_Generated_Image_vhx2uavhx2uavhx2.png";
 import imgAsset1 from "./assets/Untitled design.png";
 import imgAsset2 from "./assets/Gemini_Generated_Image_yu0rvhyu0rvhyu0r.png";
 import imgAsset3 from "./assets/Gemini_Generated_Image_csl2xhcsl2xhcsl2.png";
@@ -51,7 +51,7 @@ import { OrderModal } from "@/components/order-modal";
 import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/utils";
 
-const PRICE = "2 990 dh";
+const PRICE = "2 590 dh";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
@@ -775,21 +775,21 @@ export function M1ProClient() {
                   <Img
                     src={img6}
                     label={'Écran HD 4,5" — interface visiophone'}
-                    className="aspect-square w-full"
+                    className="aspect-2/3 w-full"
                   />
                 </Reveal>
                 <Reveal delay={0.15}>
                   <Img
                     src={img7}
                     label="Panneau intérieur — bouton anti-lock"
-                    className="aspect-square w-full"
+                    className="aspect-2/3 w-full"
                   />
                 </Reveal>
-                <Reveal delay={0.2}>
+                <Reveal delay={0.2} >
                   <Img
                     src={img8}
                     label="Caméra grand angle — vision nocturne"
-                    className="aspect-square w-full"
+                    className="aspect-2/3 w-full"
                   />
                 </Reveal>
               </div>
