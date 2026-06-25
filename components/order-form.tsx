@@ -1,9 +1,9 @@
 "use client";
 
 import { useForm } from "@tanstack/react-form";
-import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Phone, User, CheckCircle2 } from "lucide-react";
+import { CheckCircle2, MapPin, Phone, User } from "lucide-react";
 import { z } from "zod";
+import { useT } from "@/hooks/use-t";
 import { cn } from "@/lib/utils";
 
 const VILLES = [
@@ -13,28 +13,33 @@ const VILLES = [
   "Khouribga", "Mohammedia", "Laâyoune", "Autre",
 ];
 
-const phoneSchema = z
-  .string()
-  .min(1, "Numéro obligatoire")
-  .refine(
-    (v) => /^(0|\+212)[5-7]\d{8}$/.test(v.replace(/\s/g, "")),
-    "Numéro marocain invalide (ex: 06 XX XX XX XX)",
-  );
+function buildSchema(errors: {
+  prenomRequired: string;
+  telephoneRequired: string;
+  telephoneInvalid: string;
+  adresseRequired: string;
+  villeRequired: string;
+}) {
+  return z.object({
+    prenom:    z.string().min(1, errors.prenomRequired),
+    telephone: z
+      .string()
+      .min(1, errors.telephoneRequired)
+      .refine(
+        (v) => /^(0|\+212)[5-7]\d{8}$/.test(v.replace(/\s/g, "")),
+        errors.telephoneInvalid,
+      ),
+    adresse:   z.string().min(3, errors.adresseRequired),
+    ville:     z.string().min(1, errors.villeRequired),
+  });
+}
 
-const schema = z.object({
-  prenom:    z.string().min(1, "Prénom obligatoire"),
-  telephone: phoneSchema,
-  adresse:   z.string().min(3, "Adresse obligatoire"),
-  ville:     z.string().min(1, "Veuillez choisir une ville"),
-});
-
-type FormValues = z.infer<typeof schema>;
+type FormValues = { prenom: string; telephone: string; adresse: string; ville: string };
 
 interface Props {
   productName: string;
   price: string;
   whatsappNumber?: string;
-  compact?: boolean;
 }
 
 function FieldError({ errors }: { errors: (string | undefined)[] }) {
@@ -76,16 +81,20 @@ function InputField({
   );
 }
 
-export function OrderForm({ productName, price, whatsappNumber = "212668898860", compact = false }: Props) {
+export function OrderForm({ productName, price, whatsappNumber = "212668898860" }: Props) {
+  const t = useT();
+  const tf = t.orderForm;
+  const schema = buildSchema(tf.errors);
+
   const form = useForm({
     defaultValues: { prenom: "", telephone: "", adresse: "", ville: "" },
     onSubmit: async ({ value }) => {
       const msg = encodeURIComponent(
         `🛒 *Nouvelle commande — ${productName}*\n\n` +
-        `👤 Prénom : ${value.prenom}\n` +
-        `📞 Téléphone : ${value.telephone}\n` +
-        `📍 Adresse : ${value.adresse}\n` +
-        `🏙️ Ville : ${value.ville}\n\n` +
+        `👤 ${tf.fields.prenom} : ${value.prenom}\n` +
+        `📞 ${tf.fields.telephone} : ${value.telephone}\n` +
+        `📍 ${tf.fields.adresse} : ${value.adresse}\n` +
+        `🏙️ ${tf.fields.ville} : ${value.ville}\n\n` +
         `💰 Prix : ${price}\n\n` +
         `_Commande passée via arinilock.ma_`,
       );
@@ -97,46 +106,36 @@ export function OrderForm({ productName, price, whatsappNumber = "212668898860",
 
   function validate<K extends keyof FormValues>(key: K) {
     return ({ value }: { value: FormValues[K] }) => {
-      const result = schema.shape[key].safeParse(value);
+      const result = (schema.shape as Record<string, z.ZodTypeAny>)[key].safeParse(value);
       return result.success ? undefined : result.error.issues[0].message;
     };
   }
 
   if (submitted) {
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="flex flex-col items-center gap-4 py-12 text-center"
-      >
+      <div className="flex flex-col items-center gap-4 py-12 text-center">
         <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
           <CheckCircle2 className="h-8 w-8 text-green-600" />
         </div>
-        <p className="text-lg font-bold text-foreground">Commande envoyée !</p>
-        <p className="text-sm text-muted-foreground">
-          Notre équipe vous contactera sous 24h pour confirmer votre commande.
-        </p>
-      </motion.div>
+        <p className="text-lg font-bold text-foreground">{tf.successTitle}</p>
+        <p className="text-sm text-muted-foreground">{tf.successDesc}</p>
+      </div>
     );
   }
 
   return (
     <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        form.handleSubmit();
-      }}
+      onSubmit={(e) => { e.preventDefault(); form.handleSubmit(); }}
       noValidate
       className="flex flex-col gap-4"
     >
-      {/* Prénom */}
       <form.Field name="prenom" validators={{ onBlur: validate("prenom") }}>
         {(field) => (
           <div>
-            <InputField label="Prénom" icon={User} error={!!field.state.meta.errors.length}>
+            <InputField label={tf.fields.prenom} icon={User} error={!!field.state.meta.errors.length}>
               <input
                 type="text"
-                placeholder="Votre prénom"
+                placeholder={tf.placeholders.prenom}
                 value={field.state.value}
                 onChange={(e) => field.handleChange(e.target.value)}
                 onBlur={field.handleBlur}
@@ -148,14 +147,13 @@ export function OrderForm({ productName, price, whatsappNumber = "212668898860",
         )}
       </form.Field>
 
-      {/* Téléphone */}
       <form.Field name="telephone" validators={{ onBlur: validate("telephone") }}>
         {(field) => (
           <div>
-            <InputField label="Téléphone" icon={Phone} error={!!field.state.meta.errors.length}>
+            <InputField label={tf.fields.telephone} icon={Phone} error={!!field.state.meta.errors.length}>
               <input
                 type="tel"
-                placeholder="06 XX XX XX XX"
+                placeholder={tf.placeholders.telephone}
                 value={field.state.value}
                 onChange={(e) => field.handleChange(e.target.value)}
                 onBlur={field.handleBlur}
@@ -167,14 +165,13 @@ export function OrderForm({ productName, price, whatsappNumber = "212668898860",
         )}
       </form.Field>
 
-      {/* Adresse */}
       <form.Field name="adresse" validators={{ onBlur: validate("adresse") }}>
         {(field) => (
           <div>
-            <InputField label="Adresse" icon={MapPin} error={!!field.state.meta.errors.length}>
+            <InputField label={tf.fields.adresse} icon={MapPin} error={!!field.state.meta.errors.length}>
               <input
                 type="text"
-                placeholder="Rue, numéro, quartier…"
+                placeholder={tf.placeholders.adresse}
                 value={field.state.value}
                 onChange={(e) => field.handleChange(e.target.value)}
                 onBlur={field.handleBlur}
@@ -186,18 +183,17 @@ export function OrderForm({ productName, price, whatsappNumber = "212668898860",
         )}
       </form.Field>
 
-      {/* Ville */}
       <form.Field name="ville" validators={{ onBlur: validate("ville") }}>
         {(field) => (
           <div>
-            <InputField label="Ville" icon={MapPin} error={!!field.state.meta.errors.length}>
+            <InputField label={tf.fields.ville} icon={MapPin} error={!!field.state.meta.errors.length}>
               <select
                 value={field.state.value}
                 onChange={(e) => field.handleChange(e.target.value)}
                 onBlur={field.handleBlur}
                 className="h-12 w-full bg-transparent px-4 text-sm text-foreground focus:outline-none"
               >
-                <option value="" disabled>Choisissez votre ville</option>
+                <option value="" disabled>{tf.placeholders.ville}</option>
                 {VILLES.map((v) => (
                   <option key={v} value={v}>{v}</option>
                 ))}
@@ -215,14 +211,12 @@ export function OrderForm({ productName, price, whatsappNumber = "212668898860",
             disabled={isSubmitting}
             className="mt-2 flex h-14 w-full items-center justify-center rounded-2xl bg-primary text-sm font-bold text-white shadow-[0_4px_20px_rgba(22,40,71,0.28)] transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-60"
           >
-            {isSubmitting ? "Envoi en cours…" : `Terminez votre achat — ${price}`}
+            {isSubmitting ? tf.submitting : tf.submitLabel(price)}
           </button>
         )}
       </form.Subscribe>
 
-      <p className="text-center text-[11px] text-muted-foreground">
-        Paiement à la livraison · Livraison partout au Maroc · Garantie 2 ans
-      </p>
+      <p className="text-center text-[11px] text-muted-foreground">{tf.footer}</p>
     </form>
   );
 }

@@ -15,7 +15,6 @@ import {
   BadgeCheck,
   Bell,
   Camera,
-  Clock,
   CreditCard,
   Fingerprint,
   Hand,
@@ -32,17 +31,17 @@ import {
   Zap,
 } from "lucide-react";
 import Image, { type StaticImageData } from "next/image";
-import Link from "next/link";
+
 import { useEffect, useRef, useState } from "react";
 
 import i60img5 from "./assets/Gemini_Generated_Image_8buncu8buncu8bun.png";
-import i60img6 from "./assets/Gemini_Generated_Image_g3gfiog3gfiog3gf.png";
+import i60img6 from "./assets/4.png";
 import i60img8 from "./assets/8.png";
-import i60img9 from "./assets/9.png";
-import i60gemA from "./assets/Gemini_Generated_Image_5f7hgy5f7hgy5f7h.png";
-import i60gemB from "./assets/Gemini_Generated_Image_b1pq0yb1pq0yb1pq.png";
+import i60img9 from "./assets/1.png";
+import i60gemA from "./assets/2.png";
+import i60gemB from "./assets/Gemini_Generated_Image_8buncu8buncu8bun.png";
 import i60gemC from "./assets/5.png";
-import i60gemD from "./assets/Gemini_Generated_Image_9dgx3p9dgx3p9dgx.png";
+import i60gemD from "./assets/3.png";
 import { CartDrawer } from "@/components/cart-drawer";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -50,150 +49,33 @@ import { OrderForm } from "@/components/order-form";
 import { OrderModal } from "@/components/order-modal";
 import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/utils";
+import { useT } from "@/hooks/use-t";
 
 const PRICE = "3 490 dh";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
-/* ─── DATA ─── */
-
-const UNLOCK_METHODS = [
-  {
-    icon: ScanFace,
-    label: "Reconnaissance faciale 3D",
-    desc: "Anti-usurpation · ultra-rapide",
-  },
-  { icon: Hand, label: "Paume de la main", desc: "Sans contact · hygiénique" },
-  {
-    icon: Fingerprint,
-    label: "Empreinte digitale",
-    desc: "< 0,5 seconde · haute précision",
-  },
-  {
-    icon: KeyRound,
-    label: "Code PIN sécurisé",
-    desc: "Anti-espionnage · codes temporaires",
-  },
-  {
-    icon: CreditCard,
-    label: "Carte RFID / NFC",
-    desc: "Accès instantané · incluses",
-  },
-  {
-    icon: Smartphone,
-    label: "Application Tuya Smart",
-    desc: "WiFi · iOS & Android",
-  },
-  { icon: Key, label: "Clé mécanique", desc: "2 clés · noyau classe C" },
-];
-
-const FEATURES = [
-  {
-    tag: "Biométrie",
-    title: "Visage.\nPaume.\nEmpreinte.",
-    body: "L'i60 intègre trois modes biométriques avancés : reconnaissance faciale 3D avec technologie anti-usurpation, lecture de paume sans contact, et empreinte digitale haute précision en moins de 0,5 seconde. Le tout sans jamais toucher de clé.",
-    detail: "Reconnaissance faciale 3D · anti-usurpation · < 0,5s",
-    img: i60gemA,
-    imgLabel: "Capteur facial 3D + lecteur de paume",
-    icon: ScanFace,
-    reverse: false,
-  },
-  {
-    tag: "Visiophone",
-    title: "Voyez vos\nvisiteurs.\nSans ouvrir.",
-    body: "La caméra HD grand angle avec vision nocturne infrarouge et l'écran LCD couleur intérieur vous permettent de voir et de parler à vos visiteurs en temps réel. Notifications instantanées sur votre smartphone et historique des accès dans l'app Tuya Smart.",
-    detail: "Caméra HD · vision nocturne · sonnette vidéo connectée",
-    img: i60gemB,
-    imgLabel: "Écran LCD intérieur + caméra grand angle",
-    icon: Camera,
-    reverse: true,
-  },
-  {
-    tag: "Sécurité",
-    title: "Verrouillage\nautomatique.\nAlertes immédiates.",
-    body: "La serrure se verrouille automatiquement après chaque fermeture. Alarme anti-effraction, blocage après codes erronés, notification batterie faible et détection des tentatives d'ouverture forcée — vous êtes alerté instantanément sur votre téléphone.",
-    detail: "Cylindre classe C · alarme intrusion · verrouillage auto",
-    img: i60gemC,
-    imgLabel: "Panneau extérieur — design Push-Pull",
-    icon: AlertTriangle,
-    reverse: false,
-  },
-];
-
-const STEPS = [
-  {
-    num: "01",
-    title: "Retirez l'ancienne serrure",
-    description:
-      "Dévissez les quatre vis de fixation de votre porte existante — aucun outil spécial requis.",
-  },
-  {
-    num: "02",
-    title: "Posez le panneau extérieur",
-    description:
-      "Installez le panneau Push-Pull avec caméra et clavier tactile. La mortaise multipoints 6068 est fournie.",
-  },
-  {
-    num: "03",
-    title: "Fixez le panneau intérieur",
-    description:
-      "Glissez l'écran LCD intérieur et connectez les deux panneaux via le câble fourni dans le kit.",
-  },
-  {
-    num: "04",
-    title: "Configurez via Tuya Smart",
-    description:
-      "Connectez via WiFi, enregistrez vos données biométriques et invitez votre famille en quelques secondes.",
-  },
-];
-
-const SPECS = [
-  { label: "Modèle", value: "AriniLock i60" },
-  {
-    label: "Matériau",
-    value: "Alliage d'aluminium haute densité · panneau acrylique anti-rayures",
-  },
-  { label: "Design", value: "Push-Pull moderne · réversible gauche/droite" },
-  {
-    label: "Méthodes d'accès",
-    value: "Face 3D · Paume · Empreinte · PIN · RFID · App · Clé",
-  },
-  { label: "Écran intérieur", value: "LCD couleur 3,5 à 4 pouces" },
-  { label: "Caméra", value: "Grand angle · vision nocturne infrarouge" },
-  { label: "Batterie", value: "Lithium rechargeable 4 200–5 000 mAh" },
-  { label: "Recharge d'urgence", value: "Port USB-C" },
-  { label: "Connectivité", value: "WiFi via Tuya Smart (iOS & Android)" },
-  { label: "Cylindre", value: "Classe C haute sécurité" },
-  { label: "Épaisseur porte", value: "40 à 120 mm" },
-  { label: "Mortaise", value: "Multipoints 6068 incluse" },
-  { label: "Capacité", value: "100 empreintes · plusieurs profils faciaux" },
-  { label: "Garantie", value: "2 ans constructeur" },
-  {
-    label: "Livraison",
-    value: "Express · partout au Maroc · installation incluse",
-  },
-];
-
-const REVIEWS = [
-  {
-    name: "Hamid B.",
-    city: "Rabat",
-    stars: 5,
-    body: "Le design Push-Pull est vraiment premium. La reconnaissance faciale fonctionne même la nuit. Parfait pour ma villa.",
-  },
-  {
-    name: "Nadia T.",
-    city: "Casablanca",
-    stars: 5,
-    body: "La caméra HD et l'écran intérieur changent tout — je vois qui sonne avant d'ouvrir. Très satisfaite.",
-  },
-  {
-    name: "Karim O.",
-    city: "Fès",
-    stars: 5,
-    body: "La reconnaissance palmaire sans contact est bluffante. Installation rapide par l'équipe AriniLock. Je recommande !",
-  },
-];
+/* ─── icon + image arrays (non-translatable) ─── */
+const UNLOCK_ICONS = [
+  ScanFace,
+  Hand,
+  Fingerprint,
+  KeyRound,
+  CreditCard,
+  Smartphone,
+  Key,
+] as const;
+const FEATURE_META = [
+  { img: i60img9, icon: ScanFace, reverse: false },
+  { img: i60img8, icon: Camera, reverse: true },
+  { img: i60img6, icon: AlertTriangle, reverse: false },
+] as const;
+const STATS_META = [
+  { to: 7, decimals: 0, decimalSep: "." },
+  { to: 0.5, decimals: 1, decimalSep: "," },
+  { to: 100, decimals: 0, decimalSep: "." },
+  { to: 2, decimals: 0, decimalSep: "." },
+] as const;
 
 /* ─── HELPERS ─── */
 
@@ -201,23 +83,20 @@ function Img({
   label,
   src,
   className = "",
+  objectFit = "object-cover",
 }: {
   label: string;
   src: StaticImageData;
   className?: string;
+  objectFit?: string;
 }) {
   return (
-    <div
-      className={cn(
-        "relative overflow-hidden rounded-2xl bg-gray-100",
-        className,
-      )}
-    >
+    <div className={cn("relative overflow-hidden rounded-2xl", className)}>
       <Image
         src={src}
         alt={label}
         fill
-        className="object-cover"
+        className={objectFit}
         sizes="(max-width: 768px) 100vw, 50vw"
       />
     </div>
@@ -280,9 +159,13 @@ function CountUp({
 function StickyBar({
   visible,
   onOrder,
+  reviewsLabel,
+  buttonLabel,
 }: {
   visible: boolean;
   onOrder: () => void;
+  reviewsLabel: string;
+  buttonLabel: string;
 }) {
   return (
     <AnimatePresence>
@@ -311,7 +194,7 @@ function StickyBar({
               className="inline-flex h-11 shrink-0 items-center gap-2 rounded-xl bg-primary px-5 text-xs font-bold text-white"
             >
               <MessageCircle className="h-3.5 w-3.5" aria-hidden="true" />
-              Commander
+              {buttonLabel}
             </button>
           </div>
 
@@ -325,14 +208,16 @@ function StickyBar({
             </span>
             <div className="h-4 w-px bg-gray-200" />
             <Stars />
-            <span className="text-xs text-muted-foreground">256 avis</span>
+            <span className="text-xs text-muted-foreground">
+              {reviewsLabel}
+            </span>
             <div className="h-4 w-px bg-gray-200" />
             <button
               onClick={onOrder}
               className="inline-flex h-9 items-center gap-2 rounded-full bg-primary px-5 text-xs font-bold text-white transition-opacity hover:opacity-90"
             >
               <MessageCircle className="h-3.5 w-3.5" aria-hidden="true" />
-              Commander
+              {buttonLabel}
               <ArrowRight className="h-3 w-3" aria-hidden="true" />
             </button>
           </div>
@@ -345,6 +230,19 @@ function StickyBar({
 /* ─── PAGE ─── */
 
 export function I60Client() {
+  const t = useT();
+  const q = t.i60;
+
+  const UNLOCK_METHODS = q.unlockMethods.map((m, i) => ({
+    ...m,
+    icon: UNLOCK_ICONS[i],
+  }));
+  const FEATURES = q.features.map((f, i) => ({ ...f, ...FEATURE_META[i] }));
+  const STATS = q.stats.map((s, i) => ({ ...s, ...STATS_META[i] }));
+  const STEPS = q.steps;
+  const SPECS = q.specs;
+  const REVIEWS = q.reviews.map((r) => ({ ...r, stars: 5 as const }));
+
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -370,7 +268,12 @@ export function I60Client() {
       />
       <Header />
       <CartDrawer />
-      <StickyBar visible={barVisible} onOrder={() => setOrderOpen(true)} />
+      <StickyBar
+        visible={barVisible}
+        onOrder={() => setOrderOpen(true)}
+        reviewsLabel={q.stickyReviews}
+        buttonLabel={q.stickyButton}
+      />
 
       <main className="bg-white">
         {/* ══ 01 HERO ══ */}
@@ -391,7 +294,7 @@ export function I60Client() {
                   className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.25em] text-primary"
                 >
                   <Zap className="h-2.5 w-2.5" aria-hidden="true" />
-                  Reconnaissance Faciale 3D · Push-Pull · WiFi
+                  {q.heroBadge}
                 </motion.div>
 
                 <motion.h1
@@ -412,10 +315,7 @@ export function I60Client() {
                   transition={{ duration: 0.75, ease, delay: 0.2 }}
                   className="mt-7 max-w-md text-base leading-relaxed text-muted-foreground"
                 >
-                  Serrure connectée haut de gamme avec reconnaissance faciale
-                  3D, lecteur de paume, caméra HD et design Push-Pull. 7 modes
-                  d&apos;accès, connectée via Tuya Smart — idéale pour villas,
-                  appartements et bureaux premium.
+                  {q.heroDesc}
                 </motion.p>
 
                 <motion.div
@@ -429,7 +329,7 @@ export function I60Client() {
                     4,8
                   </span>
                   <span className="text-xs text-muted-foreground">
-                    · 256 avis vérifiés
+                    · {q.heroRating}
                   </span>
                 </motion.div>
 
@@ -444,7 +344,7 @@ export function I60Client() {
                     className="group inline-flex h-13 items-center gap-2.5 rounded-full bg-primary px-7 text-sm font-semibold text-white shadow-[0_6px_28px_rgba(22,40,71,0.28)] transition-all hover:shadow-[0_10px_36px_rgba(22,40,71,0.42)]"
                   >
                     <MessageCircle className="h-4 w-4" aria-hidden="true" />
-                    Commander maintenant
+                    {q.heroCta}
                     <ArrowRight
                       className="h-4 w-4 transition-transform group-hover:translate-x-1"
                       aria-hidden="true"
@@ -454,7 +354,7 @@ export function I60Client() {
                     href="#comment-ca-marche"
                     className="inline-flex h-13 items-center gap-2 rounded-full border border-gray-200 bg-white px-7 text-sm font-medium text-foreground transition-all hover:border-primary/30 hover:bg-primary/4"
                   >
-                    Comment ça marche ?
+                    {q.heroCtaSecondary}
                   </a>
                 </motion.div>
 
@@ -464,20 +364,16 @@ export function I60Client() {
                   transition={{ duration: 0.6, delay: 0.56 }}
                   className="mt-8 flex flex-wrap gap-3"
                 >
-                  {[
-                    { icon: Truck, text: "Livraison 48h gratuite" },
-                    { icon: BadgeCheck, text: "Garantie 2 ans" },
-                    { icon: Shield, text: "Paiement à la livraison" },
-                  ].map(({ icon: Icon, text }) => (
+                  {([Truck, BadgeCheck, Shield] as const).map((Icon, idx) => (
                     <span
-                      key={text}
+                      key={idx}
                       className="flex items-center gap-1.5 rounded-full border border-gray-100 bg-gray-50 px-3.5 py-1.5 text-[11px] font-medium text-muted-foreground"
                     >
                       <Icon
                         className="h-3.5 w-3.5 text-primary/60"
                         aria-hidden="true"
                       />
-                      {text}
+                      {q.heroTrust[idx]}
                     </span>
                   ))}
                 </motion.div>
@@ -515,18 +411,12 @@ export function I60Client() {
                 key={i}
                 className="flex items-center gap-6 px-8 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/80"
               >
-                <span>Face 3D · Paume · Empreinte</span>
-                <span className="text-white/30">✦</span>
-                <span>7 modes d&apos;accès</span>
-                <span className="text-white/30">✦</span>
-                <span>Caméra HD nocturne</span>
-                <span className="text-white/30">✦</span>
-                <span>Push-Pull premium</span>
-                <span className="text-white/30">✦</span>
-                <span>Cylindre classe C</span>
-                <span className="text-white/30">✦</span>
-                <span>Garantie 2 ans</span>
-                <span className="text-white/30">✦</span>
+                {q.ticker.map((item, j) => (
+                  <span key={j} className="flex items-center gap-6">
+                    <span>{item}</span>
+                    <span className="text-white/30">✦</span>
+                  </span>
+                ))}
               </span>
             ))}
           </motion.div>
@@ -537,15 +427,13 @@ export function I60Client() {
           <div className="mx-auto max-w-7xl">
             <Reveal>
               <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60">
-                02 — Méthodes d&apos;accès
+                {q.unlockSection}
               </p>
               <h2
                 className="font-display2 max-w-lg leading-[0.9] text-foreground"
                 style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.5rem)" }}
               >
-                Sept façons
-                <br />
-                <em className="italic text-primary/70">d&apos;entrer.</em>
+                {q.unlockTitle}
               </h2>
             </Reveal>
 
@@ -574,59 +462,55 @@ export function I60Client() {
           </div>
         </section>
 
-        {/* ══ 03 DEEP-DIVE FEATURES ══ */}
-        {FEATURES.map((f, fi) => (
+        {/* ══ 03 FEATURES ══ */}
+        {FEATURES.filter((_, fi) => fi !== 1).map((f, fi) => (
           <section
             key={f.tag}
-            className={cn(
-              "overflow-hidden border-b border-gray-100 px-6 py-24 lg:px-10 lg:py-32",
-              fi % 2 === 1 ? "bg-gray-50/60" : "bg-white",
-            )}
+            className="border-b border-gray-100 bg-white px-6 py-20 lg:px-10 lg:py-28"
           >
             <div className="mx-auto max-w-7xl">
-              <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-                <Reveal
-                  delay={0.05}
-                  className={cn(f.reverse ? "lg:order-2" : "lg:order-1")}
+              <Reveal delay={0.05}>
+                <div
+                  className={cn(
+                    "flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16",
+                    fi % 2 === 1 && "lg:flex-row-reverse",
+                  )}
                 >
-                  <Img
-                    src={f.img}
-                    label={f.imgLabel}
-                    className="aspect-4/3 w-full lg:aspect-square"
-                  />
-                </Reveal>
-                <div className={cn(f.reverse ? "lg:order-1" : "lg:order-2")}>
-                  <Reveal>
-                    <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60">
-                      {String(fi + 3).padStart(2, "0")} — {f.tag}
-                    </p>
-                    <h2
-                      className="font-display2 leading-[0.9] text-foreground"
-                      style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.5rem)" }}
-                    >
-                      {f.title.split("\n").map((line, i, arr) => (
-                        <span key={i}>
-                          {i === arr.length - 1 ? (
-                            <em className="italic text-primary/80">{line}</em>
-                          ) : (
-                            <>
-                              {line}
-                              <br />
-                            </>
-                          )}
-                        </span>
-                      ))}
-                    </h2>
-                    <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground lg:text-base">
+                  {/* Image */}
+                  <div className="w-full lg:w-[55%]">
+                    <Img
+                      src={f.img}
+                      label={f.tag}
+                      className="aspect-3/4 w-full"
+                      objectFit="object-contain"
+                    />
+                  </div>
+                  {/* Text */}
+                  <div className="w-full lg:w-1/2">
+                    <div className="mb-4 flex items-center gap-2">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white shadow-sm">
+                        <f.icon
+                          className="h-4 w-4 text-primary/60"
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-primary/60">
+                        {f.tag}
+                      </p>
+                    </div>
+                    <h3 className="font-display2 text-3xl leading-tight text-foreground lg:text-4xl">
+                      {f.title.split("\n").join(" ")}
+                    </h3>
+                    <p className="mt-4 text-base leading-relaxed text-muted-foreground">
                       {f.body}
                     </p>
-                    <div className="mt-7 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-semibold text-primary">
+                    <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-semibold text-primary">
                       <BadgeCheck className="h-3.5 w-3.5" aria-hidden="true" />
                       {f.detail}
                     </div>
-                  </Reveal>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </section>
         ))}
@@ -635,22 +519,11 @@ export function I60Client() {
         <section className="border-b border-gray-100 bg-primary px-6 py-20 lg:px-10">
           <div className="mx-auto max-w-7xl">
             <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-white/10 lg:grid-cols-4">
-              {[
-                { to: 7, decimals: 0, suffix: "", l: "Modes d'accès" },
-                {
-                  to: 0.5,
-                  decimals: 1,
-                  decimalSep: ",",
-                  suffix: "s",
-                  l: "Déverrouillage",
-                },
-                { to: 100, decimals: 0, suffix: "", l: "Empreintes max" },
-                { to: 2, decimals: 0, suffix: " ans", l: "Garantie" },
-              ].map(({ to, decimals, decimalSep, suffix, l }, i) => (
+              {STATS.map(({ to, decimals, decimalSep, suffix, l }, i) => (
                 <Reveal key={l} delay={i * 0.07}>
                   <div className="flex flex-col items-center gap-2 bg-primary px-6 py-12 text-center">
                     <span
-                      className="font-display2 italic leading-none text-white"
+                      className="font-display2 leading-none text-white"
                       style={{ fontSize: "clamp(2.2rem, 5vw, 3.5rem)" }}
                     >
                       <CountUp
@@ -680,21 +553,16 @@ export function I60Client() {
               <div className="lg:sticky lg:top-28 lg:self-start">
                 <Reveal>
                   <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60">
-                    06 — Installation
+                    {q.installSection}
                   </p>
                   <h2
                     className="font-display2 leading-[0.9] text-foreground"
                     style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.5rem)" }}
                   >
-                    En 15
-                    <br />
-                    minutes,
-                    <br />
-                    <em className="italic text-primary/70">c&apos;est fait.</em>
+                    {q.installTitle}
                   </h2>
                   <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-                    Sans perçage, sans technicien, sans stress. Juste votre
-                    téléphone et le guide inclus.
+                    {q.installDesc}
                   </p>
                 </Reveal>
                 <Reveal delay={0.15}>
@@ -737,24 +605,22 @@ export function I60Client() {
           <div className="mx-auto max-w-7xl">
             <Reveal>
               <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60">
-                07 — Galerie
+                {q.gallerySection}
               </p>
               <h2
                 className="font-display2 leading-[0.9] text-foreground"
                 style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.5rem)" }}
               >
-                Simple
-                <br />
-                <em className="italic text-primary/70">et élégant.</em>
+                {q.galleryTitle}
               </h2>
             </Reveal>
 
             <div className="mt-14 flex flex-col gap-3">
               <Reveal delay={0.05}>
                 <Img
-                  src={i60img6}
+                  src={i60gemA}
                   label="I 60 — face avant Push-Pull"
-                  className="aspect-4/3 w-full lg:aspect-16/7"
+                  className="aspect-4/3 w-full lg:aspect-4/3"
                 />
               </Reveal>
               <div className="grid grid-cols-3 gap-3">
@@ -767,7 +633,7 @@ export function I60Client() {
                 </Reveal>
                 <Reveal delay={0.15}>
                   <Img
-                    src={i60img9}
+                    src={i60gemB}
                     label="Écran LCD intérieur couleur"
                     className="aspect-2/3 w-full"
                   />
@@ -791,17 +657,13 @@ export function I60Client() {
               <div className="lg:sticky lg:top-28 lg:self-start">
                 <Reveal>
                   <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60">
-                    08 — Spécifications
+                    {q.specsSection}
                   </p>
                   <h2
                     className="font-display2 leading-[0.9] text-foreground"
                     style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.5rem)" }}
                   >
-                    Tout ce
-                    <br />
-                    qu&apos;il faut
-                    <br />
-                    <em className="italic text-primary/70">savoir.</em>
+                    {q.specsTitle}
                   </h2>
                 </Reveal>
               </div>
@@ -828,21 +690,19 @@ export function I60Client() {
           <div className="mx-auto max-w-7xl">
             <Reveal>
               <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60">
-                09 — Avis clients
+                {q.reviewsSection}
               </p>
               <div className="flex items-end gap-5">
                 <h2
                   className="font-display2 leading-[0.9] text-foreground"
                   style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.5rem)" }}
                 >
-                  256 clients
-                  <br />
-                  <em className="italic text-primary/70">satisfaits.</em>
+                  {q.reviewsTitle}
                 </h2>
                 <div className="mb-2 flex flex-col gap-1">
                   <Stars />
                   <span className="text-xs text-muted-foreground">
-                    Note moyenne 4,8 / 5
+                    {q.reviewsRating}
                   </span>
                 </div>
               </div>
@@ -887,23 +747,16 @@ export function I60Client() {
             <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
               <Reveal>
                 <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60">
-                  09 — Commander
+                  {q.orderSection}
                 </p>
                 <h2 className="font-display text-4xl font-bold leading-[1.08] tracking-tight text-foreground lg:text-5xl">
-                  Prêt à sécuriser votre porte ?
+                  {q.orderTitle}
                 </h2>
                 <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-                  Remplissez le formulaire et notre équipe vous contacte sous
-                  24h pour confirmer votre commande. Paiement à la livraison,
-                  partout au Maroc.
+                  {q.orderDesc}
                 </p>
                 <ul className="mt-8 flex flex-col gap-3">
-                  {[
-                    "Livraison gratuite partout au Maroc",
-                    "Installation incluse (Casablanca & Rabat)",
-                    "Garantie 2 ans — SAV réactif",
-                    "Paiement à la livraison",
-                  ].map((item) => (
+                  {q.orderBullets.map((item) => (
                     <li
                       key={item}
                       className="flex items-center gap-3 text-sm font-medium text-foreground"
@@ -931,62 +784,12 @@ export function I60Client() {
               <Reveal delay={0.1}>
                 <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
                   <p className="mb-6 text-center text-sm font-semibold text-foreground">
-                    Pour une commande rapide, veuillez remplir ce formulaire et
-                    nous vous contacterons plus tard !
+                    {q.orderFormTitle}
                   </p>
                   <OrderForm productName="AriniLock I 60" price={PRICE} />
                 </div>
               </Reveal>
             </div>
-          </div>
-        </section>
-
-        {/* ══ FINAL CTA ══ */}
-        <section className="relative overflow-hidden bg-primary px-6 py-32 lg:px-10 lg:py-40">
-          <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-white/4 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-white/4 blur-3xl" />
-          <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/20 to-transparent" />
-
-          <div className="relative mx-auto max-w-4xl text-center">
-            <Reveal>
-              <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.25em] text-white/70">
-                <Clock className="h-3 w-3" aria-hidden="true" />
-                Livraison gratuite · Installation incluse · Paiement à la
-                livraison
-              </div>
-              <h2
-                className="font-display2 leading-[0.88] text-white"
-                style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
-              >
-                Simplifiez
-                <br />
-                <em className="italic opacity-75">votre quotidien.</em>
-              </h2>
-              <p className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-white/55">
-                Commandez votre AriniLock I 60 sur WhatsApp et recevez-le sous
-                48h partout au Maroc — avec installation professionnelle
-                offerte.
-              </p>
-              <div className="mt-11 flex flex-wrap items-center justify-center gap-4">
-                <button
-                  onClick={() => setOrderOpen(true)}
-                  className="group inline-flex h-14 items-center gap-3 rounded-full bg-white px-9 text-sm font-bold text-primary shadow-[0_8px_40px_rgba(0,0,0,0.2)] transition-all hover:shadow-[0_14px_50px_rgba(0,0,0,0.3)]"
-                >
-                  <MessageCircle className="h-4 w-4" aria-hidden="true" />
-                  Commander maintenant
-                  <ArrowRight
-                    className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                    aria-hidden="true"
-                  />
-                </button>
-                <Link
-                  href="/contact"
-                  className="inline-flex h-14 items-center gap-2 rounded-full border border-white/20 bg-white/8 px-8 text-sm font-medium text-white backdrop-blur-sm transition-all hover:border-white/35 hover:bg-white/14"
-                >
-                  Nous contacter
-                </Link>
-              </div>
-            </Reveal>
           </div>
         </section>
       </main>
