@@ -213,7 +213,7 @@ const fr = {
       items: [
         { value: "150", unit: "", label: "Empreintes", sub: "enregistrées max" },
         { value: "7",   unit: "", label: "Méthodes",   sub: "d'accès" },
-        { value: "18",  unit: "", label: "Mois",        sub: "d'autonomie" },
+        { value: "12–18", unit: " mois", label: "Autonomie", sub: "de batterie" },
         { value: "2",   unit: "ans", label: "Garantie", sub: "constructeur" },
       ],
       details: [
@@ -796,7 +796,7 @@ What's in the box
       items: [
         { value: "150", unit: "", label: "Fingerprints", sub: "max stored" },
         { value: "7",   unit: "", label: "Methods",      sub: "of access" },
-        { value: "18",  unit: "", label: "Months",       sub: "battery life" },
+        { value: "12–18", unit: " mo", label: "Battery", sub: "life" },
         { value: "2",   unit: "yr",  label: "Warranty",  sub: "manufacturer" },
       ],
       details: [
@@ -1379,7 +1379,7 @@ const ar: typeof fr = {
       items: [
         { value: "150", unit: "", label: "بصمة", sub: "الحد الأقصى المخزن" },
         { value: "7",   unit: "", label: "طريقة", sub: "للدخول" },
-        { value: "18",  unit: "", label: "شهرًا", sub: "عمر البطارية" },
+        { value: "12–18", unit: " شهر", label: "استقلالية", sub: "البطارية" },
         { value: "2",   unit: "سنة", label: "ضمان", sub: "الصانع" },
       ],
       details: [
