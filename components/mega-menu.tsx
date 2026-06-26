@@ -131,40 +131,40 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
             {CATEGORIES.map((cat, i) => {
               const isActive = i === activeIndex;
               const isMobileExpanded = mobileAccordion === i;
+              const rowClass = `flex w-full items-center justify-between border-b border-gray-100 px-5 py-4 text-left text-[15px] font-semibold transition-colors md:px-6 ${
+                isActive
+                  ? "border-l-[3px] border-l-ink bg-gray-50 text-ink"
+                  : "border-l-[3px] border-l-transparent text-gray-700 hover:bg-gray-50 hover:text-ink"
+              }`;
               return (
                 <div key={cat.label}>
-                  <button
-                    type="button"
-                    onMouseEnter={() => setActiveIndex(i)}
-                    onClick={() => {
-                      if (!cat.sub) {
-                        onClose();
-                      } else {
+                  {cat.sub ? (
+                    <button
+                      type="button"
+                      onMouseEnter={() => setActiveIndex(i)}
+                      onClick={() => {
                         setActiveIndex(i);
                         setMobileAccordion(isMobileExpanded ? null : i);
-                      }
-                    }}
-                    className={`flex w-full items-center justify-between border-b border-gray-100 px-5 py-4 text-left text-[15px] font-semibold transition-colors md:px-6 ${
-                      isActive
-                        ? "border-l-[3px] border-l-ink bg-gray-50 text-ink"
-                        : "border-l-[3px] border-l-transparent text-gray-700 hover:bg-gray-50 hover:text-ink"
-                    }`}
-                  >
-                    {cat.sub ? (
-                      <>
-                        <span>{cat.label}</span>
-                        <ChevronRight
-                          className={`h-4 w-4 shrink-0 text-gray-400 transition-transform ${
-                            isMobileExpanded ? "rotate-90 md:rotate-0" : ""
-                          }`}
-                        />
-                      </>
-                    ) : (
-                      <Link href={cat.href ?? "/"} onClick={onClose} className="w-full">
-                        {cat.label}
-                      </Link>
-                    )}
-                  </button>
+                      }}
+                      className={rowClass}
+                    >
+                      <span>{cat.label}</span>
+                      <ChevronRight
+                        className={`h-4 w-4 shrink-0 text-gray-400 transition-transform ${
+                          isMobileExpanded ? "rotate-90 md:rotate-0" : ""
+                        }`}
+                      />
+                    </button>
+                  ) : (
+                    <Link
+                      href={cat.href ?? "/"}
+                      onClick={onClose}
+                      onMouseEnter={() => setActiveIndex(i)}
+                      className={rowClass}
+                    >
+                      {cat.label}
+                    </Link>
+                  )}
 
                   {/* Mobile accordion sub-items */}
                   {cat.sub && isMobileExpanded && (
