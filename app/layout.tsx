@@ -9,6 +9,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
+import { ChatWidget } from "@/components/chat-widget";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -116,7 +117,10 @@ export default function RootLayout({
       className={`${inter.variable} ${lato.variable} ${cormorant.variable} ${caveat.variable} ${notoArabic.variable} ${notoSerifArabic.variable} h-full antialiased overflow-x-clip`}
     >
       <body className="min-h-full flex flex-col overflow-x-clip">
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+          <ChatWidget />
+        </Providers>
       </body>
     </html>
   );

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { AccessoriesGrid } from "@/components/accessories-grid";
 import { CartDrawer } from "@/components/cart-drawer";
-import { ChatWidget } from "@/components/chat-widget";
 import { Faq } from "@/components/faq";
 import { FeaturesGrid } from "@/components/features-grid";
 import { Footer } from "@/components/footer";
@@ -164,7 +163,6 @@ export default function HomePage() {
       </main>
       <Footer />
       <CartDrawer />
-      <ChatWidget />
       <StickyOffer />
     </>
   );
