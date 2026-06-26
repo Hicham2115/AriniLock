@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     template: "%s | AriniLock",
   },
   description:
-    "La poignée connectée qui s'ouvre par empreinte digitale, code secret ou smartphone — sans perçage, sans clé qui traîne. Conçue pour le Maroc, livraison partout au Maroc.",
+    "La poignée connectée qui s'ouvre par empreinte digitale, code secret ou smartphone — sans clé qui traîne. Conçue pour le Maroc, livraison partout au Maroc.",
   keywords: [
     "serrure connectée",
     "poignée connectée",
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     siteName: "AriniLock",
     title: "AriniLock — La porte qui vous reconnaît",
     description:
-      "Poignée connectée premium : empreinte digitale, code PIN, app mobile et carte RFID. Installation sans perçage, garantie 2 ans.",
+      "Poignée connectée premium : empreinte digitale, code PIN, app mobile et carte RFID. Installation garantie 2 ans.",
     images: [
       {
         url: "/og-image.jpg",
@@ -90,7 +90,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AriniLock — La porte qui vous reconnaît",
     description:
-      "Poignée connectée : empreinte digitale, code PIN, app mobile. Installation sans perçage, livraison partout au Maroc.",
+      "Poignée connectée : empreinte digitale, code PIN, app mobile. Installation livraison partout au Maroc.",
     images: ["/og-image.jpg"],
   },
   alternates: {

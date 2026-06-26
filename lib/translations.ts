@@ -67,7 +67,7 @@ const fr = {
       {
         value: "installation",
         trigger: "Installation",
-        content: "Compatible portes standard (60–80 mm d'épaisseur). Fixation adhésive 3M haute résistance — aucun perçage nécessaire. Un tutoriel vidéo est inclus, installation en moins de 45 minutes.",
+        content: "Compatible portes standard (60–80 mm d'épaisseur). Fixation adhésive 3M haute résistance — Un tutoriel vidéo est inclus, installation en moins de 45 minutes.",
       },
       {
         value: "warranty",
@@ -104,7 +104,7 @@ const fr = {
     warranty: "Garantie 2 ans",
     warrantySub: "Constructeur",
     install: "Installation < 45 min",
-    installSub: "Sans perçage",
+    installSub: "Installation rapide",
   },
   checkout: {
     title: "Finaliser la commande",
@@ -195,7 +195,7 @@ const fr = {
     successMsg: "Message envoyé ! Nous vous répondrons sous 24h.",
     faqs: [
       { q: "Livrez-vous partout au Maroc ?",     a: "Oui, dans toutes les villes avec paiement à la livraison." },
-      { q: "Comment installer AriniLock ?",      a: "En moins de 45 minutes, sans perçage. Un guide illustré est inclus." },
+      { q: "Comment installer AriniLock ?",      a: "En moins de 45 minutes. Un guide illustré est inclus." },
       { q: "Quelle est la durée de garantie ?",  a: "2 ans constructeur couvrant tout défaut de fabrication." },
     ],
   },
@@ -211,9 +211,9 @@ const fr = {
       right: "Snapshot — Édition lancement",
       headline: ["Ce qui la rend", "différente."] as [string, string],
       items: [
-        { value: "100", unit: "", label: "Empreintes", sub: "enregistrées max" },
-        { value: "5",   unit: "", label: "Méthodes",   sub: "d'accès" },
-        { value: "12",  unit: "", label: "Mois",        sub: "d'autonomie" },
+        { value: "150", unit: "", label: "Empreintes", sub: "enregistrées max" },
+        { value: "7",   unit: "", label: "Méthodes",   sub: "d'accès" },
+        { value: "18",  unit: "", label: "Mois",        sub: "d'autonomie" },
         { value: "2",   unit: "ans", label: "Garantie", sub: "constructeur" },
       ],
       details: [
@@ -244,7 +244,7 @@ const fr = {
       right: "Cycle : 0 → 1 en 45 min",
       headline: ["Installée en moins de", "45 minutes."] as [string, string],
       steps: [
-        { title: "Fixation sans perçage",       description: "Se fixe directement sur votre porte existante, sans modification de la serrure d'origine ni outils spécifiques." },
+        { title: "Fixation",       description: "Se fixe directement sur votre porte existante, sans modification de la serrure d'origine ni outils spécifiques." },
         { title: "Connexion à l'application",   description: "Associez votre serrure à l'application AriniLock via Bluetooth et configurez vos préférences en quelques écrans." },
         { title: "Ajoutez vos accès",           description: "Créez des accès permanents ou temporaires pour votre famille, vos invités ou votre aide à domicile." },
       ],
@@ -257,7 +257,7 @@ const fr = {
         { q: "AriniLock est-elle compatible avec toutes les portes ?",         a: "AriniLock s'adapte à la majorité des portes intérieures et d'entrée standards en bois et métal. Un guide de compatibilité détaillé est fourni avant l'achat." },
         { q: "Que se passe-t-il en cas de coupure de courant ou de panne ?",   a: "AriniLock fonctionne sur piles, indépendamment du réseau électrique. En cas de panne complète, une clé physique de secours fournie avec votre serrure permet toujours d'ouvrir la porte." },
         { q: "Combien de temps dure la batterie ?",                             a: "Avec un usage quotidien moyen, les 4 piles AA tiennent environ 12 mois. L'application vous alerte automatiquement plusieurs semaines avant épuisement." },
-        { q: "Puis-je l'installer moi-même ?",                                 a: "Oui. L'installation se fait sans perçage ni outils spécifiques, en suivant le guide illustré fourni — comptez environ 45 minutes." },
+        { q: "Puis-je l'installer moi-même ?",                                 a: "Oui. L'installation se fait en suivant le guide illustré fourni — comptez environ 45 minutes." },
         { q: "Livrez-vous partout au Maroc ?",                                  a: "Oui, nous livrons dans toutes les villes du Maroc, avec paiement à la livraison disponible. Le délai moyen est de 2 à 4 jours ouvrés." },
       ],
     },
@@ -341,7 +341,7 @@ const fr = {
         { label: "Livraison partout au Maroc", sub: "2–4 jours ouvrés" },
         { label: "Paiement à la livraison",    sub: "Disponible sur tout le Maroc" },
         { label: "Garantie 2 ans",             sub: "Constructeur" },
-        { label: "Installation sans perçage",  sub: "En moins de 45 minutes" },
+        { label: "Installation",  sub: "En moins de 45 minutes" },
       ],
     },
     showcase: {
@@ -354,7 +354,7 @@ const fr = {
         { label: "Connectivité",  value: "Wifi + Bluetooth" },
         { label: "Alimentation",  value: "4× piles AA · ~12 mois" },
         { label: "Matériaux",     value: "Alliage de zinc, finition anti-traces" },
-        { label: "Installation",  value: "Sans perçage, portes standards" },
+        { label: "Installation",  value: "portes standards" },
         { label: "Garantie",      value: "2 ans" },
       ],
     },
@@ -499,7 +499,7 @@ const fr = {
     ],
     installSection: "06 — Installation",
     installTitle: "En 45\nminutes,\nc'est fait.",
-    installDesc: "Sans perçage, sans technicien, sans stress. Juste votre téléphone et le guide inclus.",
+    installDesc: "sans technicien, sans stress. Juste votre téléphone et le guide inclus.",
     steps: [
       { num: "01", title: "Retirez l'ancienne serrure",   description: "Dévissez les quatre vis de fixation de votre porte existante — aucun outil spécial requis." },
       { num: "02", title: "Posez le panneau extérieur",   description: "Installez le panneau Push-Pull avec caméra et clavier tactile. La mortaise multipoints 6068 est fournie." },
@@ -650,7 +650,7 @@ What's in the box
       {
         value: "installation",
         trigger: "Installation",
-        content: "Compatible with standard doors (60–80 mm thick). 3M high-strength adhesive mounting — no drilling required. A video tutorial is included; installation takes under 45 minutes.",
+        content: "Compatible with standard doors (60–80 mm thick). 3M high-strength adhesive mounting — A video tutorial is included; installation takes under 45 minutes.",
       },
       {
         value: "warranty",
@@ -687,7 +687,7 @@ What's in the box
     warranty: "2-year warranty",
     warrantySub: "Manufacturer",
     install: "Install < 45 min",
-    installSub: "No drilling",
+    installSub: "Quick install",
   },
   checkout: {
     title: "Complete your order",
@@ -778,7 +778,7 @@ What's in the box
     successMsg: "Message sent! We'll reply within 24h.",
     faqs: [
       { q: "Do you deliver everywhere in Morocco?", a: "Yes, to all cities with cash on delivery." },
-      { q: "How do I install AriniLock?",           a: "In under 45 minutes, no drilling. An illustrated guide is included." },
+      { q: "How do I install AriniLock?",           a: "In under 45 minutes. An illustrated guide is included." },
       { q: "What is the warranty period?",          a: "2-year manufacturer warranty covering all defects." },
     ],
   },
@@ -794,9 +794,9 @@ What's in the box
       right: "Snapshot — Launch edition",
       headline: ["What makes it", "different."],
       items: [
-        { value: "100", unit: "", label: "Fingerprints", sub: "max stored" },
-        { value: "5",   unit: "", label: "Methods",      sub: "of access" },
-        { value: "12",  unit: "", label: "Months",       sub: "battery life" },
+        { value: "150", unit: "", label: "Fingerprints", sub: "max stored" },
+        { value: "7",   unit: "", label: "Methods",      sub: "of access" },
+        { value: "18",  unit: "", label: "Months",       sub: "battery life" },
         { value: "2",   unit: "yr",  label: "Warranty",  sub: "manufacturer" },
       ],
       details: [
@@ -827,7 +827,7 @@ What's in the box
       right: "0 → 1 in 45 min",
       headline: ["Installed in under", "45 minutes."],
       steps: [
-        { title: "No-drill mounting",    description: "Attaches directly to your existing door with no modification to the original lock and no special tools." },
+        { title: "Easy mounting",    description: "Attaches directly to your existing door with no modification to the original lock and no special tools." },
         { title: "App pairing",          description: "Pair your lock with the AriniLock app via Bluetooth and set your preferences in a few screens." },
         { title: "Add your access",      description: "Create permanent or temporary access for your family, guests, or household staff." },
       ],
@@ -840,7 +840,7 @@ What's in the box
         { q: "Is AriniLock compatible with all doors?",          a: "AriniLock fits most standard interior and entrance doors in wood and metal. A detailed compatibility guide is provided before purchase." },
         { q: "What happens in a power cut or failure?",           a: "AriniLock runs on batteries, independent of the electrical grid. In a complete failure, the physical backup key included with your lock always opens the door." },
         { q: "How long does the battery last?",                   a: "With average daily use, the 4 AA batteries last about 12 months. The app alerts you automatically several weeks before they run out." },
-        { q: "Can I install it myself?",                          a: "Yes. Installation requires no drilling or special tools, following the illustrated guide provided — allow about 45 minutes." },
+        { q: "Can I install it myself?",                          a: "Yes. Installation requires or special tools, following the illustrated guide provided — allow about 45 minutes." },
         { q: "Do you deliver across Morocco?",                    a: "Yes, we deliver to all cities in Morocco, with cash on delivery available. Average lead time is 2 to 4 business days." },
       ],
     },
@@ -924,7 +924,7 @@ What's in the box
         { label: "Delivery across Morocco", sub: "2–4 business days" },
         { label: "Cash on delivery",         sub: "Available everywhere in Morocco" },
         { label: "2-year warranty",          sub: "Manufacturer" },
-        { label: "No-drill installation",    sub: "In under 45 minutes" },
+        { label: "Quick installation",    sub: "In under 45 minutes" },
       ],
     },
     showcase: {
@@ -937,7 +937,7 @@ What's in the box
         { label: "Connectivity",   value: "WiFi + Bluetooth" },
         { label: "Power",          value: "4× AA batteries · ~12 months" },
         { label: "Materials",      value: "Zinc alloy, fingerprint-resistant finish" },
-        { label: "Installation",   value: "No drilling, standard doors" },
+        { label: "Installation",   value: "Standard doors" },
         { label: "Warranty",       value: "2 years" },
       ],
     },
@@ -1082,7 +1082,7 @@ What's in the box
     ],
     installSection: "06 — Installation",
     installTitle: "In 45\nminutes,\nyou're done.",
-    installDesc: "No drilling, no technician, no stress. Just your phone and the included guide.",
+    installDesc: "No technician needed, no stress. Just your phone and the included guide.",
     steps: [
       { num: "01", title: "Remove the old lock",        description: "Unscrew the four mounting screws from your existing door — no special tools required." },
       { num: "02", title: "Fit the outer panel",        description: "Install the Push-Pull panel with camera and touchpad. The 6068 multipoint mortice is included." },
@@ -1233,7 +1233,7 @@ const ar: typeof fr = {
       {
         value: "installation",
         trigger: "التركيب",
-        content: "متوافق مع الأبواب القياسية (60–80 ملم سُمكًا). تثبيت بلاصق 3M عالي المقاومة — بدون حفر. يُرفق درس فيديو؛ التركيب في أقل من 15 دقيقة.",
+        content: "متوافق مع الأبواب القياسية (60–80 ملم سُمكًا). تثبيت بلاصق 3M عالي المقاومة —. يُرفق درس فيديو؛ التركيب في أقل من 15 دقيقة.",
       },
       {
         value: "warranty",
@@ -1270,7 +1270,7 @@ const ar: typeof fr = {
     warranty: "ضمان سنتين",
     warrantySub: "الصانع",
     install: "التركيب < 15 دقيقة",
-    installSub: "بدون حفر",
+    installSub: "",
   },
   checkout: {
     title: "إتمام الطلب",
@@ -1361,7 +1361,7 @@ const ar: typeof fr = {
     successMsg: "تم إرسال رسالتك! سنرد عليك خلال 24 ساعة.",
     faqs: [
       { q: "هل توصّلون لجميع أنحاء المغرب؟", a: "نعم، لجميع المدن مع الدفع عند الاستلام." },
-      { q: "كيف أركّب أريني لوك؟",            a: "في أقل من 15 دقيقة، بدون حفر. يُرفق دليل مصوّر." },
+      { q: "كيف أركّب أريني لوك؟",            a: "في أقل من 15 دقيقة. يُرفق دليل مصوّر." },
       { q: "ما مدة الضمان؟",                   a: "ضمان الصانع لمدة سنتين يشمل جميع عيوب التصنيع." },
     ],
   },
@@ -1377,9 +1377,9 @@ const ar: typeof fr = {
       right: "لمحة — إصدار الإطلاق",
       headline: ["ما يجعلها", "مختلفة."],
       items: [
-        { value: "100", unit: "", label: "بصمة", sub: "الحد الأقصى المخزن" },
-        { value: "5",   unit: "", label: "طريقة", sub: "للدخول" },
-        { value: "12",  unit: "", label: "شهرًا", sub: "عمر البطارية" },
+        { value: "150", unit: "", label: "بصمة", sub: "الحد الأقصى المخزن" },
+        { value: "7",   unit: "", label: "طريقة", sub: "للدخول" },
+        { value: "18",  unit: "", label: "شهرًا", sub: "عمر البطارية" },
         { value: "2",   unit: "سنة", label: "ضمان", sub: "الصانع" },
       ],
       details: [
@@ -1410,7 +1410,7 @@ const ar: typeof fr = {
       right: "من 0 إلى 1 في 15 دقيقة",
       headline: ["مُثبَّت في أقل من", "15 دقيقة."],
       steps: [
-        { title: "تثبيت بدون حفر",     description: "يُثبَّت مباشرةً على بابك الحالي دون تعديل القفل الأصلي أو أدوات خاصة." },
+        { title: "تثبيت",     description: "يُثبَّت مباشرةً على بابك الحالي دون تعديل القفل الأصلي أو أدوات خاصة." },
         { title: "الإقران بالتطبيق",   description: "اربط قفلك بتطبيق أريني لوك عبر البلوتوث وضبط تفضيلاتك في خطوات بسيطة." },
         { title: "أضف صلاحيات الدخول", description: "أنشئ صلاحيات دائمة أو مؤقتة لعائلتك وضيوفك وعمالتك المنزلية." },
       ],
@@ -1423,7 +1423,7 @@ const ar: typeof fr = {
         { q: "هل أريني لوك متوافق مع جميع الأبواب؟",              a: "يتناسب أريني لوك مع معظم أبواب الدخول والداخلية القياسية من الخشب والمعدن. يُرفق دليل توافق تفصيلي قبل الشراء." },
         { q: "ماذا يحدث عند انقطاع الكهرباء أو العطل؟",           a: "يعمل أريني لوك بالبطاريات بشكل مستقل عن الشبكة الكهربائية. عند أي عطل كامل، يتيح المفتاح الاحتياطي المرفق فتح الباب دائمًا." },
         { q: "كم تدوم البطارية؟",                                   a: "مع الاستخدام اليومي المعتاد، تدوم 4 بطاريات AA نحو 12 شهرًا. يُنبّهك التطبيق تلقائيًا قبل أسابيع من نفادها." },
-        { q: "هل يمكنني التركيب بنفسي؟",                           a: "نعم. التركيب بدون حفر أو أدوات خاصة باتباع الدليل المصوّر المرفق — في نحو 15 دقيقة." },
+        { q: "هل يمكنني التركيب بنفسي؟",                           a: "نعم. التركيب أو أدوات خاصة باتباع الدليل المصوّر المرفق — في نحو 15 دقيقة." },
         { q: "هل توصّلون إلى جميع أنحاء المغرب؟",                  a: "نعم، نوصّل إلى جميع مدن المغرب مع إمكانية الدفع عند الاستلام. المدة المتوسطة 2 إلى 4 أيام عمل." },
       ],
     },
@@ -1507,7 +1507,7 @@ const ar: typeof fr = {
         { label: "توصيل في جميع أنحاء المغرب", sub: "2–4 أيام عمل" },
         { label: "الدفع عند الاستلام",           sub: "متاح في كل المغرب" },
         { label: "ضمان سنتين",                   sub: "الصانع" },
-        { label: "تركيب بدون حفر",               sub: "في أقل من 15 دقيقة" },
+        { label: "تركيب",               sub: "في أقل من 15 دقيقة" },
       ],
     },
     showcase: {
@@ -1520,7 +1520,7 @@ const ar: typeof fr = {
         { label: "الاتصال",        value: "واي فاي + بلوتوث" },
         { label: "الطاقة",         value: "4 بطاريات AA · ~12 شهرًا" },
         { label: "المواد",          value: "سبيكة الزنك، تشطيب مقاوم للبصمات" },
-        { label: "التركيب",        value: "بدون حفر، أبواب قياسية" },
+        { label: "التركيب",        value: "أبواب قياسية" },
         { label: "الضمان",         value: "سنتان" },
       ],
     },
@@ -1665,7 +1665,7 @@ const ar: typeof fr = {
     ],
     installSection: "06 — التركيب",
     installTitle: "في 45\nدقيقة،\nالأمر تم.",
-    installDesc: "بدون حفر، بدون تقني، بدون توتر. فقط هاتفك والدليل المرفق.",
+    installDesc: "بدون تقني، بدون توتر. فقط هاتفك والدليل المرفق.",
     steps: [
       { num: "01", title: "انزع القفل القديم",            description: "افكّ المسامير الأربعة من بابك الحالي — لا تحتاج أدوات خاصة." },
       { num: "02", title: "ركّب اللوحة الخارجية",         description: "ركّب لوحة Push-Pull مع الكاميرا ولوحة المفاتيح اللمسية. الميزاب 6068 متعدد النقاط مرفق." },

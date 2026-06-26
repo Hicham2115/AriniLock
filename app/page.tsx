@@ -16,7 +16,7 @@ import { StatsSection } from "@/components/stats-section";
 export const metadata: Metadata = {
   title: "AriniLock — La porte qui vous reconnaît",
   description:
-    "Poignée connectée premium : empreinte digitale, code PIN, app mobile et carte RFID. Installation sans perçage, livraison partout au Maroc.",
+    "Poignée connectée premium : empreinte digitale, code PIN, app mobile et carte RFID. Installation livraison partout au Maroc.",
   alternates: { canonical: "https://arinilock.ma" },
 };
 
@@ -39,7 +39,7 @@ const productSchema = {
   "@type": "Product",
   name: "AriniLock — Poignée Connectée Smart Door Lock",
   description:
-    "La poignée connectée qui s'ouvre par empreinte digitale, code secret ou smartphone — sans perçage, sans clé qui traîne, sans compromis sur le style.",
+    "La poignée connectée qui s'ouvre par empreinte digitale, code secret ou smartphone — sans clé qui traîne, sans compromis sur le style.",
   brand: { "@type": "Brand", name: "AriniLock" },
   image: "https://arinilock.ma/og-image.jpg",
   url: "https://arinilock.ma/produits/poignee-connectee-smart-door-lock",
@@ -117,7 +117,7 @@ const faqSchema = {
       name: "Puis-je l'installer moi-même ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Oui. L'installation se fait sans perçage ni outils spécifiques, en suivant le guide illustré fourni — comptez environ 45 minutes.",
+        text: "Oui. L'installation se fait en suivant le guide illustré fourni — comptez environ 45 minutes.",
       },
     },
     {
