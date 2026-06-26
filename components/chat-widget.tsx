@@ -5,6 +5,7 @@ import axios from "axios";
 import { AnimatePresence, motion } from "framer-motion";
 import { MessageCircle, Send, X, Loader2, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 interface Message {
   role: "user" | "assistant";
@@ -159,6 +160,7 @@ function loadMessages(): Message[] {
 }
 
 export function ChatWidget() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([WELCOME]);
   const [input, setInput] = useState("");
@@ -231,6 +233,8 @@ export function ChatWidget() {
   }
 
   const showSuggested = messages.length === 1;
+
+  if (/^\/produits\/.+/.test(pathname)) return null;
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">

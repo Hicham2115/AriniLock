@@ -3,19 +3,20 @@
 import { X } from "lucide-react";
 import Link from "next/link";
 import { useEffect } from "react";
+import { useT } from "@/hooks/use-t";
 
-const CATEGORIES = [
-  { label: "Notre boutique",                    href: "/produits" },
-  { label: "Solutions pour bureau",             href: "/produits/serrure-intelligente-arini-m1-pro" },
-  { label: "Solutions pour Airbnb",             href: "/produits/serrure-intelligente-arini-x5" },
-  { label: "Solutions pour promoteurs",         href: "/contact" },
-  { label: "Solutions pour hôtels",             href: "/produits/serrure-intelligente-arini-i60" },
-  { label: "Solutions pour villas & apparts",   href: "/produits/serrure-intelligente-arini-i50" },
-  { label: "Fonctionnalités",                   href: "/#fonctionnalites" },
-  { label: "Comment ça marche",                 href: "/#comment-ca-marche" },
-  { label: "Avis clients",                      href: "/#avis" },
-  { label: "FAQ",                               href: "/#faq" },
-  { label: "Contact & Support",                 href: "/contact" },
+const HREFS = [
+  "/produits",
+  "/produits/serrure-intelligente-arini-m1-pro",
+  "/produits/serrure-intelligente-arini-x5",
+  "/contact",
+  "/produits/serrure-intelligente-arini-i60",
+  "/produits/serrure-intelligente-arini-i50",
+  "/#fonctionnalites",
+  "/#comment-ca-marche",
+  "/#avis",
+  "/#faq",
+  "/contact",
 ];
 
 interface MegaMenuProps {
@@ -24,6 +25,9 @@ interface MegaMenuProps {
 }
 
 export function MegaMenu({ open, onClose }: MegaMenuProps) {
+  const t = useT();
+  const categories = t.nav.menuCategories.map((label, i) => ({ label, href: HREFS[i] ?? "/" }));
+
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -40,7 +44,7 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
           <button
             type="button"
             onClick={onClose}
-            aria-label="Fermer le menu"
+            aria-label={t.nav.closeMenu}
             className="flex h-9 w-9 items-center justify-center rounded bg-ink text-white transition-colors hover:bg-ink/80"
           >
             <X className="h-4 w-4" />
@@ -48,7 +52,7 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
         </div>
 
         <nav className="flex flex-col">
-          {CATEGORIES.map((cat) => (
+          {categories.map((cat) => (
             <Link
               key={cat.label}
               href={cat.href}
