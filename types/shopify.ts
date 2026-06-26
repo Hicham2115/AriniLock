@@ -22,6 +22,11 @@ export const variantSchema = z.object({
   selectedOptions: z.array(z.object({ name: z.string(), value: z.string() })),
 });
 
+export const metafieldSchema = z.object({
+  key: z.string(),
+  value: z.string(),
+}).nullable();
+
 export const productSchema = z.object({
   id: z.string(),
   handle: z.string(),
@@ -31,6 +36,7 @@ export const productSchema = z.object({
   tags: z.array(z.string()).optional(),
   images: z.array(imageSchema),
   variants: z.array(variantSchema),
+  metafields: z.array(metafieldSchema).optional(),
 });
 
 export const cartLineSchema = z.object({

@@ -51,6 +51,13 @@ export const PRODUCT_BY_HANDLE_QUERY = /* GraphQL */ `
           ...VariantFields
         }
       }
+      metafields(identifiers: [
+        { namespace: "shopify", key: "color" }
+        { namespace: "custom", key: "color" }
+      ]) {
+        key
+        value
+      }
     }
   }
 `;
@@ -65,15 +72,23 @@ export const ACCESSORIES_QUERY = /* GraphQL */ `
         handle
         title
         description
+        tags
         images(first: 2) {
           nodes {
             ...ImageFields
           }
         }
-        variants(first: 1) {
+        variants(first: 10) {
           nodes {
             ...VariantFields
           }
+        }
+        metafields(identifiers: [
+          { namespace: "shopify", key: "color" }
+          { namespace: "custom", key: "color" }
+        ]) {
+          key
+          value
         }
       }
     }

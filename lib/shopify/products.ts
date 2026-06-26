@@ -19,6 +19,7 @@ interface RawProduct {
   tags?: string[];
   images: { nodes: unknown[] };
   variants: { nodes: unknown[] };
+  metafields?: unknown[];
 }
 
 function normalizeProduct(raw: RawProduct): Product {
@@ -26,6 +27,7 @@ function normalizeProduct(raw: RawProduct): Product {
     ...raw,
     images: raw.images.nodes,
     variants: raw.variants.nodes,
+    metafields: raw.metafields ?? [],
   });
 }
 

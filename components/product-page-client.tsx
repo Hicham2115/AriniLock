@@ -32,9 +32,10 @@ import { cn } from "@/lib/utils";
 import { useFavoritesStore } from "@/stores/favorites-store";
 
 const SWATCH_BG: Record<string, string> = {
-  "Noir Mat": "bg-[#1E1B18]",
-  Argent: "bg-[#C7C9CC]",
-  Or: "bg-[#C49A65]",
+  Black:  "bg-[#1E1B18]",
+  Silver: "bg-[#C7C9CC]",
+  Bronze: "bg-[#8C6A3F]",
+  White:  "bg-[#F5F5F0] border border-gray-200",
 };
 
 function Stars() {

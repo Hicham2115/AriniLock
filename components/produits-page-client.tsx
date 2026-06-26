@@ -24,9 +24,10 @@ const PRICE_RANGES = [
 ];
 
 const COLOR_OPTIONS = [
-  { label: "Noir Mat", bg: "bg-[#1E1B18]" },
-  { label: "Argent",   bg: "bg-[#C7C9CC]" },
-  { label: "Or",       bg: "bg-[#C49A65]" },
+  { label: "Black",  bg: "bg-[#1E1B18]" },
+  { label: "Silver", bg: "bg-[#C7C9CC]" },
+  { label: "Bronze", bg: "bg-[#8C6A3F]" },
+  { label: "White",  bg: "bg-[#F5F5F0] border border-gray-200" },
 ];
 
 export function ProduitsPageClient() {
@@ -43,7 +44,7 @@ export function ProduitsPageClient() {
 
   function toggleColor(label: string) {
     setActiveColors((prev) =>
-      prev.includes(label) ? prev.filter((c) => c !== label) : [...prev, label]
+      prev.includes(label) ? [] : [label]
     );
   }
 
@@ -65,14 +66,15 @@ export function ProduitsPageClient() {
     ...(accessories?.filter((a) => a.handle !== mainProduct?.handle) ?? []),
   ];
 
+
   const range = PRICE_RANGES[priceIdx];
   const visible = allProducts.filter((p) => {
     const price = parseFloat(p.variants[0]?.price.amount ?? "0");
     if (price < range.min || price > range.max) return false;
     if (search && !p.title.toLowerCase().includes(search.toLowerCase())) return false;
     if (activeColors.length > 0) {
-      const titles = p.variants.map((v) => v.title);
-      if (!activeColors.some((c) => titles.includes(c))) return false;
+      const tags = (p.tags ?? []).map((t) => t.toLowerCase());
+      if (!activeColors.some((c) => tags.includes(`color-${c.toLowerCase()}`))) return false;
     }
     return true;
   });
@@ -211,7 +213,7 @@ export function ProduitsPageClient() {
               <button
                 type="button"
                 onClick={handleRetry}
-                className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-6 py-3 text-sm font-medium text-ink transition-colors hover:border-gold"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-ink shadow-sm transition-colors hover:bg-white/90"
               >
                 <RotateCcw aria-hidden="true" className="h-4 w-4" />
                 {t.errors.retry}
