@@ -378,6 +378,24 @@ export function I60Client() {
                     </span>
                   ))}
                 </motion.div>
+
+                {/* Biometric feature highlights */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.68 }}
+                  className="mt-4 flex flex-wrap gap-2"
+                >
+                  {([ScanFace, Hand, Fingerprint] as const).map((Icon, idx) => (
+                    <span
+                      key={idx}
+                      className="flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-3.5 py-1.5 text-[11px] font-semibold text-primary"
+                    >
+                      <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+                      {UNLOCK_METHODS[idx]?.label}
+                    </span>
+                  ))}
+                </motion.div>
               </div>
 
               {/* Right — product image */}

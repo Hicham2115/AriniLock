@@ -94,7 +94,7 @@ export function StatsSection() {
         </div>
 
         {/* Detail columns */}
-        <div className="grid gap-8 border-t border-primary/10 pt-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 border-t border-primary/10 pt-12 sm:grid-cols-2 lg:grid-cols-6">
           {s.details.map((detail, i) => (
             <Reveal key={detail.title} delay={i * 0.08}>
               <motion.div

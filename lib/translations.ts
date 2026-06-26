@@ -208,6 +208,8 @@ const fr = {
         { title: "CODE PIN",    body: "Code 4–8 chiffres. Modifiable depuis l'app. Codes temporaires pour invités." },
         { title: "APPLICATION", body: "Contrôle à distance. Historique des accès. Notifications en temps réel." },
         { title: "RFID + CLÉ",  body: "Cartes NFC rapides. Clé physique de secours incluse. Fonctionne hors connexion." },
+        { title: "FACE ID",     body: "Reconnaissance faciale 3D. Anti-usurpation. Fonctionne de nuit grâce aux capteurs infrarouges." },
+        { title: "PAUME",       body: "Lecture de paume sans contact. Hygiénique et ultra-rapide. Idéal mains occupées." },
       ],
     },
     features: {
@@ -776,6 +778,8 @@ What's in the box
         { title: "PIN CODE",     body: "4–8 digit code. Changeable from the app. Temporary codes for guests." },
         { title: "APP",          body: "Remote control. Access history. Real-time notifications." },
         { title: "RFID + KEY",   body: "Ultra-fast NFC cards. Physical backup key included. Works offline." },
+        { title: "FACE ID",      body: "3D facial recognition. Anti-spoofing. Works at night via infrared sensors." },
+        { title: "PALM",         body: "Contactless palm reading. Hygienic and ultra-fast. Perfect when hands are full." },
       ],
     },
     features: {
@@ -1340,10 +1344,12 @@ const ar: typeof fr = {
         { value: "2",   unit: "سنة", label: "ضمان", sub: "الصانع" },
       ],
       details: [
-        { title: "البصمة",    body: "تخزين حتى 100 بصمة. تعرف في أقل من ثانية. حتى 10 ملفات عائلية." },
-        { title: "الرمز",     body: "رمز 4–8 أرقام. قابل للتغيير من التطبيق. رموز مؤقتة للضيوف." },
-        { title: "التطبيق",   body: "تحكم عن بُعد. سجل الدخول. إشعارات فورية." },
+        { title: "البصمة",       body: "تخزين حتى 100 بصمة. تعرف في أقل من ثانية. حتى 10 ملفات عائلية." },
+        { title: "الرمز",        body: "رمز 4–8 أرقام. قابل للتغيير من التطبيق. رموز مؤقتة للضيوف." },
+        { title: "التطبيق",      body: "تحكم عن بُعد. سجل الدخول. إشعارات فورية." },
         { title: "RFID + مفتاح", body: "بطاقات NFC سريعة. مفتاح احتياطي مادي مرفق. يعمل دون إنترنت." },
+        { title: "التعرف على الوجه", body: "تعرف ثلاثي الأبعاد على الوجه. مضاد للانتحال. يعمل ليلاً عبر أجهزة الاستشعار." },
+        { title: "راحة اليد",    body: "قراءة راحة اليد دون تلامس. صحي وسريع. مثالي حين تكون اليدان مشغولتين." },
       ],
     },
     features: {

@@ -438,23 +438,6 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
                 )}
               </div>
 
-              {/* Variant swatches */}
-              {hasVariants && (
-                <div className="border-b border-border px-4 py-4">
-                  <p className="mb-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                    {t.product.finish} — <span className="text-foreground">{variant?.selectedOptions[0]?.value}</span>
-                  </p>
-                  <div className="flex gap-3">
-                    {product.variants.map((v) => (
-                      <button key={v.id} type="button" onClick={() => selectVariant(v.id)} aria-label={`Finition ${v.title}`} aria-pressed={v.id === (activeVariantId ?? product.variants[0]?.id)}
-                        className={cn("h-9 w-9 rounded-full border-2 transition-all", SWATCH_BG[v.title] ?? "bg-muted",
-                          v.id === (activeVariantId ?? product.variants[0]?.id) ? "scale-110 border-primary ring-2 ring-primary/25" : "border-transparent opacity-60")}
-                      />
-                    ))}
-                  </div>
-                </div>
-              )}
-
               {/* Description */}
               {(t.product.description || product.descriptionHtml || product.description) && (
                 <div className="border-b border-border px-4 py-4">
@@ -469,6 +452,23 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
                     {descExpanded ? t.product.readLess : t.product.readMore}
                     <ChevronDown className={cn("h-3 w-3 transition-transform", descExpanded && "rotate-180")} />
                   </button>
+                </div>
+              )}
+
+              {/* Variant swatches */}
+              {hasVariants && (
+                <div className="border-b border-border px-4 py-4">
+                  <p className="mb-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                    {t.product.finish} — <span className="text-foreground">{variant?.selectedOptions[0]?.value}</span>
+                  </p>
+                  <div className="flex gap-3">
+                    {product.variants.map((v) => (
+                      <button key={v.id} type="button" onClick={() => selectVariant(v.id)} aria-label={`Finition ${v.title}`} aria-pressed={v.id === (activeVariantId ?? product.variants[0]?.id)}
+                        className={cn("h-9 w-9 rounded-full border-2 transition-all", SWATCH_BG[v.title] ?? "bg-muted",
+                          v.id === (activeVariantId ?? product.variants[0]?.id) ? "scale-110 border-primary ring-2 ring-primary/25" : "border-transparent opacity-60")}
+                      />
+                    ))}
+                  </div>
                 </div>
               )}
 
@@ -488,8 +488,37 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
           )}
         </div>
 
-        {relatedSection}
         <SpecsTable />
+        {product && (
+          <div className="border-t border-border">
+            <div className="mx-auto max-w-7xl px-4 py-10">
+              <div className="mb-6">
+                <p className="mb-1 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">À savoir</p>
+                <h2 className="font-display2 text-3xl font-light uppercase leading-none text-foreground">Infos pratiques</h2>
+              </div>
+              <div className="flex flex-col gap-4">
+                {t.product.accordion.map((item, i) => {
+                  const meta = CARD_META[i] ?? CARD_META[0];
+                  const Icon = meta.icon;
+                  return (
+                    <div key={item.trigger} className={`overflow-hidden rounded-xl border border-border border-l-4 ${meta.border} bg-white`}>
+                      <div className="flex items-center gap-3 px-4 py-3">
+                        <span className={`flex h-8 w-8 items-center justify-center rounded-lg ${meta.bg}`}>
+                          <Icon aria-hidden="true" className={`h-4 w-4 ${meta.color}`} />
+                        </span>
+                        <span className="text-sm font-semibold text-foreground">{item.trigger}</span>
+                      </div>
+                      <div className="border-t border-border px-4 py-3 text-xs leading-relaxed text-foreground/70">
+                        {item.content}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        )}
+        {relatedSection}
         <Footer />
 
         {product && (
