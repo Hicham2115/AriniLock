@@ -132,6 +132,12 @@ const faqSchema = {
 };
 
 export default function HomePage() {
+  // TEMPORARY: set SITE_LOCKED=true in .env.local to hide all site content behind a blank page.
+  // Remove this block (and the env var) to restore the site.
+  if (process.env.SITE_LOCKED === "true") {
+    return <div className="min-h-screen bg-white" />;
+  }
+
   return (
     <>
       <script

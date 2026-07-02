@@ -22,7 +22,7 @@ export const MOCK_PRODUCT: Product = {
   handle: "poignee-connectee-smart-door-lock",
   title: "Poignée connectée — Smart Door Lock",
   description:
-    "La poignée connectée qui s'ouvre par empreinte digitale, code secret ou smartphone — sans perçage, sans clé qui traîne, sans compromis sur le style.",
+    "La poignée connectée qui s'ouvre par empreinte digitale, code secret ou smartphone — sans clé qui traîne, sans compromis sur le style.",
   images: [
     img("serrux-main", 900, 1100),
     img("serrux-side", 900, 1100),

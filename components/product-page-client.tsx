@@ -211,7 +211,7 @@ const SPECS = [
   { label: "Connectivité", value: "WiFi + Bluetooth" },
   { label: "Alimentation", value: "4 piles AA" },
   { label: "Autonomie", value: "~12 mois" },
-  { label: "Installation", value: "Sans perçage — 45 min" },
+  { label: "Installation", value: "45 min" },
   { label: "Garantie", value: "2 ans" },
   { label: "Compatibilité", value: "Portes bois & métal standard" },
   { label: "Finitions", value: "Noir Mat · Argent · Or" },
