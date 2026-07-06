@@ -138,6 +138,9 @@ function UserMessage({ content }: { content: string }) {
 }
 
 const MAX_INPUT = 500;
+// Cap what's actually sent to the API — the on-screen/localStorage history can
+// grow indefinitely, but the server rejects payloads over 20 messages.
+const MAX_HISTORY_SENT = 12;
 
 function sanitizeInput(raw: string): string {
   return raw.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "").trim().slice(0, MAX_INPUT);
@@ -172,16 +175,20 @@ export function ChatWidget() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const mutation = useMutation({
-    mutationFn: (msgs: Message[]) =>
-      axios.post<{ content: string }>("/api/chat", { messages: msgs }).then((r) => r.data),
-    onSuccess: (data, msgs) => {
-      setMessages([...msgs, { role: "assistant", content: data.content }]);
+    mutationFn: (payload: Message[]) =>
+      axios
+        .post<{ content: string }>("/api/chat", { messages: payload }, { timeout: 28_000 })
+        .then((r) => r.data),
+    onSuccess: (data) => {
+      setMessages((prev) => [...prev, { role: "assistant", content: data.content }]);
     },
-    onError: (err, msgs) => {
+    onError: (err) => {
       const msg = axios.isAxiosError(err)
-        ? (err.response?.data as { error?: string })?.error ?? err.message
+        ? err.code === "ECONNABORTED"
+          ? "L'assistant met trop de temps à répondre. Réessayez."
+          : (err.response?.data as { error?: string })?.error ?? err.message
         : err instanceof Error ? err.message : "Erreur inconnue";
-      setMessages([...msgs, { role: "assistant", content: `⚠️ ${msg}` }]);
+      setMessages((prev) => [...prev, { role: "assistant", content: `⚠️ ${msg}` }]);
     },
   });
 
@@ -229,7 +236,7 @@ export function ChatWidget() {
     const next: Message[] = [...messages, { role: "user", content: clean }];
     setMessages(next);
     setInput("");
-    mutation.mutate(next);
+    mutation.mutate(next.slice(-MAX_HISTORY_SENT));
   }
 
   function handleKey(e: React.KeyboardEvent<HTMLTextAreaElement>) {

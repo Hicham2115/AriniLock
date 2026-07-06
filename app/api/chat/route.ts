@@ -1,9 +1,11 @@
-import Groq from "groq-sdk";
+import { GoogleGenerativeAI, GoogleGenerativeAIFetchError } from "@google/generative-ai";
 import { z } from "zod";
 import { readFileSync } from "fs";
 import { join } from "path";
 import { NextRequest, NextResponse } from "next/server";
 import { MAIN_PRODUCT_HANDLE } from "@/lib/shopify/products";
+
+export const maxDuration = 30;
 
 // ── Validation schema ────────────────────────────────────────────────────────
 
@@ -31,6 +33,10 @@ const BodySchema = z.object({
     .min(1, "Au moins un message requis.")
     .max(20, "Historique trop long."),
 });
+
+// Cap how much history we forward to the model — keeps latency and token
+// usage bounded regardless of how long the on-page conversation has grown.
+const MAX_HISTORY_MESSAGES = 10;
 
 // ── In-memory rate limiter (20 req / min per IP) ────────────────────────────
 
@@ -84,9 +90,9 @@ LANGUE DE RÉPONSE (règle la plus importante, prioritaire sur tout le reste) :
 Cette base de connaissances est rédigée en français uniquement à titre de référence interne — cela ne détermine PAS la langue de ta réponse.
 Réponds TOUJOURS et UNIQUEMENT dans la langue du DERNIER message envoyé par l'utilisateur (détecte-la à chaque message : français, arabe, anglais, espagnol, darija, etc.), même si les messages précédents de la conversation étaient dans une autre langue. Si l'utilisateur écrit en arabe, réponds entièrement en arabe ; s'il écrit en anglais, réponds entièrement en anglais ; etc. Ne mélange jamais deux langues dans une même réponse.`;
 
-// ── Groq client ──────────────────────────────────────────────────────────────
+// ── Gemini client ────────────────────────────────────────────────────────────
 
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY ?? "");
 
 // ── Lightweight language detection (heuristic, no extra API call) ──────────
 
@@ -119,7 +125,7 @@ function detectLanguage(text: string): string {
 // ── Route handler ────────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
-  if (!process.env.GROQ_API_KEY) {
+  if (!process.env.GEMINI_API_KEY) {
     return NextResponse.json({ error: "Service IA non configuré." }, { status: 500 });
   }
 
@@ -152,36 +158,66 @@ export async function POST(req: NextRequest) {
 
   const { messages } = parsed.data;
 
-  // Ensure conversation starts with a user message (Groq requirement)
+  // Ensure conversation starts with a user message
   const firstUserIdx = messages.findIndex((m) => m.role === "user");
   if (firstUserIdx === -1) {
     return NextResponse.json({ error: "Aucun message utilisateur trouvé." }, { status: 400 });
   }
-  const safeMessages = messages.slice(firstUserIdx);
+  const safeMessages = messages
+    .slice(firstUserIdx)
+    .slice(-MAX_HISTORY_MESSAGES);
 
   const lastUserMessage = [...safeMessages].reverse().find((m) => m.role === "user");
   const detectedLanguage = detectLanguage(lastUserMessage?.content ?? "");
 
   try {
-    const completion = await groq.chat.completions.create({
-      model: "llama-3.1-8b-instant",
-      messages: [
-        { role: "system", content: SYSTEM_PROMPT },
-        ...safeMessages.map((m) => ({ role: m.role, content: m.content })),
-        {
-          role: "system",
-          content: `Consigne finale impérative : le dernier message de l'utilisateur est en ${detectedLanguage}. Rédige TA RÉPONSE ENTIÈREMENT en ${detectedLanguage}, sans aucun mot d'une autre langue, même si les messages précédents de cette conversation étaient dans une autre langue.`,
-        },
-      ],
-      temperature: 0.5,
-      max_tokens: 512,
+    const model = genAI.getGenerativeModel(
+      {
+        model: "gemini-2.5-flash",
+        systemInstruction: SYSTEM_PROMPT,
+      },
+      { timeout: 25_000 }
+    );
+
+    const contents = [
+      ...safeMessages.map((m) => ({
+        role: m.role === "assistant" ? "model" : "user",
+        parts: [{ text: m.content }],
+      })),
+      {
+        role: "user",
+        parts: [
+          {
+            text: `Consigne finale impérative : le dernier message de l'utilisateur est en ${detectedLanguage}. Rédige TA RÉPONSE ENTIÈREMENT en ${detectedLanguage}, sans aucun mot d'une autre langue, même si les messages précédents de cette conversation étaient dans une autre langue.`,
+          },
+        ],
+      },
+    ];
+
+    const result = await model.generateContent({
+      contents,
+      generationConfig: { temperature: 0.5, maxOutputTokens: 512 },
     });
 
-    const text = completion.choices[0]?.message?.content ?? "";
+    const text = result.response.text();
     return NextResponse.json({ content: text });
   } catch (err: unknown) {
+    if (err instanceof GoogleGenerativeAIFetchError && err.status === 429) {
+      console.error("[chat] Gemini rate limit:", err.message);
+      return NextResponse.json(
+        { error: "Trop de demandes en ce moment. Réessayez dans un instant." },
+        { status: 429 }
+      );
+    }
+    if (err instanceof Error && err.name === "AbortError") {
+      console.error("[chat] Gemini timeout");
+      return NextResponse.json(
+        { error: "L'assistant met trop de temps à répondre. Réessayez." },
+        { status: 504 }
+      );
+    }
     const message = err instanceof Error ? err.message : String(err);
-    console.error("[chat] Groq error:", message);
+    console.error("[chat] Gemini error:", message);
     return NextResponse.json({ error: "Erreur du service IA. Réessayez." }, { status: 500 });
   }
 }

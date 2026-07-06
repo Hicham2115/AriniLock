@@ -11,7 +11,10 @@
       "Bash(npx eslint *)",
       "Bash(python3 -c ' *)",
       "Bash(npx tsc *)",
-      "Bash(echo \"EXIT:$?\")"
+      "Bash(echo \"EXIT:$?\")",
+      "Skill(claude-api)",
+      "Skill(claude-api:*)",
+      "Bash(curl -s -X POST \"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCtRR45jsyvKTn_rIrSwv8T0iLJYR1_Vr4\" -H \"Content-Type: application/json\" -d '{\"contents\":[{\"role\":\"user\",\"parts\":[{\"text\":\"say hi\"}]}]}')"
     ]
   }
 }
