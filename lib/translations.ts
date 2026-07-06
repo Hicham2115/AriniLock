@@ -10,7 +10,6 @@ const fr = {
   nav: {
     shop: "Boutique",
     features: "Fonctionnalités",
-    accessories: "Accessoires",
     reviews: "Avis",
     faq: "FAQ",
     contact: "Contact",
@@ -62,12 +61,12 @@ const fr = {
       {
         value: "specs",
         trigger: "Spécifications techniques",
-        content: "Empreintes : jusqu'à 100 · Codes PIN : jusqu'à 50 · Autonomie : 12 mois (4× AA) · Protocole : Bluetooth 5.0 + Wi-Fi (optionnel) · Certifications : IP65, EN 1634 · Dimensions : 245 × 70 × 28 mm",
+        content: "Empreintes : jusqu'à 150 · Codes PIN : jusqu'à 50 (6 chiffres) · Autonomie : 4-6 mois (4× AA) · Protocole : Bluetooth 5.0 + Wi-Fi (optionnel) · Certifications : IP65, EN 1634 · Dimensions : 245 × 70 × 28 mm",
       },
       {
         value: "installation",
         trigger: "Installation",
-        content: "Compatible portes standard (60–80 mm d'épaisseur). Fixation adhésive 3M haute résistance — Un tutoriel vidéo est inclus, installation en moins de 45 minutes.",
+        content: "Compatible portes standard (60–80 mm d'épaisseur). Installation réalisée par nos techniciens certifiés, comprise et offerte avec votre commande — généralement en moins de 45 minutes.",
       },
       {
         value: "warranty",
@@ -201,11 +200,6 @@ const fr = {
   },
   marquee: "Livraison et installation gratuite ✦ Livraison et installation gratuite ✦ Livraison et installation gratuite ✦ Livraison et installation gratuite ✦",
   sections: {
-    accessories: {
-      label: "02 — Accessoires",
-      right: "Complétez l'installation",
-      headline: ["Pensé pour durer plus", "longtemps."] as [string, string],
-    },
     stats: {
       label: "01 — En chiffres",
       right: "Snapshot — Édition lancement",
@@ -213,16 +207,17 @@ const fr = {
       items: [
         { value: "150", unit: "", label: "Empreintes", sub: "enregistrées max" },
         { value: "7",   unit: "", label: "Méthodes",   sub: "d'accès" },
-        { value: "12–18", unit: " mois", label: "Autonomie", sub: "de batterie" },
+        { value: "4–6", unit: " mois", label: "Autonomie", sub: "de batterie" },
         { value: "2",   unit: "ans", label: "Garantie", sub: "constructeur" },
       ],
       details: [
-        { title: "EMPREINTE",   body: "Jusqu'à 100 empreintes. Reconnaissance en moins d'une seconde. Jusqu'à 10 profils familiaux." },
-        { title: "CODE PIN",    body: "Code 4–8 chiffres. Modifiable depuis l'app. Codes temporaires pour invités." },
-        { title: "APPLICATION", body: "Contrôle à distance. Historique des accès. Notifications en temps réel." },
-        { title: "RFID + CLÉ",  body: "Cartes NFC rapides. Clé physique de secours incluse. Fonctionne hors connexion." },
-        { title: "FACE ID",     body: "Reconnaissance faciale 3D. Anti-usurpation. Fonctionne de nuit grâce aux capteurs infrarouges." },
-        { title: "PAUME",       body: "Lecture de paume sans contact. Hygiénique et ultra-rapide. Idéal mains occupées." },
+        { title: "EMPREINTE",      body: "Jusqu'à 150 empreintes. Reconnaissance en moins d'une seconde. Jusqu'à 10 profils familiaux." },
+        { title: "CODE PIN",       body: "Code à 6 chiffres. Modifiable depuis l'app. Codes temporaires pour invités." },
+        { title: "APPLICATION",    body: "Contrôle à distance. Historique des accès. Notifications en temps réel." },
+        { title: "RFID",           body: "Cartes NFC rapides. Accès instantané. Fonctionne hors connexion." },
+        { title: "CLÉ DE SECOURS", body: "Clé physique fournie avec chaque serrure. Toujours utilisable en cas de panne." },
+        { title: "FACE ID",        body: "Reconnaissance faciale 3D. Anti-usurpation. Fonctionne de nuit grâce aux capteurs infrarouges." },
+        { title: "PAUME DE MAIN",  body: "Lecture de paume sans contact. Hygiénique et ultra-rapide. Pratique quand vous avez les mains prises (courses, clés, enfant dans les bras)." },
       ],
     },
     features: {
@@ -230,13 +225,13 @@ const fr = {
       right: "Sécurité nouvelle génération",
       headline: ["Sept", "façons", "d'entrer."] as [string, string, string],
       items: [
-        { title: "Empreinte digitale",       description: "Jusqu'à 100 empreintes enregistrées. Déverrouillage en moins d'une seconde, même avec les mains légèrement humides." },
-        { title: "Code PIN",                 description: "Code personnel de 4 à 8 chiffres, modifiable depuis l'app. Codes temporaires pour invités, femme de ménage ou livreur." },
+        { title: "Empreinte digitale",       description: "Jusqu'à 150 empreintes enregistrées. Déverrouillage en moins d'une seconde, même avec les mains légèrement humides." },
+        { title: "Code PIN",                 description: "Code personnel à 6 chiffres, modifiable depuis l'app. Codes temporaires pour invités, femme de ménage ou livreur." },
         { title: "Application mobile",       description: "Verrouillez, déverrouillez et consultez l'historique complet de votre porte, où que vous soyez dans le monde." },
         { title: "Carte RFID",               description: "Badges NFC ultra-rapides pour un accès instantané. Compatible avec la plupart des cartes existantes. Fonctionne sans connexion internet." },
         { title: "Clé physique de secours",  description: "Une clé mécanique fournie avec chaque serrure — pour toute urgence : batterie épuisée, panne de téléphone ou coupure réseau." },
         { title: "Face ID",                  description: "Reconnaissance faciale 3D pour un accès instantané et sécurisé. Fonctionne de jour comme de nuit grâce aux capteurs infrarouges." },
-        { title: "Pomme de main",            description: "Poignée intégrée ergonomique permettant d'ouvrir la porte d'un seul geste, même les mains occupées." },
+        { title: "Paume de main",            description: "Poignée intégrée ergonomique permettant d'ouvrir la porte d'un seul geste, même quand vous avez les mains prises." },
       ],
     },
     howItWorks: {
@@ -244,9 +239,9 @@ const fr = {
       right: "Cycle : 0 → 1 en 45 min",
       headline: ["Installée en moins de", "45 minutes."] as [string, string],
       steps: [
-        { title: "Fixation",       description: "Se fixe directement sur votre porte existante, sans modification de la serrure d'origine ni outils spécifiques." },
-        { title: "Connexion à l'application",   description: "Associez votre serrure à l'application AriniLock via Bluetooth et configurez vos préférences en quelques écrans." },
-        { title: "Ajoutez vos accès",           description: "Créez des accès permanents ou temporaires pour votre famille, vos invités ou votre aide à domicile." },
+        { title: "Installation par nos techniciens", description: "Nos techniciens certifiés posent la serrure directement sur votre porte existante et effectuent tous les réglages nécessaires, sans l'endommager." },
+        { title: "Connexion à l'application",         description: "Votre serrure est associée à l'application Tuya via Bluetooth. Le technicien configure avec vous votre code PIN principal et vos premières empreintes." },
+        { title: "Ajoutez vos accès",                 description: "Créez ensuite des accès permanents ou temporaires pour votre famille, vos invités ou votre aide à domicile." },
       ],
     },
     faq: {
@@ -254,10 +249,10 @@ const fr = {
       right: "Questions fréquentes",
       headline: ["Tout ce", "qu'il faut", "savoir."] as [string, string, string],
       items: [
-        { q: "AriniLock est-elle compatible avec toutes les portes ?",         a: "AriniLock s'adapte à la majorité des portes intérieures et d'entrée standards en bois et métal. Un guide de compatibilité détaillé est fourni avant l'achat." },
-        { q: "Que se passe-t-il en cas de coupure de courant ou de panne ?",   a: "AriniLock fonctionne sur piles, indépendamment du réseau électrique. En cas de panne complète, une clé physique de secours fournie avec votre serrure permet toujours d'ouvrir la porte." },
-        { q: "Combien de temps dure la batterie ?",                             a: "Avec un usage quotidien moyen, les 4 piles AA tiennent environ 12 mois. L'application vous alerte automatiquement plusieurs semaines avant épuisement." },
-        { q: "Puis-je l'installer moi-même ?",                                 a: "Oui. L'installation se fait en suivant le guide illustré fourni — comptez environ 45 minutes." },
+        { q: "AriniLock est-elle compatible avec toutes les portes ?",         a: "AriniLock s'adapte à la majorité des portes intérieures et d'entrée standards en bois et métal. Contactez notre équipe avant l'achat pour vérifier la compatibilité avec votre porte." },
+        { q: "Que se passe-t-il en cas de coupure de courant ou de panne ?",   a: "AriniLock fonctionne sur piles et reste utilisable (empreinte, code PIN, carte RFID) indépendamment du réseau électrique, tant que les piles sont chargées. Le déverrouillage à distance via l'application nécessite en revanche que la serrure soit connectée à internet (4G) : sans connexion, seuls les accès locaux restent disponibles. En cas de panne complète des piles, une clé physique de secours fournie avec votre serrure permet toujours d'ouvrir la porte." },
+        { q: "Combien de temps dure la batterie ?",                             a: "Avec un usage quotidien moyen, les 4 piles AA tiennent environ 4 à 6 mois. L'autonomie restante est visible à tout moment dans l'application, qui vous alerte avant épuisement." },
+        { q: "Puis-je l'installer moi-même ?",                                 a: "Non, nous recommandons de laisser nos techniciens certifiés s'en charger : l'installation est gratuite, incluse avec chaque commande, et prend généralement moins de 45 minutes." },
         { q: "Livrez-vous partout au Maroc ?",                                  a: "Oui, nous livrons dans toutes les villes du Maroc, avec paiement à la livraison disponible. Le délai moyen est de 2 à 4 jours ouvrés." },
       ],
     },
@@ -275,12 +270,12 @@ const fr = {
       headline: ["Ce qu'en", "disent 312", "foyers."],
       count: "312 avis vérifiés",
       testimonials: [
-        { title: "« La rapidité de la serrure m'a bluffé »",         body: "L'empreinte s'ouvre en moins d'une seconde, même le matin les yeux mi-fermés. Le métal est lourd, costaud — on sent vraiment la qualité dès qu'on pose la main dessus. Pas la même chose que ce qu'on voit sur les sites chinois.",                        author: "Salma B.",   city: "Casablanca" },
-        { title: "« Le technicien est venu le lendemain »",           body: "J'ai commandé un vendredi soir et le technicien AriniLock était chez moi le samedi matin. Il a installé la serrure en 40 minutes, expliqué l'app et configuré les empreintes de toute la famille. Service vraiment pro.",                                        author: "Youssef A.", city: "Marrakech" },
-        { title: "« Je dors tranquille depuis »",                     body: "Avant j'avais peur d'oublier de fermer à clé. Maintenant la serrure se verrouille automatiquement. L'alarme anti-effraction m'a envoyé une notif un soir — c'était juste le chat du voisin, mais ça prouve que ça fonctionne.",                                 author: "Karim M.",   city: "Rabat" },
-        { title: "« Je gère ma porte depuis Paris »",                 body: "Je travaille souvent à l'étranger. Avec l'app Tuya je vois en temps réel qui rentre chez moi, je peux ouvrir à distance pour ma femme ou fermer si j'ai un doute. La caméra HD est très claire même de nuit.",                                                    author: "Nadia E.",   city: "Agadir" },
-        { title: "« Parfait pour mon Airbnb »",                       body: "Je gère deux riads en location courte durée. Je génère un code temporaire pour chaque locataire et je le supprime à la fin du séjour. Zéro remise de clés physiques, zéro stress. La serrure tient parfaitement depuis 9 mois.",                                author: "Hassan T.",  city: "Fès" },
-        { title: "« Ma mère de 68 ans l'utilise chaque jour »",       body: "Je craignais que ça soit trop compliqué pour mes parents. En réalité l'empreinte digitale est plus simple qu'une clé. Mon père dit que c'est la meilleure chose qu'on ait achetée pour la maison.",                                                              author: "Imane R.",   city: "Tanger" },
+        { title: "Installation propre et rapide",         body: "Le technicien est venu à l'heure convenue et a tout installé en moins d'une heure. L'empreinte digitale fonctionne bien et rapidement au quotidien.",                        author: "Salma B.",   city: "Casablanca" },
+        { title: "Service pro du début à la fin",           body: "Commande passée un vendredi, technicien chez moi le lendemain matin. Installation soignée, explications claires sur l'application.",                                        author: "Youssef A.", city: "Marrakech" },
+        { title: "Plus tranquille pour fermer la porte",                     body: "La serrure se verrouille automatiquement, ça évite d'oublier de fermer à clé en sortant. Simple à utiliser pour toute la famille.",                                 author: "Karim M.",   city: "Rabat" },
+        { title: "Pratique quand je ne suis pas chez moi",                 body: "Je peux ouvrir la porte à distance depuis l'application quand je suis en déplacement, pour laisser entrer quelqu'un de confiance.",                                                    author: "Nadia E.",   city: "Agadir" },
+        { title: "Utile pour la location courte durée",                       body: "Je gère un appartement en location courte durée. Je crée un code temporaire pour chaque locataire et je le supprime à son départ.",                                author: "Hassan T.",  city: "Fès" },
+        { title: "Simple même pour mes parents",       body: "Mes parents craignaient que ce soit compliqué. En réalité l'empreinte digitale est plus simple à utiliser qu'une clé classique.",                                                              author: "Imane R.",   city: "Tanger" },
       ],
     },
     footer: {
@@ -296,7 +291,7 @@ const fr = {
       selectionCol: {
         title: "Nos sélections",
         links: [
-          { href: "#accessoires", label: "Collections" },
+          { href: "/produits", label: "Collections" },
           { href: "#",            label: "Promotions" },
           { href: "/produits",    label: "Nouveautés" },
         ],
@@ -307,7 +302,6 @@ const fr = {
           links: [
             { href: "#produit", label: "Poignée connectée" },
             { href: "#fonctionnalites", label: "Fonctionnalités" },
-            { href: "#accessoires", label: "Accessoires" },
             { href: "#avis", label: "Avis clients" },
           ],
         },
@@ -352,7 +346,7 @@ const fr = {
       launchBadge: "Offre de lancement",
       specs: [
         { label: "Connectivité",  value: "Wifi + Bluetooth" },
-        { label: "Alimentation",  value: "4× piles AA · ~12 mois" },
+        { label: "Alimentation",  value: "4× piles AA · ~4-6 mois" },
         { label: "Matériaux",     value: "Alliage de zinc, finition anti-traces" },
         { label: "Installation",  value: "portes standards" },
         { label: "Garantie",      value: "2 ans" },
@@ -560,7 +554,6 @@ const en: typeof fr = {
   nav: {
     shop: "Shop",
     features: "Features",
-    accessories: "Accessories",
     reviews: "Reviews",
     faq: "FAQ",
     contact: "Contact",
@@ -645,12 +638,12 @@ What's in the box
       {
         value: "specs",
         trigger: "Technical specifications",
-        content: "Fingerprints: up to 100 · PIN codes: up to 50 · Battery life: 12 months (4× AA) · Protocol: Bluetooth 5.0 + Wi-Fi (optional) · Certifications: IP65, EN 1634 · Dimensions: 245 × 70 × 28 mm",
+        content: "Fingerprints: up to 150 · PIN codes: up to 50 (6 digits) · Battery life: 4-6 months (4× AA) · Protocol: Bluetooth 5.0 + Wi-Fi (optional) · Certifications: IP65, EN 1634 · Dimensions: 245 × 70 × 28 mm",
       },
       {
         value: "installation",
         trigger: "Installation",
-        content: "Compatible with standard doors (60–80 mm thick). 3M high-strength adhesive mounting — A video tutorial is included; installation takes under 45 minutes.",
+        content: "Compatible with standard doors (60–80 mm thick). Installed by our certified technicians, included and free with your order — generally under 45 minutes.",
       },
       {
         value: "warranty",
@@ -784,11 +777,6 @@ What's in the box
   },
   marquee: "Free delivery & installation ✦ Free delivery & installation ✦ Free delivery & installation ✦ Free delivery & installation ✦",
   sections: {
-    accessories: {
-      label: "02 — Accessories",
-      right: "Complete your setup",
-      headline: ["Built to last", "longer."],
-    },
     stats: {
       label: "01 — By the numbers",
       right: "Snapshot — Launch edition",
@@ -796,16 +784,17 @@ What's in the box
       items: [
         { value: "150", unit: "", label: "Fingerprints", sub: "max stored" },
         { value: "7",   unit: "", label: "Methods",      sub: "of access" },
-        { value: "12–18", unit: " mo", label: "Battery", sub: "life" },
+        { value: "4–6", unit: " mo", label: "Battery", sub: "life" },
         { value: "2",   unit: "yr",  label: "Warranty",  sub: "manufacturer" },
       ],
       details: [
-        { title: "FINGERPRINT",  body: "Up to 100 fingerprints. Recognition in under one second. Up to 10 family profiles." },
-        { title: "PIN CODE",     body: "4–8 digit code. Changeable from the app. Temporary codes for guests." },
-        { title: "APP",          body: "Remote control. Access history. Real-time notifications." },
-        { title: "RFID + KEY",   body: "Ultra-fast NFC cards. Physical backup key included. Works offline." },
-        { title: "FACE ID",      body: "3D facial recognition. Anti-spoofing. Works at night via infrared sensors." },
-        { title: "PALM",         body: "Contactless palm reading. Hygienic and ultra-fast. Perfect when hands are full." },
+        { title: "FINGERPRINT",   body: "Up to 150 fingerprints. Recognition in under one second. Up to 10 family profiles." },
+        { title: "PIN CODE",      body: "6-digit code. Changeable from the app. Temporary codes for guests." },
+        { title: "APP",           body: "Remote control. Access history. Real-time notifications." },
+        { title: "RFID",          body: "Ultra-fast NFC cards. Instant access. Works offline." },
+        { title: "BACKUP KEY",    body: "Physical key included with every lock. Always works, even during an outage." },
+        { title: "FACE ID",       body: "3D facial recognition. Anti-spoofing. Works at night via infrared sensors." },
+        { title: "PALM READER",   body: "Contactless palm reading. Hygienic and ultra-fast. Handy when your hands are full (groceries, keys, a child in your arms)." },
       ],
     },
     features: {
@@ -813,13 +802,13 @@ What's in the box
       right: "Next-generation security",
       headline: ["Seven", "ways", "to enter."],
       items: [
-        { title: "Fingerprint",      description: "Up to 100 stored fingerprints. Unlocks in under a second, even with slightly damp hands." },
-        { title: "PIN code",         description: "Personal 4–8 digit code, changeable from the app. Temporary codes for guests, cleaners or delivery staff." },
+        { title: "Fingerprint",      description: "Up to 150 stored fingerprints. Unlocks in under a second, even with slightly damp hands." },
+        { title: "PIN code",         description: "Personal 6-digit code, changeable from the app. Temporary codes for guests, cleaners or delivery staff." },
         { title: "Mobile app",       description: "Lock, unlock, and view your full door history from anywhere in the world." },
         { title: "RFID card",        description: "Ultra-fast NFC badges for instant access. Works with most existing cards. No internet required." },
         { title: "Physical key",     description: "A mechanical key shipped with every lock — for any emergency: dead battery, lost phone, or network outage." },
         { title: "Face ID",          description: "3D facial recognition for instant, secure access. Works day and night thanks to infrared sensors." },
-        { title: "Door handle",      description: "Integrated ergonomic handle — open the door in one gesture, even with your hands full." },
+        { title: "Door handle",      description: "Integrated ergonomic handle — open the door in one gesture, even when your hands are full." },
       ],
     },
     howItWorks: {
@@ -827,9 +816,9 @@ What's in the box
       right: "0 → 1 in 45 min",
       headline: ["Installed in under", "45 minutes."],
       steps: [
-        { title: "Easy mounting",    description: "Attaches directly to your existing door with no modification to the original lock and no special tools." },
-        { title: "App pairing",          description: "Pair your lock with the AriniLock app via Bluetooth and set your preferences in a few screens." },
-        { title: "Add your access",      description: "Create permanent or temporary access for your family, guests, or household staff." },
+        { title: "Installed by our technicians", description: "Our certified technicians mount the lock directly on your existing door and make all the necessary adjustments, without damaging it." },
+        { title: "App pairing",                   description: "Your lock is paired with the Tuya app via Bluetooth. The technician sets up your main PIN code and first fingerprints with you." },
+        { title: "Add your access",               description: "Then create permanent or temporary access for your family, guests, or household staff." },
       ],
     },
     faq: {
@@ -837,10 +826,10 @@ What's in the box
       right: "Common questions",
       headline: ["Everything", "you need", "to know."],
       items: [
-        { q: "Is AriniLock compatible with all doors?",          a: "AriniLock fits most standard interior and entrance doors in wood and metal. A detailed compatibility guide is provided before purchase." },
-        { q: "What happens in a power cut or failure?",           a: "AriniLock runs on batteries, independent of the electrical grid. In a complete failure, the physical backup key included with your lock always opens the door." },
-        { q: "How long does the battery last?",                   a: "With average daily use, the 4 AA batteries last about 12 months. The app alerts you automatically several weeks before they run out." },
-        { q: "Can I install it myself?",                          a: "Yes. Installation requires or special tools, following the illustrated guide provided — allow about 45 minutes." },
+        { q: "Is AriniLock compatible with all doors?",          a: "AriniLock fits most standard interior and entrance doors in wood and metal. Contact our team before purchase to check compatibility with your door." },
+        { q: "What happens in a power cut or failure?",           a: "AriniLock runs on batteries and stays usable (fingerprint, PIN code, RFID card) independently of the electrical grid, as long as the batteries have charge. Remote unlocking via the app, however, requires the lock to be connected to the internet (4G) — without a connection, only local access methods work. In a complete battery failure, the physical backup key included with your lock always opens the door." },
+        { q: "How long does the battery last?",                   a: "With average daily use, the 4 AA batteries last about 4 to 6 months. Remaining battery life is visible at any time in the app, which alerts you before they run out." },
+        { q: "Can I install it myself?",                          a: "No, we recommend leaving it to our certified technicians: installation is free, included with every order, and generally takes under 45 minutes." },
         { q: "Do you deliver across Morocco?",                    a: "Yes, we deliver to all cities in Morocco, with cash on delivery available. Average lead time is 2 to 4 business days." },
       ],
     },
@@ -858,12 +847,12 @@ What's in the box
       headline: ["What 312", "households", "say."],
       count: "312 verified reviews",
       testimonials: [
-        { title: "\"The speed genuinely surprised me\"",              body: "The fingerprint unlocks in under a second even half-asleep in the morning. The metal feels heavy and solid — you can tell straight away it's not cheap hardware. Completely different league from what you find on generic sites.",             author: "Salma B.",   city: "Casablanca" },
-        { title: "\"Technician arrived the next morning\"",            body: "I ordered on a Friday evening and the AriniLock technician was at my door Saturday morning. He installed everything in 40 minutes, set up the app and registered the whole family's fingerprints. Genuinely professional service.",                   author: "Youssef A.", city: "Marrakech" },
-        { title: "\"I sleep soundly now\"",                            body: "I used to worry about forgetting to lock the door. Now it locks itself automatically every time. The anti-tamper alarm sent me a notification one evening — just a neighbour's cat — but it proved the system works perfectly.",                          author: "Karim M.",   city: "Rabat" },
-        { title: "\"Managing my door from abroad\"",                   body: "I travel for work constantly. With the Tuya app I can see in real time who's entering, unlock remotely for my wife, or check if the door is secure. The HD camera is crystal clear even at night.",                                                       author: "Nadia E.",   city: "Agadir" },
-        { title: "\"Game changer for my Airbnb\"",                     body: "I run two riads as short-term rentals. I generate a temporary code per guest and delete it at checkout. Zero physical key handovers, zero stress. The lock has held up flawlessly for 9 months.",                                                          author: "Hassan T.",  city: "Fès" },
-        { title: "\"My 68-year-old mother uses it every day\"",        body: "I was worried it would be too complex for my parents. Turns out the fingerprint is simpler than a key. My father says it's the best thing we've bought for the house.",                                                                                     author: "Imane R.",   city: "Tanger" },
+        { title: "Clean, quick installation",         body: "The technician arrived on time and had everything installed in under an hour. The fingerprint reader is fast and reliable day to day.",             author: "Salma B.",   city: "Casablanca" },
+        { title: "Professional from start to finish",            body: "Ordered on a Friday, technician at my door the next morning. Tidy installation and clear explanations about the app.",                   author: "Youssef A.", city: "Marrakech" },
+        { title: "One less thing to worry about",                            body: "The lock locks itself automatically, so I no longer worry about forgetting to lock up. Easy for the whole family to use.",                          author: "Karim M.",   city: "Rabat" },
+        { title: "Useful when I'm not home",                   body: "I can unlock the door remotely from the app when I'm away, to let someone I trust in.",                                                       author: "Nadia E.",   city: "Agadir" },
+        { title: "Good fit for short-term rental",                     body: "I manage a short-term rental apartment. I create a temporary code for each guest and delete it once they leave.",                                                          author: "Hassan T.",  city: "Fès" },
+        { title: "Simple even for my parents",        body: "My parents were worried it would be complicated. In practice the fingerprint is simpler to use than a regular key.",                                                                                     author: "Imane R.",   city: "Tanger" },
       ],
     },
     footer: {
@@ -879,7 +868,7 @@ What's in the box
       selectionCol: {
         title: "Our picks",
         links: [
-          { href: "#accessoires", label: "Collections" },
+          { href: "/produits", label: "Collections" },
           { href: "#",            label: "Promotions" },
           { href: "/produits",    label: "New arrivals" },
         ],
@@ -890,7 +879,6 @@ What's in the box
           links: [
             { href: "#produit",        label: "Smart handle" },
             { href: "#fonctionnalites", label: "Features" },
-            { href: "#accessoires",    label: "Accessories" },
             { href: "#avis",           label: "Customer reviews" },
           ],
         },
@@ -935,7 +923,7 @@ What's in the box
       launchBadge: "Launch offer",
       specs: [
         { label: "Connectivity",   value: "WiFi + Bluetooth" },
-        { label: "Power",          value: "4× AA batteries · ~12 months" },
+        { label: "Power",          value: "4× AA batteries · ~4-6 months" },
         { label: "Materials",      value: "Zinc alloy, fingerprint-resistant finish" },
         { label: "Installation",   value: "Standard doors" },
         { label: "Warranty",       value: "2 years" },
@@ -1143,7 +1131,6 @@ const ar: typeof fr = {
   nav: {
     shop: "المتجر",
     features: "المميزات",
-    accessories: "الملحقات",
     reviews: "التقييمات",
     faq: "الأسئلة الشائعة",
     contact: "اتصل بنا",
@@ -1228,12 +1215,12 @@ const ar: typeof fr = {
       {
         value: "specs",
         trigger: "المواصفات التقنية",
-        content: "البصمات: حتى 100 · أرقام PIN: حتى 50 · عمر البطارية: 12 شهرًا (4× AA) · البروتوكول: Bluetooth 5.0 + Wi-Fi (اختياري) · الشهادات: IP65, EN 1634 · الأبعاد: 245 × 70 × 28 ملم",
+        content: "البصمات: حتى 150 · أرقام PIN: حتى 50 (6 أرقام) · عمر البطارية: 4-6 أشهر (4× AA) · البروتوكول: Bluetooth 5.0 + Wi-Fi (اختياري) · الشهادات: IP65, EN 1634 · الأبعاد: 245 × 70 × 28 ملم",
       },
       {
         value: "installation",
         trigger: "التركيب",
-        content: "متوافق مع الأبواب القياسية (60–80 ملم سُمكًا). تثبيت بلاصق 3M عالي المقاومة —. يُرفق درس فيديو؛ التركيب في أقل من 15 دقيقة.",
+        content: "متوافق مع الأبواب القياسية (60–80 ملم سُمكًا). يتم التركيب من قِبل فنيّينا المعتمدين، وهو مشمول ومجاني مع طلبك — يستغرق عادةً أقل من 45 دقيقة.",
       },
       {
         value: "warranty",
@@ -1367,11 +1354,6 @@ const ar: typeof fr = {
   },
   marquee: "توصيل وتركيب مجاني ✦ توصيل وتركيب مجاني ✦ توصيل وتركيب مجاني ✦ توصيل وتركيب مجاني ✦",
   sections: {
-    accessories: {
-      label: "02 — الملحقات",
-      right: "أكمل تجهيزك",
-      headline: ["مصنوع للصمود", "أطول."],
-    },
     stats: {
       label: "01 — بالأرقام",
       right: "لمحة — إصدار الإطلاق",
@@ -1379,16 +1361,17 @@ const ar: typeof fr = {
       items: [
         { value: "150", unit: "", label: "بصمة", sub: "الحد الأقصى المخزن" },
         { value: "7",   unit: "", label: "طريقة", sub: "للدخول" },
-        { value: "12–18", unit: " شهر", label: "استقلالية", sub: "البطارية" },
+        { value: "4–6", unit: " أشهر", label: "استقلالية", sub: "البطارية" },
         { value: "2",   unit: "سنة", label: "ضمان", sub: "الصانع" },
       ],
       details: [
-        { title: "البصمة",       body: "تخزين حتى 100 بصمة. تعرف في أقل من ثانية. حتى 10 ملفات عائلية." },
-        { title: "الرمز",        body: "رمز 4–8 أرقام. قابل للتغيير من التطبيق. رموز مؤقتة للضيوف." },
-        { title: "التطبيق",      body: "تحكم عن بُعد. سجل الدخول. إشعارات فورية." },
-        { title: "RFID + مفتاح", body: "بطاقات NFC سريعة. مفتاح احتياطي مادي مرفق. يعمل دون إنترنت." },
+        { title: "البصمة",         body: "تخزين حتى 150 بصمة. تعرف في أقل من ثانية. حتى 10 ملفات عائلية." },
+        { title: "الرمز السري",    body: "رمز من 6 أرقام. قابل للتغيير من التطبيق. رموز مؤقتة للضيوف." },
+        { title: "التطبيق",        body: "تحكم عن بُعد. سجل الدخول. إشعارات فورية." },
+        { title: "RFID",           body: "بطاقات NFC سريعة. وصول فوري. يعمل دون إنترنت." },
+        { title: "مفتاح احتياطي",  body: "مفتاح مادي مرفق مع كل قفل. يعمل دائمًا حتى عند انقطاع البطارية." },
         { title: "التعرف على الوجه", body: "تعرف ثلاثي الأبعاد على الوجه. مضاد للانتحال. يعمل ليلاً عبر أجهزة الاستشعار." },
-        { title: "راحة اليد",    body: "قراءة راحة اليد دون تلامس. صحي وسريع. مثالي حين تكون اليدان مشغولتين." },
+        { title: "راحة اليد",      body: "قراءة راحة اليد دون تلامس. صحي وسريع. مفيد حين تكون يداك مشغولتين (أكياس، مفاتيح، طفل بين ذراعيك)." },
       ],
     },
     features: {
@@ -1396,23 +1379,23 @@ const ar: typeof fr = {
       right: "أمان الجيل القادم",
       headline: ["سبع", "طرق", "للدخول."],
       items: [
-        { title: "البصمة الرقمية",    description: "تخزين حتى 100 بصمة. فتح في أقل من ثانية حتى مع اليدين المبللتين قليلًا." },
-        { title: "الرمز السري",       description: "رمز شخصي من 4 إلى 8 أرقام، قابل للتغيير من التطبيق. رموز مؤقتة للضيوف والعمالة المنزلية." },
+        { title: "البصمة الرقمية",    description: "تخزين حتى 150 بصمة. فتح في أقل من ثانية حتى مع اليدين المبللتين قليلًا." },
+        { title: "الرمز السري",       description: "رمز شخصي من 6 أرقام، قابل للتغيير من التطبيق. رموز مؤقتة للضيوف والعمالة المنزلية." },
         { title: "التطبيق المحمول",   description: "قفّل أو افتح الباب واطّلع على السجل الكامل من أي مكان في العالم." },
         { title: "بطاقة RFID",        description: "بطاقات NFC فائقة السرعة للوصول الفوري. متوافقة مع معظم البطاقات الموجودة. تعمل بدون إنترنت." },
         { title: "مفتاح احتياطي",     description: "مفتاح ميكانيكي مرفق مع كل قفل — لأي طارئ: بطارية فارغة أو هاتف معطل أو انقطاع الشبكة." },
         { title: "Face ID",            description: "التعرف على الوجه ثلاثي الأبعاد للوصول الفوري والآمن. يعمل ليلًا ونهارًا بفضل أجهزة الاستشعار بالأشعة تحت الحمراء." },
-        { title: "مقبض الباب",        description: "مقبض مدمج مريح يتيح فتح الباب بحركة واحدة حتى وأنت مشغول اليدين." },
+        { title: "مقبض الباب",        description: "مقبض مدمج مريح يتيح فتح الباب بحركة واحدة حتى عندما تكون يداك مشغولتين." },
       ],
     },
     howItWorks: {
       label: "04 — التركيب",
-      right: "من 0 إلى 1 في 15 دقيقة",
-      headline: ["مُثبَّت في أقل من", "15 دقيقة."],
+      right: "من 0 إلى 1 في 45 دقيقة",
+      headline: ["مُثبَّت في أقل من", "45 دقيقة."],
       steps: [
-        { title: "تثبيت",     description: "يُثبَّت مباشرةً على بابك الحالي دون تعديل القفل الأصلي أو أدوات خاصة." },
-        { title: "الإقران بالتطبيق",   description: "اربط قفلك بتطبيق أريني لوك عبر البلوتوث وضبط تفضيلاتك في خطوات بسيطة." },
-        { title: "أضف صلاحيات الدخول", description: "أنشئ صلاحيات دائمة أو مؤقتة لعائلتك وضيوفك وعمالتك المنزلية." },
+        { title: "تركيب بواسطة فنيّينا",     description: "يقوم فنيّونا المعتمدون بتركيب القفل مباشرةً على بابك الحالي وضبط جميع الإعدادات اللازمة، دون إتلاف الباب." },
+        { title: "الإقران بالتطبيق",   description: "يُقرَن قفلك بتطبيق Tuya عبر البلوتوث. يقوم الفني بضبط رمزك السري الرئيسي وأول بصماتك معك." },
+        { title: "أضف صلاحيات الدخول", description: "أنشئ بعد ذلك صلاحيات دائمة أو مؤقتة لعائلتك وضيوفك وعمالتك المنزلية." },
       ],
     },
     faq: {
@@ -1420,10 +1403,10 @@ const ar: typeof fr = {
       right: "أسئلة شائعة",
       headline: ["كل ما تحتاج", "معرفته.", ""],
       items: [
-        { q: "هل أريني لوك متوافق مع جميع الأبواب؟",              a: "يتناسب أريني لوك مع معظم أبواب الدخول والداخلية القياسية من الخشب والمعدن. يُرفق دليل توافق تفصيلي قبل الشراء." },
-        { q: "ماذا يحدث عند انقطاع الكهرباء أو العطل؟",           a: "يعمل أريني لوك بالبطاريات بشكل مستقل عن الشبكة الكهربائية. عند أي عطل كامل، يتيح المفتاح الاحتياطي المرفق فتح الباب دائمًا." },
-        { q: "كم تدوم البطارية؟",                                   a: "مع الاستخدام اليومي المعتاد، تدوم 4 بطاريات AA نحو 12 شهرًا. يُنبّهك التطبيق تلقائيًا قبل أسابيع من نفادها." },
-        { q: "هل يمكنني التركيب بنفسي؟",                           a: "نعم. التركيب أو أدوات خاصة باتباع الدليل المصوّر المرفق — في نحو 15 دقيقة." },
+        { q: "هل أريني لوك متوافق مع جميع الأبواب؟",              a: "يتناسب أريني لوك مع معظم أبواب الدخول والداخلية القياسية من الخشب والمعدن. تواصل مع فريقنا قبل الشراء للتحقق من التوافق مع بابك." },
+        { q: "ماذا يحدث عند انقطاع الكهرباء أو العطل؟",           a: "يعمل أريني لوك بالبطاريات ويبقى قابلاً للاستخدام (بصمة، رمز سري، بطاقة RFID) بشكل مستقل عن الشبكة الكهربائية، طالما البطاريات مشحونة. أما الفتح عن بُعد عبر التطبيق فيتطلب اتصال القفل بالإنترنت (4G)؛ وبدون اتصال، تبقى فقط طرق الدخول المحلية متاحة. عند نفاد البطاريات بالكامل، يتيح المفتاح الاحتياطي المرفق فتح الباب دائمًا." },
+        { q: "كم تدوم البطارية؟",                                   a: "مع الاستخدام اليومي المعتاد، تدوم 4 بطاريات AA نحو 4 إلى 6 أشهر. تظهر نسبة البطارية المتبقية في أي وقت داخل التطبيق الذي يُنبّهك قبل نفادها." },
+        { q: "هل يمكنني التركيب بنفسي؟",                           a: "لا، ننصح بترك مهمة التركيب لفنيّينا المعتمدين: التركيب مجاني ومشمول مع كل طلب، ويستغرق عادةً أقل من 45 دقيقة." },
         { q: "هل توصّلون إلى جميع أنحاء المغرب؟",                  a: "نعم، نوصّل إلى جميع مدن المغرب مع إمكانية الدفع عند الاستلام. المدة المتوسطة 2 إلى 4 أيام عمل." },
       ],
     },
@@ -1441,12 +1424,12 @@ const ar: typeof fr = {
       headline: ["ما يقوله", "312 منزل", "عنه."],
       count: "312 تقييم موثّق",
       testimonials: [
-        { title: "«سرعة الفتح أذهلتني»",                   body: "البصمة تفتح في أقل من ثانية حتى في الصباح الباكر. المعدن ثقيل وصلب — تحس بالجودة من أول لمسة. لا مقارنة مع ما يُباع في المواقع العشوائية.",                                      author: "سلمى ب.",    city: "الدار البيضاء" },
-        { title: "«التقني وصل في الصباح الباكر»",          body: "طلبت يوم الجمعة مساءً وتقني أريني لوك كان عندي السبت صباحًا. ركّب القفل في 40 دقيقة وضبط التطبيق وسجّل بصمات كل العائلة. خدمة احترافية حقيقية.",    author: "يوسف أ.",    city: "مراكش" },
-        { title: "«بت نام مرتاح البال»",                   body: "كنت دائمًا قلقًا من نسيان إغلاق الباب. الآن يُقفل وحده بعد كل إغلاق. إنذار الاقتحام أرسل لي إشعارًا ذات ليلة — كان قط الجار — لكنه أثبت أن النظام يعمل فعلًا.",    author: "كريم م.",    city: "الرباط" },
-        { title: "«أتحكم في بابي من باريس»",               body: "أعمل كثيرًا خارج البلاد. مع تطبيق Tuya أرى في الوقت الحقيقي من يدخل، أفتح عن بُعد لزوجتي، وأتحقق من أمان الباب. الكاميرا HD واضحة جدًا حتى ليلًا.",  author: "نادية أ.",   city: "أكادير" },
-        { title: "«مثالي لشقق Airbnb»",                    body: "أدير رياضين للإيجار القصير. أولّد رمزًا مؤقتًا لكل مستأجر وأحذفه عند المغادرة. لا تسليم مفاتيح، لا توتر. القفل صامد بلا أي مشكلة منذ 9 أشهر.",          author: "حسن ت.",    city: "فاس" },
-        { title: "«أمي 68 سنة تستخدمه يوميًا»",            body: "خشيت أن يكون معقدًا على والديَّ. لكن البصمة أسهل من المفتاح. والدي يقول إنه أفضل شيء اشتريناه للبيت.",                                               author: "إيمان ر.",   city: "طنجة" },
+        { title: "تركيب نظيف وسريع",                   body: "وصل الفني في الموعد المحدد وأنهى التركيب في أقل من ساعة. البصمة تعمل بسرعة وموثوقية في الاستخدام اليومي.",                                      author: "سلمى ب.",    city: "الدار البيضاء" },
+        { title: "خدمة احترافية من البداية للنهاية",          body: "طلبت يوم الجمعة، وكان الفني عندي في صباح اليوم التالي. تركيب مرتب وشرح واضح حول التطبيق.",    author: "يوسف أ.",    city: "مراكش" },
+        { title: "أقل قلقًا بشأن إغلاق الباب",                   body: "يُقفل الباب تلقائيًا، فلم أعد أقلق من نسيان إغلاقه عند الخروج. سهل الاستخدام لكل أفراد العائلة.",    author: "كريم م.",    city: "الرباط" },
+        { title: "مفيد عندما لا أكون في المنزل",               body: "يمكنني فتح الباب عن بُعد من التطبيق عندما أكون خارج المنزل، للسماح بدخول شخص أثق به.",  author: "نادية أ.",   city: "أكادير" },
+        { title: "مناسب للإيجار القصير",                    body: "أدير شقة للإيجار القصير. أنشئ رمزًا مؤقتًا لكل مستأجر وأحذفه بعد مغادرته.",          author: "حسن ت.",    city: "فاس" },
+        { title: "سهل حتى لوالديّ",            body: "كان والداي قلقين من أن يكون الأمر معقدًا. في الواقع البصمة أسهل استخدامًا من المفتاح التقليدي.",                                               author: "إيمان ر.",   city: "طنجة" },
       ],
     },
     footer: {
@@ -1462,7 +1445,7 @@ const ar: typeof fr = {
       selectionCol: {
         title: "اختياراتنا",
         links: [
-          { href: "#accessoires", label: "المجموعات" },
+          { href: "/produits", label: "المجموعات" },
           { href: "#",            label: "العروض" },
           { href: "/produits",    label: "الجديد" },
         ],
@@ -1473,7 +1456,6 @@ const ar: typeof fr = {
           links: [
             { href: "#produit",        label: "المقبض الذكي" },
             { href: "#fonctionnalites", label: "المميزات" },
-            { href: "#accessoires",    label: "الملحقات" },
             { href: "#avis",           label: "آراء العملاء" },
           ],
         },
@@ -1518,7 +1500,7 @@ const ar: typeof fr = {
       launchBadge: "عرض الإطلاق",
       specs: [
         { label: "الاتصال",        value: "واي فاي + بلوتوث" },
-        { label: "الطاقة",         value: "4 بطاريات AA · ~12 شهرًا" },
+        { label: "الطاقة",         value: "4 بطاريات AA · ~4-6 أشهر" },
         { label: "المواد",          value: "سبيكة الزنك، تشطيب مقاوم للبصمات" },
         { label: "التركيب",        value: "أبواب قياسية" },
         { label: "الضمان",         value: "سنتان" },

@@ -3,9 +3,10 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { AnimatePresence, motion } from "framer-motion";
-import { MessageCircle, Send, X, Loader2, Trash2 } from "lucide-react";
+import { MessageCircle, Send, X, Loader2, Trash2, Maximize2, Minimize2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 interface Message {
   role: "user" | "assistant";
@@ -162,6 +163,7 @@ function loadMessages(): Message[] {
 export function ChatWidget() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const [messages, setMessages] = useState<Message[]>([WELCOME]);
   const [input, setInput] = useState("");
   const [hydrated, setHydrated] = useState(false);
@@ -211,6 +213,11 @@ export function ChatWidget() {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
+  function closeChat() {
+    setOpen(false);
+    setExpanded(false);
+  }
+
   function clearChat() {
     setMessages([WELCOME]);
     try { localStorage.removeItem(STORAGE_KEY); } catch {}
@@ -245,7 +252,12 @@ export function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
-            className="flex h-130 w-85 flex-col overflow-hidden rounded-2xl border border-border bg-white shadow-[0_20px_60px_rgba(22,40,71,0.18)]"
+            className={cn(
+              "flex flex-col overflow-hidden border border-border bg-white shadow-[0_20px_60px_rgba(22,40,71,0.18)]",
+              expanded
+                ? "fixed inset-0 z-50 h-dvh w-screen rounded-none"
+                : "h-130 w-85 rounded-2xl max-sm:fixed max-sm:inset-0 max-sm:z-50 max-sm:h-dvh max-sm:w-screen max-sm:rounded-none",
+            )}
           >
             {/* Header */}
             <div className="flex shrink-0 items-center gap-3 border-b border-white/10 bg-primary px-4 py-3.5">
@@ -257,6 +269,13 @@ export function ChatWidget() {
                 <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">En ligne</p>
               </div>
               <button
+                onClick={() => setExpanded((v) => !v)}
+                aria-label={expanded ? "Réduire le chat" : "Agrandir le chat"}
+                className="hidden h-7 w-7 items-center justify-center rounded-full text-white/50 transition-colors hover:bg-white/10 hover:text-white sm:flex"
+              >
+                {expanded ? <Minimize2 className="h-3.5 w-3.5" /> : <Maximize2 className="h-3.5 w-3.5" />}
+              </button>
+              <button
                 onClick={clearChat}
                 aria-label="Effacer la conversation"
                 className="flex h-7 w-7 items-center justify-center rounded-full text-white/50 transition-colors hover:bg-white/10 hover:text-white"
@@ -264,7 +283,7 @@ export function ChatWidget() {
                 <Trash2 className="h-3.5 w-3.5" />
               </button>
               <button
-                onClick={() => setOpen(false)}
+                onClick={closeChat}
                 aria-label="Fermer le chat"
                 className="flex h-7 w-7 items-center justify-center rounded-full text-white/50 transition-colors hover:bg-white/10 hover:text-white"
               >
@@ -273,7 +292,7 @@ export function ChatWidget() {
             </div>
 
             {/* Messages */}
-            <div ref={scrollRef} className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4">
+            <div ref={scrollRef} className={cn("mx-auto min-h-0 w-full flex-1 space-y-3 overflow-y-auto px-4 py-4", expanded && "max-w-3xl")}>
               {messages.map((m, i) =>
                 m.role === "assistant" ? (
                   <BotMessage key={i} content={m.content} />
@@ -312,7 +331,7 @@ export function ChatWidget() {
 
             {/* Input */}
             <div className="shrink-0 border-t border-border bg-secondary/50 px-3 py-3">
-              <div className="flex items-end gap-2 rounded-xl border border-border bg-white px-3 py-2 focus-within:border-primary/50 transition-colors">
+              <div className={cn("flex items-end gap-2 rounded-xl border border-border bg-white px-3 py-2 focus-within:border-primary/50 transition-colors", expanded && "mx-auto max-w-3xl")}>
                 <textarea
                   ref={inputRef}
                   rows={1}
@@ -346,11 +365,14 @@ export function ChatWidget() {
 
       {/* Toggle button */}
       <motion.button
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => (open ? closeChat() : setOpen(true))}
         aria-label={open ? "Fermer le chat" : "Ouvrir le chat"}
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.94 }}
-        className="relative flex h-14 w-14 items-center justify-center rounded-full bg-primary shadow-[0_8px_32px_rgba(22,40,71,0.45)] transition-shadow hover:shadow-[0_8px_40px_rgba(22,40,71,0.6)]"
+        className={cn(
+          "relative flex h-14 w-14 items-center justify-center rounded-full bg-primary shadow-[0_8px_32px_rgba(22,40,71,0.45)] transition-shadow hover:shadow-[0_8px_40px_rgba(22,40,71,0.6)]",
+          open && (expanded ? "hidden" : "max-sm:hidden"),
+        )}
       >
         <AnimatePresence mode="wait">
           {open ? (

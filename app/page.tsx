@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { AccessoriesGrid } from "@/components/accessories-grid";
 import { CartDrawer } from "@/components/cart-drawer";
 import { Faq } from "@/components/faq";
 import { FeaturesGrid } from "@/components/features-grid";
@@ -158,8 +157,6 @@ export default function HomePage() {
         {/* Feature marquee band — separator between hero and content */}
         <LocalizedMarquee />
         <StatsSection />
-        <AccessoriesGrid />
-
         <FeaturesGrid />
         {/* <ProductShowcase /> */}
         <HowItWorks />

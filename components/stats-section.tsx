@@ -94,19 +94,19 @@ export function StatsSection() {
         </div>
 
         {/* Detail columns */}
-        <div className="grid gap-8 border-t border-primary/10 pt-12 sm:grid-cols-2 lg:grid-cols-6">
+        <div className="grid gap-x-10 gap-y-12 border-t border-primary/10 pt-12 sm:grid-cols-2 lg:grid-cols-4">
           {s.details.map((detail, i) => (
             <Reveal key={detail.title} delay={i * 0.08}>
               <motion.div
                 whileHover="hovered"
                 initial="rest"
                 animate="rest"
-                className="cursor-default"
+                className="max-w-70 cursor-default"
               >
                 <motion.p
                   variants={{ rest: { color: "#032245" }, hovered: { color: "#053d7a" } }}
                   transition={{ duration: 0.2 }}
-                  className="mb-3 text-[10px] font-medium uppercase tracking-[0.3em]"
+                  className="mb-3 text-xs font-semibold uppercase tracking-[0.25em]"
                 >
                   {detail.title}
                 </motion.p>
@@ -114,10 +114,10 @@ export function StatsSection() {
                 <motion.div
                   variants={{ rest: { scaleX: 0 }, hovered: { scaleX: 1 } }}
                   transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="mb-4 h-px origin-left bg-primary/30"
+                  className="mb-4 h-px w-10 origin-left bg-primary/30"
                 />
 
-                <p className="text-sm leading-relaxed text-ink/40">
+                <p className="text-base leading-relaxed text-ink/75">
                   {detail.body}
                 </p>
               </motion.div>

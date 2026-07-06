@@ -80,10 +80,10 @@ export function HowItWorks() {
                   {step.title}
                 </motion.h3>
                 <motion.p
-                  variants={{ rest: { opacity: 0.55 }, hovered: { opacity: 1 } }}
+                  variants={{ rest: { opacity: 1 }, hovered: { opacity: 1 } }}
                   initial="rest"
                   transition={{ duration: 0.25 }}
-                  className="text-sm leading-relaxed text-foreground/55"
+                  className="text-sm leading-relaxed text-foreground/80"
                 >
                   {step.description}
                 </motion.p>

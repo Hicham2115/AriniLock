@@ -6,6 +6,7 @@ import {
   MapPin,
   CreditCard,
   Banknote,
+  Handshake,
 } from "lucide-react";
 import Link from "next/link";
 import { LogoMark } from "@/components/logo-mark";
@@ -61,7 +62,7 @@ export function Footer() {
               {/* Logo + tagline */}
               <div className="flex flex-col gap-5 sm:col-span-2 lg:col-span-1">
                 <LogoMark inverted />
-                <p className="max-w-58 text-sm leading-relaxed text-white/60 font-light tracking-wide">
+                <p className="max-w-58 text-sm leading-relaxed text-white/80 font-light tracking-wide">
                   {s.taglineShort}
                 </p>
               </div>
@@ -69,7 +70,7 @@ export function Footer() {
               {/* Link columns */}
               {allCols.map((col) => (
                 <div key={col.title}>
-                  <p className="mb-5 text-[10px] font-bold uppercase tracking-[0.25em] text-white/40">
+                  <p className="mb-5 text-[10px] font-bold uppercase tracking-[0.25em] text-white/60">
                     {col.title}
                   </p>
                   <ul className="space-y-3">
@@ -77,7 +78,7 @@ export function Footer() {
                       <li key={link.label}>
                         <Link
                           href={link.href}
-                          className="group flex items-center gap-2 text-sm text-white/65 transition-all hover:text-white"
+                          className="group flex items-center gap-2 text-sm text-white/90 transition-all hover:text-white"
                         >
                           <span className="h-px w-0 bg-white/60 transition-all duration-300 group-hover:w-3" />
                           {link.label}
@@ -90,7 +91,7 @@ export function Footer() {
 
               {/* Right — service CTAs + socials */}
               <div className="flex flex-col gap-4 sm:col-span-2 lg:col-span-1 lg:min-w-57.5">
-                <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/40">
+                <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/60">
                   {s.serviceTitle}
                 </p>
 
@@ -142,17 +143,21 @@ export function Footer() {
       {/* ── Partners & address bar ── */}
       <div className="border-t border-gray-100 bg-white px-6 py-8 lg:px-10">
         <div className="mx-auto max-w-7xl space-y-6">
-          {/* Partners row */}
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
-            <p className="shrink-0 text-[10px] font-bold uppercase tracking-[0.25em] text-gray-400">
-              {s.partners}
-            </p>
-            <div className="hidden h-px flex-1 bg-gray-100 sm:block" />
-            <p className="text-xs text-gray-500 italic">{s.partnerNote}</p>
+          {/* Partners block */}
+          <div className="flex items-start gap-4 rounded-2xl border border-primary/15 bg-primary/5 px-5 py-4">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+              <Handshake className="h-5 w-5" aria-hidden="true" />
+            </span>
+            <div>
+              <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.25em] text-primary/70">
+                {s.partners}
+              </p>
+              <p className="text-sm leading-relaxed text-gray-700">{s.partnerNote}</p>
+            </div>
           </div>
 
           {/* Address row */}
-          <div className="flex items-start gap-2 text-xs text-gray-500">
+          <div className="flex items-start gap-2 text-sm text-gray-700">
             <MapPin
               className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary"
               aria-hidden="true"
@@ -165,7 +170,7 @@ export function Footer() {
 
           {/* Payment methods — highlighted */}
           <div className="flex flex-wrap items-center gap-3">
-            <p className="shrink-0 text-[10px] font-bold uppercase tracking-[0.25em] text-gray-400">
+            <p className="shrink-0 text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500">
               Moyens de paiement
             </p>
             <div className="flex flex-wrap gap-2">

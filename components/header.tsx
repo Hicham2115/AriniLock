@@ -41,7 +41,6 @@ export function Header() {
   const NAV_LINKS = [
     { href: "/produits", label: t.nav.shop },
     { href: "#fonctionnalites", label: t.nav.features },
-    { href: "#accessoires", label: t.nav.accessories },
     { href: "#avis", label: t.nav.reviews },
     { href: "#faq", label: t.nav.faq },
     { href: "/contact", label: t.nav.contact },
