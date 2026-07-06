@@ -122,6 +122,33 @@ function detectLanguage(text: string): string {
   return best.name;
 }
 
+// ── Retry with backoff for transient Gemini errors (429 / 503) ─────────────
+
+const RETRY_DELAYS_MS = [1000, 2000];
+
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function isTransient(err: unknown): boolean {
+  return err instanceof GoogleGenerativeAIFetchError && (err.status === 429 || err.status === 503);
+}
+
+async function generateWithRetry(
+  model: ReturnType<GoogleGenerativeAI["getGenerativeModel"]>,
+  request: Parameters<ReturnType<GoogleGenerativeAI["getGenerativeModel"]>["generateContent"]>[0]
+) {
+  for (let attempt = 0; ; attempt++) {
+    try {
+      return await model.generateContent(request);
+    } catch (err) {
+      if (attempt >= RETRY_DELAYS_MS.length || !isTransient(err)) throw err;
+      console.warn(`[chat] Gemini transient error, retrying in ${RETRY_DELAYS_MS[attempt]}ms:`, err instanceof Error ? err.message : err);
+      await sleep(RETRY_DELAYS_MS[attempt]);
+    }
+  }
+}
+
 // ── Route handler ────────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
@@ -194,7 +221,7 @@ export async function POST(req: NextRequest) {
       },
     ];
 
-    const result = await model.generateContent({
+    const result = await generateWithRetry(model, {
       contents,
       generationConfig: { temperature: 0.5, maxOutputTokens: 512 },
     });
