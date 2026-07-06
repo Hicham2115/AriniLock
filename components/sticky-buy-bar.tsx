@@ -7,7 +7,7 @@ import { useUiStore } from "@/stores/ui-store";
 import { useT } from "@/hooks/use-t";
 
 export function StickyBuyBar() {
-  const t = useT();
+  const t = useT(); 
   const formatMoney = useFormatMoney();
   const { data: product } = useMainProduct();
   const { addToCart, isPending } = useAddToCart();
