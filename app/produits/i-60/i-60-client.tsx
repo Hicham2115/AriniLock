@@ -402,7 +402,7 @@ export function I60Client() {
                   >
                     <Img
                       src={i60img5}
-                      label="Photo produit I 60 — Vue principale"
+                      label={q.heroImageAlt}
                       className="aspect-3/4 w-full lg:rounded-none lg:rounded-tl-[2.5rem] lg:rounded-tr-[2.5rem]"
                     />
                   </motion.div>

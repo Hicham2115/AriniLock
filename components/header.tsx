@@ -97,7 +97,7 @@ export function Header() {
 
           {/* Language switcher inside mobile menu */}
           <div className="px-5 pb-4 flex items-center gap-1">
-            <span className="text-[10px] uppercase tracking-widest text-foreground/30 mr-2">Langue</span>
+            <span className="text-[10px] uppercase tracking-widest text-foreground/30 mr-2">{t.nav.language}</span>
             <div className="flex items-center gap-0.5 rounded-full border border-black/10 bg-secondary px-1 py-1">
               {LOCALES.map((loc) => (
                 <button
@@ -124,7 +124,7 @@ export function Header() {
               className="flex w-full items-center justify-center gap-2 rounded-full bg-primary py-4 text-sm font-medium text-white hover:bg-primary/90 transition-colors"
             >
               <ShoppingBag aria-hidden="true" className="h-4 w-4" />
-              Panier {count > 0 && `(${count})`}
+              {t.nav.cart} {count > 0 && `(${count})`}
             </button>
           </div>
         </div>
@@ -157,7 +157,7 @@ export function Header() {
               <button
                 type="button"
                 onClick={() => setBarDismissed(true)}
-                aria-label="Fermer"
+                aria-label={t.nav.close}
                 className="flex h-5 w-5 items-center justify-center rounded text-white/50 transition-colors hover:text-white"
               >
                 <X className="h-3 w-3" />
@@ -170,11 +170,11 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMegaOpen((v) => !v)}
-            aria-label="Menu principal"
+            aria-label={t.nav.mainMenu}
             className="hidden md:flex items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
           >
             <Menu className="h-5 w-5" />
-            <span className="hidden sm:inline">Menu</span>
+            <span className="hidden sm:inline">{t.nav.menu}</span>
           </button>
 
           <div className="hidden md:block mx-3 h-6 w-px bg-border" />
@@ -210,7 +210,7 @@ export function Header() {
             <button
               type="button"
               onClick={openCart}
-              aria-label={`Panier (${count} article${count !== 1 ? "s" : ""})`}
+              aria-label={t.nav.cartAria(count)}
               className="flex h-10 items-center gap-2 rounded-full bg-black px-4 text-sm text-white transition-colors hover:bg-black/80"
             >
               <ShoppingBag aria-hidden="true" className="h-4 w-4" />

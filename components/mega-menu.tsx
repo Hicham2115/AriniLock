@@ -5,19 +5,32 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { useT } from "@/hooks/use-t";
 
-const HREFS = [
-  "/produits",
-  "/produits/serrure-intelligente-arini-m1-pro",
-  "/produits/serrure-intelligente-arini-x5",
-  "/contact",
-  "/produits/serrure-intelligente-arini-i60",
-  "/produits/serrure-intelligente-arini-i50",
-  "/#fonctionnalites",
-  "/#comment-ca-marche",
-  "/#avis",
-  "/#faq",
-  "/contact",
-];
+const SHOP_HREF = "/produits";
+
+const CATEGORY_HREFS = [
+  {
+    main: "/produits/serrure-intelligente-arini-m1-pro",
+    subs: ["/produits/serrure-intelligente-arini-m1-pro", "/#fonctionnalites", "/#fonctionnalites"],
+  },
+  {
+    main: "/produits/serrure-intelligente-arini-x5",
+    subs: ["/produits/serrure-intelligente-arini-x5", "/#comment-ca-marche", "/produits/serrure-intelligente-arini-x5"],
+  },
+  {
+    main: "/contact",
+    subs: ["/contact", "/contact", "/contact"],
+  },
+  {
+    main: "/produits/serrure-intelligente-arini-i60",
+    subs: ["/produits/serrure-intelligente-arini-i60", "/produits/serrure-intelligente-arini-i60", "/#fonctionnalites"],
+  },
+  {
+    main: "/produits/serrure-intelligente-arini-i50",
+    subs: ["/produits/serrure-intelligente-arini-i50", "/produits/serrure-intelligente-arini-i50", "/#fonctionnalites"],
+  },
+] as const;
+
+const LINK_HREFS = ["/#fonctionnalites", "/#comment-ca-marche", "/#avis", "/#faq", "/contact"];
 
 interface MegaMenuProps {
   open: boolean;
@@ -26,7 +39,13 @@ interface MegaMenuProps {
 
 export function MegaMenu({ open, onClose }: MegaMenuProps) {
   const t = useT();
-  const categories = t.nav.menuCategories.map((label, i) => ({ label, href: HREFS[i] ?? "/" }));
+
+  const categories = t.nav.categories.map((cat, i) => ({
+    label: cat.label,
+    href: CATEGORY_HREFS[i]?.main ?? "/",
+    subs: cat.subs.map((label, j) => ({ label, href: CATEGORY_HREFS[i]?.subs[j] ?? "/" })),
+  }));
+  const links = t.nav.links.map((label, i) => ({ label, href: LINK_HREFS[i] ?? "/" }));
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -52,6 +71,14 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
         </div>
 
         <nav className="flex flex-col">
+          <Link
+            href={SHOP_HREF}
+            onClick={onClose}
+            className="border-b border-gray-100 px-5 py-4 text-[15px] font-semibold text-gray-700 transition-colors hover:bg-gray-50 hover:text-ink"
+          >
+            {t.nav.shopLink}
+          </Link>
+
           {categories.map((cat) => (
             <Link
               key={cat.label}
@@ -60,6 +87,19 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
               className="border-b border-gray-100 px-5 py-4 text-[15px] font-semibold text-gray-700 transition-colors hover:bg-gray-50 hover:text-ink"
             >
               {cat.label}
+            </Link>
+            /* Subcategories hidden for now — re-enable by restoring the
+               expandable chevron + cat.subs list (see git history). */
+          ))}
+
+          {links.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              onClick={onClose}
+              className="border-b border-gray-100 px-5 py-4 text-[15px] font-semibold text-gray-700 transition-colors hover:bg-gray-50 hover:text-ink"
+            >
+              {link.label}
             </Link>
           ))}
         </nav>

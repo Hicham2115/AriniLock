@@ -407,7 +407,7 @@ export function M1ProClient() {
                   >
                     <Img
                       src={imgAsset1}
-                      label="Photo produit M1 Pro — Vue principale"
+                      label={p.heroImageAlt}
                       className="aspect-3/4 w-full lg:rounded-none lg:rounded-tl-[2.5rem] lg:rounded-tr-[2.5rem]"
                     />
                   </motion.div>

@@ -15,14 +15,6 @@ import { queryKeys } from "@/lib/query-keys";
 import { MAIN_PRODUCT_HANDLE } from "@/lib/shopify/products";
 import type { Product } from "@/types/shopify";
 
-const PRICE_RANGES = [
-  { label: "Tous les prix", min: 0, max: Infinity },
-  { label: "Moins de 500 MAD", min: 0, max: 500 },
-  { label: "500 – 1 500 MAD", min: 500, max: 1500 },
-  { label: "1 500 – 3 000 MAD", min: 1500, max: 3000 },
-  { label: "Plus de 3 000 MAD", min: 3000, max: Infinity },
-];
-
 const COLOR_OPTIONS = [
   { label: "Black",  bg: "bg-[#1E1B18]" },
   { label: "Silver", bg: "bg-[#C7C9CC]" },
@@ -33,6 +25,7 @@ const COLOR_OPTIONS = [
 export function ProduitsPageClient() {
   const t = useT();
   const queryClient = useQueryClient();
+  const PRICE_RANGES = t.sections.produits.priceRanges;
   const { data: mainProduct, isLoading: loadingMain, isError: errorMain } = useMainProduct();
   const { data: accessories, isLoading: loadingAcc, isError: errorAcc } = useAccessories();
   const isLoading = loadingMain || loadingAcc;
@@ -138,7 +131,7 @@ export function ProduitsPageClient() {
                 <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
                 <input
                   type="search"
-                  placeholder="Rechercher…"
+                  placeholder={t.sections.produits.searchPlaceholder}
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   className="h-9 w-full rounded-full border border-line bg-white pl-9 pr-4 text-sm text-ink placeholder:text-muted-foreground outline-none transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/10"
@@ -167,7 +160,7 @@ export function ProduitsPageClient() {
 
               {/* Colors */}
               <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Couleur</span>
+                <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{t.sections.produits.colorLabel}</span>
                 <div className="flex gap-1.5">
                   {COLOR_OPTIONS.map((col) => (
                     <button
@@ -192,7 +185,7 @@ export function ProduitsPageClient() {
                   onClick={() => { setSearch(""); setPriceIdx(0); setActiveColors([]); }}
                   className="ml-auto text-xs text-muted-foreground underline-offset-2 hover:text-ink hover:underline"
                 >
-                  Réinitialiser
+                  {t.sections.produits.reset}
                 </button>
               )}
             </div>
@@ -221,7 +214,7 @@ export function ProduitsPageClient() {
             </div>
           ) : visible.length === 0 ? (
             <div className="py-24 text-center text-sm text-muted-foreground">
-              Aucun produit ne correspond à vos filtres.
+              {t.sections.produits.noResults}
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">

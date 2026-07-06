@@ -90,13 +90,13 @@ export function OrderForm({ productName, price, whatsappNumber = "212668898860" 
     defaultValues: { prenom: "", telephone: "", adresse: "", ville: "" },
     onSubmit: async ({ value }) => {
       const msg = encodeURIComponent(
-        `🛒 *Nouvelle commande — ${productName}*\n\n` +
+        `🛒 *${tf.whatsappNewOrder} — ${productName}*\n\n` +
         `👤 ${tf.fields.prenom} : ${value.prenom}\n` +
         `📞 ${tf.fields.telephone} : ${value.telephone}\n` +
         `📍 ${tf.fields.adresse} : ${value.adresse}\n` +
         `🏙️ ${tf.fields.ville} : ${value.ville}\n\n` +
-        `💰 Prix : ${price}\n\n` +
-        `_Commande passée via arinilock.ma_`,
+        `💰 ${tf.whatsappPrice} : ${price}\n\n` +
+        `_${tf.whatsappFooter}_`,
       );
       window.open(`https://wa.me/${whatsappNumber}?text=${msg}`, "_blank");
     },
