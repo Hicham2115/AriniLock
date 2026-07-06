@@ -77,7 +77,7 @@ const fr = {
       {
         value: "specs",
         trigger: "Spécifications techniques",
-        content: "Empreintes : jusqu'à 150 · Codes PIN : jusqu'à 50 (6 chiffres) · Autonomie : 4-6 mois (4× AA) · Protocole : Bluetooth 5.0 + Wi-Fi (optionnel) · Certifications : IP65, EN 1634 · Dimensions : 245 × 70 × 28 mm",
+        content: "Empreintes : jusqu'à 150 · Codes PIN : jusqu'à 50 (6 chiffres) · Autonomie : 12-18 mois (4× AA) · Protocole : Bluetooth 5.0 + Wi-Fi (optionnel) · Certifications : IP65, EN 1634 · Dimensions : 245 × 70 × 28 mm",
       },
       {
         value: "installation",
@@ -99,7 +99,7 @@ const fr = {
       { label: "Empreintes max", value: "150" },
       { label: "Connectivité", value: "WiFi + Bluetooth" },
       { label: "Alimentation", value: "4 piles AA" },
-      { label: "Autonomie", value: "4-6 mois" },
+      { label: "Autonomie", value: "12-18 mois" },
       { label: "Installation", value: "45 min" },
       { label: "Garantie", value: "2 ans" },
       { label: "Compatibilité", value: "Portes bois & métal standard" },
@@ -240,7 +240,7 @@ const fr = {
       items: [
         { value: "150", unit: "", label: "Empreintes", sub: "enregistrées max" },
         { value: "7",   unit: "", label: "Méthodes",   sub: "d'accès" },
-        { value: "4–6", unit: " mois", label: "Autonomie", sub: "de batterie" },
+        { value: "12–18", unit: " mois", label: "Autonomie", sub: "de batterie" },
         { value: "2",   unit: "ans", label: "Garantie", sub: "constructeur" },
       ],
       details: [
@@ -284,7 +284,7 @@ const fr = {
       items: [
         { q: "AriniLock est-elle compatible avec toutes les portes ?",         a: "AriniLock s'adapte à la majorité des portes intérieures et d'entrée standards en bois et métal. Contactez notre équipe avant l'achat pour vérifier la compatibilité avec votre porte." },
         { q: "Que se passe-t-il en cas de coupure de courant ou de panne ?",   a: "AriniLock fonctionne sur piles et reste utilisable (empreinte, code PIN, carte RFID) indépendamment du réseau électrique, tant que les piles sont chargées. Le déverrouillage à distance via l'application nécessite en revanche que la serrure soit connectée à internet (4G) : sans connexion, seuls les accès locaux restent disponibles. En cas de panne complète des piles, une clé physique de secours fournie avec votre serrure permet toujours d'ouvrir la porte." },
-        { q: "Combien de temps dure la batterie ?",                             a: "Avec un usage quotidien moyen, les 4 piles AA tiennent environ 4 à 6 mois. L'autonomie restante est visible à tout moment dans l'application, qui vous alerte avant épuisement." },
+        { q: "Combien de temps dure la batterie ?",                             a: "Avec un usage quotidien moyen, les 4 piles AA tiennent environ 12 à 18 mois. L'autonomie restante est visible à tout moment dans l'application, qui vous alerte avant épuisement." },
         { q: "Puis-je l'installer moi-même ?",                                 a: "Non, nous recommandons de laisser nos techniciens certifiés s'en charger : l'installation est gratuite, incluse avec chaque commande, et prend généralement moins de 45 minutes." },
         { q: "Livrez-vous partout au Maroc ?",                                  a: "Oui, nous livrons dans toutes les villes du Maroc, avec paiement à la livraison disponible. Le délai moyen est de 2 à 4 jours ouvrés." },
       ],
@@ -392,7 +392,7 @@ const fr = {
       launchBadge: "Offre de lancement",
       specs: [
         { label: "Connectivité",  value: "Wifi + Bluetooth" },
-        { label: "Alimentation",  value: "4× piles AA · ~4-6 mois" },
+        { label: "Alimentation",  value: "4× piles AA · ~12-18 mois" },
         { label: "Matériaux",     value: "Alliage de zinc, finition anti-traces" },
         { label: "Installation",  value: "portes standards" },
         { label: "Garantie",      value: "2 ans" },
@@ -705,7 +705,7 @@ What's in the box
       {
         value: "specs",
         trigger: "Technical specifications",
-        content: "Fingerprints: up to 150 · PIN codes: up to 50 (6 digits) · Battery life: 4-6 months (4× AA) · Protocol: Bluetooth 5.0 + Wi-Fi (optional) · Certifications: IP65, EN 1634 · Dimensions: 245 × 70 × 28 mm",
+        content: "Fingerprints: up to 150 · PIN codes: up to 50 (6 digits) · Battery life: 12-18 months (4× AA) · Protocol: Bluetooth 5.0 + Wi-Fi (optional) · Certifications: IP65, EN 1634 · Dimensions: 245 × 70 × 28 mm",
       },
       {
         value: "installation",
@@ -727,7 +727,7 @@ What's in the box
       { label: "Max fingerprints", value: "150" },
       { label: "Connectivity", value: "WiFi + Bluetooth" },
       { label: "Power", value: "4 AA batteries" },
-      { label: "Battery life", value: "4-6 months" },
+      { label: "Battery life", value: "12-18 months" },
       { label: "Installation", value: "45 min" },
       { label: "Warranty", value: "2 years" },
       { label: "Compatibility", value: "Standard wood & metal doors" },
@@ -868,7 +868,7 @@ What's in the box
       items: [
         { value: "150", unit: "", label: "Fingerprints", sub: "max stored" },
         { value: "7",   unit: "", label: "Methods",      sub: "of access" },
-        { value: "4–6", unit: " mo", label: "Battery", sub: "life" },
+        { value: "12–18", unit: " mo", label: "Battery", sub: "life" },
         { value: "2",   unit: "yr",  label: "Warranty",  sub: "manufacturer" },
       ],
       details: [
@@ -912,7 +912,7 @@ What's in the box
       items: [
         { q: "Is AriniLock compatible with all doors?",          a: "AriniLock fits most standard interior and entrance doors in wood and metal. Contact our team before purchase to check compatibility with your door." },
         { q: "What happens in a power cut or failure?",           a: "AriniLock runs on batteries and stays usable (fingerprint, PIN code, RFID card) independently of the electrical grid, as long as the batteries have charge. Remote unlocking via the app, however, requires the lock to be connected to the internet (4G) — without a connection, only local access methods work. In a complete battery failure, the physical backup key included with your lock always opens the door." },
-        { q: "How long does the battery last?",                   a: "With average daily use, the 4 AA batteries last about 4 to 6 months. Remaining battery life is visible at any time in the app, which alerts you before they run out." },
+        { q: "How long does the battery last?",                   a: "With average daily use, the 4 AA batteries last about 12 to 18 months. Remaining battery life is visible at any time in the app, which alerts you before they run out." },
         { q: "Can I install it myself?",                          a: "No, we recommend leaving it to our certified technicians: installation is free, included with every order, and generally takes under 45 minutes." },
         { q: "Do you deliver across Morocco?",                    a: "Yes, we deliver to all cities in Morocco, with cash on delivery available. Average lead time is 2 to 4 business days." },
       ],
@@ -1020,7 +1020,7 @@ What's in the box
       launchBadge: "Launch offer",
       specs: [
         { label: "Connectivity",   value: "WiFi + Bluetooth" },
-        { label: "Power",          value: "4× AA batteries · ~4-6 months" },
+        { label: "Power",          value: "4× AA batteries · ~12-18 months" },
         { label: "Materials",      value: "Zinc alloy, fingerprint-resistant finish" },
         { label: "Installation",   value: "Standard doors" },
         { label: "Warranty",       value: "2 years" },
@@ -1333,7 +1333,7 @@ const ar: typeof fr = {
       {
         value: "specs",
         trigger: "المواصفات التقنية",
-        content: "البصمات: حتى 150 · أرقام PIN: حتى 50 (6 أرقام) · عمر البطارية: 4-6 أشهر (4× AA) · البروتوكول: Bluetooth 5.0 + Wi-Fi (اختياري) · الشهادات: IP65, EN 1634 · الأبعاد: 245 × 70 × 28 ملم",
+        content: "البصمات: حتى 150 · أرقام PIN: حتى 50 (6 أرقام) · عمر البطارية: 12-18 شهرًا (4× AA) · البروتوكول: Bluetooth 5.0 + Wi-Fi (اختياري) · الشهادات: IP65, EN 1634 · الأبعاد: 245 × 70 × 28 ملم",
       },
       {
         value: "installation",
@@ -1355,7 +1355,7 @@ const ar: typeof fr = {
       { label: "الحد الأقصى للبصمات", value: "150" },
       { label: "الاتصال", value: "واي فاي + بلوتوث" },
       { label: "الطاقة", value: "4 بطاريات AA" },
-      { label: "عمر البطارية", value: "4-6 أشهر" },
+      { label: "عمر البطارية", value: "12-18 شهرًا" },
       { label: "التركيب", value: "45 دقيقة" },
       { label: "الضمان", value: "سنتان" },
       { label: "التوافق", value: "أبواب خشب ومعدن قياسية" },
@@ -1496,7 +1496,7 @@ const ar: typeof fr = {
       items: [
         { value: "150", unit: "", label: "بصمة", sub: "الحد الأقصى المخزن" },
         { value: "7",   unit: "", label: "طريقة", sub: "للدخول" },
-        { value: "4–6", unit: " أشهر", label: "استقلالية", sub: "البطارية" },
+        { value: "12–18", unit: " شهرًا", label: "استقلالية", sub: "البطارية" },
         { value: "2",   unit: "سنة", label: "ضمان", sub: "الصانع" },
       ],
       details: [
@@ -1540,7 +1540,7 @@ const ar: typeof fr = {
       items: [
         { q: "هل أريني لوك متوافق مع جميع الأبواب؟",              a: "يتناسب أريني لوك مع معظم أبواب الدخول والداخلية القياسية من الخشب والمعدن. تواصل مع فريقنا قبل الشراء للتحقق من التوافق مع بابك." },
         { q: "ماذا يحدث عند انقطاع الكهرباء أو العطل؟",           a: "يعمل أريني لوك بالبطاريات ويبقى قابلاً للاستخدام (بصمة، رمز سري، بطاقة RFID) بشكل مستقل عن الشبكة الكهربائية، طالما البطاريات مشحونة. أما الفتح عن بُعد عبر التطبيق فيتطلب اتصال القفل بالإنترنت (4G)؛ وبدون اتصال، تبقى فقط طرق الدخول المحلية متاحة. عند نفاد البطاريات بالكامل، يتيح المفتاح الاحتياطي المرفق فتح الباب دائمًا." },
-        { q: "كم تدوم البطارية؟",                                   a: "مع الاستخدام اليومي المعتاد، تدوم 4 بطاريات AA نحو 4 إلى 6 أشهر. تظهر نسبة البطارية المتبقية في أي وقت داخل التطبيق الذي يُنبّهك قبل نفادها." },
+        { q: "كم تدوم البطارية؟",                                   a: "مع الاستخدام اليومي المعتاد، تدوم 4 بطاريات AA نحو 12 إلى 18 شهرًا. تظهر نسبة البطارية المتبقية في أي وقت داخل التطبيق الذي يُنبّهك قبل نفادها." },
         { q: "هل يمكنني التركيب بنفسي؟",                           a: "لا، ننصح بترك مهمة التركيب لفنيّينا المعتمدين: التركيب مجاني ومشمول مع كل طلب، ويستغرق عادةً أقل من 45 دقيقة." },
         { q: "هل توصّلون إلى جميع أنحاء المغرب؟",                  a: "نعم، نوصّل إلى جميع مدن المغرب مع إمكانية الدفع عند الاستلام. المدة المتوسطة 2 إلى 4 أيام عمل." },
       ],
@@ -1648,7 +1648,7 @@ const ar: typeof fr = {
       launchBadge: "عرض الإطلاق",
       specs: [
         { label: "الاتصال",        value: "واي فاي + بلوتوث" },
-        { label: "الطاقة",         value: "4 بطاريات AA · ~4-6 أشهر" },
+        { label: "الطاقة",         value: "4 بطاريات AA · ~12-18 شهرًا" },
         { label: "المواد",          value: "سبيكة الزنك، تشطيب مقاوم للبصمات" },
         { label: "التركيب",        value: "أبواب قياسية" },
         { label: "الضمان",         value: "سنتان" },
