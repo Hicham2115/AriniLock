@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI, GoogleGenerativeAIFetchError } from "@google/generative-ai";
+import Groq from "groq-sdk";
 import { z } from "zod";
 import { readFileSync } from "fs";
 import { join } from "path";
@@ -90,9 +90,9 @@ LANGUE DE RÉPONSE (règle la plus importante, prioritaire sur tout le reste) :
 Cette base de connaissances est rédigée en français uniquement à titre de référence interne — cela ne détermine PAS la langue de ta réponse.
 Réponds TOUJOURS et UNIQUEMENT dans la langue du DERNIER message envoyé par l'utilisateur (détecte-la à chaque message : français, arabe, anglais, espagnol, darija, etc.), même si les messages précédents de la conversation étaient dans une autre langue. Si l'utilisateur écrit en arabe, réponds entièrement en arabe ; s'il écrit en anglais, réponds entièrement en anglais ; etc. Ne mélange jamais deux langues dans une même réponse.`;
 
-// ── Gemini client ────────────────────────────────────────────────────────────
+// ── Groq client ──────────────────────────────────────────────────────────────
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY ?? "");
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY, timeout: 25_000 });
 
 // ── Lightweight language detection (heuristic, no extra API call) ──────────
 
@@ -122,7 +122,7 @@ function detectLanguage(text: string): string {
   return best.name;
 }
 
-// ── Retry with backoff for transient Gemini errors (429 / 503) ─────────────
+// ── Retry with backoff for transient Groq errors (429 / 5xx / timeout) ─────
 
 const RETRY_DELAYS_MS = [1000, 2000];
 
@@ -131,19 +131,20 @@ function sleep(ms: number) {
 }
 
 function isTransient(err: unknown): boolean {
-  return err instanceof GoogleGenerativeAIFetchError && (err.status === 429 || err.status === 503);
+  if (err instanceof Groq.APIConnectionError) return true;
+  if (err instanceof Groq.APIError) {
+    return err.status === 429 || (typeof err.status === "number" && err.status >= 500);
+  }
+  return false;
 }
 
-async function generateWithRetry(
-  model: ReturnType<GoogleGenerativeAI["getGenerativeModel"]>,
-  request: Parameters<ReturnType<GoogleGenerativeAI["getGenerativeModel"]>["generateContent"]>[0]
-) {
+async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
   for (let attempt = 0; ; attempt++) {
     try {
-      return await model.generateContent(request);
+      return await fn();
     } catch (err) {
       if (attempt >= RETRY_DELAYS_MS.length || !isTransient(err)) throw err;
-      console.warn(`[chat] Gemini transient error, retrying in ${RETRY_DELAYS_MS[attempt]}ms:`, err instanceof Error ? err.message : err);
+      console.warn(`[chat] Groq transient error, retrying in ${RETRY_DELAYS_MS[attempt]}ms:`, err instanceof Error ? err.message : err);
       await sleep(RETRY_DELAYS_MS[attempt]);
     }
   }
@@ -152,7 +153,7 @@ async function generateWithRetry(
 // ── Route handler ────────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
-  if (!process.env.GEMINI_API_KEY) {
+  if (!process.env.GROQ_API_KEY) {
     return NextResponse.json({ error: "Service IA non configuré." }, { status: 500 });
   }
 
@@ -185,7 +186,7 @@ export async function POST(req: NextRequest) {
 
   const { messages } = parsed.data;
 
-  // Ensure conversation starts with a user message
+  // Ensure conversation starts with a user message (Groq requirement)
   const firstUserIdx = messages.findIndex((m) => m.role === "user");
   if (firstUserIdx === -1) {
     return NextResponse.json({ error: "Aucun message utilisateur trouvé." }, { status: 400 });
@@ -198,53 +199,41 @@ export async function POST(req: NextRequest) {
   const detectedLanguage = detectLanguage(lastUserMessage?.content ?? "");
 
   try {
-    const model = genAI.getGenerativeModel(
-      {
-        model: "gemini-2.5-flash",
-        systemInstruction: SYSTEM_PROMPT,
-      },
-      { timeout: 25_000 }
-    );
-
-    const contents = [
-      ...safeMessages.map((m) => ({
-        role: m.role === "assistant" ? "model" : "user",
-        parts: [{ text: m.content }],
-      })),
-      {
-        role: "user",
-        parts: [
+    const completion = await withRetry(() =>
+      groq.chat.completions.create({
+        model: "llama-3.1-8b-instant",
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          ...safeMessages.map((m) => ({ role: m.role, content: m.content })),
           {
-            text: `Consigne finale impérative : le dernier message de l'utilisateur est en ${detectedLanguage}. Rédige TA RÉPONSE ENTIÈREMENT en ${detectedLanguage}, sans aucun mot d'une autre langue, même si les messages précédents de cette conversation étaient dans une autre langue.`,
+            role: "system",
+            content: `Consigne finale impérative : le dernier message de l'utilisateur est en ${detectedLanguage}. Rédige TA RÉPONSE ENTIÈREMENT en ${detectedLanguage}, sans aucun mot d'une autre langue, même si les messages précédents de cette conversation étaient dans une autre langue.`,
           },
         ],
-      },
-    ];
+        temperature: 0.5,
+        max_tokens: 512,
+      })
+    );
 
-    const result = await generateWithRetry(model, {
-      contents,
-      generationConfig: { temperature: 0.5, maxOutputTokens: 512 },
-    });
-
-    const text = result.response.text();
+    const text = completion.choices[0]?.message?.content ?? "";
     return NextResponse.json({ content: text });
   } catch (err: unknown) {
-    if (err instanceof GoogleGenerativeAIFetchError && err.status === 429) {
-      console.error("[chat] Gemini rate limit:", err.message);
+    if (err instanceof Groq.RateLimitError) {
+      console.error("[chat] Groq rate limit:", err.message);
       return NextResponse.json(
         { error: "Trop de demandes en ce moment. Réessayez dans un instant." },
         { status: 429 }
       );
     }
-    if (err instanceof Error && err.name === "AbortError") {
-      console.error("[chat] Gemini timeout");
+    if (err instanceof Groq.APIConnectionTimeoutError) {
+      console.error("[chat] Groq timeout");
       return NextResponse.json(
         { error: "L'assistant met trop de temps à répondre. Réessayez." },
         { status: 504 }
       );
     }
     const message = err instanceof Error ? err.message : String(err);
-    console.error("[chat] Gemini error:", message);
+    console.error("[chat] Groq error:", message);
     return NextResponse.json({ error: "Erreur du service IA. Réessayez." }, { status: 500 });
   }
 }
