@@ -8,7 +8,7 @@ const apiVersion =
 /**
  * Sans identifiants Shopify, le site bascule sur des données de
  * démonstration (lib/shopify/mock.ts) pour rester fonctionnel en local.
- */
+ */ 
 export const isShopifyConfigured =
   Boolean(domain && token) &&
   domain !== "votre-boutique.myshopify.com" &&
