@@ -9,6 +9,7 @@ import {
   Handshake,
 } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { LogoMark } from "@/components/logo-mark";
 import { useT } from "@/hooks/use-t";
 
@@ -17,6 +18,13 @@ import { useT } from "@/hooks/use-t";
 export function Footer() {
   const t = useT();
   const s = t.sections.footer;
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  function resolveHref(href: string) {
+    if (href.startsWith("#") && !isHome) return `/${href}`;
+    return href;
+  }
 
   const allCols = [...s.cols, s.selectionCol];
 
@@ -77,7 +85,7 @@ export function Footer() {
                     {col.links.map((link) => (
                       <li key={link.label}>
                         <Link
-                          href={link.href}
+                          href={resolveHref(link.href)}
                           className="group flex items-center gap-2 text-sm text-white/90 transition-all hover:text-white"
                         >
                           <span className="h-px w-0 bg-white/60 transition-all duration-300 group-hover:w-3" />

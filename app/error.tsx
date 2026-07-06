@@ -21,7 +21,7 @@ export default function ErrorPage({
       </p>
       <Button
         onClick={reset}
-        className="rounded-full bg-gold px-8 text-dark hover:bg-goldhover"
+        className="rounded-full bg-gold px-8 text-white hover:bg-goldhover"
       >
         <RotateCcw aria-hidden="true" className="h-4 w-4" />
         Réessayer

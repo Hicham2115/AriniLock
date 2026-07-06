@@ -210,7 +210,7 @@ export function CheckoutClient() {
           <button
             type="submit"
             disabled={submitting || lines.length === 0}
-            className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-gold text-sm font-semibold text-dark transition-colors hover:bg-gold/90 disabled:opacity-50"
+            className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-gold text-sm font-semibold text-white transition-colors hover:bg-gold/90 disabled:opacity-50"
           >
             {submitting ? (
               <Loader2 className="h-4 w-4 animate-spin" />

@@ -201,7 +201,7 @@ export function CartDrawer() {
             <Button
               onClick={handleCheckout}
               disabled={!cart || cart.lines.length === 0}
-              className="h-13 w-full rounded-full bg-gold py-4 font-medium text-dark hover:bg-goldhover"
+              className="h-13 w-full rounded-full bg-gold py-4 font-medium text-white hover:bg-goldhover"
             >
               {t.cart.checkout}
             </Button>

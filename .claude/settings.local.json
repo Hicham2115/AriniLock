@@ -8,7 +8,10 @@
       "Bash(npm run *)",
       "Bash(node -e \"const f = require\\('next/font/google'\\); console.log\\(Object.keys\\(f\\).join\\('\\\\n'\\)\\)\")",
       "Bash(node -e \"const l = require\\('lucide-react'\\); console.log\\(Object.keys\\(l\\).filter\\(k => /social|share|globe|link|external/i.test\\(k\\)\\).join\\(', '\\)\\)\")",
-      "Bash(npx eslint *)"
+      "Bash(npx eslint *)",
+      "Bash(python3 -c ' *)",
+      "Bash(npx tsc *)",
+      "Bash(echo \"EXIT:$?\")"
     ]
   }
 }

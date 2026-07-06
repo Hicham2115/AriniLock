@@ -132,7 +132,7 @@ export function StickyOffer() {
           onClick={() => setOpen(false)}
           className="group flex h-11 w-full items-center justify-center gap-2 rounded-full bg-white text-sm font-semibold text-[#162847] transition-colors hover:bg-white/90"
         >
-          Commander maintenant
+          {s.cta}
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         </Link>
       </div>
@@ -143,7 +143,7 @@ export function StickyOffer() {
         onClick={() => setOpen(false)}
         className="w-full border-t border-white/10 py-2 text-center text-[10px] uppercase tracking-widest text-white/30 transition-colors hover:text-white/60"
       >
-        Réduire
+        {s.collapse}
       </button>
     </div>
   );
@@ -164,7 +164,7 @@ export function StickyOffer() {
           onClick={() => setOpen(false)}
           className="text-[10px] uppercase tracking-widest text-white/30 hover:text-white/60 transition-colors"
         >
-          Réduire
+          {s.collapse}
         </button>
       </div>
 
@@ -189,7 +189,7 @@ export function StickyOffer() {
           onClick={() => setOpen(false)}
           className="group flex h-9 w-full items-center justify-center gap-2 rounded-full bg-white text-sm font-semibold text-[#162847] transition-colors hover:bg-white/90"
         >
-          Commander maintenant
+          {s.cta}
           <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
         </Link>
       </div>

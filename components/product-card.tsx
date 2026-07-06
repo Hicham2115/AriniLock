@@ -81,7 +81,7 @@ export function ProductCard({ product }: { product: Product }) {
         {/* Compare-at badge */}
         {variant?.compareAtPrice && (
           <div className="absolute left-4 top-4">
-            <span className="rounded-full bg-gold px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-dark">
+            <span className="rounded-full bg-gold px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-white">
               {t.product.promo}
             </span>
           </div>

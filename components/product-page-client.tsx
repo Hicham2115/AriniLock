@@ -205,20 +205,9 @@ function InfoCards({ accordion }: { accordion: { trigger: string; content: strin
 }
 
 /* ── Specs section shown below the main grid ──────────────────────── */
-const SPECS = [
-  { label: "Méthodes d'accès", value: "Empreinte, PIN, App, RFID, Clé" },
-  { label: "Empreintes max", value: "100" },
-  { label: "Connectivité", value: "WiFi + Bluetooth" },
-  { label: "Alimentation", value: "4 piles AA" },
-  { label: "Autonomie", value: "~12 mois" },
-  { label: "Installation", value: "45 min" },
-  { label: "Garantie", value: "2 ans" },
-  { label: "Compatibilité", value: "Portes bois & métal standard" },
-  { label: "Finitions", value: "Noir Mat · Argent · Or" },
-  { label: "Alertes", value: "Intrusion en temps réel" },
-];
-
 function SpecsTable() {
+  const t = useT();
+  const SPECS = t.product.specs;
   const half = Math.ceil(SPECS.length / 2);
   const left = SPECS.slice(0, half);
   const right = SPECS.slice(half);
@@ -229,10 +218,10 @@ function SpecsTable() {
           {/* Left label */}
           <div>
             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
-              Fiche technique
+              {t.product.specsLabel}
             </p>
             <h2 className="font-display2 text-4xl font-light uppercase leading-none text-foreground lg:text-5xl">
-              Caractéris&shy;tiques
+              {t.product.specsTitle}
             </h2>
           </div>
 
@@ -494,8 +483,8 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
           <div className="border-t border-border">
             <div className="mx-auto max-w-7xl px-4 py-10">
               <div className="mb-6">
-                <p className="mb-1 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">À savoir</p>
-                <h2 className="font-display2 text-3xl font-light uppercase leading-none text-foreground">Infos pratiques</h2>
+                <p className="mb-1 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">{t.product.infoLabel}</p>
+                <h2 className="font-display2 text-3xl font-light uppercase leading-none text-foreground">{t.product.infoTitle}</h2>
               </div>
               <div className="flex flex-col gap-4">
                 {t.product.accordion.map((item, i) => {
@@ -717,10 +706,10 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
                 <div className="mb-8 flex items-end justify-between">
                   <div>
                     <p className="mb-1 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
-                      À savoir
+                      {t.product.infoLabel}
                     </p>
                     <h2 className="font-display2 text-4xl font-light uppercase leading-none text-foreground lg:text-5xl">
-                      Infos pratiques
+                      {t.product.infoTitle}
                     </h2>
                   </div>
                 </div>
