@@ -34,9 +34,7 @@ export function StickyOffer() {
   const s = t.sections.offer;
 
   const [open, setOpen] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(() =>
-    computeTimeLeft(Date.now() + OFFER_DURATION_MS)
-  );
+  const [timeLeft, setTimeLeft] = useState<ReturnType<typeof computeTimeLeft> | null>(null);
   const [buzz, setBuzz] = useState(false);
 
   // Auto-open after 4 s
@@ -55,6 +53,7 @@ export function StickyOffer() {
   // Countdown tick
   useEffect(() => {
     const endAt = Date.now() + OFFER_DURATION_MS;
+    setTimeLeft(computeTimeLeft(endAt));
     const id = setInterval(() => setTimeLeft(computeTimeLeft(endAt)), 1000);
     return () => clearInterval(id);
   }, []);
@@ -94,10 +93,10 @@ export function StickyOffer() {
           <Clock className="h-3.5 w-3.5 shrink-0 text-white/50" />
           <div className="flex flex-1 items-center justify-around text-center">
             {[
-              { val: timeLeft.days,  label: s.unitLabels[0] },
-              { val: timeLeft.hours, label: s.unitLabels[1] },
-              { val: timeLeft.mins,  label: s.unitLabels[2] },
-              { val: timeLeft.secs,  label: s.unitLabels[3] },
+              { val: timeLeft?.days ?? "--",  label: s.unitLabels[0] },
+              { val: timeLeft?.hours ?? "--", label: s.unitLabels[1] },
+              { val: timeLeft?.mins ?? "--",  label: s.unitLabels[2] },
+              { val: timeLeft?.secs ?? "--",  label: s.unitLabels[3] },
             ].map(({ val, label }, i, arr) => (
               <div key={label} className="flex items-center gap-1.5">
                 <div>
@@ -178,7 +177,7 @@ export function StickyOffer() {
           <div className="flex items-center gap-1 rounded-lg bg-white/8 px-2.5 py-1.5 shrink-0">
             <Clock className="h-3 w-3 text-white/50" />
             <span className="font-display2 text-sm font-bold tabular-nums text-white">
-              {timeLeft.hours}:{timeLeft.mins}:{timeLeft.secs}
+              {timeLeft?.hours ?? "--"}:{timeLeft?.mins ?? "--"}:{timeLeft?.secs ?? "--"}
             </span>
           </div>
         </div>
@@ -228,7 +227,7 @@ export function StickyOffer() {
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#4a7ab5]" />
               </span>
               <span className="text-[12px] font-semibold text-white">
-                {s.right} — {timeLeft.hours}:{timeLeft.mins}:{timeLeft.secs}
+                {s.right} — {timeLeft?.hours ?? "--"}:{timeLeft?.mins ?? "--"}:{timeLeft?.secs ?? "--"}
               </span>
             </motion.button>
           )}
@@ -270,7 +269,7 @@ export function StickyOffer() {
               <div className="flex items-center gap-1.5">
                 <Clock className="h-3 w-3 text-white/50" />
                 <span className="font-display2 text-sm font-bold tabular-nums text-white">
-                  {timeLeft.hours}:{timeLeft.mins}:{timeLeft.secs}
+                  {timeLeft?.hours ?? "--"}:{timeLeft?.mins ?? "--"}:{timeLeft?.secs ?? "--"}
                 </span>
                 <ArrowRight className="h-3.5 w-3.5 text-white/60" />
               </div>
