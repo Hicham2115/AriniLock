@@ -384,6 +384,11 @@ const fr = {
         { label: "Plus de 3 000 MAD", min: 3000, max: Infinity },
       ],
     },
+    bestSellers: {
+      label: "Meilleures ventes",
+      title: "Nos best-sellers",
+      cta: "Voir tout",
+    },
     showcase: {
       label: "04 — Le produit",
       right: "AriniLock — Édition Signature",
@@ -1012,6 +1017,11 @@ What's in the box
         { label: "Over 3,000 MAD", min: 3000, max: Infinity },
       ],
     },
+    bestSellers: {
+      label: "Best sellers",
+      title: "Our best sellers",
+      cta: "View all",
+    },
     showcase: {
       label: "04 — The product",
       right: "AriniLock — Signature Edition",
@@ -1639,6 +1649,11 @@ const ar: typeof fr = {
         { label: "1500 – 3000 درهم", min: 1500, max: 3000 },
         { label: "أكثر من 3000 درهم", min: 3000, max: Infinity },
       ],
+    },
+    bestSellers: {
+      label: "الأكثر مبيعاً",
+      title: "الأكثر مبيعاً",
+      cta: "عرض الكل",
     },
     showcase: {
       label: "04 — المنتج",
