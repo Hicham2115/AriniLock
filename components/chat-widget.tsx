@@ -1,23 +1,21 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
 import { AnimatePresence, motion } from "framer-motion";
 import { MessageCircle, Send, X, Loader2, Trash2, Maximize2, Minimize2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-
-interface Message {
-  role: "user" | "assistant";
-  content: string;
-}
-
-const SUGGESTED = [
-  "Aide-moi à choisir la bonne serrure",
-  "C'est pour une location Airbnb",
-  "Je veux sécuriser ma maison familiale",
-];
+import {
+  computeReply,
+  getOptionsForStage,
+  LANGUAGE_PROMPT,
+  type ChatOption,
+  type Locale,
+  type Message,
+  type Stage,
+  type ReplyInput,
+} from "@/lib/chatbot/static-flow";
 
 function TypingDots() {
   return (
@@ -138,36 +136,60 @@ function UserMessage({ content }: { content: string }) {
 }
 
 const MAX_INPUT = 500;
-// Cap what's actually sent to the API — the on-screen/localStorage history can
-// grow indefinitely, but the server rejects payloads over 20 messages.
-const MAX_HISTORY_SENT = 12;
 
 function sanitizeInput(raw: string): string {
   return raw.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "").trim().slice(0, MAX_INPUT);
 }
 
-const STORAGE_KEY = "arinilock-chat-history";
-const WELCOME: Message = {
-  role: "assistant",
-  content: "Bonjour ! Je suis l'assistant AriniLock. Posez-moi vos questions sur notre poignée connectée — je suis là pour vous aider. 🔒",
+const STORAGE_KEY = "arinilock-chat-state";
+
+interface StoredState {
+  messages: Message[];
+  stage: Stage;
+  lang: Locale | null;
+  property: string | null;
+  lastProduct: string | null;
+}
+
+const INITIAL_STATE: StoredState = {
+  messages: [LANGUAGE_PROMPT],
+  stage: "language",
+  lang: null,
+  property: null,
+  lastProduct: null,
 };
 
-function loadMessages(): Message[] {
+function loadState(): StoredState {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return [WELCOME];
-    const parsed = JSON.parse(raw) as Message[];
-    return Array.isArray(parsed) && parsed.length > 0 ? parsed : [WELCOME];
+    if (!raw) return INITIAL_STATE;
+    const parsed = JSON.parse(raw) as Partial<StoredState>;
+    if (!Array.isArray(parsed.messages) || parsed.messages.length === 0) return INITIAL_STATE;
+    return {
+      messages: parsed.messages,
+      stage: parsed.stage ?? "language",
+      lang: parsed.lang ?? null,
+      property: parsed.property ?? null,
+      lastProduct: parsed.lastProduct ?? null,
+    };
   } catch {
-    return [WELCOME];
+    return INITIAL_STATE;
   }
+}
+
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 export function ChatWidget() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([WELCOME]);
+  const [messages, setMessages] = useState<Message[]>([LANGUAGE_PROMPT]);
+  const [stage, setStage] = useState<Stage>("language");
+  const [lang, setLang] = useState<Locale | null>(null);
+  const [property, setProperty] = useState<string | null>(null);
+  const [lastProduct, setLastProduct] = useState<string | null>(null);
   const [input, setInput] = useState("");
   const [hydrated, setHydrated] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -175,26 +197,27 @@ export function ChatWidget() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const mutation = useMutation({
-    mutationFn: (payload: Message[]) =>
-      axios
-        .post<{ content: string }>("/api/chat", { messages: payload }, { timeout: 28_000 })
-        .then((r) => r.data),
-    onSuccess: (data) => {
-      setMessages((prev) => [...prev, { role: "assistant", content: data.content }]);
+    mutationFn: async (input: ReplyInput) => {
+      await sleep(450);
+      return computeReply(input, { stage, lang, property, lastProduct });
     },
-    onError: (err) => {
-      const msg = axios.isAxiosError(err)
-        ? err.code === "ECONNABORTED"
-          ? "L'assistant met trop de temps à répondre. Réessayez."
-          : (err.response?.data as { error?: string })?.error ?? err.message
-        : err instanceof Error ? err.message : "Erreur inconnue";
-      setMessages((prev) => [...prev, { role: "assistant", content: `⚠️ ${msg}` }]);
+    onSuccess: (reply) => {
+      setMessages((prev) => [...prev, reply.message]);
+      setStage(reply.nextStage);
+      setLang(reply.nextLang);
+      setProperty(reply.nextProperty);
+      if (reply.nextLastProduct) setLastProduct(reply.nextLastProduct);
     },
   });
 
   // Load from localStorage after mount (avoids SSR mismatch)
   useEffect(() => {
-    setMessages(loadMessages());
+    const state = loadState();
+    setMessages(state.messages);
+    setStage(state.stage);
+    setLang(state.lang);
+    setProperty(state.property);
+    setLastProduct(state.lastProduct);
     setHydrated(true);
   }, []);
 
@@ -202,9 +225,9 @@ export function ChatWidget() {
   useEffect(() => {
     if (!hydrated) return;
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ messages, stage, lang, property, lastProduct }));
     } catch {}
-  }, [messages, hydrated]);
+  }, [messages, stage, lang, property, lastProduct, hydrated]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -226,17 +249,26 @@ export function ChatWidget() {
   }
 
   function clearChat() {
-    setMessages([WELCOME]);
+    setMessages(INITIAL_STATE.messages);
+    setStage(INITIAL_STATE.stage);
+    setLang(INITIAL_STATE.lang);
+    setProperty(INITIAL_STATE.property);
+    setLastProduct(INITIAL_STATE.lastProduct);
     try { localStorage.removeItem(STORAGE_KEY); } catch {}
   }
 
   function send(text: string) {
     const clean = sanitizeInput(text);
     if (!clean || mutation.isPending) return;
-    const next: Message[] = [...messages, { role: "user", content: clean }];
-    setMessages(next);
+    setMessages((prev) => [...prev, { role: "user", content: clean }]);
     setInput("");
-    mutation.mutate(next.slice(-MAX_HISTORY_SENT));
+    mutation.mutate({ type: "text", value: clean });
+  }
+
+  function chooseOption(opt: ChatOption) {
+    if (mutation.isPending) return;
+    setMessages((prev) => [...prev, { role: "user", content: opt.label }]);
+    mutation.mutate({ type: "option", value: opt.value });
   }
 
   function handleKey(e: React.KeyboardEvent<HTMLTextAreaElement>) {
@@ -246,7 +278,8 @@ export function ChatWidget() {
     }
   }
 
-  const showSuggested = messages.length === 1;
+  const currentOptions: ChatOption[] | null = getOptionsForStage(stage, lang);
+  const isRtl = lang === "ar";
 
   if (/^\/produits\/.+/.test(pathname)) return null;
 
@@ -299,7 +332,7 @@ export function ChatWidget() {
             </div>
 
             {/* Messages */}
-            <div ref={scrollRef} className={cn("mx-auto min-h-0 w-full flex-1 space-y-3 overflow-y-auto px-4 py-4", expanded && "max-w-3xl")}>
+            <div ref={scrollRef} dir={isRtl ? "rtl" : "ltr"} className={cn("mx-auto min-h-0 w-full flex-1 space-y-3 overflow-y-auto px-4 py-4", expanded && "max-w-3xl")}>
               {messages.map((m, i) =>
                 m.role === "assistant" ? (
                   <BotMessage key={i} content={m.content} />
@@ -319,15 +352,15 @@ export function ChatWidget() {
                 </div>
               )}
 
-              {showSuggested && !mutation.isPending && (
+              {currentOptions && !mutation.isPending && (
                 <div className="space-y-2 pt-1">
-                  {SUGGESTED.map((q) => (
+                  {currentOptions.map((opt) => (
                     <button
-                      key={q}
-                      onClick={() => send(q)}
+                      key={opt.value}
+                      onClick={() => chooseOption(opt)}
                       className="block w-full rounded-xl border border-primary/20 bg-primary/5 px-3 py-2 text-left text-xs text-foreground transition-colors hover:border-primary/40 hover:bg-primary/10"
                     >
-                      {q}
+                      {opt.label}
                     </button>
                   ))}
                 </div>
@@ -341,6 +374,7 @@ export function ChatWidget() {
               <div className={cn("flex items-end gap-2 rounded-xl border border-border bg-white px-3 py-2 focus-within:border-primary/50 transition-colors", expanded && "mx-auto max-w-3xl")}>
                 <textarea
                   ref={inputRef}
+                  dir={isRtl ? "rtl" : "ltr"}
                   rows={1}
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
