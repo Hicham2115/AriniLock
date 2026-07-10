@@ -2,7 +2,7 @@
 
 import { useMutation } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "framer-motion";
-import { MessageCircle, Send, X, Loader2, Trash2, Maximize2, Minimize2 } from "lucide-react";
+import { MessageCircle, X, Trash2, Maximize2, Minimize2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -135,12 +135,6 @@ function UserMessage({ content }: { content: string }) {
   );
 }
 
-const MAX_INPUT = 500;
-
-function sanitizeInput(raw: string): string {
-  return raw.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "").trim().slice(0, MAX_INPUT);
-}
-
 const STORAGE_KEY = "arinilock-chat-state";
 
 interface StoredState {
@@ -190,11 +184,9 @@ export function ChatWidget() {
   const [lang, setLang] = useState<Locale | null>(null);
   const [property, setProperty] = useState<string | null>(null);
   const [lastProduct, setLastProduct] = useState<string | null>(null);
-  const [input, setInput] = useState("");
   const [hydrated, setHydrated] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const mutation = useMutation({
     mutationFn: async (input: ReplyInput) => {
@@ -234,12 +226,7 @@ export function ChatWidget() {
   }, [messages, mutation.isPending]);
 
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-      setTimeout(() => inputRef.current?.focus(), 300);
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
@@ -257,25 +244,10 @@ export function ChatWidget() {
     try { localStorage.removeItem(STORAGE_KEY); } catch {}
   }
 
-  function send(text: string) {
-    const clean = sanitizeInput(text);
-    if (!clean || mutation.isPending) return;
-    setMessages((prev) => [...prev, { role: "user", content: clean }]);
-    setInput("");
-    mutation.mutate({ type: "text", value: clean });
-  }
-
   function chooseOption(opt: ChatOption) {
     if (mutation.isPending) return;
     setMessages((prev) => [...prev, { role: "user", content: opt.label }]);
     mutation.mutate({ type: "option", value: opt.value });
-  }
-
-  function handleKey(e: React.KeyboardEvent<HTMLTextAreaElement>) {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      send(input);
-    }
   }
 
   const currentOptions: ChatOption[] | null = getOptionsForStage(stage, lang);
@@ -369,34 +341,9 @@ export function ChatWidget() {
               <div ref={bottomRef} />
             </div>
 
-            {/* Input */}
+            {/* Footer */}
             <div className="shrink-0 border-t border-border bg-secondary/50 px-3 py-3">
-              <div className={cn("flex items-end gap-2 rounded-xl border border-border bg-white px-3 py-2 focus-within:border-primary/50 transition-colors", expanded && "mx-auto max-w-3xl")}>
-                <textarea
-                  ref={inputRef}
-                  dir={isRtl ? "rtl" : "ltr"}
-                  rows={1}
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyDown={handleKey}
-                  placeholder="Posez votre question…"
-                  className="flex-1 resize-none bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
-                  style={{ maxHeight: 80 }}
-                />
-                <button
-                  onClick={() => send(input)}
-                  disabled={!input.trim() || mutation.isPending}
-                  aria-label="Envoyer"
-                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-primary text-white transition-colors hover:bg-primary/80 disabled:opacity-40"
-                >
-                  {mutation.isPending ? (
-                    <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                  ) : (
-                    <Send className="h-3.5 w-3.5" />
-                  )}
-                </button>
-              </div>
-              <p className="mt-1.5 text-center text-[10px] text-muted-foreground/60">
+              <p className="text-center text-[10px] text-muted-foreground/60">
                 AriniLock · Assistant IA
               </p>
             </div>
