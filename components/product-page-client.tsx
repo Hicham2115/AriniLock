@@ -478,7 +478,6 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
           )}
         </div>
 
-        {/* SpecsTable and infos-pratiques accordion temporarily disabled
         <SpecsTable />
         {product && (
           <div className="border-t border-border">
@@ -509,7 +508,6 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
             </div>
           </div>
         )}
-        */}
         {relatedSection}
         <Footer />
 
@@ -698,8 +696,10 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
             </div>
           </div>
 
-          {/* Specs table and info cards temporarily disabled
+          {/* Specs table — full width below product grid */}
           <SpecsTable />
+
+          {/* Info cards — below specs table */}
           {product && (
             <div className="border-t border-border">
               <div className="mx-auto max-w-7xl px-6 py-14 lg:px-10 lg:py-20">
@@ -717,7 +717,6 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
               </div>
             </div>
           )}
-          */}
 
           {relatedSection}
         </main>
