@@ -291,7 +291,7 @@ const fr = {
     },
     offer: {
       label: "07 — Offre de lancement",
-      right: "-300 MAD",
+      right: "Offre limitée",
       headline: ["L'offre se", "termine dans"],
       unitLabels: ["Jours", "Heures", "Min", "Sec"] as [string, string, string, string],
       description: "Inscrivez-vous pour recevoir les offres exclusives en avant-première et être alerté à chaque baisse de prix.",
@@ -302,7 +302,7 @@ const fr = {
     reviews: {
       label: "05 — Avis clients",
       right: "Vérifié · 312 foyers",
-      headline: ["Ce qu'en", "disent 312", "foyers."],
+      headline: ["Nos", "avis clients."],
       count: "312 avis vérifiés",
       testimonials: [
         { title: "Installation propre et rapide",         body: "Le technicien est venu à l'heure convenue et a tout installé en moins d'une heure. L'empreinte digitale fonctionne bien et rapidement au quotidien.",                        author: "Salma B.",   city: "Casablanca" },
@@ -317,11 +317,11 @@ const fr = {
       tagline: "Maison connectée · Casablanca, Maroc",
       designedFor: "Conçu pour le foyer marocain",
       blurb: "La serrure connectée qui s'ouvre par empreinte, code ou smartphone. Sécurité intelligente, sans compromis sur le style.",
-      taglineShort: "Serrures intelligentes premium et conformes aux réglementations de sécurité européenne et marocaine",
+      taglineShort: "Des serrures intelligentes fiables et d'une qualité irréprochable, conçues pour durer.",
       serviceTitle: "AriniLock à votre service",
       helpLink: "Besoin d'aide ?",
-      partners: "Nos partenaires",
-      partnerNote: "Collabore avec des promoteurs immobiliers pour des solutions intelligentes sur mesure",
+      paymentLabel: "Moyens de paiement",
+      legalLinks: { terms: "CGV & Conditions d'utilisation", privacy: "Politique de confidentialité" },
       legal: ["CGV", "Mentions légales", "Politique de confidentialité", "Cookies"] as [string, string, string, string],
       selectionCol: {
         title: "Nos sélections",
@@ -924,7 +924,7 @@ What's in the box
     },
     offer: {
       label: "07 — Launch offer",
-      right: "-300 MAD",
+      right: "Limited offer",
       headline: ["This offer", "ends in"],
       unitLabels: ["Days", "Hours", "Min", "Sec"],
       description: "Subscribe to receive exclusive offers first and be notified of every price drop.",
@@ -935,7 +935,7 @@ What's in the box
     reviews: {
       label: "05 — Customer reviews",
       right: "Verified · 312 households",
-      headline: ["What 312", "households", "say."],
+      headline: ["Our customer", "reviews."],
       count: "312 verified reviews",
       testimonials: [
         { title: "Clean, quick installation",         body: "The technician arrived on time and had everything installed in under an hour. The fingerprint reader is fast and reliable day to day.",             author: "Salma B.",   city: "Casablanca" },
@@ -950,11 +950,11 @@ What's in the box
       tagline: "Connected home · Casablanca, Morocco",
       designedFor: "Designed for the Moroccan home",
       blurb: "The connected lock that opens by fingerprint, code or smartphone. Smart security without compromising on style.",
-      taglineShort: "Premium smart locks compliant with European and Moroccan security regulations",
+      taglineShort: "Reliable smart locks built with genuinely great quality, made to last.",
       serviceTitle: "AriniLock at your service",
       helpLink: "Need help?",
-      partners: "Our partners",
-      partnerNote: "Partnering with real estate developers for custom smart solutions",
+      paymentLabel: "Payment methods",
+      legalLinks: { terms: "Terms & Conditions of use", privacy: "Privacy policy" },
       legal: ["Terms", "Legal notice", "Privacy policy", "Cookies"] as [string, string, string, string],
       selectionCol: {
         title: "Our picks",
@@ -1236,9 +1236,9 @@ What's in the box
 const ar: typeof fr = {
   dir: "rtl",
   keyBadges: [
-    "ابتداءً من 1 590 درهم",
-    "معتمد ANRT · مرخص بالمغرب",
-    "توصيل وتركيب مجانيان",
+    "ابتداءً من ⁦1 590⁩ درهم",
+    "مرخص من طرف ANRT",
+    "توصيل وتركيب مجاني",
   ],
   nav: {
     shop: "المتجر",
@@ -1283,7 +1283,7 @@ const ar: typeof fr = {
   hero: {
     buy: "اطلب الآن",
     discover: "اكتشف المميزات",
-    trust: ["من 1 590 درهم", "معتمد ANRT", "توصيل وتركيب مجاني"],
+    trust: ["من ⁦1 590⁩ درهم", "معتمد ANRT", "توصيل وتركيب مجاني"],
     headline1: "بابك",
     headline2: "أُعيد",
     tagline: "ابتكاره.",
@@ -1348,7 +1348,7 @@ const ar: typeof fr = {
       {
         value: "installation",
         trigger: "التركيب",
-        content: "متوافق مع الأبواب القياسية (60–80 ملم سُمكًا). يتم التركيب من قِبل فنيّينا المعتمدين، وهو مشمول ومجاني مع طلبك — يستغرق عادةً أقل من 45 دقيقة.",
+        content: "متوافق مع الأبواب القياسية (60–80 ملم سُمكًا). يتم التركيب من قِبل تقنيّينا المعتمدين، وهو مشمول ومجاني مع طلبك — يستغرق عادةً أقل من 45 دقيقة.",
       },
       {
         value: "warranty",
@@ -1502,12 +1502,12 @@ const ar: typeof fr = {
     stats: {
       label: "01 — بالأرقام",
       right: "لمحة — إصدار الإطلاق",
-      headline: ["ما يجعلها", "مختلفة."],
+      headline: ["ما يجعل أقفالنا الذكية المميزة", "مختلفة."],
       items: [
         { value: "150", unit: "", label: "بصمة", sub: "الحد الأقصى المخزن" },
         { value: "7",   unit: "", label: "طريقة", sub: "للدخول" },
-        { value: "12–18", unit: " شهرًا", label: "استقلالية", sub: "البطارية" },
-        { value: "2",   unit: "سنة", label: "ضمان", sub: "الصانع" },
+        { value: "12–18", unit: " شهرًا", label: "عمر", sub: "البطارية" },
+        { value: "2",   unit: "سنتين", label: "ضمان", sub: "الصانع" },
       ],
       details: [
         { title: "البصمة",         body: "تخزين حتى 150 بصمة. تعرف في أقل من ثانية. حتى 10 ملفات عائلية." },
@@ -1536,9 +1536,9 @@ const ar: typeof fr = {
     howItWorks: {
       label: "04 — التركيب",
       right: "من 0 إلى 1 في 45 دقيقة",
-      headline: ["مُثبَّت في أقل من", "45 دقيقة."],
+      headline: ["يُركَّب في أقل من", "45 دقيقة."],
       steps: [
-        { title: "تركيب بواسطة فنيّينا",     description: "يقوم فنيّونا المعتمدون بتركيب القفل مباشرةً على بابك الحالي وضبط جميع الإعدادات اللازمة، دون إتلاف الباب." },
+        { title: "تركيب من قِبل تقنيّينا",     description: "يقوم تقنيّونا المعتمدون بتركيب القفل مباشرةً على بابك الحالي وضبط جميع الإعدادات اللازمة، دون إتلاف الباب." },
         { title: "الإقران بالتطبيق",   description: "يُقرَن قفلك بتطبيق Tuya عبر البلوتوث. يقوم الفني بضبط رمزك السري الرئيسي وأول بصماتك معك." },
         { title: "أضف صلاحيات الدخول", description: "أنشئ بعد ذلك صلاحيات دائمة أو مؤقتة لعائلتك وضيوفك وعمالتك المنزلية." },
       ],
@@ -1551,24 +1551,23 @@ const ar: typeof fr = {
         { q: "هل أريني لوك متوافق مع جميع الأبواب؟",              a: "يتناسب أريني لوك مع معظم أبواب الدخول والداخلية القياسية من الخشب والمعدن. تواصل مع فريقنا قبل الشراء للتحقق من التوافق مع بابك." },
         { q: "ماذا يحدث عند انقطاع الكهرباء أو العطل؟",           a: "يعمل أريني لوك بالبطاريات ويبقى قابلاً للاستخدام (بصمة، رمز سري، بطاقة RFID) بشكل مستقل عن الشبكة الكهربائية، طالما البطاريات مشحونة. أما الفتح عن بُعد عبر التطبيق فيتطلب اتصال القفل بالإنترنت (4G)؛ وبدون اتصال، تبقى فقط طرق الدخول المحلية متاحة. عند نفاد البطاريات بالكامل، يتيح المفتاح الاحتياطي المرفق فتح الباب دائمًا." },
         { q: "كم تدوم البطارية؟",                                   a: "مع الاستخدام اليومي المعتاد، تدوم 4 بطاريات AA نحو 12 إلى 18 شهرًا. تظهر نسبة البطارية المتبقية في أي وقت داخل التطبيق الذي يُنبّهك قبل نفادها." },
-        { q: "هل يمكنني التركيب بنفسي؟",                           a: "لا، ننصح بترك مهمة التركيب لفنيّينا المعتمدين: التركيب مجاني ومشمول مع كل طلب، ويستغرق عادةً أقل من 45 دقيقة." },
-        { q: "هل توصّلون إلى جميع أنحاء المغرب؟",                  a: "نعم، نوصّل إلى جميع مدن المغرب مع إمكانية الدفع عند الاستلام. المدة المتوسطة 2 إلى 4 أيام عمل." },
+        { q: "هل يمكنني التركيب بنفسي؟",                           a: "لا، ننصح بترك مهمة التركيب لتقنيّينا المعتمدين: التركيب مجاني ومشمول مع كل طلب، ويستغرق عادةً أقل من 45 دقيقة." },
       ],
     },
     offer: {
       label: "07 — عرض الإطلاق",
-      right: "-300 درهم",
+      right: "عرض محدود",
       headline: ["ينتهي العرض", "خلال"],
       unitLabels: ["يوم", "ساعة", "دقيقة", "ثانية"],
       description: "اشترك لتصل إليك العروض الحصرية أولًا وتُخطَر بكل تخفيض في الأسعار.",
-      details: ["من 1 590 درهم", "معتمد ANRT", "توصيل وتركيب مجانيان", "الدفع عند الاستلام"],
+      details: ["من ⁦1 590⁩ درهم", "معتمد ANRT", "توصيل وتركيب مجاني", "الدفع عند الاستلام"],
       cta: "اطلب الآن",
       collapse: "تصغير",
     },
     reviews: {
       label: "05 — آراء العملاء",
       right: "موثّق · 312 منزل",
-      headline: ["ما يقوله", "312 منزل", "عنا."],
+      headline: ["آراء", "عملائنا."],
       count: "312 تقييم موثّق",
       testimonials: [
         { title: "تركيب نظيف وسريع",                   body: "وصل الفني في الموعد المحدد وأنهى التركيب في أقل من ساعة. البصمة تعمل بسرعة وموثوقية في الاستخدام اليومي.",                                      author: "سلمى ب.",    city: "الدار البيضاء" },
@@ -1583,11 +1582,11 @@ const ar: typeof fr = {
       tagline: "المنزل المتصل · الدار البيضاء، المغرب",
       designedFor: "مصمم للمنزل المغربي",
       blurb: "القفل الذكي الذي يفتح بالبصمة أو الرمز أو الهاتف. أمان ذكي دون المساس بالأناقة.",
-      taglineShort: "أقفال ذكية فاخرة مطابقة للوائح الأمنية الأوروبية والمغربية",
+      taglineShort: "منتجاتنا موثوقة وبجودة عالية، ومصممة لتدوم طويلاً.",
       serviceTitle: "أريني لوك في خدمتك",
       helpLink: "هل تحتاج مساعدة؟",
-      partners: "شركاؤنا",
-      partnerNote: "نتعاون مع المطورين العقاريين لتقديم حلول ذكية مخصصة",
+      paymentLabel: "وسائل الدفع",
+      legalLinks: { terms: "الشروط العامة وشروط الاستخدام", privacy: "سياسة الخصوصية" },
       legal: ["الشروط العامة", "الإشعار القانوني", "سياسة الخصوصية", "الكوكيز"] as [string, string, string, string],
       selectionCol: {
         title: "اختياراتنا",

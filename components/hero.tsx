@@ -5,10 +5,12 @@ import NextLink from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import lockImg from "@/app/assets/Gemini_Generated_Image_ftfrrhftfrrhftfr.png";
+import arHeroImg from "@/app/assets/ar hero.png";
 import mobileHero2Img from "@/app/assets/mobile hero2.png";
 import { useFormatMoney } from "@/hooks/use-format-money";
 import { useMainProduct } from "@/hooks/use-product";
 import { useT } from "@/hooks/use-t";
+import { useLanguageStore } from "@/stores/language-store";
 import { useUiStore } from "@/stores/ui-store";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
@@ -29,6 +31,10 @@ export function Hero() {
   const { data: product } = useMainProduct();
   const variant = product?.variants[0];
   const ready = useUiStore((s) => s.loadingScreenDone);
+  const locale = useLanguageStore((s) => s.locale);
+  const isAr = locale === "ar";
+  const desktopHeroImg = isAr ? arHeroImg : lockImg;
+  const mobileHeroImg = isAr ? arHeroImg : mobileHero2Img;
 
   return (
     <section className="relative overflow-hidden">
@@ -41,7 +47,7 @@ export function Hero() {
           transition={{ duration: 2.2, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <Image
-            src={mobileHero2Img}
+            src={mobileHeroImg}
             alt=""
             aria-hidden="true"
             fill
@@ -82,7 +88,7 @@ export function Hero() {
           transition={{ duration: 2.2, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <Image
-            src={lockImg}
+            src={desktopHeroImg}
             alt=""
             aria-hidden="true"
             className="w-full h-auto"

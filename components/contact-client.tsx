@@ -155,7 +155,7 @@ export function ContactClient() {
                   </span>
                   <div className="min-w-0 flex-1">
                     <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">{ch.label}</p>
-                    <p className="truncate text-sm font-semibold text-foreground">{ch.value}</p>
+                    <p dir="ltr" className="truncate text-sm font-semibold text-foreground">{ch.value}</p>
                     <p className="text-[11px] text-muted-foreground">{ch.sub}</p>
                   </div>
                   <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1" />

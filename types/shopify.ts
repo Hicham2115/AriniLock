@@ -80,5 +80,5 @@ export function formatMoney(money: Money, currencyLabel?: string): string {
     maximumFractionDigits: value % 1 === 0 ? 0 : 2,
   }).format(value);
   const label = currencyLabel ?? (money.currencyCode === "MAD" ? "MAD" : money.currencyCode);
-  return `${formatted} ${label}`;
+  return `⁦${formatted} ${label}⁩`;
 }

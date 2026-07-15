@@ -11,7 +11,6 @@ export function StatsSection() {
   return (
     <section className="border-t border-primary/10 bg-white">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
-
         {/* Section label */}
         <Reveal>
           <div className="mb-10 flex flex-wrap items-start justify-between gap-4 text-xs uppercase tracking-[0.25em] text-ink/25 lg:mb-16">
@@ -44,7 +43,9 @@ export function StatsSection() {
                   i >= 2 ? "border-t border-primary/10" : "",
                   i > 0 ? "lg:border-l lg:border-primary/10" : "",
                   i >= 2 ? "lg:border-t-0" : "",
-                ].filter(Boolean).join(" ")}
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
               >
                 <motion.div
                   whileHover="hovered"
@@ -67,7 +68,10 @@ export function StatsSection() {
                   {/* Number */}
                   <div className="relative mb-2 flex items-baseline gap-1.5">
                     <motion.span
-                      variants={{ rest: { color: "#032245" }, hovered: { color: "#053d7a" } }}
+                      variants={{
+                        rest: { color: "#032245" },
+                        hovered: { color: "#053d7a" },
+                      }}
                       transition={{ duration: 0.3 }}
                       className="font-display2 font-light leading-none"
                       style={{ fontSize: "clamp(3.5rem, 9vw, 5.5rem)" }}
@@ -76,7 +80,10 @@ export function StatsSection() {
                     </motion.span>
                     {stat.unit && (
                       <motion.span
-                        variants={{ rest: { color: "#2a5fa8" }, hovered: { color: "#032245" } }}
+                        variants={{
+                          rest: { color: "#2a5fa8" },
+                          hovered: { color: "#032245" },
+                        }}
                         transition={{ duration: 0.3 }}
                         className="font-display text-xl"
                       >
@@ -85,7 +92,9 @@ export function StatsSection() {
                     )}
                   </div>
 
-                  <p className="relative text-sm font-medium text-ink/70">{stat.label}</p>
+                  <p className="relative text-sm font-medium text-ink/70">
+                    {stat.label}
+                  </p>
                   <p className="relative text-xs text-ink/35">{stat.sub}</p>
                 </motion.div>
               </Reveal>
@@ -94,7 +103,7 @@ export function StatsSection() {
         </div>
 
         {/* Detail columns */}
-        <div className="grid gap-x-10 gap-y-12 border-t border-primary/10 pt-12 sm:grid-cols-2 lg:grid-cols-4">
+        {/* <div className="grid gap-x-10 gap-y-12 border-t border-primary/10 pt-12 sm:grid-cols-2 lg:grid-cols-4">
           {s.details.map((detail, i) => (
             <Reveal key={detail.title} delay={i * 0.08}>
               <motion.div
@@ -123,8 +132,7 @@ export function StatsSection() {
               </motion.div>
             </Reveal>
           ))}
-        </div>
-
+        </div> */}
       </div>
     </section>
   );

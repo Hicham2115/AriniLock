@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CartDrawer } from "@/components/cart-drawer";
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
 
 export const metadata: Metadata = {
   title: "Conditions d'utilisation & CGV",
@@ -8,6 +11,9 @@ export const metadata: Metadata = {
 
 export default function ConditionsUtilisationPage() {
   return (
+    <>
+    <CartDrawer />
+    <Header />
     <main className="min-h-screen bg-white">
       {/* Header band */}
       <div
@@ -155,5 +161,7 @@ export default function ConditionsUtilisationPage() {
         </div>
       </div>
     </main>
+    <Footer />
+    </>
   );
 }

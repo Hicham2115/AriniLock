@@ -6,14 +6,11 @@ import {
   MapPin,
   CreditCard,
   Banknote,
-  Handshake,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LogoMark } from "@/components/logo-mark";
 import { useT } from "@/hooks/use-t";
-
-
 
 export function Footer() {
   const t = useT();
@@ -113,7 +110,7 @@ export function Footer() {
                       aria-hidden="true"
                     />
                   </span>
-                  +212 6 68 89 88 60
+                  <span dir="ltr">+212 6 68 89 88 60</span>
                 </a>
 
                 <a
@@ -126,7 +123,7 @@ export function Footer() {
                       aria-hidden="true"
                     />
                   </span>
-                  +212 6 60 64 81 95
+                  <span dir="ltr">+212 6 60 64 81 95</span>
                 </a>
 
                 <a
@@ -141,7 +138,6 @@ export function Footer() {
                   </span>
                   {s.helpLink}
                 </a>
-
               </div>
             </div>
           </div>
@@ -151,19 +147,6 @@ export function Footer() {
       {/* ── Partners & address bar ── */}
       <div className="border-t border-gray-100 bg-white px-6 py-8 lg:px-10">
         <div className="mx-auto max-w-7xl space-y-6">
-          {/* Partners block */}
-          <div className="flex items-start gap-4 rounded-2xl border border-primary/15 bg-primary/5 px-5 py-4">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
-              <Handshake className="h-5 w-5" aria-hidden="true" />
-            </span>
-            <div>
-              <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.25em] text-primary/70">
-                {s.partners}
-              </p>
-              <p className="text-sm leading-relaxed text-gray-700">{s.partnerNote}</p>
-            </div>
-          </div>
-
           {/* Address row */}
           <div className="flex items-start gap-2 text-sm text-gray-700">
             <MapPin
@@ -179,25 +162,26 @@ export function Footer() {
           {/* Payment methods — highlighted */}
           <div className="flex flex-wrap items-center gap-3">
             <p className="shrink-0 text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500">
-              Moyens de paiement
+              {s.paymentLabel}
             </p>
             <div className="flex flex-wrap gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-lg border border-primary/25 bg-primary/8 px-3 py-1.5 text-xs font-semibold text-primary">
-                <CreditCard className="h-3.5 w-3.5" aria-hidden="true" />
-                CMI
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-lg border border-primary/25 bg-primary/8 px-3 py-1.5 text-xs font-semibold text-primary">
-                <CreditCard className="h-3.5 w-3.5" aria-hidden="true" />
-                Visa
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-lg border border-primary/25 bg-primary/8 px-3 py-1.5 text-xs font-semibold text-primary">
-                <CreditCard className="h-3.5 w-3.5" aria-hidden="true" />
-                Mastercard
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-600/25 bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-700">
-                <Banknote className="h-3.5 w-3.5" aria-hidden="true" />
-                Paiement à la livraison
-              </span>
+              {s.payment.map((method, i) => {
+                const isCod = i === s.payment.length - 1;
+                const Icon = isCod ? Banknote : CreditCard;
+                return (
+                  <span
+                    key={method}
+                    className={
+                      isCod
+                        ? "inline-flex items-center gap-1.5 rounded-lg border border-emerald-600/25 bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-700"
+                        : "inline-flex items-center gap-1.5 rounded-lg border border-primary/25 bg-primary/8 px-3 py-1.5 text-xs font-semibold text-primary"
+                    }
+                  >
+                    <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+                    {method}
+                  </span>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -211,20 +195,14 @@ export function Footer() {
               href="/conditions-utilisation"
               className="transition-colors hover:text-gray-700"
             >
-              CGV &amp; Conditions d'utilisation
+              {s.legalLinks.terms}
             </Link>
             <Link
               href="/politique-de-confidentialite"
               className="transition-colors hover:text-gray-700"
             >
-              Politique de confidentialité
+              {s.legalLinks.privacy}
             </Link>
-            <a href="#" className="transition-colors hover:text-gray-700">
-              Mentions légales
-            </a>
-            <a href="#" className="transition-colors hover:text-gray-700">
-              Cookies
-            </a>
           </div>
           <p>
             © {new Date().getFullYear()} {s.copyright}
