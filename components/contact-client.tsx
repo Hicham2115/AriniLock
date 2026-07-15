@@ -127,8 +127,6 @@ export function ContactClient() {
             >
               <Clock className="h-3.5 w-3.5 text-white/50" />
               <span className="text-xs text-white/60">{c.hours}</span>
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-              <span className="text-xs font-medium text-emerald-400">{c.online}</span>
             </motion.div>
           </div>
         </div>

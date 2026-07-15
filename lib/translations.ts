@@ -203,7 +203,6 @@ const fr = {
     heroTitle: "Parlons-nous.",
     heroSub: "Une question sur votre commande, l'installation ou le produit ? Notre équipe est là pour vous.",
     hours: "Disponible Lun–Ven · 9h–18h",
-    online: "En ligne",
     address: "Bd Zoulikha Nasri, Corner Office N°19, Sidi Maarouf, Casablanca",
     channels: [
       { label: "WhatsApp",   value: "+212 6 68 89 88 60", sub: "Réponse en moins d'1 heure" },
@@ -842,7 +841,6 @@ What's in the box
     heroTitle: "Let's talk.",
     heroSub: "A question about your order, installation, or the product? Our team is here for you.",
     hours: "Available Mon–Fri · 9am–6pm",
-    online: "Online",
     address: "Bd Zoulikha Nasri, Corner Office N°19, Sidi Maarouf, Casablanca",
     channels: [
       { label: "WhatsApp",  value: "+212 6 68 89 88 60", sub: "Response in under 1 hour" },
@@ -1419,7 +1417,7 @@ const ar: typeof fr = {
     deliverySub: "في جميع أنحاء المغرب",
     warranty: "ضمان سنتين",
     warrantySub: "الصانع",
-    install: "التركيب < 15 دقيقة",
+    install: "التركيب < 45 دقيقة",
     installSub: "",
   },
   checkout: {
@@ -1479,9 +1477,8 @@ const ar: typeof fr = {
   contact: {
     heroPre: "أريني لوك · خدمة العملاء",
     heroTitle: "تحدّث إلينا.",
-    heroSub: "سؤال عن طلبك أو التركيب أو المنتج؟ فريقنا هنا لمساعدتك.",
+    heroSub: "هل لديك أي استفسار حول طلبك أو عملية التركيب أو أحد منتجاتنا؟ فريقنا هنا لمساعدتك والإجابة عن جميع أسئلتك.",
     hours: "متاح الاثنين–الجمعة · 9h–18h",
-    online: "متصل",
     address: "Bd Zoulikha Nasri, Corner Office N°19, Sidi Maarouf, Casablanca",
     channels: [
       { label: "واتساب",  value: "+212 6 68 89 88 60", sub: "رد في أقل من ساعة" },
@@ -1511,7 +1508,7 @@ const ar: typeof fr = {
     successMsg: "تم إرسال رسالتك! سنرد عليك خلال 24 ساعة.",
     faqs: [
       { q: "هل توصّلون لجميع أنحاء المغرب؟", a: "نعم، لجميع المدن مع الدفع عند الاستلام." },
-      { q: "كيف أركّب أريني لوك؟",            a: "في أقل من 15 دقيقة. يُرفق دليل مصوّر." },
+      { q: "كيف أركّب أريني لوك؟",            a: "في أقل من 45 دقيقة. يُرفق دليل مصوّر." },
       { q: "ما مدة الضمان؟",                   a: "ضمان الصانع لمدة سنتين يشمل جميع عيوب التصنيع." },
     ],
   },
@@ -1653,7 +1650,7 @@ const ar: typeof fr = {
         { label: "توصيل في جميع أنحاء المغرب", sub: "2–4 أيام عمل" },
         { label: "الدفع عند الاستلام",           sub: "متاح في كل المغرب" },
         { label: "ضمان سنتين",                   sub: "الصانع" },
-        { label: "تركيب",               sub: "في أقل من 15 دقيقة" },
+        { label: "تركيب",               sub: "في أقل من 45 دقيقة" },
       ],
       searchPlaceholder: "بحث…",
       colorLabel: "اللون",
