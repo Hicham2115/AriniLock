@@ -34,7 +34,7 @@ export function Hero() {
   const locale = useLanguageStore((s) => s.locale);
   const isAr = locale === "ar";
   const desktopHeroImg = isAr ? arHeroImg : lockImg;
-  const mobileHeroImg = isAr ? arHeroImg : mobileHero2Img;
+  const mobileHeroImg = mobileHero2Img;
 
   return (
     <section className="relative overflow-hidden">
