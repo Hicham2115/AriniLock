@@ -9,7 +9,7 @@ export function LocalizedMarquee() {
     <Marquee
       text={t.marquee}
       className="border-y border-line bg-surface py-4"
-      trackClassName="text-sm uppercase tracking-[0.25em] text-muted-foreground"
+      trackClassName="text-sm uppercase tracking-[0.25em] text-muted-foreground rtl:font-arabic-display rtl:text-lg rtl:font-medium rtl:tracking-normal rtl:normal-case"
     />
   );
 }
