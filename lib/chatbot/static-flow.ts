@@ -71,19 +71,19 @@ function frRecommend(feature: string, property: string | null) {
     case "camera":
       return {
         productLink: "/produits/m1-pro",
-        content: `Pour ${propertyLabel ? `votre ${propertyLabel}` : "ce profil"}, je recommande l'**AriniLock M1 Pro** — écran HD 4,5", visiophone bidirectionnel, caméra vision nocturne, 6 modes d'accès${contextSuffix} — 2 590 MAD.\n\n[Voir le produit →](/produits/m1-pro)`,
+        content: `Pour ${propertyLabel ? `votre ${propertyLabel}` : "ce profil"}, je recommande l'**ARINILOCK M1 Pro** — écran HD 4,5", visiophone bidirectionnel, caméra vision nocturne, 6 modes d'accès${contextSuffix} — 2 590 MAD.\n\n[Voir le produit →](/produits/m1-pro)`,
       };
     case "avance":
       return {
         productLink: "/produits/i-60",
-        content: `Pour ${propertyLabel ? `votre ${propertyLabel}` : "ce profil"}, je recommande l'**AriniLock i60** — Face ID 3D, reconnaissance de la paume de main, empreinte digitale, caméra HD nocturne${contextSuffix} — 3 490 MAD.\n\n[Voir le produit →](/produits/i-60)`,
+        content: `Pour ${propertyLabel ? `votre ${propertyLabel}` : "ce profil"}, je recommande l'**ARINILOCK i60** — Face ID 3D, reconnaissance de la paume de main, empreinte digitale, caméra HD nocturne${contextSuffix} — 3 490 MAD.\n\n[Voir le produit →](/produits/i-60)`,
       };
     case "simple":
     default: {
       const link = `/produits/${MAIN_PRODUCT_HANDLE}`;
       return {
         productLink: link,
-        content: `Pour ${propertyLabel ? `votre ${propertyLabel}` : "ce profil"}, je recommande la **Poignée connectée AriniLock** — empreinte digitale, code PIN, carte RFID, application, clé de secours — à partir de 1 590 MAD.\n\n[Voir le produit →](${link})`,
+        content: `Pour ${propertyLabel ? `votre ${propertyLabel}` : "ce profil"}, je recommande la **Poignée connectée ARINILOCK** — empreinte digitale, code PIN, carte RFID, application, clé de secours — à partir de 1 590 MAD.\n\n[Voir le produit →](${link})`,
       };
     }
   }
@@ -92,7 +92,7 @@ function frRecommend(feature: string, property: string | null) {
 const FR: LocaleContent = {
   welcome: {
     role: "assistant",
-    content: "Bonjour ! Je suis l'assistant AriniLock. Pour vous conseiller le bon modèle, pour quel type de bien cherchez-vous une serrure ?",
+    content: "Bonjour ! Je suis l'assistant ARINILOCK. Pour vous conseiller le bon modèle, pour quel type de bien cherchez-vous une serrure ?",
   },
   featureQuestion: { role: "assistant", content: "Merci ! Et quel niveau de fonctionnalités recherchez-vous ?" },
   propertyOptions: [
@@ -109,12 +109,12 @@ const FR: LocaleContent = {
   propertyLabels: FR_PROPERTY_LABELS,
   recommend: frRecommend,
   faqs: [
-    { test: /compatib|porte\b/i, answer: "AriniLock s'adapte à la majorité des portes intérieures et d'entrée standards en bois et métal. Contactez notre équipe avant l'achat pour vérifier la compatibilité avec votre porte : [Contact →](/contact)" },
+    { test: /compatib|porte\b/i, answer: "ARINILOCK s'adapte à la majorité des portes intérieures et d'entrée standards en bois et métal. Contactez notre équipe avant l'achat pour vérifier la compatibilité avec votre porte : [Contact →](/contact)" },
     { test: /panne|coupure|électri/i, answer: "En cas de panne électrique, la serrure reste utilisable via empreinte, code PIN ou carte RFID tant que les piles fonctionnent — pas besoin de réseau électrique. Le déverrouillage à distance nécessite en revanche une connexion internet. En cas de panne totale des piles, une clé physique de secours est toujours fournie." },
     { test: /pile|batterie|autonomie/i, answer: "Les 4 piles AA standards tiennent environ 4 à 6 mois selon l'usage. L'autonomie restante est visible à tout moment dans l'application, qui vous alerte avant épuisement." },
     { test: /livr|délai|delai/i, answer: "Livraison partout au Maroc, généralement en 2 à 4 jours ouvrés. Paiement à la livraison disponible, ainsi que le paiement en ligne (CMI, Visa, Mastercard)." },
     { test: /paiement|payer|cmi|carte bancaire/i, answer: "Le paiement à la livraison est disponible partout au Maroc — aucune carte bancaire requise à la commande. Le paiement en ligne (CMI, Visa, Mastercard) est aussi accepté." },
-    { test: /garantie/i, answer: "AriniLock est couverte par une garantie constructeur de 2 ans." },
+    { test: /garantie/i, answer: "ARINILOCK est couverte par une garantie constructeur de 2 ans." },
     { test: /install/i, answer: "L'installation est réalisée par nos techniciens certifiés, gratuite et incluse avec la commande — jamais en auto-installation. Elle prend généralement moins de 45 minutes." },
     { test: /application|\bapp\b|tuya/i, answer: "L'application mobile **Tuya** (iOS & Android) permet de contrôler la serrure à distance, consulter l'historique des accès et recevoir des alertes en temps réel — connexion WiFi + Bluetooth requise pour les fonctions à distance." },
     { test: /empreinte/i, answer: "Jusqu'à 150 empreintes digitales peuvent être enregistrées, organisées en jusqu'à 10 profils." },
@@ -122,7 +122,7 @@ const FR: LocaleContent = {
     { test: /accessoire/i, answer: "Accessoires disponibles : lot de piles longue durée (89 MAD), plaque de finition supplémentaire (149 MAD), lot de 2 cartes RFID (99 MAD). [Voir la boutique →](/produits)" },
     { test: /contact|téléphone|telephone|whatsapp|email|adresse|horaire/i, answer: "Vous pouvez nous joindre au +212 6 68 89 88 60 (WhatsApp) ou par email à support@arinilock.ma, du lundi au vendredi de 9h à 18h. [Page contact →](/contact)" },
     { test: /prix|combien.*(coûte|coute)|tarif/i, answer: "Poignée connectée : à partir de 1 590 MAD. M1 Pro (avec caméra) : 2 590 MAD. i60 (Face ID + paume) : 3 490 MAD. [Voir la boutique →](/produits)" },
-    { test: /avis|note\b|évaluation/i, answer: "AriniLock a une note moyenne de 4.8/5 sur 312 avis vérifiés, dont 86% de 5 étoiles." },
+    { test: /avis|note\b|évaluation/i, answer: "ARINILOCK a une note moyenne de 4.8/5 sur 312 avis vérifiés, dont 86% de 5 étoiles." },
   ],
   noMatch: "Je n'ai pas bien compris 🙂 Choisissez une option ci-dessous, ou reformulez votre question.",
   restartRe: /recommenc|autre produit|nouveau choix|repartir|restart/i,
@@ -150,19 +150,19 @@ function enRecommend(feature: string, property: string | null) {
     case "camera":
       return {
         productLink: "/produits/m1-pro",
-        content: `For ${propertyLabel ? `your ${propertyLabel}` : "this profile"}, I recommend the **AriniLock M1 Pro** — 4.5" HD screen, two-way video intercom, night-vision camera, 6 access modes${contextSuffix} — 2,590 MAD.\n\n[View product →](/produits/m1-pro)`,
+        content: `For ${propertyLabel ? `your ${propertyLabel}` : "this profile"}, I recommend the **ARINILOCK M1 Pro** — 4.5" HD screen, two-way video intercom, night-vision camera, 6 access modes${contextSuffix} — 2,590 MAD.\n\n[View product →](/produits/m1-pro)`,
       };
     case "avance":
       return {
         productLink: "/produits/i-60",
-        content: `For ${propertyLabel ? `your ${propertyLabel}` : "this profile"}, I recommend the **AriniLock i60** — 3D Face ID, palm recognition, fingerprint, HD night-vision camera${contextSuffix} — 3,490 MAD.\n\n[View product →](/produits/i-60)`,
+        content: `For ${propertyLabel ? `your ${propertyLabel}` : "this profile"}, I recommend the **ARINILOCK i60** — 3D Face ID, palm recognition, fingerprint, HD night-vision camera${contextSuffix} — 3,490 MAD.\n\n[View product →](/produits/i-60)`,
       };
     case "simple":
     default: {
       const link = `/produits/${MAIN_PRODUCT_HANDLE}`;
       return {
         productLink: link,
-        content: `For ${propertyLabel ? `your ${propertyLabel}` : "this profile"}, I recommend the **AriniLock Connected Handle** — fingerprint, PIN code, RFID card, app, backup key — starting at 1,590 MAD.\n\n[View product →](${link})`,
+        content: `For ${propertyLabel ? `your ${propertyLabel}` : "this profile"}, I recommend the **ARINILOCK Connected Handle** — fingerprint, PIN code, RFID card, app, backup key — starting at 1,590 MAD.\n\n[View product →](${link})`,
       };
     }
   }
@@ -171,7 +171,7 @@ function enRecommend(feature: string, property: string | null) {
 const EN: LocaleContent = {
   welcome: {
     role: "assistant",
-    content: "Hi! I'm the AriniLock assistant. To recommend the right model, what type of property are you looking to secure?",
+    content: "Hi! I'm the ARINILOCK assistant. To recommend the right model, what type of property are you looking to secure?",
   },
   featureQuestion: { role: "assistant", content: "Thanks! And what level of features are you looking for?" },
   propertyOptions: [
@@ -188,12 +188,12 @@ const EN: LocaleContent = {
   propertyLabels: EN_PROPERTY_LABELS,
   recommend: enRecommend,
   faqs: [
-    { test: /compat|\bdoor\b/i, answer: "AriniLock fits most standard interior and entrance doors in wood and metal. Contact our team before purchasing to check compatibility with your door: [Contact →](/contact)" },
+    { test: /compat|\bdoor\b/i, answer: "ARINILOCK fits most standard interior and entrance doors in wood and metal. Contact our team before purchasing to check compatibility with your door: [Contact →](/contact)" },
     { test: /outage|power cut|electri/i, answer: "During a power outage, the lock still works via fingerprint, PIN code, or RFID card as long as the batteries are charged — no electrical network needed. Remote unlocking via the app does require an internet connection. If the batteries fully die, a physical backup key is always included." },
     { test: /batter|autonomy/i, answer: "The 4 standard AA batteries last about 4 to 6 months depending on usage. Remaining battery life is visible anytime in the app, which alerts you before it runs out." },
     { test: /deliver|shipping/i, answer: "Delivery anywhere in Morocco, typically within 2 to 4 business days. Cash on delivery is available, as well as online payment (CMI, Visa, Mastercard)." },
     { test: /payment|pay\b|cmi|credit card/i, answer: "Cash on delivery is available anywhere in Morocco — no credit card required to order. Online payment (CMI, Visa, Mastercard) is also accepted." },
-    { test: /warrant/i, answer: "AriniLock comes with a 2-year manufacturer warranty." },
+    { test: /warrant/i, answer: "ARINILOCK comes with a 2-year manufacturer warranty." },
     { test: /install/i, answer: "Installation is done by our certified technicians, free and included with your order — never self-installed. It usually takes less than 45 minutes." },
     { test: /application|\bapp\b|tuya/i, answer: "The **Tuya** mobile app (iOS & Android) lets you control the lock remotely, view access history, and receive real-time alerts — WiFi + Bluetooth connection required for remote features." },
     { test: /fingerprint/i, answer: "Up to 150 fingerprints can be registered, organized into up to 10 profiles." },
@@ -201,7 +201,7 @@ const EN: LocaleContent = {
     { test: /accessor/i, answer: "Available accessories: long-life battery pack (89 MAD), extra finishing plate (149 MAD), set of 2 RFID cards (99 MAD). [Visit the shop →](/produits)" },
     { test: /contact|phone|whatsapp|email|address|hours/i, answer: "You can reach us at +212 6 68 89 88 60 (WhatsApp) or by email at support@arinilock.ma, Monday to Friday 9am–6pm. [Contact page →](/contact)" },
     { test: /price|cost|how much/i, answer: "Connected Handle: starting at 1,590 MAD. M1 Pro (with camera): 2,590 MAD. i60 (Face ID + palm): 3,490 MAD. [Visit the shop →](/produits)" },
-    { test: /review|rating/i, answer: "AriniLock has an average rating of 4.8/5 across 312 verified reviews, with 86% giving 5 stars." },
+    { test: /review|rating/i, answer: "ARINILOCK has an average rating of 4.8/5 across 312 verified reviews, with 86% giving 5 stars." },
   ],
   noMatch: "I didn't quite catch that 🙂 Please choose an option below, or rephrase your question.",
   restartRe: /restart|start over|another product|new choice/i,
@@ -229,19 +229,19 @@ function arRecommend(feature: string, property: string | null) {
     case "camera":
       return {
         productLink: "/produits/m1-pro",
-        content: `بالنسبة لـ${propertyLabel ?? "هذا الملف الشخصي"}، أنصحك بـ **AriniLock M1 Pro** — شاشة HD مقاس 4.5 بوصة، اتصال فيديو ثنائي الاتجاه، كاميرا رؤية ليلية، 6 طرق دخول${contextSuffix} — 2590 درهم.\n\n[عرض المنتج →](/produits/m1-pro)`,
+        content: `بالنسبة لـ${propertyLabel ?? "هذا الملف الشخصي"}، أنصحك بـ **ARINILOCK M1 Pro** — شاشة HD مقاس 4.5 بوصة، اتصال فيديو ثنائي الاتجاه، كاميرا رؤية ليلية، 6 طرق دخول${contextSuffix} — 2590 درهم.\n\n[عرض المنتج →](/produits/m1-pro)`,
       };
     case "avance":
       return {
         productLink: "/produits/i-60",
-        content: `بالنسبة لـ${propertyLabel ?? "هذا الملف الشخصي"}، أنصحك بـ **AriniLock i60** — تعرف على الوجه ثلاثي الأبعاد، بصمة اليد، بصمة الإصبع، كاميرا HD للرؤية الليلية${contextSuffix} — 3490 درهم.\n\n[عرض المنتج →](/produits/i-60)`,
+        content: `بالنسبة لـ${propertyLabel ?? "هذا الملف الشخصي"}، أنصحك بـ **ARINILOCK i60** — تعرف على الوجه ثلاثي الأبعاد، بصمة اليد، بصمة الإصبع، كاميرا HD للرؤية الليلية${contextSuffix} — 3490 درهم.\n\n[عرض المنتج →](/produits/i-60)`,
       };
     case "simple":
     default: {
       const link = `/produits/${MAIN_PRODUCT_HANDLE}`;
       return {
         productLink: link,
-        content: `بالنسبة لـ${propertyLabel ?? "هذا الملف الشخصي"}، أنصحك بـ **مقبض AriniLock المتصل** — بصمة الإصبع، رمز PIN، بطاقة RFID، تطبيق، مفتاح احتياطي — ابتداءً من 1590 درهم.\n\n[عرض المنتج →](${link})`,
+        content: `بالنسبة لـ${propertyLabel ?? "هذا الملف الشخصي"}، أنصحك بـ **مقبض ARINILOCK المتصل** — بصمة الإصبع، رمز PIN، بطاقة RFID، تطبيق، مفتاح احتياطي — ابتداءً من 1590 درهم.\n\n[عرض المنتج →](${link})`,
       };
     }
   }
@@ -250,7 +250,7 @@ function arRecommend(feature: string, property: string | null) {
 const AR: LocaleContent = {
   welcome: {
     role: "assistant",
-    content: "مرحباً! أنا مساعد AriniLock الافتراضي. لأقترح عليك الطراز المناسب، ما نوع العقار الذي تبحث له عن قفل؟",
+    content: "مرحباً! أنا مساعد ARINILOCK الافتراضي. لأقترح عليك الطراز المناسب، ما نوع العقار الذي تبحث له عن قفل؟",
   },
   featureQuestion: { role: "assistant", content: "شكراً لك! وما هو مستوى الميزات الذي تبحث عنه؟" },
   propertyOptions: [
@@ -267,12 +267,12 @@ const AR: LocaleContent = {
   propertyLabels: AR_PROPERTY_LABELS,
   recommend: arRecommend,
   faqs: [
-    { test: /توافق|باب/i, answer: "يتناسب AriniLock مع معظم الأبواب الداخلية والخارجية القياسية المصنوعة من الخشب والمعدن. تواصل مع فريقنا قبل الشراء للتحقق من توافقه مع بابك: [اتصل بنا →](/contact)" },
+    { test: /توافق|باب/i, answer: "يتناسب ARINILOCK مع معظم الأبواب الداخلية والخارجية القياسية المصنوعة من الخشب والمعدن. تواصل مع فريقنا قبل الشراء للتحقق من توافقه مع بابك: [اتصل بنا →](/contact)" },
     { test: /انقطاع|كهرباء/i, answer: "في حال انقطاع الكهرباء، يبقى القفل قابلاً للاستخدام عبر البصمة أو رمز PIN أو بطاقة RFID طالما البطاريات تعمل — لا حاجة لشبكة كهربائية. أما فتح القفل عن بعد عبر التطبيق فيتطلب اتصالاً بالإنترنت. وفي حال نفاد البطاريات كلياً، يتوفر دائماً مفتاح احتياطي عادي." },
     { test: /بطاري/i, answer: "تدوم 4 بطاريات AA القياسية حوالي 4 إلى 6 أشهر حسب الاستخدام. يمكنك رؤية مستوى البطارية المتبقي في أي وقت عبر التطبيق الذي ينبهك قبل نفادها." },
     { test: /توصيل|شحن|تسليم/i, answer: "التوصيل متوفر في جميع أنحاء المغرب، عادة خلال 2 إلى 4 أيام عمل. الدفع عند الاستلام متاح، وكذلك الدفع الإلكتروني (CMI، Visa، Mastercard)." },
     { test: /دفع|بطاقة بنكية/i, answer: "الدفع عند الاستلام متاح في جميع أنحاء المغرب — لا حاجة لبطاقة بنكية عند الطلب. كما يمكن الدفع الإلكتروني عبر CMI أو Visa أو Mastercard." },
-    { test: /ضمان/i, answer: "يستفيد AriniLock من ضمان الشركة المصنعة لمدة سنتين." },
+    { test: /ضمان/i, answer: "يستفيد ARINILOCK من ضمان الشركة المصنعة لمدة سنتين." },
     { test: /تركيب/i, answer: "يتم التركيب من طرف تقنيينا المعتمدين، مجاناً وضمن الطلب — وليس تركيباً ذاتياً أبداً. يستغرق عادة أقل من 45 دقيقة." },
     { test: /تطبيق|تويا|tuya/i, answer: "يتيح لك تطبيق **Tuya** (iOS و Android) التحكم في القفل عن بعد، والاطلاع على سجل الدخول، وتلقي تنبيهات فورية — يتطلب اتصال WiFi وBluetooth لميزات التحكم عن بعد." },
     { test: /بصمة/i, answer: "يمكن تسجيل ما يصل إلى 150 بصمة إصبع، موزعة على 10 ملفات عائلية." },
@@ -280,7 +280,7 @@ const AR: LocaleContent = {
     { test: /إكسسوار|ملحقات/i, answer: "الملحقات المتوفرة: مجموعة بطاريات طويلة الأمد (89 درهم)، لوحة تشطيب إضافية (149 درهم)، مجموعة بطاقتي RFID (99 درهم). [زيارة المتجر →](/produits)" },
     { test: /اتصال|هاتف|واتساب|بريد|عنوان|ساعات العمل/i, answer: "يمكنكم التواصل معنا عبر +212 6 68 89 88 60 (واتساب) أو عبر البريد الإلكتروني support@arinilock.ma، من الإثنين إلى الجمعة من 9 صباحاً إلى 6 مساءً. [صفحة الاتصال →](/contact)" },
     { test: /سعر|ثمن|تكلفة/i, answer: "المقبض المتصل: ابتداءً من 1590 درهم. M1 Pro (مع كاميرا): 2590 درهم. i60 (Face ID + بصمة اليد): 3490 درهم. [زيارة المتجر →](/produits)" },
-    { test: /تقييم|رأي العملاء/i, answer: "يحصل AriniLock على تقييم متوسط 4.8/5 من أصل 312 تقييماً موثقاً، منها 86% بخمس نجوم." },
+    { test: /تقييم|رأي العملاء/i, answer: "يحصل ARINILOCK على تقييم متوسط 4.8/5 من أصل 312 تقييماً موثقاً، منها 86% بخمس نجوم." },
   ],
   noMatch: "لم أفهم ذلك جيداً 🙂 يرجى اختيار أحد الخيارات أدناه، أو إعادة صياغة سؤالك.",
   restartRe: /من جديد|إعادة|منتج آخر|اختيار جديد/i,

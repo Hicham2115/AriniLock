@@ -48,7 +48,7 @@ export function LoadingScreen() {
             className="absolute inset-x-0 top-0 flex h-1/2 flex-col justify-between bg-black px-5 pb-5 pt-6 sm:px-12 sm:pt-8"
           >
             <div className="flex items-center justify-between text-[10px] uppercase tracking-widest2 text-white/25">
-              <span>AriniLock</span>
+              <span>ARINILOCK</span>
               <span className="hidden sm:inline">Marque marocaine</span>
             </div>
             <motion.p
@@ -135,7 +135,7 @@ export function LoadingScreen() {
               animate={{ opacity: 1, y: 0, transition: { delay: 0.25, duration: 0.55 } }}
               className="font-display text-sm uppercase tracking-widest2 text-white/35"
             >
-              AriniLock
+              ARINILOCK
             </motion.p>
           </motion.div>
 

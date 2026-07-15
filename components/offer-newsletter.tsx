@@ -58,7 +58,12 @@ export function OfferNewsletter() {
           {/* Section label */}
           <div className="mb-8 flex flex-wrap items-start justify-between gap-4 text-xs uppercase tracking-[0.25em] text-white/50 lg:mb-10">
             <span>{s.label}</span>
-            <span>{s.right}</span>
+            <span className="flex items-center gap-2">
+              {s.right}
+              <span className="rounded-full bg-white px-2.5 py-0.5 text-[11px] font-bold normal-case tracking-normal text-gold">
+                {s.discount}
+              </span>
+            </span>
           </div>
 
           <div className="grid gap-12 lg:grid-cols-2 lg:items-end">

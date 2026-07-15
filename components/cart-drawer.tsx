@@ -139,7 +139,7 @@ export function CartDrawer() {
             {t.cart.title}
           </SheetTitle>
           <SheetDescription className="sr-only">
-            Articles de votre panier AriniLock
+            Articles de votre panier ARINILOCK
           </SheetDescription>
         </SheetHeader>
 

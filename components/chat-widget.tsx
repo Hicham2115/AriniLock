@@ -277,7 +277,7 @@ export function ChatWidget() {
                 <span className="text-xs font-bold text-white">A</span>
               </div>
               <div className="flex-1">
-                <p className="text-sm font-semibold text-white">Assistant Arini</p>
+                <p className="text-sm font-semibold text-white">Assistant ARINILOCK</p>
                 <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">En ligne</p>
               </div>
               <button
@@ -344,7 +344,7 @@ export function ChatWidget() {
             {/* Footer */}
             <div className="shrink-0 border-t border-border bg-secondary/50 px-3 py-3">
               <p className="text-center text-[10px] text-muted-foreground/60">
-                AriniLock · Assistant IA
+                ARINILOCK · Assistant IA
               </p>
             </div>
           </motion.div>

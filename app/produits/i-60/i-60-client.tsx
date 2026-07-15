@@ -180,7 +180,7 @@ function StickyBar({
           >
             <div className="flex flex-col">
               <span className="text-xs font-bold text-foreground">
-                AriniLock I 60
+                ARINILOCK I 60
               </span>
               <Stars />
             </div>
@@ -199,7 +199,7 @@ function StickyBar({
             style={{ pointerEvents: "auto" }}
           >
             <span className="text-sm font-semibold text-foreground">
-              AriniLock I 60
+              ARINILOCK I 60
             </span>
             <div className="h-4 w-px bg-gray-200" />
             <Stars />
@@ -258,7 +258,7 @@ export function I60Client() {
       <OrderModal
         open={orderOpen}
         onClose={() => setOrderOpen(false)}
-        productName="AriniLock I 60"
+        productName="ARINILOCK I 60"
         price={PRICE}
       />
       <Header />
@@ -299,7 +299,7 @@ export function I60Client() {
                   className="font-display2 leading-[0.88] text-foreground"
                   style={{ fontSize: "clamp(3.8rem, 9vw, 7.5rem)" }}
                 >
-                  AriniLock
+                  ARINILOCK
                   <br />
                   <em className="not-italic text-primary">I 60</em>
                 </motion.h1>
@@ -646,7 +646,7 @@ export function I60Client() {
                   <p className="mb-6 text-center text-sm font-semibold text-foreground">
                     {q.orderFormTitle}
                   </p>
-                  <OrderForm productName="AriniLock I 60" price={PRICE} />
+                  <OrderForm productName="ARINILOCK I 60" price={PRICE} />
                 </div>
               </Reveal>
             </div>

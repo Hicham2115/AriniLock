@@ -12,7 +12,7 @@ export function LogoMark({ className, inverted }: LogoMarkProps) {
     <div className={cn("flex select-none items-center gap-3", className)}>
       <Image
         src={logoIcon}
-        alt="AriniLock icon"
+        alt="ARINILOCK icon"
         className={cn(
           "h-24 w-auto shrink-0 object-contain",
           inverted && "brightness-0 invert",

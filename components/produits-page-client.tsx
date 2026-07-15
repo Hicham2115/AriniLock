@@ -43,7 +43,7 @@ export function ProduitsPageClient() {
 
   function handleRetry() {
     void queryClient.resetQueries({ queryKey: queryKeys.product(MAIN_PRODUCT_HANDLE) });
-    void queryClient.resetQueries({ queryKey: queryKeys.accessories });
+    void queryClient.resetQueries({ queryKey: queryKeys.accessories() });
   }
 
   useEffect(() => {

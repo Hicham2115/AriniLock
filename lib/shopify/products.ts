@@ -2,6 +2,7 @@ import { isShopifyConfigured, shopifyFetch } from "./client";
 import { MOCK_ACCESSORIES, MOCK_PRODUCT } from "./mock";
 import { ACCESSORIES_QUERY, PRODUCT_BY_HANDLE_QUERY } from "./queries";
 import { productSchema, type Product } from "@/types/shopify";
+import { SHOPIFY_LANG, type Locale } from "@/stores/language-store";
 
 export const MAIN_PRODUCT_HANDLE =
   process.env.NEXT_PUBLIC_SHOPIFY_PRODUCT_HANDLE ??
@@ -31,12 +32,12 @@ function normalizeProduct(raw: RawProduct): Product {
   });
 }
 
-export async function getMainProduct(): Promise<Product> {
+export async function getMainProduct(locale: Locale = "fr"): Promise<Product> {
   if (!isShopifyConfigured) return MOCK_PRODUCT;
 
   const data = await shopifyFetch<{ product: RawProduct | null }>(
     PRODUCT_BY_HANDLE_QUERY,
-    { handle: MAIN_PRODUCT_HANDLE },
+    { handle: MAIN_PRODUCT_HANDLE, language: SHOPIFY_LANG[locale] },
   );
   if (!data.product) {
     throw new Error(`Produit introuvable : ${MAIN_PRODUCT_HANDLE}`);
@@ -44,7 +45,7 @@ export async function getMainProduct(): Promise<Product> {
   return normalizeProduct(data.product);
 }
 
-export async function getProductByHandle(handle: string): Promise<Product | null> {
+export async function getProductByHandle(handle: string, locale: Locale = "fr"): Promise<Product | null> {
   const mockAll = [MOCK_PRODUCT, ...MOCK_ACCESSORIES];
   // For the main product handle, always fall back to MOCK_PRODUCT so the page never 404s
   const mockFallback =
@@ -54,7 +55,7 @@ export async function getProductByHandle(handle: string): Promise<Product | null
   try {
     const data = await shopifyFetch<{ product: RawProduct | null }>(
       PRODUCT_BY_HANDLE_QUERY,
-      { handle },
+      { handle, language: SHOPIFY_LANG[locale] },
     );
     if (!data.product) return mockFallback;
     return normalizeProduct(data.product);
@@ -63,12 +64,12 @@ export async function getProductByHandle(handle: string): Promise<Product | null
   }
 }
 
-export async function getAccessories(): Promise<Product[]> {
+export async function getAccessories(locale: Locale = "fr"): Promise<Product[]> {
   if (!isShopifyConfigured) return MOCK_ACCESSORIES;
   try {
     const data = await shopifyFetch<{ products: { nodes: RawProduct[] } }>(
       ACCESSORIES_QUERY,
-      { query: ACCESSORIES_TAG_QUERY },
+      { query: ACCESSORIES_TAG_QUERY, language: SHOPIFY_LANG[locale] },
     );
     const products = data.products.nodes.map(normalizeProduct);
     return products.length > 0 ? products : MOCK_ACCESSORIES;

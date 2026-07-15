@@ -3,7 +3,7 @@ import { ContactClient } from "@/components/contact-client";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Contactez l'équipe AriniLock — WhatsApp, email ou formulaire en ligne.",
+  description: "Contactez l'équipe ARINILOCK — WhatsApp, email ou formulaire en ligne.",
 };
 
 export default function ContactPage() {

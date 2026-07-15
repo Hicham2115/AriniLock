@@ -57,13 +57,13 @@ const fr = {
     editionLabel: "Édition de lancement · Maroc",
     countryLabel: "Maroc",
     brandLine: "Marque marocaine",
-    brandSlug: "// AriniLock",
+    brandSlug: "// ARINILOCK",
     bottomLine: "Maison connectée · Conçu pour le Maroc",
   },
   product: {
     addToCart: "Ajouter au panier",
     adding: "Ajout…",
-    brand: "AriniLock",
+    brand: "ARINILOCK",
     promo: "Promo",
     readMore: "Lire la suite",
     readLess: "Réduire",
@@ -72,7 +72,6 @@ const fr = {
     reviews: "avis",
     addedMsg: "ajouté",
     currencyLabel: "MAD",
-    description: "",
     accordion: [
       {
         value: "specs",
@@ -124,7 +123,7 @@ const fr = {
     add: "Ajouter aux favoris",
     remove: "Retirer des favoris",
     removeBtn: "Retirer",
-    srDescription: "Vos produits AriniLock enregistrés",
+    srDescription: "Vos produits ARINILOCK enregistrés",
   },
   breadcrumb: {
     home: "Accueil",
@@ -199,7 +198,7 @@ const fr = {
     submitting: "Envoi…",
   },
   contact: {
-    heroPre: "AriniLock · Service client",
+    heroPre: "ARINILOCK · Service client",
     heroTitle: "Parlons-nous.",
     heroSub: "Une question sur votre commande, l'installation ou le produit ? Notre équipe est là pour vous.",
     hours: "Disponible Lun–Ven · 9h–18h",
@@ -232,7 +231,7 @@ const fr = {
     successMsg: "Message envoyé ! Nous vous répondrons sous 24h.",
     faqs: [
       { q: "Livrez-vous partout au Maroc ?",     a: "Oui, dans toutes les villes avec paiement à la livraison." },
-      { q: "Comment installer AriniLock ?",      a: "En moins de 45 minutes. Un guide illustré est inclus." },
+      { q: "Comment installer ARINILOCK ?",      a: "En moins de 45 minutes. Un guide illustré est inclus." },
       { q: "Quelle est la durée de garantie ?",  a: "2 ans constructeur couvrant tout défaut de fabrication." },
     ],
   },
@@ -287,8 +286,8 @@ const fr = {
       right: "Questions fréquentes",
       headline: ["Tout ce", "qu'il faut", "savoir."] as [string, string, string],
       items: [
-        { q: "AriniLock est-elle compatible avec toutes les portes ?",         a: "AriniLock s'adapte à la majorité des portes intérieures et d'entrée standards en bois et métal. Contactez notre équipe avant l'achat pour vérifier la compatibilité avec votre porte." },
-        { q: "Que se passe-t-il en cas de coupure de courant ou de panne ?",   a: "AriniLock fonctionne sur piles et reste utilisable (empreinte, code PIN, carte RFID) indépendamment du réseau électrique, tant que les piles sont chargées. Le déverrouillage à distance via l'application nécessite en revanche que la serrure soit connectée à internet (4G) : sans connexion, seuls les accès locaux restent disponibles. En cas de panne complète des piles, une clé physique de secours fournie avec votre serrure permet toujours d'ouvrir la porte." },
+        { q: "ARINILOCK est-elle compatible avec toutes les portes ?",         a: "ARINILOCK s'adapte à la majorité des portes intérieures et d'entrée standards en bois et métal. Contactez notre équipe avant l'achat pour vérifier la compatibilité avec votre porte." },
+        { q: "Que se passe-t-il en cas de coupure de courant ou de panne ?",   a: "ARINILOCK fonctionne sur piles et reste utilisable (empreinte, code PIN, carte RFID) indépendamment du réseau électrique, tant que les piles sont chargées. Le déverrouillage à distance via l'application nécessite en revanche que la serrure soit connectée à internet (4G) : sans connexion, seuls les accès locaux restent disponibles. En cas de panne complète des piles, une clé physique de secours fournie avec votre serrure permet toujours d'ouvrir la porte." },
         { q: "Combien de temps dure la batterie ?",                             a: "Avec un usage quotidien moyen, les 4 piles AA tiennent environ 12 à 18 mois. L'autonomie restante est visible à tout moment dans l'application, qui vous alerte avant épuisement." },
         { q: "Puis-je l'installer moi-même ?",                                 a: "Non, nous recommandons de laisser nos techniciens certifiés s'en charger : l'installation est gratuite, incluse avec chaque commande, et prend généralement moins de 45 minutes." },
         { q: "Livrez-vous partout au Maroc ?",                                  a: "Oui, nous livrons dans toutes les villes du Maroc, avec paiement à la livraison disponible. Le délai moyen est de 2 à 4 jours ouvrés." },
@@ -297,6 +296,7 @@ const fr = {
     offer: {
       label: "07 — Offre de lancement",
       right: "Offre limitée",
+      discount: "-30%",
       headline: ["L'offre se", "termine dans"],
       unitLabels: ["Jours", "Heures", "Min", "Sec"] as [string, string, string, string],
       description: "Inscrivez-vous pour recevoir les offres exclusives en avant-première et être alerté à chaque baisse de prix.",
@@ -323,7 +323,7 @@ const fr = {
       designedFor: "Conçu pour le foyer marocain",
       blurb: "La serrure connectée qui s'ouvre par empreinte, code ou smartphone. Sécurité intelligente, sans compromis sur le style.",
       taglineShort: "Des serrures intelligentes fiables et d'une qualité irréprochable, conçues pour durer.",
-      serviceTitle: "AriniLock à votre service",
+      serviceTitle: "ARINILOCK à votre service",
       helpLink: "Besoin d'aide ?",
       paymentLabel: "Moyens de paiement",
       legalLinks: { terms: "CGV & Conditions d'utilisation", privacy: "Politique de confidentialité" },
@@ -355,7 +355,7 @@ const fr = {
           ],
         },
       ],
-      copyright: "AriniLock. Tous droits réservés.",
+      copyright: "ARINILOCK. Tous droits réservés.",
       payment: ["CMI", "Visa", "Mastercard", "Paiement livraison"],
       closing: ["La porte", "qui vous", "reconnaît."] as [string, string, string],
       closingCta: "Voir le produit",
@@ -363,7 +363,7 @@ const fr = {
     photoBreak: {
       stat: "312",
       statLabel: "foyers",
-      line: "font déjà confiance à AriniLock",
+      line: "font déjà confiance à ARINILOCK",
       cta: "Commander maintenant",
     },
     produits: {
@@ -396,7 +396,7 @@ const fr = {
     },
     showcase: {
       label: "04 — Le produit",
-      right: "AriniLock — Édition Signature",
+      right: "ARINILOCK — Édition Signature",
       productTitle: "Poignée connectée",
       rating: "4.8 / 5 —",
       launchBadge: "Offre de lancement",
@@ -474,7 +474,7 @@ const fr = {
     specsTitle: "Conçu\npour\ndurer.",
     specsDesc: "Chaque composant du M1 Pro est sélectionné pour garantir une fiabilité maximale sur le long terme.",
     specs: [
-      { label: "Modèle",               value: "AriniLock M1 Pro" },
+      { label: "Modèle",               value: "ARINILOCK M1 Pro" },
       { label: "Matériau",             value: "Alliage d'aluminium haute résistance · noir mat" },
       { label: "Dimensions",           value: "380 × 75 mm" },
       { label: "Écran",                value: '4,5" HD couleur' },
@@ -496,13 +496,13 @@ const fr = {
     reviewsRating: "Note moyenne 4,9 / 5",
     reviews: [
       { name: "Youssef K.", city: "Casablanca", body: "L'écran LCD intérieur est net, la caméra HD reconnaît les visages même de nuit. J'ai essayé de le forcer pour tester — l'alarme s'est déclenchée en 3 secondes et j'ai reçu une notif immédiatement. Qualité vraiment sérieuse." },
-      { name: "Salma R.",   city: "Marrakech",  body: "J'ai trois riads sur Airbnb. L'équipe AriniLock a installé les trois serrures en une journée, tout était parfaitement configuré. Je génère les codes depuis l'app en 30 secondes. Le gain de temps est énorme." },
+      { name: "Salma R.",   city: "Marrakech",  body: "J'ai trois riads sur Airbnb. L'équipe ARINILOCK a installé les trois serrures en une journée, tout était parfaitement configuré. Je génère les codes depuis l'app en 30 secondes. Le gain de temps est énorme." },
       { name: "Mehdi A.",   city: "Rabat",      body: "La finition argent est magnifique sur ma porte en bois. Le mécanisme Push-Pull est très fluide, rien à voir avec ce qu'on trouve ailleurs. Ça fait 7 mois, aucun problème, aucun bug. Le SAV a répondu en 20 minutes quand j'avais une question." },
     ],
     faqSection: "09 — FAQ",
     faqTitle: "Tout ce qu'il\nfaut savoir.",
     faqs: [
-      { q: "Avec quels types de portes est-il compatible ?",   a: "L'AriniLock M1 Pro est compatible avec les portes en bois, acier, aluminium, inox et portes blindées — simples ou doubles battants, d'une épaisseur de 40 à 120 mm. En cas de doute, notre équipe vérifie la compatibilité gratuitement sur photo avant l'achat." },
+      { q: "Avec quels types de portes est-il compatible ?",   a: "L'ARINILOCK M1 Pro est compatible avec les portes en bois, acier, aluminium, inox et portes blindées — simples ou doubles battants, d'une épaisseur de 40 à 120 mm. En cas de doute, notre équipe vérifie la compatibilité gratuitement sur photo avant l'achat." },
       { q: "Que se passe-t-il si la batterie est vide ?",      a: "L'application vous alerte automatiquement dès que la batterie passe sous 20 %. En cas d'urgence, un port Type-C de secours permet une charge rapide pour ouvrir la porte. Les 2 clés mécaniques fournies restent toujours disponibles." },
       { q: "Comment fonctionne le visiophone à distance ?",    a: "Via l'application Tuya Smart / Smart Life, vous recevez une notification photo dès que quelqu'un sonne. Vous pouvez voir, parler et déverrouiller depuis n'importe où dans le monde via WiFi 2,4 GHz." },
       { q: "Puis-je créer des accès temporaires pour Airbnb ?", a: "Oui — c'est l'une des forces du M1 Pro. Créez des codes PIN à durée limitée pour vos locataires sans jamais partager votre code principal. Idéal pour les villas, riads et locations courte durée." },
@@ -515,7 +515,7 @@ const fr = {
     orderFormTitle: "Pour une commande rapide, veuillez remplir ce formulaire et nous vous contacterons plus tard !",
     ctaBadge: "Livraison gratuite · Installation incluse · Paiement à la livraison",
     ctaTitle: "Prêt à passer\nau niveau Pro ?",
-    ctaDesc: "Commandez votre AriniLock M1 Pro et recevez-le sous 48h partout au Maroc — avec installation professionnelle offerte.",
+    ctaDesc: "Commandez votre ARINILOCK M1 Pro et recevez-le sous 48h partout au Maroc — avec installation professionnelle offerte.",
     ctaButton: "Commander maintenant",
     ctaContact: "Nous contacter",
     stickyReviews: "389 avis",
@@ -566,7 +566,7 @@ const fr = {
     specsSection: "08 — Spécifications",
     specsTitle: "Tout ce\nqu'il faut\nsavoir.",
     specs: [
-      { label: "Modèle",            value: "AriniLock i60" },
+      { label: "Modèle",            value: "ARINILOCK i60" },
       { label: "Matériau",          value: "Alliage d'aluminium haute densité · panneau acrylique anti-rayures" },
       { label: "Design",            value: "Push-Pull moderne · réversible gauche/droite" },
       { label: "Méthodes d'accès",  value: "Face 3D · Paume · Empreinte · PIN · RFID · App · Clé" },
@@ -597,7 +597,7 @@ const fr = {
     orderFormTitle: "Pour une commande rapide, veuillez remplir ce formulaire et nous vous contacterons plus tard !",
     ctaBadge: "Livraison gratuite · Installation incluse · Paiement à la livraison",
     ctaTitle: "Simplifiez\nvotre quotidien.",
-    ctaDesc: "Commandez votre AriniLock I 60 et recevez-le sous 48h partout au Maroc — avec installation professionnelle offerte.",
+    ctaDesc: "Commandez votre ARINILOCK I 60 et recevez-le sous 48h partout au Maroc — avec installation professionnelle offerte.",
     ctaButton: "Commander maintenant",
     ctaContact: "Nous contacter",
     stickyReviews: "256 avis",
@@ -662,13 +662,13 @@ const en: typeof fr = {
     editionLabel: "Launch Edition · Morocco",
     countryLabel: "Morocco",
     brandLine: "Moroccan brand",
-    brandSlug: "// AriniLock",
+    brandSlug: "// ARINILOCK",
     bottomLine: "Connected home · Designed for Morocco",
   },
   product: {
     addToCart: "Add to cart",
     adding: "Adding…",
-    brand: "AriniLock",
+    brand: "ARINILOCK",
     promo: "Sale",
     readMore: "Read more",
     readLess: "Collapse",
@@ -677,40 +677,6 @@ const en: typeof fr = {
     reviews: "reviews",
     addedMsg: "added",
     currencyLabel: "MAD",
-    description: `Discover the Arini Intelligent Lock X5, a premium security solution designed for modern villas and residences. Combining elegant design, advanced technology and smart control, it transforms your door into a secure, smooth and fully connected access point.
-
-5 unlocking modes
-• Ultra-precise fingerprint (99.8% reliability, < 1 second)
-• Anti-spy touchscreen PIN code
-• Contactless RFID card
-• Mobile app (Tuya / Smart Life via WiFi)
-• Emergency mechanical key (2 keys included)
-
-Connectivity & smart control
-• 2.4 GHz WiFi for remote control
-• Real-time smartphone notifications
-• Manage up to 200 users with custom permissions
-• Temporary passwords for visitors
-• Full access history
-• Compatible with Alexa & Google Home
-
-Enhanced security
-• Double-lock interior mechanism
-• Anti-intrusion alarm system
-• Anti-corrosion aluminium alloy structure
-• Secure communications with advanced encryption
-
-Technical specifications
-• Available finishes: Gold, Black, Silver
-• Door compatibility: 40–70 mm thickness
-• Power: 4 AAA batteries (~3 months) + emergency USB port
-• Reversible handle (left or right installation)
-
-What's in the box
-• Express delivery throughout Morocco
-• Professional installation by our team
-• 2-year parts & service warranty
-• 2 mechanical keys · 2 RFID cards · Complete installation kit`,
     accordion: [
       {
         value: "specs",
@@ -762,7 +728,7 @@ What's in the box
     add: "Add to favorites",
     remove: "Remove from favorites",
     removeBtn: "Remove",
-    srDescription: "Your saved AriniLock products",
+    srDescription: "Your saved ARINILOCK products",
   },
   breadcrumb: {
     home: "Home",
@@ -837,7 +803,7 @@ What's in the box
     submitting: "Sending…",
   },
   contact: {
-    heroPre: "AriniLock · Customer support",
+    heroPre: "ARINILOCK · Customer support",
     heroTitle: "Let's talk.",
     heroSub: "A question about your order, installation, or the product? Our team is here for you.",
     hours: "Available Mon–Fri · 9am–6pm",
@@ -870,7 +836,7 @@ What's in the box
     successMsg: "Message sent! We'll reply within 24h.",
     faqs: [
       { q: "Do you deliver everywhere in Morocco?", a: "Yes, to all cities with cash on delivery." },
-      { q: "How do I install AriniLock?",           a: "In under 45 minutes. An illustrated guide is included." },
+      { q: "How do I install ARINILOCK?",           a: "In under 45 minutes. An illustrated guide is included." },
       { q: "What is the warranty period?",          a: "2-year manufacturer warranty covering all defects." },
     ],
   },
@@ -925,8 +891,8 @@ What's in the box
       right: "Common questions",
       headline: ["Everything", "you need", "to know."],
       items: [
-        { q: "Is AriniLock compatible with all doors?",          a: "AriniLock fits most standard interior and entrance doors in wood and metal. Contact our team before purchase to check compatibility with your door." },
-        { q: "What happens in a power cut or failure?",           a: "AriniLock runs on batteries and stays usable (fingerprint, PIN code, RFID card) independently of the electrical grid, as long as the batteries have charge. Remote unlocking via the app, however, requires the lock to be connected to the internet (4G) — without a connection, only local access methods work. In a complete battery failure, the physical backup key included with your lock always opens the door." },
+        { q: "Is ARINILOCK compatible with all doors?",          a: "ARINILOCK fits most standard interior and entrance doors in wood and metal. Contact our team before purchase to check compatibility with your door." },
+        { q: "What happens in a power cut or failure?",           a: "ARINILOCK runs on batteries and stays usable (fingerprint, PIN code, RFID card) independently of the electrical grid, as long as the batteries have charge. Remote unlocking via the app, however, requires the lock to be connected to the internet (4G) — without a connection, only local access methods work. In a complete battery failure, the physical backup key included with your lock always opens the door." },
         { q: "How long does the battery last?",                   a: "With average daily use, the 4 AA batteries last about 12 to 18 months. Remaining battery life is visible at any time in the app, which alerts you before they run out." },
         { q: "Can I install it myself?",                          a: "No, we recommend leaving it to our certified technicians: installation is free, included with every order, and generally takes under 45 minutes." },
         { q: "Do you deliver across Morocco?",                    a: "Yes, we deliver to all cities in Morocco, with cash on delivery available. Average lead time is 2 to 4 business days." },
@@ -935,6 +901,7 @@ What's in the box
     offer: {
       label: "07 — Launch offer",
       right: "Limited offer",
+      discount: "-30%",
       headline: ["This offer", "ends in"],
       unitLabels: ["Days", "Hours", "Min", "Sec"],
       description: "Subscribe to receive exclusive offers first and be notified of every price drop.",
@@ -961,7 +928,7 @@ What's in the box
       designedFor: "Designed for the Moroccan home",
       blurb: "The connected lock that opens by fingerprint, code or smartphone. Smart security without compromising on style.",
       taglineShort: "Reliable smart locks built with genuinely great quality, made to last.",
-      serviceTitle: "AriniLock at your service",
+      serviceTitle: "ARINILOCK at your service",
       helpLink: "Need help?",
       paymentLabel: "Payment methods",
       legalLinks: { terms: "Terms & Conditions of use", privacy: "Privacy policy" },
@@ -993,7 +960,7 @@ What's in the box
           ],
         },
       ],
-      copyright: "AriniLock. All rights reserved.",
+      copyright: "ARINILOCK. All rights reserved.",
       payment: ["CMI", "Visa", "Mastercard", "Cash on delivery"],
       closing: ["The door", "that knows", "you."] as [string, string, string],
       closingCta: "View the product",
@@ -1001,7 +968,7 @@ What's in the box
     photoBreak: {
       stat: "312",
       statLabel: "homes",
-      line: "already trust AriniLock",
+      line: "already trust ARINILOCK",
       cta: "Order now",
     },
     produits: {
@@ -1034,7 +1001,7 @@ What's in the box
     },
     showcase: {
       label: "04 — The product",
-      right: "AriniLock — Signature Edition",
+      right: "ARINILOCK — Signature Edition",
       productTitle: "Smart door lock",
       rating: "4.8 / 5 —",
       launchBadge: "Launch offer",
@@ -1112,7 +1079,7 @@ What's in the box
     specsTitle: "Built\nto\nlast.",
     specsDesc: "Every component of the M1 Pro is selected to guarantee maximum long-term reliability.",
     specs: [
-      { label: "Model",            value: "AriniLock M1 Pro" },
+      { label: "Model",            value: "ARINILOCK M1 Pro" },
       { label: "Material",         value: "High-resistance aluminium alloy · matte black" },
       { label: "Dimensions",       value: "380 × 75 mm" },
       { label: "Screen",           value: '4.5" HD colour' },
@@ -1134,13 +1101,13 @@ What's in the box
     reviewsRating: "Average rating 4.9 / 5",
     reviews: [
       { name: "Youssef K.", city: "Casablanca", body: "The LCD interior screen is sharp and the HD camera picks up faces clearly even at night. I tested the tamper resistance myself — the alarm triggered in 3 seconds and I got a notification instantly. This is seriously built hardware." },
-      { name: "Salma R.",   city: "Marrakech",  body: "I have three riads on Airbnb. The AriniLock team installed all three locks in one day, everything perfectly configured. I generate codes from the app in 30 seconds. The time saving is huge." },
+      { name: "Salma R.",   city: "Marrakech",  body: "I have three riads on Airbnb. The ARINILOCK team installed all three locks in one day, everything perfectly configured. I generate codes from the app in 30 seconds. The time saving is huge." },
       { name: "Mehdi A.",   city: "Rabat",      body: "The silver finish looks stunning on my wooden door. The Push-Pull mechanism is incredibly smooth — nothing like standard locks. 7 months in, zero issues, zero bugs. Support replied in 20 minutes when I had a question." },
     ],
     faqSection: "09 — FAQ",
     faqTitle: "Everything\nyou need to know.",
     faqs: [
-      { q: "Which door types is it compatible with?", a: "The AriniLock M1 Pro is compatible with wooden, steel, aluminium, stainless steel and armoured doors — single or double leaf, 40–120 mm thick. If in doubt, our team will check compatibility for free via photo before purchase." },
+      { q: "Which door types is it compatible with?", a: "The ARINILOCK M1 Pro is compatible with wooden, steel, aluminium, stainless steel and armoured doors — single or double leaf, 40–120 mm thick. If in doubt, our team will check compatibility for free via photo before purchase." },
       { q: "What happens if the battery dies?",       a: "The app automatically alerts you when the battery drops below 20%. In an emergency, a Type-C emergency port allows a quick charge to open the door. The 2 mechanical keys provided are always available." },
       { q: "How does the remote doorbell work?",      a: "Via the Tuya Smart / Smart Life app, you receive a photo notification every time someone rings. You can see, talk and unlock from anywhere in the world via Wi-Fi 2.4 GHz." },
       { q: "Can I create temporary codes for Airbnb?", a: "Yes — this is one of the M1 Pro's strengths. Create time-limited PIN codes for your tenants without ever sharing your main code. Ideal for villas, riads and short-term rentals." },
@@ -1153,7 +1120,7 @@ What's in the box
     orderFormTitle: "For a quick order, fill in this form and we'll contact you shortly!",
     ctaBadge: "Free delivery · Installation included · Cash on delivery",
     ctaTitle: "Ready to go\nPro?",
-    ctaDesc: "Order your AriniLock M1 Pro and receive it within 48 hours anywhere in Morocco — with professional installation included.",
+    ctaDesc: "Order your ARINILOCK M1 Pro and receive it within 48 hours anywhere in Morocco — with professional installation included.",
     ctaButton: "Order now",
     ctaContact: "Contact us",
     stickyReviews: "389 reviews",
@@ -1204,7 +1171,7 @@ What's in the box
     specsSection: "08 — Specifications",
     specsTitle: "Everything\nyou need\nto know.",
     specs: [
-      { label: "Model",           value: "AriniLock i60" },
+      { label: "Model",           value: "ARINILOCK i60" },
       { label: "Material",        value: "High-density aluminium alloy · scratch-resistant acrylic panel" },
       { label: "Design",          value: "Modern Push-Pull · reversible left/right" },
       { label: "Access methods",  value: "Face 3D · Palm · Fingerprint · PIN · RFID · App · Key" },
@@ -1235,7 +1202,7 @@ What's in the box
     orderFormTitle: "For a quick order, fill in this form and we'll contact you shortly!",
     ctaBadge: "Free delivery · Installation included · Cash on delivery",
     ctaTitle: "Simplify\nyour daily life.",
-    ctaDesc: "Order your AriniLock I 60 and receive it within 48 hours anywhere in Morocco — with professional installation included.",
+    ctaDesc: "Order your ARINILOCK I 60 and receive it within 48 hours anywhere in Morocco — with professional installation included.",
     ctaButton: "Order now",
     ctaContact: "Contact us",
     stickyReviews: "256 reviews",
@@ -1300,13 +1267,13 @@ const ar: typeof fr = {
     editionLabel: "إصدار الإطلاق · المغرب",
     countryLabel: "المغرب",
     brandLine: "علامة مغربية",
-    brandSlug: "// أريني لوك",
+    brandSlug: "// ARINILOCK",
     bottomLine: "المنزل المتصل · مصنوع للمغرب",
   },
   product: {
     addToCart: "أضف إلى السلة",
     adding: "جارٍ الإضافة…",
-    brand: "أريني لوك",
+    brand: "ARINILOCK",
     promo: "تخفيض",
     readMore: "اقرأ المزيد",
     readLess: "طي النص",
@@ -1315,40 +1282,6 @@ const ar: typeof fr = {
     reviews: "تقييم",
     addedMsg: "أُضيف",
     currencyLabel: "درهم",
-    description: `اكتشف قفل أريني الذكي X5، حلّ أمني متميز مصمم للفيلات والمساكن الراقية. يجمع بين التصميم الأنيق والتكنولوجيا المتقدمة والتحكم الذكي ليحوّل بابك إلى نقطة وصول آمنة وسلسة ومتصلة بالكامل.
-
-5 طرق لفتح الباب
-• بصمة الإصبع فائقة الدقة (موثوقية 99.8%، أقل من ثانية)
-• رمز PIN لمسي مع حماية ضد التجسس
-• بطاقة RFID بدون تلامس
-• تطبيق الهاتف (Tuya / Smart Life عبر WiFi)
-• مفتاح ميكانيكي احتياطي (مفتاحان مرفقان)
-
-الاتصال والتحكم الذكي
-• WiFi 2.4 غيغاهرتز للتحكم عن بُعد
-• إشعارات فورية على الهاتف الذكي
-• إدارة ما يصل إلى 200 مستخدم بصلاحيات مخصصة
-• كلمات مرور مؤقتة للزوار
-• سجل كامل لعمليات الدخول
-• متوافق مع Alexa وGoogle Home
-
-أمان معزز
-• قفل داخلي بنظام أمان مزدوج
-• نظام إنذار ضد الاقتحام
-• هيكل من سبيكة الألومنيوم المقاومة للتآكل
-• اتصالات آمنة بتشفير متقدم
-
-المواصفات التقنية
-• الألوان المتاحة: ذهبي، أسود، فضي
-• توافق الباب: سماكة 40–70 ملم
-• الطاقة: 4 بطاريات AAA (حوالي 3 أشهر) + منفذ USB احتياطي
-• مقبض قابل للعكس (تركيب أيسر أو أيمن)
-
-محتويات الصندوق
-• توصيل سريع في جميع أنحاء المغرب
-• تركيب احترافي من قِبل فريقنا
-• ضمان سنتان على القطع والخدمة
-• مفتاحان ميكانيكيان · بطاقتا RFID · طقم تركيب كامل`,
     accordion: [
       {
         value: "specs",
@@ -1400,7 +1333,7 @@ const ar: typeof fr = {
     add: "أضف إلى المفضلة",
     remove: "إزالة من المفضلة",
     removeBtn: "إزالة",
-    srDescription: "منتجات أريني لوك المحفوظة لديك",
+    srDescription: "منتجات ARINILOCK المحفوظة لديك",
   },
   breadcrumb: {
     home: "الرئيسية",
@@ -1418,7 +1351,7 @@ const ar: typeof fr = {
     warranty: "ضمان سنتين",
     warrantySub: "الصانع",
     install: "التركيب < 45 دقيقة",
-    installSub: "",
+    installSub: "تركيب سريع",
   },
   checkout: {
     title: "إتمام الطلب",
@@ -1475,7 +1408,7 @@ const ar: typeof fr = {
     submitting: "جارٍ الإرسال…",
   },
   contact: {
-    heroPre: "أريني لوك · خدمة العملاء",
+    heroPre: "ARINILOCK · خدمة العملاء",
     heroTitle: "تحدّث إلينا.",
     heroSub: "هل لديك أي استفسار حول طلبك أو عملية التركيب أو أحد منتجاتنا؟ فريقنا هنا لمساعدتك والإجابة عن جميع أسئلتك.",
     hours: "متاح الاثنين–الجمعة · 9h–18h",
@@ -1508,7 +1441,7 @@ const ar: typeof fr = {
     successMsg: "تم إرسال رسالتك! سنرد عليك خلال 24 ساعة.",
     faqs: [
       { q: "هل توصّلون لجميع أنحاء المغرب؟", a: "نعم، لجميع المدن مع الدفع عند الاستلام." },
-      { q: "كيف أركّب أريني لوك؟",            a: "في أقل من 45 دقيقة. يُرفق دليل مصوّر." },
+      { q: "كيف أركّب ARINILOCK؟",            a: "في أقل من 45 دقيقة. يُرفق دليل مصوّر." },
       { q: "ما مدة الضمان؟",                   a: "ضمان الصانع لمدة سنتين يشمل جميع عيوب التصنيع." },
     ],
   },
@@ -1517,12 +1450,12 @@ const ar: typeof fr = {
     stats: {
       label: "01 — بالأرقام",
       right: "لمحة — إصدار الإطلاق",
-      headline: ["ما يجعل أقفالنا الذكية المميزة", "مختلفة."],
+      headline: ["ما يميّزها", "عن غيرها."],
       items: [
         { value: "150", unit: "", label: "بصمة", sub: "الحد الأقصى المخزن" },
         { value: "7",   unit: "", label: "طرق", sub: "للدخول" },
         { value: "12–18", unit: " شهرًا", label: "عمر", sub: "البطارية" },
-        { value: "2",   unit: "سنتان", label: "ضمان", sub: "الصانع" },
+        { value: "2",   unit: "سنة", label: "ضمان", sub: "الصانع" },
       ],
       details: [
         { title: "البصمة",         body: "تخزين حتى 150 بصمة. تعرف في أقل من ثانية. حتى 10 ملفات عائلية." },
@@ -1561,17 +1494,19 @@ const ar: typeof fr = {
     faq: {
       label: "06 — الأسئلة الشائعة",
       right: "أسئلة شائعة",
-      headline: ["كل ما تحتاج", "معرفته.", ""],
+      headline: ["كل ما", "تحتاج", "معرفته."],
       items: [
-        { q: "هل أريني لوك متوافق مع جميع الأبواب؟",              a: "يتناسب أريني لوك مع معظم أبواب الدخول والداخلية القياسية من الخشب والمعدن. تواصل مع فريقنا قبل الشراء للتحقق من التوافق مع بابك." },
-        { q: "ماذا يحدث عند انقطاع الكهرباء أو العطل؟",           a: "يعمل أريني لوك بالبطاريات ويبقى قابلاً للاستخدام (بصمة، رمز سري، بطاقة RFID) بشكل مستقل عن الشبكة الكهربائية، طالما البطاريات مشحونة. أما الفتح عن بُعد عبر التطبيق فيتطلب اتصال القفل بالإنترنت (4G)؛ وبدون اتصال، تبقى فقط طرق الدخول المحلية متاحة. عند نفاد البطاريات بالكامل، يتيح المفتاح الاحتياطي المرفق فتح الباب دائمًا." },
+        { q: "هل ARINILOCK متوافق مع جميع الأبواب؟",              a: "يتناسب ARINILOCK مع معظم أبواب الدخول والداخلية القياسية من الخشب والمعدن. تواصل مع فريقنا قبل الشراء للتحقق من التوافق مع بابك." },
+        { q: "ماذا يحدث عند انقطاع الكهرباء أو العطل؟",           a: "يعمل ARINILOCK بالبطاريات ويبقى قابلاً للاستخدام (بصمة، رمز سري، بطاقة RFID) بشكل مستقل عن الشبكة الكهربائية، طالما البطاريات مشحونة. أما الفتح عن بُعد عبر التطبيق فيتطلب اتصال القفل بالإنترنت (4G)؛ وبدون اتصال، تبقى فقط طرق الدخول المحلية متاحة. عند نفاد البطاريات بالكامل، يتيح المفتاح الاحتياطي المرفق فتح الباب دائمًا." },
         { q: "كم تدوم البطارية؟",                                   a: "مع الاستخدام اليومي المعتاد، تدوم 4 بطاريات AA نحو 12 إلى 18 شهرًا. تظهر نسبة البطارية المتبقية في أي وقت داخل التطبيق الذي يُنبّهك قبل نفادها." },
         { q: "هل يمكنني التركيب بنفسي؟",                           a: "لا، ننصح بترك مهمة التركيب لتقنيّينا المعتمدين: التركيب مجاني ومشمول مع كل طلب، ويستغرق عادةً أقل من 45 دقيقة." },
+        { q: "هل توصّلون إلى جميع مدن المغرب؟",                     a: "نعم، نوصل إلى جميع مدن المغرب، مع إمكانية الدفع عند الاستلام. مدة التوصيل المتوسطة تتراوح بين 2 و4 أيام عمل." },
       ],
     },
     offer: {
       label: "07 — عرض الإطلاق",
       right: "عرض محدود",
+      discount: "-30%",
       headline: ["ينتهي العرض", "خلال"],
       unitLabels: ["يوم", "ساعة", "دقيقة", "ثانية"],
       description: "اشترك لتصل إليك العروض الحصرية أولًا وتُخطَر بكل تخفيض في الأسعار.",
@@ -1598,7 +1533,7 @@ const ar: typeof fr = {
       designedFor: "مصمم للمنزل المغربي",
       blurb: "القفل الذكي الذي يفتح بالبصمة أو الرمز أو الهاتف. أمان ذكي دون المساس بالأناقة.",
       taglineShort: "منتجاتنا موثوقة وبجودة عالية، ومصممة لتدوم طويلاً.",
-      serviceTitle: "أريني لوك في خدمتك",
+      serviceTitle: "ARINILOCK في خدمتك",
       helpLink: "هل تحتاج مساعدة؟",
       paymentLabel: "وسائل الدفع",
       legalLinks: { terms: "الشروط العامة وشروط الاستخدام", privacy: "سياسة الخصوصية" },
@@ -1630,7 +1565,7 @@ const ar: typeof fr = {
           ],
         },
       ],
-      copyright: "أريني لوك. جميع الحقوق محفوظة.",
+      copyright: "ARINILOCK. جميع الحقوق محفوظة.",
       payment: ["CMI", "Visa", "Mastercard", "الدفع عند الاستلام"],
       closing: ["الباب", "الذي", "يعرفك."] as [string, string, string],
       closingCta: "عرض المنتج",
@@ -1638,7 +1573,7 @@ const ar: typeof fr = {
     photoBreak: {
       stat: "312",
       statLabel: "منزلًا",
-      line: "يثق بأريني لوك",
+      line: "يثق بـ ARINILOCK",
       cta: "اطلب الآن",
     },
     produits: {
@@ -1671,7 +1606,7 @@ const ar: typeof fr = {
     },
     showcase: {
       label: "04 — المنتج",
-      right: "أريني لوك — الإصدار المميز",
+      right: "ARINILOCK — الإصدار المميز",
       productTitle: "مقبض ذكي",
       rating: "4.8 / 5 —",
       launchBadge: "عرض الإطلاق",
@@ -1741,7 +1676,7 @@ const ar: typeof fr = {
       { l: "أوضاع الفتح",   suffix: "" },
       { l: "مستخدمون",      suffix: "" },
       { l: "شاشة HD",       suffix: " بوصة" },
-      { l: "الضمان",        suffix: " سنوات" },
+      { l: "الضمان",        suffix: " سنة" },
     ],
     gallerySection: "06 — معرض الصور",
     galleryTitle: "تصميم\naستثنائي.",
@@ -1749,7 +1684,7 @@ const ar: typeof fr = {
     specsTitle: "مُصنَّع\nليدوم\nطويلاً.",
     specsDesc: "كل مكوّن في M1 Pro مختار لضمان أقصى موثوقية على المدى الطويل.",
     specs: [
-      { label: "الموديل",          value: "AriniLock M1 Pro" },
+      { label: "الموديل",          value: "ARINILOCK M1 Pro" },
       { label: "المادة",           value: "سبيكة ألومينيوم عالية المقاومة · أسود مطفأ" },
       { label: "الأبعاد",          value: "380 × 75 ملم" },
       { label: "الشاشة",          value: '4.5" HD ملونة' },
@@ -1771,13 +1706,13 @@ const ar: typeof fr = {
     reviewsRating: "متوسط التقييم 4.9 / 5",
     reviews: [
       { name: "يوسف ك.", city: "الدار البيضاء", body: "شاشة LCD الداخلية واضحة وحادة، والكاميرا HD تُظهر الوجوه بجلاء حتى ليلًا. جرّبت مقاومته للفتح القسري — الإنذار انطلق خلال 3 ثوانٍ ووصلني الإشعار فورًا. منتج بجودة جدية فعلًا." },
-      { name: "سلمى ر.", city: "مراكش",         body: "عندي ثلاثة رياضات على Airbnb. فريق أريني لوك ركّب الأقفال الثلاثة في يوم واحد وضبط كل شيء. أولّد الرموز من التطبيق في 30 ثانية. توفير الوقت هائل." },
+      { name: "سلمى ر.", city: "مراكش",         body: "عندي ثلاثة رياضات على Airbnb. فريق ARINILOCK ركّب الأقفال الثلاثة في يوم واحد وضبط كل شيء. أولّد الرموز من التطبيق في 30 ثانية. توفير الوقت هائل." },
       { name: "مهدي أ.", city: "الرباط",         body: "اللون الفضي رائع على بابي الخشبي. آلية Push-Pull سلسة جدًا لا تُقارن بالأقفال العادية. 7 أشهر ولا مشكلة واحدة. فريق الدعم ردّ في 20 دقيقة حين سألت." },
     ],
     faqSection: "09 — الأسئلة الشائعة",
     faqTitle: "كل ما تحتاج\nمعرفته.",
     faqs: [
-      { q: "ما أنواع الأبواب المتوافقة معه؟",    a: "AriniLock M1 Pro متوافق مع أبواب الخشب والصلب والألومينيوم والفولاذ المقاوم للصدأ والأبواب المدرعة — مفردة أو مزدوجة، بسماكة 40–120 ملم. في حال الشك، يتحقق فريقنا من التوافق مجاناً عبر صورة قبل الشراء." },
+      { q: "ما أنواع الأبواب المتوافقة معه؟",    a: "ARINILOCK M1 Pro متوافق مع أبواب الخشب والصلب والألومينيوم والفولاذ المقاوم للصدأ والأبواب المدرعة — مفردة أو مزدوجة، بسماكة 40–120 ملم. في حال الشك، يتحقق فريقنا من التوافق مجاناً عبر صورة قبل الشراء." },
       { q: "ماذا يحدث إذا نفدت البطارية؟",       a: "يُنبّهك التطبيق تلقائياً عندما تنخفض البطارية عن 20%. في حالة الطوارئ، يتيح منفذ Type-C الاحتياطي شحناً سريعاً لفتح الباب. المفتاحان الميكانيكيان المرفقان متاحان دائماً." },
       { q: "كيف يعمل جرس الفيديو عن بُعد؟",    a: "عبر تطبيق Tuya Smart، تصلك إشعارات صور فور قرع الجرس. يمكنك الرؤية والتحدث وفتح الباب من أي مكان في العالم عبر واي فاي 2.4 GHz." },
       { q: "هل يمكنني إنشاء رموز مؤقتة لـ Airbnb؟", a: "نعم — هذه إحدى أبرز مزايا M1 Pro. أنشئ رموز PIN محدودة المدة للمستأجرين دون مشاركة رمزك الرئيسي. مثالي للفلل والرياضات والإيجارات القصيرة." },
@@ -1790,7 +1725,7 @@ const ar: typeof fr = {
     orderFormTitle: "للطلب السريع، يرجى ملء هذا النموذج وسنتواصل معك قريباً!",
     ctaBadge: "توصيل مجاني · التركيب مشمول · الدفع عند الاستلام",
     ctaTitle: "هل أنت مستعد\nللانتقال إلى Pro؟",
-    ctaDesc: "اطلب AriniLock M1 Pro واستلمه خلال 48 ساعة في أي مكان بالمغرب — مع تركيب احترافي مجاني.",
+    ctaDesc: "اطلب ARINILOCK M1 Pro واستلمه خلال 48 ساعة في أي مكان بالمغرب — مع تركيب احترافي مجاني.",
     ctaButton: "اطلب الآن",
     ctaContact: "تواصل معنا",
     stickyReviews: "389 تقييم",
@@ -1825,7 +1760,7 @@ const ar: typeof fr = {
       { l: "طرق الوصول",   suffix: "" },
       { l: "سرعة الفتح",   suffix: " ث" },
       { l: "بصمات",        suffix: "" },
-      { l: "الضمان",       suffix: " سنوات" },
+      { l: "الضمان",       suffix: " سنة" },
     ],
     installSection: "06 — التركيب",
     installTitle: "في 45\nدقيقة،\nالأمر تم.",
@@ -1841,7 +1776,7 @@ const ar: typeof fr = {
     specsSection: "08 — المواصفات",
     specsTitle: "كل ما\nتحتاج\nمعرفته.",
     specs: [
-      { label: "الموديل",              value: "AriniLock i60" },
+      { label: "الموديل",              value: "ARINILOCK i60" },
       { label: "المادة",               value: "سبيكة ألومينيوم عالية الكثافة · لوح أكريليك مضاد للخدش" },
       { label: "التصميم",              value: "Push-Pull حديث · قابل للعكس" },
       { label: "طرق الوصول",           value: "وجه 3D · راحة يد · بصمة · PIN · RFID · تطبيق · مفتاح" },
@@ -1872,7 +1807,7 @@ const ar: typeof fr = {
     orderFormTitle: "للطلب السريع، يرجى ملء هذا النموذج وسنتواصل معك قريباً!",
     ctaBadge: "توصيل مجاني · التركيب مشمول · الدفع عند الاستلام",
     ctaTitle: "بسّط\nحياتك اليومية.",
-    ctaDesc: "اطلب AriniLock I 60 واستلمه خلال 48 ساعة في أي مكان بالمغرب — مع تركيب احترافي مجاني.",
+    ctaDesc: "اطلب ARINILOCK I 60 واستلمه خلال 48 ساعة في أي مكان بالمغرب — مع تركيب احترافي مجاني.",
     ctaButton: "اطلب الآن",
     ctaContact: "تواصل معنا",
     stickyReviews: "256 تقييم",

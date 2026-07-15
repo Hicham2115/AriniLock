@@ -6,7 +6,7 @@ import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Commande",
-  description: "Finalisez votre commande AriniLock — paiement à la livraison.",
+  description: "Finalisez votre commande ARINILOCK — paiement à la livraison.",
   alternates: { canonical: "https://arinilock.ma/checkout" },
 };
 

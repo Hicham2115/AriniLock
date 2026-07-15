@@ -81,9 +81,14 @@ export function StickyOffer() {
 
       {/* Body */}
       <div className="px-4 py-4">
-        <p className="mb-1 text-[11px] uppercase tracking-[0.18em] text-white/50">
-          {s.right}
-        </p>
+        <div className="mb-1 flex items-center justify-between gap-2">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-white/50">
+            {s.right}
+          </p>
+          <span className="rounded-full bg-white px-2.5 py-0.5 text-[11px] font-bold text-gold">
+            {s.discount}
+          </span>
+        </div>
         <h3 className="mb-4 font-display2 text-xl font-bold leading-tight text-white">
           {s.headline[0]}<br />{s.headline[1]}
         </h3>
@@ -170,9 +175,14 @@ export function StickyOffer() {
       {/* Body */}
       <div className="px-4 py-3">
         <div className="flex items-center justify-between gap-3 mb-3">
-          <h3 className="font-display2 text-base font-bold leading-tight text-white">
-            {s.headline[0]} {s.headline[1]}
-          </h3>
+          <div className="flex items-center gap-2">
+            <h3 className="font-display2 text-base font-bold leading-tight text-white">
+              {s.headline[0]} {s.headline[1]}
+            </h3>
+            <span className="shrink-0 rounded-full bg-white px-2 py-0.5 text-[10px] font-bold text-gold">
+              {s.discount}
+            </span>
+          </div>
           {/* Compact countdown */}
           <div className="flex items-center gap-1 rounded-lg bg-white/8 px-2.5 py-1.5 shrink-0">
             <Clock className="h-3 w-3 text-white/50" />
@@ -227,7 +237,7 @@ export function StickyOffer() {
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#4a7ab5]" />
               </span>
               <span className="text-[12px] font-semibold text-white">
-                {s.right} — {timeLeft?.hours ?? "--"}:{timeLeft?.mins ?? "--"}:{timeLeft?.secs ?? "--"}
+                {s.right} · {s.discount} — {timeLeft?.hours ?? "--"}:{timeLeft?.mins ?? "--"}:{timeLeft?.secs ?? "--"}
               </span>
             </motion.button>
           )}
@@ -264,7 +274,7 @@ export function StickyOffer() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#4a7ab5] opacity-75" />
                   <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#4a7ab5]" />
                 </span>
-                <span className="text-[12px] font-semibold text-white">{s.right}</span>
+                <span className="text-[12px] font-semibold text-white">{s.right} · {s.discount}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Clock className="h-3 w-3 text-white/50" />

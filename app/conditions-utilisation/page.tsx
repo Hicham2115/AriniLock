@@ -6,7 +6,7 @@ import { LegalPageBody } from "@/components/legal-page-body";
 
 export const metadata: Metadata = {
   title: "Conditions d'utilisation & CGV",
-  description: "Conditions générales de vente et d'utilisation d'AriniLock, incluant les modalités de paiement et de livraison.",
+  description: "Conditions générales de vente et d'utilisation d'ARINILOCK, incluant les modalités de paiement et de livraison.",
 };
 
 export default function ConditionsUtilisationPage() {

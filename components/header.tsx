@@ -20,8 +20,7 @@ export function Header() {
   const count = cart?.totalQuantity ?? 0;
   const { openDrawer: openFavorites, items: favoriteItems } = useFavoritesStore();
   const favCount = favoriteItems.length;
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [megaOpen, setMegaOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [barDismissed, setBarDismissed] = useState(false);
   const [barIndex, setBarIndex] = useState(0);
@@ -52,85 +51,16 @@ export function Header() {
   }
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [mobileOpen]);
-
-  useEffect(() => {
     if (barDismissed) return;
     const id = setInterval(() => setBarIndex((i) => (i + 1) % 3), 4000);
     return () => clearInterval(id);
   }, [barDismissed]);
 
   const linkClass = "px-3 text-[13px] text-foreground/50 transition-colors hover:text-primary";
-  const mobileLinkClass = "w-full border-b border-border py-4 font-display text-xl tracking-wide text-foreground transition-colors hover:text-primary";
 
   return (
     <>
-      {/* Mobile full-screen menu */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-50 flex flex-col bg-white md:hidden">
-          <div className="flex items-center justify-between px-5 pt-5">
-            <Link href="/"><LogoMark /></Link>
-            <button
-              type="button"
-              onClick={() => setMobileOpen(false)}
-              aria-label={t.nav.closeMenu}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground hover:bg-secondary"
-            >
-              <X className="h-5 w-5" />
-            </button>
-          </div>
-
-          <nav className="flex flex-1 flex-col items-start justify-center gap-0 px-5">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={resolveHref(link.href)}
-                onClick={() => setMobileOpen(false)}
-                className={mobileLinkClass}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Language switcher inside mobile menu */}
-          <div className="px-5 pb-4 flex items-center gap-1">
-            <span className="text-[10px] uppercase tracking-widest text-foreground/30 mr-2">{t.nav.language}</span>
-            <div className="flex items-center gap-0.5 rounded-full border border-black/10 bg-secondary px-1 py-1">
-              {LOCALES.map((loc) => (
-                <button
-                  key={loc}
-                  type="button"
-                  onClick={() => { setLocale(loc); }}
-                  aria-label={loc.toUpperCase()}
-                  className={`flex h-7 w-8 items-center justify-center rounded-full text-[11px] font-semibold uppercase transition-all ${
-                    locale === loc
-                      ? "bg-black text-white shadow-sm"
-                      : "text-foreground/50 hover:bg-black/8 hover:text-foreground"
-                  }`}
-                >
-                  {loc}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="px-5 pb-8">
-            <button
-              type="button"
-              onClick={() => { openCart(); setMobileOpen(false); }}
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-primary py-4 text-sm font-medium text-white hover:bg-primary/90 transition-colors"
-            >
-              <ShoppingBag aria-hidden="true" className="h-4 w-4" />
-              {t.nav.cart} {count > 0 && `(${count})`}
-            </button>
-          </div>
-        </div>
-      )}
-
-      <MegaMenu open={megaOpen} onClose={() => setMegaOpen(false)} />
+      <MegaMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
 
       <header className={`fixed inset-x-0 top-0 z-40 border-b border-border transition-all duration-300 ${scrolled ? "bg-white/70 backdrop-blur-md shadow-md" : "bg-white shadow-sm"}`}>
         {/* Announcement bar */}
@@ -166,10 +96,10 @@ export function Header() {
           </div>
         )}
         <div className="mx-auto flex h-16 max-w-7xl items-center gap-1 px-4 sm:px-6 lg:px-8">
-          {/* Mega-menu trigger — desktop only */}
+          {/* Menu trigger — desktop only, opens the same mega-menu as mobile */}
           <button
             type="button"
-            onClick={() => setMegaOpen((v) => !v)}
+            onClick={() => setMenuOpen(true)}
             aria-label={t.nav.mainMenu}
             className="hidden md:flex items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
           >
@@ -244,7 +174,7 @@ export function Header() {
             {/* Mobile hamburger */}
             <button
               type="button"
-              onClick={() => setMobileOpen(true)}
+              onClick={() => setMenuOpen(true)}
               aria-label={t.nav.openMenu}
               className="ml-1 flex h-10 w-10 items-center justify-center rounded-full text-foreground transition-colors hover:bg-secondary md:hidden"
             >

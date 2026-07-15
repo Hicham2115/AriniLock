@@ -33,7 +33,8 @@ const VARIANT_FRAGMENT = /* GraphQL */ `
 export const PRODUCT_BY_HANDLE_QUERY = /* GraphQL */ `
   ${IMAGE_FRAGMENT}
   ${VARIANT_FRAGMENT}
-  query ProductByHandle($handle: String!) {
+  query ProductByHandle($handle: String!, $language: LanguageCode)
+  @inContext(language: $language) {
     product(handle: $handle) {
       id
       handle
@@ -65,7 +66,8 @@ export const PRODUCT_BY_HANDLE_QUERY = /* GraphQL */ `
 export const ACCESSORIES_QUERY = /* GraphQL */ `
   ${IMAGE_FRAGMENT}
   ${VARIANT_FRAGMENT}
-  query Accessories($query: String!) {
+  query Accessories($query: String!, $language: LanguageCode)
+  @inContext(language: $language) {
     products(first: 12, query: $query) {
       nodes {
         id

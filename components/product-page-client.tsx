@@ -429,14 +429,10 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
               </div>
 
               {/* Description */}
-              {(t.product.description || product.descriptionHtml || product.description) && (
+              {(product.descriptionHtml || product.description) && (
                 <div className="border-b border-border px-4 py-4">
                   <div className={cn("text-sm leading-relaxed text-foreground/70", !descExpanded && "line-clamp-3")}>
-                    {t.product.description ? (
-                      <span className="whitespace-pre-line">{t.product.description}</span>
-                    ) : (
-                      <span className="shopify-description" dangerouslySetInnerHTML={{ __html: product.descriptionHtml ?? product.description }} />
-                    )}
+                    <span className="shopify-description" dangerouslySetInnerHTML={{ __html: product.descriptionHtml ?? product.description }} />
                   </div>
                   <button type="button" onClick={() => setDescExpanded((v) => !v)} className="mt-2 flex items-center gap-1 text-xs font-medium text-primary">
                     {descExpanded ? t.product.readLess : t.product.readMore}
@@ -624,14 +620,10 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
                     )}
 
                     {/* Description */}
-                    {(t.product.description || product.descriptionHtml || product.description) && (
+                    {(product.descriptionHtml || product.description) && (
                       <div>
                         <div className={cn("text-sm leading-relaxed text-foreground/70", !descExpanded && "line-clamp-4")}>
-                          {t.product.description ? (
-                            <span className="whitespace-pre-line">{t.product.description}</span>
-                          ) : (
-                            <span className="shopify-description" dangerouslySetInnerHTML={{ __html: product.descriptionHtml ?? product.description }} />
-                          )}
+                          <span className="shopify-description" dangerouslySetInnerHTML={{ __html: product.descriptionHtml ?? product.description }} />
                         </div>
                         <button type="button" onClick={() => setDescExpanded((v) => !v)} className="mt-1 flex items-center gap-1 text-xs text-primary hover:underline">
                           {descExpanded ? t.product.readLess : t.product.readMore}

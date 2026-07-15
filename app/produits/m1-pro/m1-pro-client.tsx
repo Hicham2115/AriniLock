@@ -213,7 +213,7 @@ function StickyBar({
           >
             <div className="flex flex-col">
               <span className="text-xs font-bold text-foreground">
-                AriniLock M1 Pro
+                ARINILOCK M1 Pro
               </span>
               <Stars />
             </div>
@@ -232,7 +232,7 @@ function StickyBar({
             style={{ pointerEvents: "auto" }}
           >
             <span className="text-sm font-semibold text-foreground">
-              AriniLock M1 Pro
+              ARINILOCK M1 Pro
             </span>
             <div className="h-4 w-px bg-gray-200" />
             <Stars />
@@ -286,7 +286,7 @@ export function M1ProClient() {
       <OrderModal
         open={orderOpen}
         onClose={() => setOrderOpen(false)}
-        productName="AriniLock M1 Pro"
+        productName="ARINILOCK M1 Pro"
         price={PRICE}
       />
       <Header />
@@ -323,7 +323,7 @@ export function M1ProClient() {
                   className="font-display2 leading-[0.88] text-foreground"
                   style={{ fontSize: "clamp(3.8rem, 9vw, 7.5rem)" }}
                 >
-                  AriniLock
+                  ARINILOCK
                   <br />
                   <em className="not-italic text-primary">M1 Pro</em>
                 </motion.h1>
@@ -608,7 +608,7 @@ export function M1ProClient() {
                   <p className="mb-6 text-center text-sm font-semibold text-foreground">
                     {p.orderFormTitle}
                   </p>
-                  <OrderForm productName="AriniLock M1 Pro" price={PRICE} />
+                  <OrderForm productName="ARINILOCK M1 Pro" price={PRICE} />
                 </div>
               </Reveal>
             </div>

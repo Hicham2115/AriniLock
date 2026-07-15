@@ -8,12 +8,12 @@ export const privacyContent: Record<Locale, ReactNode> = {
   fr: (
     <>
       <p>
-        AriniLock (ci-après « la Société ») s&apos;engage à protéger la vie privée de ses clients et utilisateurs. La présente politique de confidentialité explique comment nous collectons, utilisons, conservons et protégeons vos données personnelles, conformément à la <strong>loi marocaine n° 09-08 relative à la protection des personnes physiques à l&apos;égard du traitement des données à caractère personnel</strong> et à ses textes d&apos;application.
+        ARINILOCK (ci-après « la Société ») s&apos;engage à protéger la vie privée de ses clients et utilisateurs. La présente politique de confidentialité explique comment nous collectons, utilisons, conservons et protégeons vos données personnelles, conformément à la <strong>loi marocaine n° 09-08 relative à la protection des personnes physiques à l&apos;égard du traitement des données à caractère personnel</strong> et à ses textes d&apos;application.
       </p>
 
       <h2>1. Responsable du traitement</h2>
       <p>
-        <strong>AriniLock</strong><br />
+        <strong>ARINILOCK</strong><br />
         Bd Zoulikha Nasri, Corner Office N°19, Sidi Maarouf, Casablanca, Maroc<br />
         Tél. : <span dir="ltr">+212 6 68 89 88 60</span><br />
         E-mail : support@arinilock.ma
@@ -28,7 +28,7 @@ export const privacyContent: Record<Locale, ReactNode> = {
         <li><strong>Données de navigation</strong> : adresse IP, type de navigateur, pages visitées, via des cookies (voir section 8).</li>
         <li><strong>Données de communication</strong> : messages envoyés via le formulaire de contact ou WhatsApp.</li>
       </ul>
-      <p>Nous ne collectons <strong>aucune donnée biométrique</strong> (empreintes digitales) via notre site web. Les données biométriques enregistrées dans votre serrure AriniLock sont stockées localement sur le dispositif et ne sont jamais transmises à nos serveurs.</p>
+      <p>Nous ne collectons <strong>aucune donnée biométrique</strong> (empreintes digitales) via notre site web. Les données biométriques enregistrées dans votre serrure ARINILOCK sont stockées localement sur le dispositif et ne sont jamais transmises à nos serveurs.</p>
 
       <h2>3. Finalités du traitement</h2>
       <p>Vos données sont utilisées pour :</p>
@@ -94,7 +94,7 @@ export const privacyContent: Record<Locale, ReactNode> = {
 
       <h2>9. Sécurité des données</h2>
       <p>
-        AriniLock met en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, perte, altération ou divulgation : chiffrement des communications (HTTPS), accès restreint aux données, contrôles internes réguliers.
+        ARINILOCK met en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, perte, altération ou divulgation : chiffrement des communications (HTTPS), accès restreint aux données, contrôles internes réguliers.
       </p>
 
       <h2>10. Transferts hors Maroc</h2>
@@ -117,12 +117,12 @@ export const privacyContent: Record<Locale, ReactNode> = {
   en: (
     <>
       <p>
-        AriniLock (hereinafter &quot;the Company&quot;) is committed to protecting the privacy of its customers and users. This privacy policy explains how we collect, use, retain and protect your personal data, in accordance with <strong>Moroccan Law No. 09-08 on the protection of individuals with regard to the processing of personal data</strong> and its implementing texts.
+        ARINILOCK (hereinafter &quot;the Company&quot;) is committed to protecting the privacy of its customers and users. This privacy policy explains how we collect, use, retain and protect your personal data, in accordance with <strong>Moroccan Law No. 09-08 on the protection of individuals with regard to the processing of personal data</strong> and its implementing texts.
       </p>
 
       <h2>1. Data controller</h2>
       <p>
-        <strong>AriniLock</strong><br />
+        <strong>ARINILOCK</strong><br />
         Bd Zoulikha Nasri, Corner Office N°19, Sidi Maarouf, Casablanca, Morocco<br />
         Phone: <span dir="ltr">+212 6 68 89 88 60</span><br />
         Email: support@arinilock.ma
@@ -137,7 +137,7 @@ export const privacyContent: Record<Locale, ReactNode> = {
         <li><strong>Browsing data</strong>: IP address, browser type, pages visited, via cookies (see section 8).</li>
         <li><strong>Communication data</strong>: messages sent via the contact form or WhatsApp.</li>
       </ul>
-      <p>We do <strong>not collect any biometric data</strong> (fingerprints) through our website. The biometric data enrolled on your AriniLock lock is stored locally on the device and is never transmitted to our servers.</p>
+      <p>We do <strong>not collect any biometric data</strong> (fingerprints) through our website. The biometric data enrolled on your ARINILOCK lock is stored locally on the device and is never transmitted to our servers.</p>
 
       <h2>3. Purposes of processing</h2>
       <p>Your data is used to:</p>
@@ -203,7 +203,7 @@ export const privacyContent: Record<Locale, ReactNode> = {
 
       <h2>9. Data security</h2>
       <p>
-        AriniLock implements appropriate technical and organizational measures to protect your data against unauthorized access, loss, alteration or disclosure: encrypted communications (HTTPS), restricted data access, regular internal controls.
+        ARINILOCK implements appropriate technical and organizational measures to protect your data against unauthorized access, loss, alteration or disclosure: encrypted communications (HTTPS), restricted data access, regular internal controls.
       </p>
 
       <h2>10. Transfers outside Morocco</h2>
@@ -226,12 +226,12 @@ export const privacyContent: Record<Locale, ReactNode> = {
   ar: (
     <>
       <p>
-        تلتزم أريني لوك (يُشار إليها فيما يلي بـ«الشركة») بحماية خصوصية عملائها ومستخدميها. توضح سياسة الخصوصية هذه كيفية جمعنا واستخدامنا وحفظنا وحمايتنا لبياناتكم الشخصية، وفقًا لـ<strong>القانون المغربي رقم 09-08 المتعلق بحماية الأشخاص الذاتيين تجاه معالجة المعطيات ذات الطابع الشخصي</strong> ونصوصه التطبيقية.
+        تلتزم ARINILOCK (يُشار إليها فيما يلي بـ«الشركة») بحماية خصوصية عملائها ومستخدميها. توضح سياسة الخصوصية هذه كيفية جمعنا واستخدامنا وحفظنا وحمايتنا لبياناتكم الشخصية، وفقًا لـ<strong>القانون المغربي رقم 09-08 المتعلق بحماية الأشخاص الذاتيين تجاه معالجة المعطيات ذات الطابع الشخصي</strong> ونصوصه التطبيقية.
       </p>
 
       <h2>1. المسؤول عن المعالجة</h2>
       <p>
-        <strong>أريني لوك</strong><br />
+        <strong>ARINILOCK</strong><br />
         شارع زليخة ناصري، Corner Office رقم 19، سيدي معروف، الدار البيضاء، المغرب<br />
         الهاتف: <span dir="ltr">+212 6 68 89 88 60</span><br />
         البريد الإلكتروني: support@arinilock.ma
@@ -246,7 +246,7 @@ export const privacyContent: Record<Locale, ReactNode> = {
         <li><strong>بيانات التصفح</strong>: عنوان IP، نوع المتصفح، الصفحات التي تمت زيارتها، عبر ملفات تعريف الارتباط (انظر القسم 8).</li>
         <li><strong>بيانات التواصل</strong>: الرسائل المُرسَلة عبر نموذج الاتصال أو واتساب.</li>
       </ul>
-      <p>لا نجمع <strong>أي بيانات بيومترية</strong> (بصمات الأصابع) عبر موقعنا الإلكتروني. تُخزَّن البيانات البيومترية المسجَّلة في قفل أريني لوك الخاص بكم محليًا على الجهاز ولا تُنقل أبدًا إلى خوادمنا.</p>
+      <p>لا نجمع <strong>أي بيانات بيومترية</strong> (بصمات الأصابع) عبر موقعنا الإلكتروني. تُخزَّن البيانات البيومترية المسجَّلة في قفل ARINILOCK الخاص بكم محليًا على الجهاز ولا تُنقل أبدًا إلى خوادمنا.</p>
 
       <h2>3. أغراض المعالجة</h2>
       <p>تُستخدم بياناتكم من أجل:</p>
@@ -312,7 +312,7 @@ export const privacyContent: Record<Locale, ReactNode> = {
 
       <h2>9. أمن البيانات</h2>
       <p>
-        تعتمد أريني لوك تدابير تقنية وتنظيمية مناسبة لحماية بياناتكم من أي وصول غير مصرح به أو فقدان أو تغيير أو إفشاء: تشفير الاتصالات (HTTPS)، تقييد الوصول إلى البيانات، ومراقبة داخلية منتظمة.
+        تعتمد ARINILOCK تدابير تقنية وتنظيمية مناسبة لحماية بياناتكم من أي وصول غير مصرح به أو فقدان أو تغيير أو إفشاء: تشفير الاتصالات (HTTPS)، تقييد الوصول إلى البيانات، ومراقبة داخلية منتظمة.
       </p>
 
       <h2>10. النقل خارج المغرب</h2>
@@ -338,12 +338,12 @@ export const termsContent: Record<Locale, ReactNode> = {
   fr: (
     <>
       <p>
-        Les présentes Conditions Générales de Vente et d&apos;Utilisation (ci-après « CGV ») régissent l&apos;utilisation du site web <strong>arinilock.ma</strong> et les ventes conclues entre <strong>AriniLock</strong> (vendeur) et tout client (acheteur) passant commande via le site ou par tout autre canal de vente de la Société. Toute commande implique l&apos;acceptation pleine et entière des présentes CGV.
+        Les présentes Conditions Générales de Vente et d&apos;Utilisation (ci-après « CGV ») régissent l&apos;utilisation du site web <strong>arinilock.ma</strong> et les ventes conclues entre <strong>ARINILOCK</strong> (vendeur) et tout client (acheteur) passant commande via le site ou par tout autre canal de vente de la Société. Toute commande implique l&apos;acceptation pleine et entière des présentes CGV.
       </p>
 
       <h2>1. Identification du vendeur</h2>
       <p>
-        <strong>AriniLock</strong><br />
+        <strong>ARINILOCK</strong><br />
         Bd Zoulikha Nasri, Corner Office N°19, Sidi Maarouf, Casablanca, Maroc<br />
         Tél. : <span dir="ltr">+212 6 68 89 88 60</span><br />
         E-mail : support@arinilock.ma<br />
@@ -352,7 +352,7 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>2. Utilisation du site</h2>
       <p>
-        Le site arinilock.ma est réservé à un usage personnel et non commercial. Il est interdit de reproduire, distribuer, modifier ou exploiter tout contenu du site sans autorisation écrite préalable d&apos;AriniLock. L&apos;accès au site suppose l&apos;acceptation des présentes conditions et de notre{" "}
+        Le site arinilock.ma est réservé à un usage personnel et non commercial. Il est interdit de reproduire, distribuer, modifier ou exploiter tout contenu du site sans autorisation écrite préalable d&apos;ARINILOCK. L&apos;accès au site suppose l&apos;acceptation des présentes conditions et de notre{" "}
         <NextLink href="/politique-de-confidentialite" className={linkClass}>
           Politique de confidentialité
         </NextLink>.
@@ -360,17 +360,17 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>3. Produits</h2>
       <p>
-        AriniLock commercialise des serrures connectées et accessoires domotiques pour usage résidentiel et professionnel au Maroc. Les produits sont conformes aux réglementations de sécurité européenne (CE) et marocaine (ANRT). Les descriptions, photos et caractéristiques techniques sont fournies à titre indicatif et peuvent être modifiées sans préavis.
+        ARINILOCK commercialise des serrures connectées et accessoires domotiques pour usage résidentiel et professionnel au Maroc. Les produits sont conformes aux réglementations de sécurité européenne (CE) et marocaine (ANRT). Les descriptions, photos et caractéristiques techniques sont fournies à titre indicatif et peuvent être modifiées sans préavis.
       </p>
 
       <h2>4. Prix</h2>
       <p>
-        Les prix sont indiqués en <strong>Dirham Marocain (MAD), toutes taxes comprises (TTC)</strong>. AriniLock se réserve le droit de modifier ses prix à tout moment. Les prix applicables sont ceux en vigueur au moment de la validation de la commande. La livraison et l&apos;installation sont <strong>offertes</strong> sur l&apos;ensemble du territoire marocain.
+        Les prix sont indiqués en <strong>Dirham Marocain (MAD), toutes taxes comprises (TTC)</strong>. ARINILOCK se réserve le droit de modifier ses prix à tout moment. Les prix applicables sont ceux en vigueur au moment de la validation de la commande. La livraison et l&apos;installation sont <strong>offertes</strong> sur l&apos;ensemble du territoire marocain.
       </p>
 
       <h2>5. Commande</h2>
       <p>
-        Toute commande passée sur le site ou par téléphone constitue un contrat de vente ferme et définitif, sous réserve de disponibilité du produit. AriniLock se réserve le droit d&apos;annuler toute commande en cas de stock indisponible, d&apos;information erronée ou de suspicion de fraude, avec remboursement intégral si un paiement a été effectué.
+        Toute commande passée sur le site ou par téléphone constitue un contrat de vente ferme et définitif, sous réserve de disponibilité du produit. ARINILOCK se réserve le droit d&apos;annuler toute commande en cas de stock indisponible, d&apos;information erronée ou de suspicion de fraude, avec remboursement intégral si un paiement a été effectué.
       </p>
       <p>
         Un e-mail ou un SMS de confirmation de commande est envoyé après validation. Notre équipe vous contactera dans un délai de <strong>24 heures ouvrées</strong> pour confirmer les détails de livraison.
@@ -385,12 +385,12 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h3>6.2 Paiement par carte bancaire</h3>
       <p>
-        AriniLock accepte les paiements par carte Visa, Mastercard et CMI (Centre Monétique Interbancaire). Les transactions sont sécurisées par un protocole de chiffrement SSL et traitées via une passerelle de paiement certifiée. AriniLock n&apos;a accès à aucune donnée bancaire : celles-ci sont traitées exclusivement par l&apos;organisme de paiement.
+        ARINILOCK accepte les paiements par carte Visa, Mastercard et CMI (Centre Monétique Interbancaire). Les transactions sont sécurisées par un protocole de chiffrement SSL et traitées via une passerelle de paiement certifiée. ARINILOCK n&apos;a accès à aucune donnée bancaire : celles-ci sont traitées exclusivement par l&apos;organisme de paiement.
       </p>
 
       <h3>6.3 Sécurité des paiements</h3>
       <p>
-        En cas de paiement en ligne, toutes les transactions sont protégées par le protocole 3D Secure. En cas de fraude avérée, AriniLock se réserve le droit d&apos;annuler la commande et d&apos;alerter les autorités compétentes.
+        En cas de paiement en ligne, toutes les transactions sont protégées par le protocole 3D Secure. En cas de fraude avérée, ARINILOCK se réserve le droit d&apos;annuler la commande et d&apos;alerter les autorités compétentes.
       </p>
 
       <h2>7. Livraison et installation</h2>
@@ -398,12 +398,12 @@ export const termsContent: Record<Locale, ReactNode> = {
         <strong>Livraison gratuite</strong> dans toutes les villes du Maroc. Le délai de livraison est de <strong>2 à 4 jours ouvrés</strong> à compter de la confirmation de commande. L&apos;<strong>installation est incluse et offerte</strong>, réalisée par nos techniciens certifiés.
       </p>
       <p>
-        En cas d&apos;absence lors de la livraison, un nouveau rendez-vous sera convenu avec vous. AriniLock ne saurait être tenu responsable des retards dus à des événements de force majeure.
+        En cas d&apos;absence lors de la livraison, un nouveau rendez-vous sera convenu avec vous. ARINILOCK ne saurait être tenu responsable des retards dus à des événements de force majeure.
       </p>
 
       <h2>8. Droit de rétractation et retours</h2>
       <p>
-        Conformément à la réglementation marocaine en vigueur et à la politique commerciale d&apos;AriniLock, le client dispose d&apos;un délai de <strong>30 jours</strong> à compter de la réception du produit pour effectuer une demande de retour, à condition que le produit soit dans son état d&apos;origine, non utilisé et dans son emballage d&apos;origine.
+        Conformément à la réglementation marocaine en vigueur et à la politique commerciale d&apos;ARINILOCK, le client dispose d&apos;un délai de <strong>30 jours</strong> à compter de la réception du produit pour effectuer une demande de retour, à condition que le produit soit dans son état d&apos;origine, non utilisé et dans son emballage d&apos;origine.
       </p>
       <p>
         Pour initier un retour, contactez-nous à support@arinilock.ma ou par téléphone au <span dir="ltr">+212 6 68 89 88 60</span>. Les frais de retour sont à la charge du client, sauf en cas de défaut du produit constaté à la livraison.
@@ -411,7 +411,7 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>9. Garantie</h2>
       <p>
-        Tous les produits AriniLock bénéficient d&apos;une <strong>garantie constructeur de 2 ans</strong> couvrant tout défaut de fabrication dans des conditions normales d&apos;utilisation. La garantie ne couvre pas les dommages résultant d&apos;une utilisation incorrecte, d&apos;une usure normale ou d&apos;une modification non autorisée du produit.
+        Tous les produits ARINILOCK bénéficient d&apos;une <strong>garantie constructeur de 2 ans</strong> couvrant tout défaut de fabrication dans des conditions normales d&apos;utilisation. La garantie ne couvre pas les dommages résultant d&apos;une utilisation incorrecte, d&apos;une usure normale ou d&apos;une modification non autorisée du produit.
       </p>
       <p>
         Pour toute demande de garantie, contactez notre service après-vente muni de votre preuve d&apos;achat. Notre équipe intervient 7j/7 via WhatsApp.
@@ -419,12 +419,12 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>10. Responsabilité</h2>
       <p>
-        AriniLock s&apos;engage à délivrer des produits conformes aux descriptions publiées. La responsabilité d&apos;AriniLock ne saurait être engagée en cas d&apos;utilisation du produit non conforme aux instructions, de dommages indirects ou de perte de données. Les serrures connectées AriniLock sont conçues comme un complément de sécurité et ne remplacent pas l&apos;ensemble des mesures de sécurité d&apos;un domicile ou d&apos;un établissement.
+        ARINILOCK s&apos;engage à délivrer des produits conformes aux descriptions publiées. La responsabilité d&apos;ARINILOCK ne saurait être engagée en cas d&apos;utilisation du produit non conforme aux instructions, de dommages indirects ou de perte de données. Les serrures connectées ARINILOCK sont conçues comme un complément de sécurité et ne remplacent pas l&apos;ensemble des mesures de sécurité d&apos;un domicile ou d&apos;un établissement.
       </p>
 
       <h2>11. Propriété intellectuelle</h2>
       <p>
-        L&apos;ensemble des éléments du site arinilock.ma (marque, logo, textes, images, graphismes) sont la propriété exclusive d&apos;AriniLock et sont protégés par les lois marocaines sur la propriété intellectuelle. Toute reproduction, même partielle, est interdite sans autorisation préalable.
+        L&apos;ensemble des éléments du site arinilock.ma (marque, logo, textes, images, graphismes) sont la propriété exclusive d&apos;ARINILOCK et sont protégés par les lois marocaines sur la propriété intellectuelle. Toute reproduction, même partielle, est interdite sans autorisation préalable.
       </p>
 
       <h2>12. Protection des données personnelles</h2>
@@ -443,7 +443,7 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>14. Modifications des CGV</h2>
       <p>
-        AriniLock se réserve le droit de modifier les présentes CGV à tout moment. La version applicable est celle en vigueur à la date de la commande, accessible sur cette page.
+        ARINILOCK se réserve le droit de modifier les présentes CGV à tout moment. La version applicable est celle en vigueur à la date de la commande, accessible sur cette page.
       </p>
 
       <h2>15. Contact</h2>
@@ -457,12 +457,12 @@ export const termsContent: Record<Locale, ReactNode> = {
   en: (
     <>
       <p>
-        These Terms of Sale and Use (hereinafter the &quot;Terms&quot;) govern the use of the website <strong>arinilock.ma</strong> and sales concluded between <strong>AriniLock</strong> (seller) and any customer (buyer) placing an order via the site or any other sales channel of the Company. Any order implies full acceptance of these Terms.
+        These Terms of Sale and Use (hereinafter the &quot;Terms&quot;) govern the use of the website <strong>arinilock.ma</strong> and sales concluded between <strong>ARINILOCK</strong> (seller) and any customer (buyer) placing an order via the site or any other sales channel of the Company. Any order implies full acceptance of these Terms.
       </p>
 
       <h2>1. Seller identification</h2>
       <p>
-        <strong>AriniLock</strong><br />
+        <strong>ARINILOCK</strong><br />
         Bd Zoulikha Nasri, Corner Office N°19, Sidi Maarouf, Casablanca, Morocco<br />
         Phone: <span dir="ltr">+212 6 68 89 88 60</span><br />
         Email: support@arinilock.ma<br />
@@ -471,7 +471,7 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>2. Use of the site</h2>
       <p>
-        The arinilock.ma site is reserved for personal, non-commercial use. Reproducing, distributing, modifying or exploiting any content of the site without AriniLock&apos;s prior written authorization is prohibited. Access to the site implies acceptance of these terms and of our{" "}
+        The arinilock.ma site is reserved for personal, non-commercial use. Reproducing, distributing, modifying or exploiting any content of the site without ARINILOCK&apos;s prior written authorization is prohibited. Access to the site implies acceptance of these terms and of our{" "}
         <NextLink href="/politique-de-confidentialite" className={linkClass}>
           Privacy Policy
         </NextLink>.
@@ -479,17 +479,17 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>3. Products</h2>
       <p>
-        AriniLock markets connected locks and home-automation accessories for residential and professional use in Morocco. Products comply with European (CE) and Moroccan (ANRT) safety regulations. Descriptions, photos and technical specifications are provided for guidance only and may be changed without notice.
+        ARINILOCK markets connected locks and home-automation accessories for residential and professional use in Morocco. Products comply with European (CE) and Moroccan (ANRT) safety regulations. Descriptions, photos and technical specifications are provided for guidance only and may be changed without notice.
       </p>
 
       <h2>4. Prices</h2>
       <p>
-        Prices are shown in <strong>Moroccan Dirham (MAD), all taxes included</strong>. AriniLock reserves the right to change its prices at any time. Applicable prices are those in effect at the time the order is confirmed. Delivery and installation are <strong>free</strong> throughout Moroccan territory.
+        Prices are shown in <strong>Moroccan Dirham (MAD), all taxes included</strong>. ARINILOCK reserves the right to change its prices at any time. Applicable prices are those in effect at the time the order is confirmed. Delivery and installation are <strong>free</strong> throughout Moroccan territory.
       </p>
 
       <h2>5. Orders</h2>
       <p>
-        Any order placed on the site or by phone constitutes a firm and final sales contract, subject to product availability. AriniLock reserves the right to cancel any order in the event of unavailable stock, incorrect information, or suspected fraud, with a full refund if payment has already been made.
+        Any order placed on the site or by phone constitutes a firm and final sales contract, subject to product availability. ARINILOCK reserves the right to cancel any order in the event of unavailable stock, incorrect information, or suspected fraud, with a full refund if payment has already been made.
       </p>
       <p>
         A confirmation email or SMS is sent after validation. Our team will contact you within <strong>24 business hours</strong> to confirm delivery details.
@@ -504,12 +504,12 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h3>6.2 Card payment</h3>
       <p>
-        AriniLock accepts payment by Visa, Mastercard and CMI (Centre Monétique Interbancaire). Transactions are secured by SSL encryption and processed through a certified payment gateway. AriniLock has no access to any banking data: this is processed exclusively by the payment provider.
+        ARINILOCK accepts payment by Visa, Mastercard and CMI (Centre Monétique Interbancaire). Transactions are secured by SSL encryption and processed through a certified payment gateway. ARINILOCK has no access to any banking data: this is processed exclusively by the payment provider.
       </p>
 
       <h3>6.3 Payment security</h3>
       <p>
-        For online payments, all transactions are protected by the 3D Secure protocol. In the event of proven fraud, AriniLock reserves the right to cancel the order and alert the competent authorities.
+        For online payments, all transactions are protected by the 3D Secure protocol. In the event of proven fraud, ARINILOCK reserves the right to cancel the order and alert the competent authorities.
       </p>
 
       <h2>7. Delivery and installation</h2>
@@ -517,12 +517,12 @@ export const termsContent: Record<Locale, ReactNode> = {
         <strong>Free delivery</strong> in all cities of Morocco. Delivery time is <strong>2 to 4 business days</strong> from order confirmation. <strong>Installation is included and free</strong>, carried out by our certified technicians.
       </p>
       <p>
-        If you are unavailable at the time of delivery, a new appointment will be arranged with you. AriniLock cannot be held liable for delays due to events of force majeure.
+        If you are unavailable at the time of delivery, a new appointment will be arranged with you. ARINILOCK cannot be held liable for delays due to events of force majeure.
       </p>
 
       <h2>8. Right of withdrawal and returns</h2>
       <p>
-        In accordance with applicable Moroccan regulations and AriniLock&apos;s commercial policy, the customer has <strong>30 days</strong> from receipt of the product to request a return, provided the product is in its original condition, unused and in its original packaging.
+        In accordance with applicable Moroccan regulations and ARINILOCK&apos;s commercial policy, the customer has <strong>30 days</strong> from receipt of the product to request a return, provided the product is in its original condition, unused and in its original packaging.
       </p>
       <p>
         To initiate a return, contact us at support@arinilock.ma or by phone at <span dir="ltr">+212 6 68 89 88 60</span>. Return costs are borne by the customer, except in the event of a product defect noted upon delivery.
@@ -530,7 +530,7 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>9. Warranty</h2>
       <p>
-        All AriniLock products come with a <strong>2-year manufacturer warranty</strong> covering any manufacturing defect under normal conditions of use. The warranty does not cover damage resulting from incorrect use, normal wear, or unauthorized modification of the product.
+        All ARINILOCK products come with a <strong>2-year manufacturer warranty</strong> covering any manufacturing defect under normal conditions of use. The warranty does not cover damage resulting from incorrect use, normal wear, or unauthorized modification of the product.
       </p>
       <p>
         For any warranty claim, contact our after-sales service with proof of purchase. Our team is available 7 days a week via WhatsApp.
@@ -538,12 +538,12 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>10. Liability</h2>
       <p>
-        AriniLock undertakes to deliver products consistent with their published descriptions. AriniLock cannot be held liable for use of the product that does not comply with the instructions, indirect damages, or data loss. AriniLock connected locks are designed as a security enhancement and do not replace the full set of security measures for a home or premises.
+        ARINILOCK undertakes to deliver products consistent with their published descriptions. ARINILOCK cannot be held liable for use of the product that does not comply with the instructions, indirect damages, or data loss. ARINILOCK connected locks are designed as a security enhancement and do not replace the full set of security measures for a home or premises.
       </p>
 
       <h2>11. Intellectual property</h2>
       <p>
-        All elements of the arinilock.ma site (brand, logo, text, images, graphics) are the exclusive property of AriniLock and are protected by Moroccan intellectual property law. Any reproduction, even partial, is prohibited without prior authorization.
+        All elements of the arinilock.ma site (brand, logo, text, images, graphics) are the exclusive property of ARINILOCK and are protected by Moroccan intellectual property law. Any reproduction, even partial, is prohibited without prior authorization.
       </p>
 
       <h2>12. Personal data protection</h2>
@@ -562,7 +562,7 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>14. Changes to these Terms</h2>
       <p>
-        AriniLock reserves the right to modify these Terms at any time. The applicable version is the one in effect on the date of the order, accessible on this page.
+        ARINILOCK reserves the right to modify these Terms at any time. The applicable version is the one in effect on the date of the order, accessible on this page.
       </p>
 
       <h2>15. Contact</h2>
@@ -576,12 +576,12 @@ export const termsContent: Record<Locale, ReactNode> = {
   ar: (
     <>
       <p>
-        تحكم هذه الشروط العامة للبيع والاستخدام (يُشار إليها فيما يلي بـ«الشروط العامة») استخدام الموقع الإلكتروني <strong>arinilock.ma</strong> والمبيعات المُبرَمة بين <strong>أريني لوك</strong> (البائع) وأي عميل (المشتري) يقوم بطلب عبر الموقع أو عبر أي قناة بيع أخرى تابعة للشركة. يعني أي طلب القبول الكامل والتام لهذه الشروط العامة.
+        تحكم هذه الشروط العامة للبيع والاستخدام (يُشار إليها فيما يلي بـ«الشروط العامة») استخدام الموقع الإلكتروني <strong>arinilock.ma</strong> والمبيعات المُبرَمة بين <strong>ARINILOCK</strong> (البائع) وأي عميل (المشتري) يقوم بطلب عبر الموقع أو عبر أي قناة بيع أخرى تابعة للشركة. يعني أي طلب القبول الكامل والتام لهذه الشروط العامة.
       </p>
 
       <h2>1. تعريف البائع</h2>
       <p>
-        <strong>أريني لوك</strong><br />
+        <strong>ARINILOCK</strong><br />
         شارع زليخة ناصري، Corner Office رقم 19، سيدي معروف، الدار البيضاء، المغرب<br />
         الهاتف: <span dir="ltr">+212 6 68 89 88 60</span><br />
         البريد الإلكتروني: support@arinilock.ma<br />
@@ -590,7 +590,7 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>2. استخدام الموقع</h2>
       <p>
-        موقع arinilock.ma مخصص للاستخدام الشخصي وغير التجاري. يُمنع نسخ أو توزيع أو تعديل أو استغلال أي محتوى من الموقع دون إذن كتابي مسبق من أريني لوك. يفترض الوصول إلى الموقع قبول هذه الشروط وسياسة{" "}
+        موقع arinilock.ma مخصص للاستخدام الشخصي وغير التجاري. يُمنع نسخ أو توزيع أو تعديل أو استغلال أي محتوى من الموقع دون إذن كتابي مسبق من ARINILOCK. يفترض الوصول إلى الموقع قبول هذه الشروط وسياسة{" "}
         <NextLink href="/politique-de-confidentialite" className={linkClass}>
           الخصوصية
         </NextLink>{" "}
@@ -599,17 +599,17 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>3. المنتجات</h2>
       <p>
-        تسوّق أريني لوك أقفالًا ذكية وملحقات منزلية ذكية للاستخدام السكني والمهني في المغرب. المنتجات مطابقة للوائح الأمنية الأوروبية (CE) والمغربية (ANRT). الأوصاف والصور والمواصفات التقنية مقدَّمة على سبيل الإرشاد فقط وقد تتغير دون إشعار مسبق.
+        تسوّق ARINILOCK أقفالًا ذكية وملحقات منزلية ذكية للاستخدام السكني والمهني في المغرب. المنتجات مطابقة للوائح الأمنية الأوروبية (CE) والمغربية (ANRT). الأوصاف والصور والمواصفات التقنية مقدَّمة على سبيل الإرشاد فقط وقد تتغير دون إشعار مسبق.
       </p>
 
       <h2>4. الأسعار</h2>
       <p>
-        تُعرض الأسعار بـ<strong>الدرهم المغربي (MAD)، شاملة جميع الضرائب</strong>. تحتفظ أريني لوك بالحق في تعديل أسعارها في أي وقت. الأسعار المعمول بها هي تلك السارية وقت تأكيد الطلب. التوصيل والتركيب <strong>مجانيان</strong> في جميع أنحاء التراب المغربي.
+        تُعرض الأسعار بـ<strong>الدرهم المغربي (MAD)، شاملة جميع الضرائب</strong>. تحتفظ ARINILOCK بالحق في تعديل أسعارها في أي وقت. الأسعار المعمول بها هي تلك السارية وقت تأكيد الطلب. التوصيل والتركيب <strong>مجانيان</strong> في جميع أنحاء التراب المغربي.
       </p>
 
       <h2>5. الطلب</h2>
       <p>
-        يشكّل أي طلب يُقدَّم عبر الموقع أو عبر الهاتف عقد بيع نهائيًا وملزمًا، رهنًا بتوفر المنتج. تحتفظ أريني لوك بالحق في إلغاء أي طلب في حال نفاد المخزون أو وجود معلومات خاطئة أو الاشتباه في احتيال، مع استرداد كامل للمبلغ في حال تم الدفع.
+        يشكّل أي طلب يُقدَّم عبر الموقع أو عبر الهاتف عقد بيع نهائيًا وملزمًا، رهنًا بتوفر المنتج. تحتفظ ARINILOCK بالحق في إلغاء أي طلب في حال نفاد المخزون أو وجود معلومات خاطئة أو الاشتباه في احتيال، مع استرداد كامل للمبلغ في حال تم الدفع.
       </p>
       <p>
         يُرسَل بريد إلكتروني أو رسالة نصية لتأكيد الطلب بعد التحقق منه. سيتواصل معكم فريقنا خلال <strong>24 ساعة عمل</strong> لتأكيد تفاصيل التوصيل.
@@ -624,12 +624,12 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h3>6.2 الدفع بالبطاقة البنكية</h3>
       <p>
-        تقبل أريني لوك الدفع عبر بطاقات Visa وMastercard وCMI (المركز النقدي البيني البنكي). العمليات مؤمَّنة بواسطة بروتوكول تشفير SSL وتُعالَج عبر بوابة دفع معتمدة. لا تصل أريني لوك إلى أي بيانات بنكية، إذ تُعالَج حصريًا من طرف مزوّد خدمة الدفع.
+        تقبل ARINILOCK الدفع عبر بطاقات Visa وMastercard وCMI (المركز النقدي البيني البنكي). العمليات مؤمَّنة بواسطة بروتوكول تشفير SSL وتُعالَج عبر بوابة دفع معتمدة. لا تصل ARINILOCK إلى أي بيانات بنكية، إذ تُعالَج حصريًا من طرف مزوّد خدمة الدفع.
       </p>
 
       <h3>6.3 أمن المدفوعات</h3>
       <p>
-        بالنسبة للدفع عبر الإنترنت، تخضع جميع العمليات لحماية بروتوكول 3D Secure. في حال ثبوت الاحتيال، تحتفظ أريني لوك بالحق في إلغاء الطلب وإخطار السلطات المختصة.
+        بالنسبة للدفع عبر الإنترنت، تخضع جميع العمليات لحماية بروتوكول 3D Secure. في حال ثبوت الاحتيال، تحتفظ ARINILOCK بالحق في إلغاء الطلب وإخطار السلطات المختصة.
       </p>
 
       <h2>7. التوصيل والتركيب</h2>
@@ -637,12 +637,12 @@ export const termsContent: Record<Locale, ReactNode> = {
         <strong>توصيل مجاني</strong> إلى جميع مدن المغرب. مدة التوصيل تتراوح بين <strong>2 و4 أيام عمل</strong> ابتداءً من تأكيد الطلب. <strong>التركيب مشمول ومجاني</strong>، ويُنجَز من طرف تقنيّينا المعتمدين.
       </p>
       <p>
-        في حال غيابكم وقت التوصيل، سيتم الاتفاق معكم على موعد جديد. لا تتحمل أريني لوك مسؤولية أي تأخير ناتج عن ظروف قاهرة.
+        في حال غيابكم وقت التوصيل، سيتم الاتفاق معكم على موعد جديد. لا تتحمل ARINILOCK مسؤولية أي تأخير ناتج عن ظروف قاهرة.
       </p>
 
       <h2>8. الحق في التراجع والإرجاع</h2>
       <p>
-        وفقًا للتنظيم المغربي الساري وللسياسة التجارية لأريني لوك، يتوفر العميل على مهلة <strong>30 يومًا</strong> ابتداءً من استلام المنتج لتقديم طلب إرجاع، شريطة أن يكون المنتج في حالته الأصلية وغير مستعمل وفي تغليفه الأصلي.
+        وفقًا للتنظيم المغربي الساري وللسياسة التجارية لـ ARINILOCK، يتوفر العميل على مهلة <strong>30 يومًا</strong> ابتداءً من استلام المنتج لتقديم طلب إرجاع، شريطة أن يكون المنتج في حالته الأصلية وغير مستعمل وفي تغليفه الأصلي.
       </p>
       <p>
         لبدء عملية الإرجاع، يُرجى التواصل معنا عبر support@arinilock.ma أو عبر الهاتف على <span dir="ltr">+212 6 68 89 88 60</span>. تكون مصاريف الإرجاع على عاتق العميل، إلا في حال ثبوت عيب في المنتج عند التوصيل.
@@ -650,7 +650,7 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>9. الضمان</h2>
       <p>
-        تستفيد جميع منتجات أريني لوك من <strong>ضمان الصانع لمدة سنتين</strong> يغطي أي عيب في التصنيع ضمن ظروف الاستخدام العادية. لا يغطي الضمان الأضرار الناتجة عن استخدام غير صحيح أو تآكل عادي أو تعديل غير مصرح به للمنتج.
+        تستفيد جميع منتجات ARINILOCK من <strong>ضمان الصانع لمدة سنتين</strong> يغطي أي عيب في التصنيع ضمن ظروف الاستخدام العادية. لا يغطي الضمان الأضرار الناتجة عن استخدام غير صحيح أو تآكل عادي أو تعديل غير مصرح به للمنتج.
       </p>
       <p>
         لأي طلب ضمان، يُرجى التواصل مع خدمة ما بعد البيع مصحوبًا بإثبات الشراء. فريقنا متاح 7 أيام في الأسبوع عبر واتساب.
@@ -658,12 +658,12 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>10. المسؤولية</h2>
       <p>
-        تلتزم أريني لوك بتسليم منتجات مطابقة للأوصاف المنشورة. لا يمكن تحميل أريني لوك المسؤولية في حال استخدام المنتج بشكل مخالف للتعليمات، أو الأضرار غير المباشرة، أو فقدان البيانات. صُمِّمت أقفال أريني لوك الذكية كعنصر إضافي للأمان ولا تُغني عن مجمل تدابير الأمان في المنزل أو المنشأة.
+        تلتزم ARINILOCK بتسليم منتجات مطابقة للأوصاف المنشورة. لا يمكن تحميل ARINILOCK المسؤولية في حال استخدام المنتج بشكل مخالف للتعليمات، أو الأضرار غير المباشرة، أو فقدان البيانات. صُمِّمت أقفال ARINILOCK الذكية كعنصر إضافي للأمان ولا تُغني عن مجمل تدابير الأمان في المنزل أو المنشأة.
       </p>
 
       <h2>11. الملكية الفكرية</h2>
       <p>
-        جميع عناصر موقع arinilock.ma (العلامة، الشعار، النصوص، الصور، التصاميم) هي ملكية حصرية لأريني لوك ومحمية بموجب القوانين المغربية المتعلقة بالملكية الفكرية. يُمنع أي نسخ، ولو جزئي، دون إذن مسبق.
+        جميع عناصر موقع arinilock.ma (العلامة، الشعار، النصوص، الصور، التصاميم) هي ملكية حصرية لـ ARINILOCK ومحمية بموجب القوانين المغربية المتعلقة بالملكية الفكرية. يُمنع أي نسخ، ولو جزئي، دون إذن مسبق.
       </p>
 
       <h2>12. حماية المعطيات الشخصية</h2>
@@ -682,7 +682,7 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>14. تعديل الشروط العامة</h2>
       <p>
-        تحتفظ أريني لوك بالحق في تعديل هذه الشروط العامة في أي وقت. النسخة المعمول بها هي تلك السارية بتاريخ الطلب، والمتاحة على هذه الصفحة.
+        تحتفظ ARINILOCK بالحق في تعديل هذه الشروط العامة في أي وقت. النسخة المعمول بها هي تلك السارية بتاريخ الطلب، والمتاحة على هذه الصفحة.
       </p>
 
       <h2>15. التواصل</h2>

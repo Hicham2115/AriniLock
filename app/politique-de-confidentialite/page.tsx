@@ -6,7 +6,7 @@ import { LegalPageBody } from "@/components/legal-page-body";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité",
-  description: "Politique de confidentialité et traitement des données personnelles d'AriniLock, conformément à la loi marocaine 09-08.",
+  description: "Politique de confidentialité et traitement des données personnelles d'ARINILOCK, conformément à la loi marocaine 09-08.",
 };
 
 export default function PolitiqueConfidentialitePage() {

@@ -14,7 +14,7 @@ import { Reviews } from "@/components/reviews";
 import { StatsSection } from "@/components/stats-section";
 
 export const metadata: Metadata = {
-  title: "AriniLock — La porte qui vous reconnaît",
+  title: "ARINILOCK — La porte qui vous reconnaît",
   description:
     "Poignée connectée premium : empreinte digitale, code PIN, app mobile et carte RFID. Installation livraison partout au Maroc.",
   alternates: { canonical: "https://arinilock.ma" },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "AriniLock",
+  name: "ARINILOCK",
   url: "https://arinilock.ma",
   logo: "https://arinilock.ma/og-image.jpg",
   sameAs: [],
@@ -37,10 +37,10 @@ const organizationSchema = {
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: "AriniLock — Poignée Connectée Smart Door Lock",
+  name: "ARINILOCK — Poignée Connectée Smart Door Lock",
   description:
     "La poignée connectée qui s'ouvre par empreinte digitale, code secret ou smartphone — sans clé qui traîne, sans compromis sur le style.",
-  brand: { "@type": "Brand", name: "AriniLock" },
+  brand: { "@type": "Brand", name: "ARINILOCK" },
   image: "https://arinilock.ma/og-image.jpg",
   url: "https://arinilock.ma/produits/poignee-connectee-smart-door-lock",
   offers: {
@@ -49,7 +49,7 @@ const productSchema = {
     priceCurrency: "MAD",
     availability: "https://schema.org/InStock",
     url: "https://arinilock.ma/produits/poignee-connectee-smart-door-lock",
-    seller: { "@type": "Organization", name: "AriniLock" },
+    seller: { "@type": "Organization", name: "ARINILOCK" },
     shippingDetails: {
       "@type": "OfferShippingDetails",
       shippingRate: { "@type": "MonetaryAmount", value: "0", currency: "MAD" },
@@ -90,10 +90,10 @@ const faqSchema = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "AriniLock est-elle compatible avec toutes les portes ?",
+      name: "ARINILOCK est-elle compatible avec toutes les portes ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AriniLock s'adapte à la majorité des portes intérieures et d'entrée standards en bois et métal. Un guide de compatibilité détaillé est fourni avant l'achat.",
+        text: "ARINILOCK s'adapte à la majorité des portes intérieures et d'entrée standards en bois et métal. Un guide de compatibilité détaillé est fourni avant l'achat.",
       },
     },
     {
@@ -101,7 +101,7 @@ const faqSchema = {
       name: "Que se passe-t-il en cas de coupure de courant ou de panne ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AriniLock fonctionne sur piles, indépendamment du réseau électrique. En cas de panne complète, une clé physique de secours fournie avec votre serrure permet toujours d'ouvrir la porte.",
+        text: "ARINILOCK fonctionne sur piles, indépendamment du réseau électrique. En cas de panne complète, une clé physique de secours fournie avec votre serrure permet toujours d'ouvrir la porte.",
       },
     },
     {
@@ -132,9 +132,7 @@ const faqSchema = {
 };
 
 export default function HomePage() {
-  if (process.env.SITE_LOCKED === "true") {
-    return <div className="min-h-screen bg-white" />;
-  }
+
 
   
   return (

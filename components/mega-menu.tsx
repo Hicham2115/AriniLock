@@ -4,8 +4,10 @@ import { X } from "lucide-react";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useT } from "@/hooks/use-t";
+import { useLanguageStore, type Locale } from "@/stores/language-store";
 
 const SHOP_HREF = "/produits";
+const LOCALES: Locale[] = ["fr", "en", "ar"];
 
 const CATEGORY_HREFS = [
   {
@@ -39,6 +41,8 @@ interface MegaMenuProps {
 
 export function MegaMenu({ open, onClose }: MegaMenuProps) {
   const t = useT();
+  const locale = useLanguageStore((s) => s.locale);
+  const setLocale = useLanguageStore((s) => s.setLocale);
 
   const categories = t.nav.categories.map((cat, i) => ({
     label: cat.label,
@@ -103,6 +107,28 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
             </Link>
           ))}
         </nav>
+
+        {/* Language switcher — mobile only, desktop already has one in the header */}
+        <div className="mt-auto flex items-center gap-2 border-t border-gray-100 px-5 pt-4 pb-8 md:hidden" style={{ paddingBottom: "max(2rem, env(safe-area-inset-bottom))" }}>
+          <span className="text-[10px] uppercase tracking-widest text-gray-400">{t.nav.language}</span>
+          <div className="flex items-center gap-0.5 rounded-full border border-black/10 bg-gray-50 px-1 py-1">
+            {LOCALES.map((loc) => (
+              <button
+                key={loc}
+                type="button"
+                onClick={() => setLocale(loc)}
+                aria-label={loc.toUpperCase()}
+                className={`flex h-7 w-8 items-center justify-center rounded-full text-[11px] font-semibold uppercase transition-all ${
+                  locale === loc
+                    ? "bg-black text-white shadow-sm"
+                    : "text-gray-500 hover:bg-black/8 hover:text-ink"
+                }`}
+              >
+                {loc}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );
