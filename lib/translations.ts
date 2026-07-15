@@ -130,6 +130,12 @@ const fr = {
     home: "Accueil",
     shop: "Boutique",
   },
+  legalPage: {
+    badge: "Légal",
+    privacyTitle: "Politique de confidentialité",
+    termsTitle: "Conditions d'utilisation & CGV",
+    backHome: "← Retour à l'accueil",
+  },
   trust: {
     delivery: "Livraison 2–4 jours",
     deliverySub: "Partout au Maroc",
@@ -763,6 +769,12 @@ What's in the box
     home: "Home",
     shop: "Shop",
   },
+  legalPage: {
+    badge: "Legal",
+    privacyTitle: "Privacy Policy",
+    termsTitle: "Terms of Use & Conditions of Sale",
+    backHome: "← Back to home",
+  },
   trust: {
     delivery: "Delivery 2–4 days",
     deliverySub: "Across Morocco",
@@ -1395,6 +1407,12 @@ const ar: typeof fr = {
   breadcrumb: {
     home: "الرئيسية",
     shop: "المتجر",
+  },
+  legalPage: {
+    badge: "قانوني",
+    privacyTitle: "سياسة الخصوصية",
+    termsTitle: "شروط الاستخدام والشروط العامة للبيع",
+    backHome: "→ العودة إلى الرئيسية",
   },
   trust: {
     delivery: "التوصيل 2–4 أيام",
