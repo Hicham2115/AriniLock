@@ -70,7 +70,7 @@ const LABELS: Record<
     warranty: "Warranty",
   },
   ar: {
-    modes: "أوضاع الفتح",
+    modes: "طرق الفتح",
     option: "خيار إضافي",
     thickness: "سُمك الباب",
     mortise: "جسم القفل",
