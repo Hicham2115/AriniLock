@@ -22,6 +22,7 @@ import { CartDrawer } from "@/components/cart-drawer";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { ProductCard, ProductCardSkeleton } from "@/components/product-card";
+import { OrderModal } from "@/components/order-modal";
 import { useAddToCart } from "@/hooks/use-cart";
 import { useFormatMoney } from "@/hooks/use-format-money";
 import { useAccessories, useProduct } from "@/hooks/use-product";
@@ -257,6 +258,7 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
   const [activeImageIdx, setActiveImageIdx] = useState(0);
   const [qty, setQty] = useState(1);
   const [descExpanded, setDescExpanded] = useState(false);
+  const [orderOpen, setOrderOpen] = useState(false);
 
   const variant =
     product?.variants.find((v) => v.id === (activeVariantId ?? product.variants[0]?.id)) ??
@@ -307,6 +309,15 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
   return (
     <>
       <CartDrawer />
+
+      {product && variant && (
+        <OrderModal
+          open={orderOpen}
+          onClose={() => setOrderOpen(false)}
+          productName={product.title}
+          price={formatMoney(variant.price)}
+        />
+      )}
 
       {/* ═══════ MOBILE ═══════ */}
       <div className="md:hidden">
@@ -456,23 +467,30 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
 
         {product && (
           <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-white/95 px-4 pb-6 pt-3 backdrop-blur-md">
-            <div className="flex items-center gap-3">
-              <div className="flex h-12 shrink-0 items-center rounded-full border border-border">
-                <button type="button" onClick={() => setQty((q) => Math.max(1, q - 1))} aria-label="Diminuer" className="flex h-full w-9 items-center justify-center text-muted-foreground">
-                  <Minus className="h-3 w-3" />
-                </button>
-                <span className="w-6 text-center text-sm font-medium text-foreground">{qty}</span>
-                <button type="button" onClick={() => setQty((q) => q + 1)} aria-label="Augmenter" className="flex h-full w-9 items-center justify-center text-muted-foreground">
-                  <Plus className="h-3 w-3" />
+            <div className="flex flex-col gap-2">
+              <button type="button" onClick={() => setOrderOpen(true)}
+                className="flex h-12 w-full items-center justify-center gap-1.5 rounded-full bg-primary text-sm font-semibold text-white transition-colors hover:bg-primary/90"
+              >
+                <span>{t.product.buyNow}</span>
+                {variant && <span className="text-white/60">· {formatMoney(variant.price)}</span>}
+              </button>
+              <div className="flex items-center gap-2">
+                <div className="flex h-10 shrink-0 items-center rounded-full border border-border">
+                  <button type="button" onClick={() => setQty((q) => Math.max(1, q - 1))} aria-label="Diminuer" className="flex h-full w-8 items-center justify-center text-muted-foreground">
+                    <Minus className="h-3 w-3" />
+                  </button>
+                  <span className="w-6 text-center text-sm font-medium text-foreground">{qty}</span>
+                  <button type="button" onClick={() => setQty((q) => q + 1)} aria-label="Augmenter" className="flex h-full w-8 items-center justify-center text-muted-foreground">
+                    <Plus className="h-3 w-3" />
+                  </button>
+                </div>
+                <button type="button" disabled={isPending} onClick={() => variant && addToCart([{ merchandiseId: variant.id, quantity: qty }])}
+                  className="flex h-10 flex-1 items-center justify-center gap-1.5 rounded-full border border-primary text-xs font-medium text-primary transition-colors hover:bg-primary/5 disabled:opacity-50"
+                >
+                  <ShoppingBag aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
+                  <span className="whitespace-nowrap">{isPending ? t.product.adding : t.product.addToCart}</span>
                 </button>
               </div>
-              <button type="button" disabled={isPending} onClick={() => variant && addToCart([{ merchandiseId: variant.id, quantity: qty }])}
-                className="flex h-12 flex-1 items-center justify-center gap-1.5 rounded-full bg-primary text-xs font-medium text-white transition-colors hover:bg-primary/90 disabled:opacity-50"
-              >
-                <ShoppingBag aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
-                <span className="whitespace-nowrap">{isPending ? t.product.adding : t.product.addToCart}</span>
-                {variant && <span className="whitespace-nowrap text-white/60">· {formatMoney(variant.price)}</span>}
-              </button>
             </div>
           </div>
         )}
@@ -595,22 +613,30 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
                       </div>
                     )}
 
-                    {/* Quantity + CTA */}
+                    {/* Buy now — primary CTA */}
+                    <button type="button" onClick={() => setOrderOpen(true)}
+                      className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-primary text-sm font-semibold text-white transition-colors hover:bg-primary/90"
+                    >
+                      <span>{t.product.buyNow}</span>
+                      {variant && <span className="text-white/60">· {formatMoney(variant.price)}</span>}
+                    </button>
+
+                    {/* Quantity + add to cart — secondary */}
                     <div className="flex gap-3">
-                      <div className="flex h-14 items-center rounded-full border border-border">
+                      <div className="flex h-12 items-center rounded-full border border-border">
                         <button type="button" onClick={() => setQty((q) => Math.max(1, q - 1))} aria-label="Diminuer la quantité"
-                          className="flex h-full w-14 items-center justify-center text-muted-foreground transition-colors hover:text-foreground">
+                          className="flex h-full w-12 items-center justify-center text-muted-foreground transition-colors hover:text-foreground">
                           <Minus className="h-4 w-4" />
                         </button>
-                        <span className="w-10 text-center text-sm font-medium text-foreground">{qty}</span>
+                        <span className="w-8 text-center text-sm font-medium text-foreground">{qty}</span>
                         <button type="button" onClick={() => setQty((q) => q + 1)} aria-label="Augmenter la quantité"
-                          className="flex h-full w-14 items-center justify-center text-muted-foreground transition-colors hover:text-foreground">
+                          className="flex h-full w-12 items-center justify-center text-muted-foreground transition-colors hover:text-foreground">
                           <Plus className="h-4 w-4" />
                         </button>
                       </div>
                       <button type="button" disabled={isPending}
                         onClick={() => variant && addToCart([{ merchandiseId: variant.id, quantity: qty }])}
-                        className="flex h-14 flex-1 items-center justify-center gap-2 rounded-full bg-primary text-sm font-semibold text-white transition-colors hover:bg-primary/90 disabled:opacity-50"
+                        className="flex h-12 flex-1 items-center justify-center gap-2 rounded-full border border-primary text-sm font-medium text-primary transition-colors hover:bg-primary/5 disabled:opacity-50"
                       >
                         <ShoppingBag aria-hidden="true" className="h-4 w-4" />
                         {isPending ? t.product.adding : t.product.addToCart}

@@ -89,6 +89,7 @@ const fr = {
   product: {
     addToCart: "Ajouter au panier",
     adding: "Ajout…",
+    buyNow: "Achat rapide",
     brand: "ARINILOCK",
     promo: "Promo",
     readMore: "Lire la suite",
@@ -615,6 +616,9 @@ const fr = {
     },
   },
   orderForm: {
+    modalTitle: "Commande rapide",
+    modalDesc:
+      "Remplissez ce formulaire et notre équipe vous contactera pour confirmer.",
     fields: {
       prenom: "Prénom",
       telephone: "Téléphone",
@@ -1085,6 +1089,7 @@ const en: typeof fr = {
   product: {
     addToCart: "Add to cart",
     adding: "Adding…",
+    buyNow: "Quick buy",
     brand: "ARINILOCK",
     promo: "Sale",
     readMore: "Read more",
@@ -1583,6 +1588,8 @@ const en: typeof fr = {
     },
   },
   orderForm: {
+    modalTitle: "Quick order",
+    modalDesc: "Fill out this form and our team will contact you to confirm.",
     fields: {
       prenom: "First name",
       telephone: "Phone",
@@ -2020,6 +2027,7 @@ const ar: typeof fr = {
   product: {
     addToCart: "أضف إلى السلة",
     adding: "جارٍ الإضافة…",
+    buyNow: "شراء سريع",
     brand: "ARINILOCK",
     promo: "تخفيض",
     readMore: "اقرأ المزيد",
@@ -2512,6 +2520,8 @@ const ar: typeof fr = {
     },
   },
   orderForm: {
+    modalTitle: "طلب سريع",
+    modalDesc: "املأ هذه الاستمارة وسيتواصل معك فريقنا للتأكيد.",
     fields: {
       prenom: "الاسم",
       telephone: "الهاتف",

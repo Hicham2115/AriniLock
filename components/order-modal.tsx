@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import { useEffect } from "react";
+import { useT } from "@/hooks/use-t";
 import { OrderForm } from "./order-form";
 
 interface Props {
@@ -16,6 +17,7 @@ interface Props {
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
 export function OrderModal({ open, onClose, productName, price, whatsappNumber }: Props) {
+  const t = useT();
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     if (open) document.addEventListener("keydown", onKey);
@@ -51,21 +53,21 @@ export function OrderModal({ open, onClose, productName, price, whatsappNumber }
             <div className="flex items-start justify-between border-b border-gray-100 px-6 py-5">
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-primary/60">
-                  Commande rapide
+                  {t.orderForm.modalTitle}
                 </p>
                 <h2 className="mt-0.5 text-base font-bold text-foreground">{productName}</h2>
               </div>
               <button
                 onClick={onClose}
                 className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gray-200 text-muted-foreground transition-colors hover:border-gray-300 hover:bg-gray-50"
-                aria-label="Fermer"
+                aria-label={t.nav.close}
               >
                 <X className="h-4 w-4" aria-hidden="true" />
               </button>
             </div>
             <div className="px-6 py-6">
               <p className="mb-5 text-center text-sm font-medium text-muted-foreground">
-                Remplissez ce formulaire et notre équipe vous contactera pour confirmer.
+                {t.orderForm.modalDesc}
               </p>
               <OrderForm
                 productName={productName}
