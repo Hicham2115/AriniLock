@@ -1362,7 +1362,7 @@ const en: typeof fr = {
             "3D facial recognition for instant, secure access. Works day and night thanks to infrared sensors.",
         },
         {
-          title: "Door handle",
+          title: "Palm Recognition",
           description:
             "Integrated ergonomic handle — open the door in one gesture, even when your hands are full.",
         },
@@ -2046,7 +2046,7 @@ const ar: typeof fr = {
         value: "warranty",
         trigger: "الضمان والإرجاع",
         content:
-          "ضمان الصانع لمدة سنتين على جميع المنتجات يشمل جميع عيوب التصنيع. الإرجاع مقبول خلال 30 يومًا إذا كان المنتج في حالته الأصلية. دعم 7 أيام في الأسبوع عبر واتساب.",
+          "ضمان البائع لمدة سنتين على جميع المنتجات يشمل جميع عيوب التصنيع. الإرجاع مقبول خلال 30 يومًا إذا كان المنتج في حالته الأصلية. دعم 7 أيام في الأسبوع عبر واتساب.",
       },
     ],
     specsLabel: "الورقة التقنية",
@@ -2099,7 +2099,7 @@ const ar: typeof fr = {
     delivery: "التوصيل 2–4 أيام",
     deliverySub: "في جميع أنحاء المغرب",
     warranty: "ضمان سنتين",
-    warrantySub: "الصانع",
+    warrantySub: " البائع",
     install: "التركيب < 45 دقيقة",
     installSub: "تركيب سريع",
   },
@@ -2214,7 +2214,7 @@ const ar: typeof fr = {
       { q: "كيف أركّب ARINILOCK؟", a: "في أقل من 45 دقيقة. يُرفق دليل مصوّر." },
       {
         q: "ما مدة الضمان؟",
-        a: "ضمان الصانع لمدة سنتين يشمل جميع عيوب التصنيع.",
+        a: "ضمان البائع لمدة سنتين يشمل جميع عيوب التصنيع.",
       },
     ],
   },
@@ -2476,7 +2476,7 @@ const ar: typeof fr = {
       trust: [
         { label: "توصيل في جميع أنحاء المغرب", sub: "2–4 أيام عمل" },
         { label: "الدفع عند الاستلام", sub: "متاح في كل المغرب" },
-        { label: "ضمان سنتين", sub: "الصانع" },
+        { label: "ضمان سنتين", sub: "البائع" },
         { label: "تركيب", sub: "في أقل من 45 دقيقة" },
       ],
       searchPlaceholder: "بحث…",
@@ -2813,7 +2813,7 @@ const ar: typeof fr = {
         label: "الطاقة الاستيعابية",
         value: "100 بصمة · ملفات تعريف وجه متعددة",
       },
-      { label: "الضمان", value: "سنتان من الشركة الصانعة" },
+      { label: "الضمان", value: "سنتان من الشركة البائع" },
       { label: "التوصيل", value: "سريع · جميع أنحاء المغرب · التركيب مشمول" },
     ],
     reviewsSection: "09 — آراء العملاء",
