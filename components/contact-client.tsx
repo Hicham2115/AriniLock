@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  Clock,
   Mail,
   MapPin,
   MessageCircle,
@@ -45,17 +44,28 @@ const fadeUp = {
   show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.08, duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] },
+    transition: {
+      delay: i * 0.08,
+      duration: 0.5,
+      ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number],
+    },
   }),
 };
 
 export function ContactClient() {
   const t = useT();
   const c = t.contact;
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
   const [sending, setSending] = useState(false);
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   }
 
@@ -78,18 +88,27 @@ export function ContactClient() {
       <Header />
 
       <main className="min-h-screen bg-background">
-
         {/* ── Hero band ── */}
         <div
           className="relative overflow-hidden pt-32 pb-20"
-          style={{ background: "linear-gradient(135deg, #010d1a 0%, #032245 50%, #053d7a 100%)" }}
+          style={{
+            background:
+              "linear-gradient(135deg, #010d1a 0%, #032245 50%, #053d7a 100%)",
+          }}
         >
           <div
             className="pointer-events-none absolute -top-32 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full opacity-30"
-            style={{ background: "radial-gradient(circle, #2a5fa8 0%, transparent 70%)" }}
+            style={{
+              background:
+                "radial-gradient(circle, #2a5fa8 0%, transparent 70%)",
+            }}
           />
-          <div className="pointer-events-none absolute right-20 bottom-0 h-64 w-64 rounded-full opacity-20"
-            style={{ background: "radial-gradient(circle, #053d7a 0%, transparent 70%)" }}
+          <div
+            className="pointer-events-none absolute right-20 bottom-0 h-64 w-64 rounded-full opacity-20"
+            style={{
+              background:
+                "radial-gradient(circle, #053d7a 0%, transparent 70%)",
+            }}
           />
 
           <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
@@ -117,17 +136,6 @@ export function ContactClient() {
             >
               {c.heroSub}
             </motion.p>
-
-            {/* Hours pill */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="mt-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-sm"
-            >
-              <Clock className="h-3.5 w-3.5 text-white/50" />
-              <span className="text-xs text-white/60">{c.hours}</span>
-            </motion.div>
           </div>
         </div>
 
@@ -148,13 +156,24 @@ export function ContactClient() {
                   variants={fadeUp}
                   className="group flex items-center gap-4 rounded-2xl border border-border bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
                 >
-                  <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${meta.light}`}>
+                  <span
+                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${meta.light}`}
+                  >
                     <meta.icon className="h-5 w-5" />
                   </span>
                   <div className="min-w-0 flex-1">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">{ch.label}</p>
-                    <p dir="ltr" className="truncate text-sm font-semibold text-foreground">{ch.value}</p>
-                    <p className="text-[11px] text-muted-foreground">{ch.sub}</p>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                      {ch.label}
+                    </p>
+                    <p
+                      dir="ltr"
+                      className="truncate text-sm font-semibold text-foreground"
+                    >
+                      {ch.value}
+                    </p>
+                    <p className="text-[11px] text-muted-foreground">
+                      {ch.sub}
+                    </p>
                   </div>
                   <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1" />
                 </motion.a>
@@ -166,24 +185,31 @@ export function ContactClient() {
         {/* ── Main grid: form + sidebar ── */}
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
           <div className="grid gap-12 lg:grid-cols-[1fr_380px]">
-
             {/* Form */}
             <motion.div
               initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
             >
-              <p className="mb-1 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">{c.formPre}</p>
+              <p className="mb-1 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+                {c.formPre}
+              </p>
               <h2 className="mb-8 font-display2 text-4xl font-light uppercase leading-none text-foreground lg:text-5xl">
                 {c.formTitle.split("\n").map((line, i) => (
-                  <span key={i}>{line}{i === 0 && <br />}</span>
+                  <span key={i}>
+                    {line}
+                    {i === 0 && <br />}
+                  </span>
                 ))}
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div className="space-y-1.5">
-                    <label htmlFor="name" className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    <label
+                      htmlFor="name"
+                      className="text-xs font-semibold uppercase tracking-wide text-muted-foreground"
+                    >
                       {c.labelName} <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -198,7 +224,10 @@ export function ContactClient() {
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label htmlFor="email" className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    <label
+                      htmlFor="email"
+                      className="text-xs font-semibold uppercase tracking-wide text-muted-foreground"
+                    >
                       {c.labelEmail} <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -215,8 +244,14 @@ export function ContactClient() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="phone" className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                    {c.labelPhone} <span className="text-muted-foreground/40">{c.optional}</span>
+                  <label
+                    htmlFor="phone"
+                    className="text-xs font-semibold uppercase tracking-wide text-muted-foreground"
+                  >
+                    {c.labelPhone}{" "}
+                    <span className="text-muted-foreground/40">
+                      {c.optional}
+                    </span>
                   </label>
                   <input
                     id="phone"
@@ -231,7 +266,10 @@ export function ContactClient() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="message" className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  <label
+                    htmlFor="message"
+                    className="text-xs font-semibold uppercase tracking-wide text-muted-foreground"
+                  >
                     {c.labelMessage} <span className="text-red-500">*</span>
                   </label>
                   <textarea
@@ -257,8 +295,8 @@ export function ContactClient() {
                     </>
                   ) : (
                     <>
-                      <Send className="h-4 w-4" />
                       {c.send}
+                      <Send className="h-4 w-4" />
                     </>
                   )}
                 </button>
@@ -279,9 +317,16 @@ export function ContactClient() {
                 </p>
                 <div className="space-y-4">
                   {c.faqs.map((faq, i) => (
-                    <div key={i} className="border-b border-border pb-4 last:border-0 last:pb-0">
-                      <p className="mb-1 text-sm font-semibold text-foreground">{faq.q}</p>
-                      <p className="text-xs leading-relaxed text-muted-foreground">{faq.a}</p>
+                    <div
+                      key={i}
+                      className="border-b border-border pb-4 last:border-0 last:pb-0"
+                    >
+                      <p className="mb-1 text-sm font-semibold text-foreground">
+                        {faq.q}
+                      </p>
+                      <p className="text-xs leading-relaxed text-muted-foreground">
+                        {faq.a}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -293,9 +338,15 @@ export function ContactClient() {
                   <MapPin className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">{c.addressTitle}</p>
-                  <p className="mt-1 text-sm font-medium text-foreground">{c.address}</p>
-                  <p className="mt-0.5 text-xs text-muted-foreground">{c.hours}</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                    {c.addressTitle}
+                  </p>
+                  <p className="mt-1 text-sm font-medium text-foreground">
+                    {c.address}
+                  </p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">
+                    {c.hours}
+                  </p>
                 </div>
               </div>
 

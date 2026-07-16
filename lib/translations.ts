@@ -2158,7 +2158,7 @@ const ar: typeof fr = {
     submitting: "جارٍ الإرسال…",
   },
   contact: {
-    heroPre: "ARINILOCK · خدمة العملاء",
+    heroPre: "·خدمة العملاء ARINILOCK ",
     heroTitle: "تحدّث إلينا.",
     heroSub:
       "هل لديك أي استفسار حول طلبك أو عملية التركيب أو أحد منتجاتنا؟ فريقنا هنا لمساعدتك والإجابة عن جميع أسئلتك.",
@@ -2186,7 +2186,7 @@ const ar: typeof fr = {
         sub: "رد خلال 24 ساعة",
       },
     ],
-    formPre: "نموذج",
+    formPre: "استمارة",
     formTitle: "أرسل لنا\nرسالة",
     labelName: "الاسم الكامل",
     labelEmail: "البريد الإلكتروني",
@@ -2198,7 +2198,7 @@ const ar: typeof fr = {
     placeholderPhone: "+212 6 68 89 88 60",
     placeholderMessage: "صِف طلبك…",
     sending: "جارٍ الإرسال…",
-    send: "إرسال الرسالة",
+    send: "ارسل الرسال",
     addressTitle: "العنوان",
     faqTitle: "الأسئلة الشائعة",
     faqLink: "عرض جميع الأسئلة",
