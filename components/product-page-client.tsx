@@ -2,17 +2,15 @@
 
 import {
   ArrowLeft,
+  Award,
   Check,
   ChevronDown,
-  Cpu,
   Heart,
   Minus,
   Plus,
   ShieldCheck,
   ShoppingBag,
-  Tag,
   Truck,
-  Wrench,
   Zap,
 } from "lucide-react";
 import Image from "next/image";
@@ -28,8 +26,10 @@ import { useAddToCart } from "@/hooks/use-cart";
 import { useFormatMoney } from "@/hooks/use-format-money";
 import { useAccessories, useProduct } from "@/hooks/use-product";
 import { useT } from "@/hooks/use-t";
+import { getModelSpecs, matchProductModel } from "@/lib/product-specs";
 import { cn } from "@/lib/utils";
 import { useFavoritesStore } from "@/stores/favorites-store";
+import { useLanguageStore } from "@/stores/language-store";
 
 const SWATCH_BG: Record<string, string> = {
   Black:  "bg-[#1E1B18]",
@@ -66,13 +66,11 @@ function PriceBlock({
   price,
   compareAt,
   formatMoney,
-  promoLabel,
   size = "lg",
 }: {
   price: { amount: string; currencyCode: string };
   compareAt?: { amount: string; currencyCode: string } | null;
   formatMoney: (m: { amount: string; currencyCode: string }) => string;
-  promoLabel: string;
   size?: "sm" | "lg";
 }) {
   // If Shopify has no compare-at price, compute one (+23 %)
@@ -104,61 +102,40 @@ function PriceBlock({
           {formatMoney(price)}
         </span>
       </div>
-
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="inline-flex items-center gap-1.5 rounded-lg border border-dashed border-primary/40 bg-primary/5 px-3 py-1 text-xs font-semibold text-primary">
-          <Tag className="h-3 w-3" />
-          {promoLabel}
-        </span>
-        <span className="text-xs text-muted-foreground">ou 3× sans frais</span>
-      </div>
     </div>
   );
 }
 
-/* ── Three info cards replacing the plain accordion ───────────────── */
-const CARD_META = [
-  {
-    icon: Cpu,
-    color: "text-primary",
-    bg: "bg-primary/8",
-    border: "border-l-primary",
-    parse: "dots",
-  },
-  {
-    icon: Wrench,
+/* ── Two info cards replacing the plain accordion ───────────────── */
+// Keyed by accordion item `value` (stable across locales) rather than array
+// index, since the "specs" card is filtered out before rendering.
+const CARD_META = {
+  certifications: {
+    icon: Award,
     color: "text-emerald-600",
     bg: "bg-emerald-50",
     border: "border-l-emerald-500",
-    parse: "sentences",
   },
-  {
+  warranty: {
     icon: ShieldCheck,
     color: "text-amber-600",
     bg: "bg-amber-50",
     border: "border-l-amber-500",
-    parse: "sentences",
   },
-] as const;
+} as const;
+const DEFAULT_CARD_META = CARD_META.certifications;
 
-function InfoCards({ accordion }: { accordion: { trigger: string; content: string }[] }) {
+function InfoCards({ accordion }: { accordion: { value: string; trigger: string; content: string }[] }) {
   return (
-    <div className="flex gap-4">
-      {accordion.map((item, i) => {
-        const meta = CARD_META[i] ?? CARD_META[0];
+    <div className="flex flex-col gap-4 md:flex-row">
+      {accordion
+        // "specs" duplicates the model-specific Fiche technique table shown above.
+        .filter((item) => item.value !== "specs")
+        .map((item) => {
+        const meta = CARD_META[item.value as keyof typeof CARD_META] ?? DEFAULT_CARD_META;
         const Icon = meta.icon;
-        const isSpecs = meta.parse === "dots";
 
-        const specPairs = isSpecs
-          ? item.content.split(" · ").map((s) => {
-              const [label, ...rest] = s.split(/\s*:\s*/);
-              return { label, value: rest.join(": ") };
-            })
-          : [];
-
-        const sentences = !isSpecs
-          ? item.content.split(/\.\s+/).filter(Boolean).map((s) => (s.endsWith(".") ? s : s + "."))
-          : [];
+        const sentences = item.content.split(/\.\s+/).filter(Boolean).map((s) => (s.endsWith(".") ? s : s + "."));
 
         return (
           <div
@@ -175,27 +152,14 @@ function InfoCards({ accordion }: { accordion: { trigger: string; content: strin
 
             {/* Card content */}
             <div className="border-t border-border px-5 py-4">
-              {isSpecs ? (
-                <div className="divide-y divide-border">
-                  {specPairs.map(({ label, value }) => (
-                    <div key={label} className="flex items-start justify-between gap-4 py-2.5">
-                      <span className="shrink-0 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-                        {label}
-                      </span>
-                      <span className="text-right text-xs font-medium text-foreground">{value}</span>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <ul className="space-y-2">
-                  {sentences.map((s, si) => (
-                    <li key={si} className="flex items-start gap-2.5">
-                      <Check aria-hidden="true" className={`mt-0.5 h-3.5 w-3.5 shrink-0 ${meta.color}`} />
-                      <span className="text-xs leading-relaxed text-foreground/70">{s}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <ul className="space-y-2">
+                {sentences.map((s, si) => (
+                  <li key={si} className="flex items-start gap-2.5">
+                    <Check aria-hidden="true" className={`mt-0.5 h-3.5 w-3.5 shrink-0 ${meta.color}`} />
+                    <span className="text-xs leading-relaxed text-foreground/70">{s}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         );
@@ -205,9 +169,11 @@ function InfoCards({ accordion }: { accordion: { trigger: string; content: strin
 }
 
 /* ── Specs section shown below the main grid ──────────────────────── */
-function SpecsTable() {
+function SpecsTable({ handle, title }: { handle: string; title?: string }) {
   const t = useT();
-  const SPECS = t.product.specs;
+  const locale = useLanguageStore((s) => s.locale);
+  const model = matchProductModel(handle, title);
+  const SPECS = model ? getModelSpecs(model, locale) : t.product.specs;
   const half = Math.ceil(SPECS.length / 2);
   const left = SPECS.slice(0, half);
   const right = SPECS.slice(half);
@@ -422,7 +388,6 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
                     price={variant.price}
                     compareAt={variant.compareAtPrice}
                     formatMoney={formatMoney}
-                    promoLabel={t.product.promo}
                     size="sm"
                   />
                 )}
@@ -474,7 +439,7 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
           )}
         </div>
 
-        <SpecsTable />
+        <SpecsTable handle={handle} title={product?.title} />
         {product && (
           <div className="border-t border-border">
             <div className="mx-auto max-w-7xl px-4 py-10">
@@ -482,25 +447,7 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
                 <p className="mb-1 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">{t.product.infoLabel}</p>
                 <h2 className="font-display2 text-3xl font-light uppercase leading-none text-foreground">{t.product.infoTitle}</h2>
               </div>
-              <div className="flex flex-col gap-4">
-                {t.product.accordion.map((item, i) => {
-                  const meta = CARD_META[i] ?? CARD_META[0];
-                  const Icon = meta.icon;
-                  return (
-                    <div key={item.trigger} className={`overflow-hidden rounded-xl border border-border border-l-4 ${meta.border} bg-white`}>
-                      <div className="flex items-center gap-3 px-4 py-3">
-                        <span className={`flex h-8 w-8 items-center justify-center rounded-lg ${meta.bg}`}>
-                          <Icon aria-hidden="true" className={`h-4 w-4 ${meta.color}`} />
-                        </span>
-                        <span className="text-sm font-semibold text-foreground">{item.trigger}</span>
-                      </div>
-                      <div className="border-t border-border px-4 py-3 text-xs leading-relaxed text-foreground/70">
-                        {item.content}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+              <InfoCards accordion={t.product.accordion} />
             </div>
           </div>
         )}
@@ -613,7 +560,6 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
                           price={variant.price}
                           compareAt={variant.compareAtPrice}
                           formatMoney={formatMoney}
-                          promoLabel={t.product.promo}
                           size="lg"
                         />
                       </div>
@@ -689,7 +635,7 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
           </div>
 
           {/* Specs table — full width below product grid */}
-          <SpecsTable />
+          <SpecsTable handle={handle} title={product?.title} />
 
           {/* Info cards — below specs table */}
           {product && (
