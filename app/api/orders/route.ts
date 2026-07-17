@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { logOrderToSheet } from "@/lib/google-sheets";
 import { isShopifyAdminConfigured } from "@/lib/shopify/admin";
 import { createQuickOrder } from "@/lib/shopify/orders";
 
@@ -26,11 +27,26 @@ export async function POST(req: Request) {
   }
 
   if (!isShopifyAdminConfigured) {
+    // No real Shopify order is created here, so the orders/create webhook
+    // will never fire for it — log directly as a fallback.
     console.log("[demo] Quick order (Shopify Admin not configured):", data);
-    return NextResponse.json({ ok: true, orderName: `DEMO-${Date.now()}` });
+    const orderName = `DEMO-${Date.now()}`;
+    await logOrderToSheet({
+      orderName,
+      productName: data.productName,
+      quantity: data.quantity,
+      price: data.price,
+      fullName: data.prenom,
+      phone: data.telephone,
+      address: data.adresse,
+      city: data.ville,
+    });
+    return NextResponse.json({ ok: true, orderName });
   }
 
   try {
+    // Sheets logging happens via the orders/create webhook (app/api/webhooks/shopify-orders),
+    // which fires for this order same as any other — no direct call needed here.
     const order = await createQuickOrder({
       variantId: data.variantId,
       quantity: data.quantity,
