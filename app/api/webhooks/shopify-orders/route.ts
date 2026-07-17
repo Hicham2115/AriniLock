@@ -17,7 +17,7 @@ interface ShopifyOrderWebhookPayload {
   total_price: string;
   currency: string;
   phone: string | null;
-  line_items: { title: string; quantity: number }[];
+  line_items: { title: string; quantity: number; price: string }[];
   shipping_address: {
     first_name: string | null;
     last_name: string | null;
@@ -41,17 +41,28 @@ export async function POST(req: Request) {
     [address?.first_name ?? order.customer?.first_name, address?.last_name ?? order.customer?.last_name]
       .filter(Boolean)
       .join(" ") || "—";
+  const orderTotal = `${order.total_price} ${order.currency}`;
+  const phone = address?.phone ?? order.phone ?? order.customer?.phone ?? "";
+  const city = address?.city ?? "";
+  const shippingAddress = address?.address1 ?? "";
 
-  await logOrderToSheet({
-    orderName: order.name,
-    productName: order.line_items.map((li) => li.title).join(", "),
-    quantity: order.line_items.reduce((sum, li) => sum + li.quantity, 0),
-    price: `${order.total_price} ${order.currency}`,
-    fullName,
-    phone: address?.phone ?? order.phone ?? order.customer?.phone ?? "",
-    address: address?.address1 ?? "",
-    city: address?.city ?? "",
-  });
+  // One row per line item, so a multi-product order reads the same way it
+  // does on the Shopify order page (each product with its own price × qty).
+  for (const li of order.line_items) {
+    const unitPrice = parseFloat(li.price);
+    await logOrderToSheet({
+      orderName: order.name,
+      productName: li.title,
+      quantity: li.quantity,
+      unitPrice: `${unitPrice.toFixed(2)} ${order.currency}`,
+      lineTotal: `${(unitPrice * li.quantity).toFixed(2)} ${order.currency}`,
+      fullName,
+      phone,
+      address: shippingAddress,
+      city,
+      orderTotal,
+    });
+  }
 
   return NextResponse.json({ ok: true });
 }

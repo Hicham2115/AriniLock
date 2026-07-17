@@ -35,11 +35,13 @@ export async function POST(req: Request) {
       orderName,
       productName: data.productName,
       quantity: data.quantity,
-      price: data.price,
+      unitPrice: data.price,
+      lineTotal: data.price,
       fullName: data.prenom,
       phone: data.telephone,
       address: data.adresse,
       city: data.ville,
+      orderTotal: data.price,
     });
     return NextResponse.json({ ok: true, orderName });
   }

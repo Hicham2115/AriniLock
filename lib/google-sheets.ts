@@ -5,15 +5,19 @@ const webhookSecret = process.env.GOOGLE_SHEETS_WEBHOOK_SECRET;
 
 export const isGoogleSheetsConfigured = Boolean(webhookUrl && webhookSecret);
 
+// One row per line item, mirroring how Shopify's order page breaks a
+// multi-product order into one line per product with its own price × qty.
 export interface SheetOrderRow {
   orderName: string;
   productName: string;
   quantity: number;
-  price: string;
+  unitPrice: string;
+  lineTotal: string;
   fullName: string;
   phone: string;
   address: string;
   city: string;
+  orderTotal: string;
 }
 
 // Best-effort logging — a Sheets outage must never block a real Shopify order,
