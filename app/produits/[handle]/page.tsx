@@ -19,7 +19,7 @@ export async function generateMetadata({
 
   const description = product.description.slice(0, 160);
   const image = product.images[0];
-
+   
   return {
     title: product.title,
     description,
