@@ -288,6 +288,7 @@ export function M1ProClient() {
         onClose={() => setOrderOpen(false)}
         productName="ARINILOCK M1 Pro"
         price={PRICE}
+        variantId="gid://shopify/ProductVariant/41046966239281"
       />
       <Header />
       <CartDrawer />
@@ -608,7 +609,11 @@ export function M1ProClient() {
                   <p className="mb-6 text-center text-sm font-semibold text-foreground">
                     {p.orderFormTitle}
                   </p>
-                  <OrderForm productName="ARINILOCK M1 Pro" price={PRICE} />
+                  <OrderForm
+                    productName="ARINILOCK M1 Pro"
+                    price={PRICE}
+                    variantId="gid://shopify/ProductVariant/41046966239281"
+                  />
                 </div>
               </Reveal>
             </div>

@@ -11,12 +11,13 @@ interface Props {
   onClose: () => void;
   productName: string;
   price: string;
-  whatsappNumber?: string;
+  variantId: string;
+  quantity?: number;
 }
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
-export function OrderModal({ open, onClose, productName, price, whatsappNumber }: Props) {
+export function OrderModal({ open, onClose, productName, price, variantId, quantity }: Props) {
   const t = useT();
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
@@ -72,7 +73,8 @@ export function OrderModal({ open, onClose, productName, price, whatsappNumber }
               <OrderForm
                 productName={productName}
                 price={price}
-                whatsappNumber={whatsappNumber}
+                variantId={variantId}
+                quantity={quantity}
               />
             </div>
           </motion.div>

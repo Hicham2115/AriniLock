@@ -637,6 +637,7 @@ const fr = {
       telephoneInvalid: "Numéro marocain invalide (ex: 06 XX XX XX XX)",
       adresseRequired: "Adresse obligatoire",
       villeRequired: "Veuillez choisir une ville",
+      submitFailed: "Erreur lors de l'envoi de la commande. Veuillez réessayer.",
     },
     submitLabel: (price: string) => `Terminez votre achat — ${price}`,
     submitting: "Envoi en cours…",
@@ -645,9 +646,6 @@ const fr = {
       "Notre équipe vous contactera sous 24h pour confirmer votre commande.",
     footer:
       "Paiement à la livraison · Livraison partout au Maroc · Garantie 2 ans",
-    whatsappNewOrder: "Nouvelle commande",
-    whatsappPrice: "Prix",
-    whatsappFooter: "Commande passée via arinilock.ma",
   },
   m1pro: {
     heroBadge: "Visiophone · Reconnaissance Faciale · WiFi",
@@ -1608,6 +1606,7 @@ const en: typeof fr = {
       telephoneInvalid: "Invalid Moroccan number (e.g. 06 XX XX XX XX)",
       adresseRequired: "Address required",
       villeRequired: "Please choose a city",
+      submitFailed: "Failed to send your order. Please try again.",
     },
     submitLabel: (price: string) => `Complete your purchase — ${price}`,
     submitting: "Sending…",
@@ -1615,9 +1614,6 @@ const en: typeof fr = {
     successDesc:
       "Our team will contact you within 24 hours to confirm your order.",
     footer: "Cash on delivery · Delivery across Morocco · 2-year warranty",
-    whatsappNewOrder: "New order",
-    whatsappPrice: "Price",
-    whatsappFooter: "Order placed via arinilock.ma",
   },
   m1pro: {
     heroBadge: "Video Doorbell · Face Recognition · WiFi",
@@ -2540,15 +2536,13 @@ const ar: typeof fr = {
       telephoneInvalid: "رقم مغربي غير صالح (مثال: 06 XX XX XX XX)",
       adresseRequired: "العنوان مطلوب",
       villeRequired: "يرجى اختيار مدينة",
+      submitFailed: "حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مرة أخرى.",
     },
     submitLabel: (price: string) => `أتمّ طلبك — ${price}`,
     submitting: "جارٍ الإرسال…",
     successTitle: "تم إرسال الطلب!",
     successDesc: "سيتصل بك فريقنا خلال 24 ساعة لتأكيد طلبك.",
     footer: "الدفع عند الاستلام · توصيل في جميع أنحاء المغرب · ضمان سنتان",
-    whatsappNewOrder: "طلب جديد",
-    whatsappPrice: "السعر",
-    whatsappFooter: "تم إرسال الطلب عبر arinilock.ma",
   },
   m1pro: {
     heroBadge: "كاميرا الباب · التعرف على الوجه · واي فاي",

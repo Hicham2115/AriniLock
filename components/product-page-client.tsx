@@ -316,6 +316,8 @@ export function ProductPageClient({ params }: { params: Promise<{ handle: string
           onClose={() => setOrderOpen(false)}
           productName={product.title}
           price={formatMoney(variant.price)}
+          variantId={variant.id}
+          quantity={qty}
         />
       )}
 

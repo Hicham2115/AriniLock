@@ -1,7 +1,10 @@
 "use client";
 
 import { useForm } from "@tanstack/react-form";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 import { CheckCircle2, MapPin, Phone, User } from "lucide-react";
+import { toast } from "sonner";
 import { z } from "zod";
 import { useT } from "@/hooks/use-t";
 import { cn } from "@/lib/utils";
@@ -39,7 +42,8 @@ type FormValues = { prenom: string; telephone: string; adresse: string; ville: s
 interface Props {
   productName: string;
   price: string;
-  whatsappNumber?: string;
+  variantId: string;
+  quantity?: number;
 }
 
 function FieldError({ errors }: { errors: (string | undefined)[] }) {
@@ -81,28 +85,34 @@ function InputField({
   );
 }
 
-export function OrderForm({ productName, price, whatsappNumber = "212668898860" }: Props) {
+export function OrderForm({ productName, price, variantId, quantity = 1 }: Props) {
   const t = useT();
   const tf = t.orderForm;
   const schema = buildSchema(tf.errors);
 
-  const form = useForm({
-    defaultValues: { prenom: "", telephone: "", adresse: "", ville: "" },
-    onSubmit: async ({ value }) => {
-      const msg = encodeURIComponent(
-        `🛒 *${tf.whatsappNewOrder} — ${productName}*\n\n` +
-        `👤 ${tf.fields.prenom} : ${value.prenom}\n` +
-        `📞 ${tf.fields.telephone} : ${value.telephone}\n` +
-        `📍 ${tf.fields.adresse} : ${value.adresse}\n` +
-        `🏙️ ${tf.fields.ville} : ${value.ville}\n\n` +
-        `💰 ${tf.whatsappPrice} : ${price}\n\n` +
-        `_${tf.whatsappFooter}_`,
-      );
-      window.open(`https://wa.me/${whatsappNumber}?text=${msg}`, "_blank");
+  const placeOrder = useMutation({
+    mutationFn: (value: FormValues) =>
+      axios.post("/api/orders", { ...value, productName, price, variantId, quantity }),
+    onError: (err) => {
+      const message = axios.isAxiosError(err)
+        ? ((err.response?.data as { message?: string } | undefined)?.message ?? err.message)
+        : err.message;
+      toast.error(tf.errors.submitFailed, { description: message });
     },
   });
 
-  const submitted = form.state.submissionAttempts > 0 && form.state.isSubmitted;
+  const form = useForm({
+    defaultValues: { prenom: "", telephone: "", adresse: "", ville: "" },
+    onSubmit: async ({ value }) => {
+      try {
+        await placeOrder.mutateAsync(value);
+      } catch {
+        // user-facing feedback already shown via the mutation's onError toast
+      }
+    },
+  });
+
+  const submitted = placeOrder.isSuccess;
 
   function validate<K extends keyof FormValues>(key: K) {
     return ({ value }: { value: FormValues[K] }) => {

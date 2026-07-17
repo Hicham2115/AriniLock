@@ -260,6 +260,7 @@ export function I60Client() {
         onClose={() => setOrderOpen(false)}
         productName="ARINILOCK I 60"
         price={PRICE}
+        variantId="gid://shopify/ProductVariant/41054340644913"
       />
       <Header />
       <CartDrawer />
@@ -646,7 +647,11 @@ export function I60Client() {
                   <p className="mb-6 text-center text-sm font-semibold text-foreground">
                     {q.orderFormTitle}
                   </p>
-                  <OrderForm productName="ARINILOCK I 60" price={PRICE} />
+                  <OrderForm
+                    productName="ARINILOCK I 60"
+                    price={PRICE}
+                    variantId="gid://shopify/ProductVariant/41054340644913"
+                  />
                 </div>
               </Reveal>
             </div>
