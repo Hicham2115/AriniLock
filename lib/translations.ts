@@ -620,19 +620,19 @@ const fr = {
     modalDesc:
       "Remplissez ce formulaire et notre équipe vous contactera pour confirmer.",
     fields: {
-      prenom: "Prénom",
+      prenom: "Nom complet",
       telephone: "Téléphone",
       adresse: "Adresse",
       ville: "Ville",
     },
     placeholders: {
-      prenom: "Votre prénom",
+      prenom: "Nom et prénom",
       telephone: "06 XX XX XX XX",
       adresse: "Rue, numéro, quartier…",
       ville: "Choisissez votre ville",
     },
     errors: {
-      prenomRequired: "Prénom obligatoire",
+      prenomRequired: "Nom complet obligatoire",
       telephoneRequired: "Numéro obligatoire",
       telephoneInvalid: "Numéro marocain invalide (ex: 06 XX XX XX XX)",
       adresseRequired: "Adresse obligatoire",
@@ -1589,19 +1589,19 @@ const en: typeof fr = {
     modalTitle: "Quick order",
     modalDesc: "Fill out this form and our team will contact you to confirm.",
     fields: {
-      prenom: "First name",
+      prenom: "Full name",
       telephone: "Phone",
       adresse: "Address",
       ville: "City",
     },
     placeholders: {
-      prenom: "Your first name",
+      prenom: "First and last name",
       telephone: "06 XX XX XX XX",
       adresse: "Street, number, district…",
       ville: "Choose your city",
     },
     errors: {
-      prenomRequired: "First name required",
+      prenomRequired: "Full name required",
       telephoneRequired: "Phone number required",
       telephoneInvalid: "Invalid Moroccan number (e.g. 06 XX XX XX XX)",
       adresseRequired: "Address required",
@@ -2519,19 +2519,19 @@ const ar: typeof fr = {
     modalTitle: "طلب سريع",
     modalDesc: "املأ هذه الاستمارة وسيتواصل معك فريقنا للتأكيد.",
     fields: {
-      prenom: "الاسم",
+      prenom: "الاسم الكامل",
       telephone: "الهاتف",
       adresse: "العنوان",
       ville: "المدينة",
     },
     placeholders: {
-      prenom: "اسمك الأول",
+      prenom: "الاسم واللقب",
       telephone: "06 XX XX XX XX",
       adresse: "الشارع، الرقم، الحي…",
       ville: "اختر مدينتك",
     },
     errors: {
-      prenomRequired: "الاسم مطلوب",
+      prenomRequired: "الاسم الكامل مطلوب",
       telephoneRequired: "رقم الهاتف مطلوب",
       telephoneInvalid: "رقم مغربي غير صالح (مثال: 06 XX XX XX XX)",
       adresseRequired: "العنوان مطلوب",
