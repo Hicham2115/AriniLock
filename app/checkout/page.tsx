@@ -12,7 +12,7 @@ import { redirect } from "next/navigation";
 // export const metadata: Metadata = {
 //   title: "Commande",
 //   description: "Finalisez votre commande ARINILOCK — paiement à la livraison.",
-//   alternates: { canonical: "https://arinilock.ma/checkout" },
+//   alternates: { canonical: "https://www.arinilock.ma/checkout" },
 // };
 //
 // export default function CheckoutPage() {

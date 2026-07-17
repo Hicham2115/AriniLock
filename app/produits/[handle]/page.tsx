@@ -23,7 +23,7 @@ export async function generateMetadata({
   return {
     title: product.title,
     description,
-    alternates: { canonical: `https://arinilock.ma/produits/${handle}` },
+    alternates: { canonical: `https://www.arinilock.ma/produits/${handle}` },
     openGraph: {
       title: `${product.title} | ARINILOCK`,
       description,

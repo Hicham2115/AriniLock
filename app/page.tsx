@@ -17,15 +17,15 @@ export const metadata: Metadata = {
   title: "ARINILOCK — La porte qui vous reconnaît",
   description:
     "Poignée connectée premium : empreinte digitale, code PIN, app mobile et carte RFID. Installation livraison partout au Maroc.",
-  alternates: { canonical: "https://arinilock.ma" },
+  alternates: { canonical: "https://www.arinilock.ma" },
 };
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "ARINILOCK",
-  url: "https://arinilock.ma",
-  logo: "https://arinilock.ma/og-image.jpg",
+  url: "https://www.arinilock.ma",
+  logo: "https://www.arinilock.ma/og-image.jpg",
   sameAs: [],
   contactPoint: {
     "@type": "ContactPoint",
@@ -41,14 +41,14 @@ const productSchema = {
   description:
     "La poignée connectée qui s'ouvre par empreinte digitale, code secret ou smartphone — sans clé qui traîne, sans compromis sur le style.",
   brand: { "@type": "Brand", name: "ARINILOCK" },
-  image: "https://arinilock.ma/og-image.jpg",
-  url: "https://arinilock.ma/produits/poignee-connectee-smart-door-lock",
+  image: "https://www.arinilock.ma/og-image.jpg",
+  url: "https://www.arinilock.ma/produits/poignee-connectee-smart-door-lock",
   offers: {
     "@type": "Offer",
     price: "1290.00",
     priceCurrency: "MAD",
     availability: "https://schema.org/InStock",
-    url: "https://arinilock.ma/produits/poignee-connectee-smart-door-lock",
+    url: "https://www.arinilock.ma/produits/poignee-connectee-smart-door-lock",
     seller: { "@type": "Organization", name: "ARINILOCK" },
     shippingDetails: {
       "@type": "OfferShippingDetails",

@@ -338,7 +338,7 @@ export const termsContent: Record<Locale, ReactNode> = {
   fr: (
     <>
       <p>
-        Les présentes Conditions Générales de Vente et d&apos;Utilisation (ci-après « CGV ») régissent l&apos;utilisation du site web <strong>arinilock.ma</strong> et les ventes conclues entre <strong>ARINILOCK</strong> (vendeur) et tout client (acheteur) passant commande via le site ou par tout autre canal de vente de la Société. Toute commande implique l&apos;acceptation pleine et entière des présentes CGV.
+        Les présentes Conditions Générales de Vente et d&apos;Utilisation (ci-après « CGV ») régissent l&apos;utilisation du site web <strong>www.arinilock.ma</strong> et les ventes conclues entre <strong>ARINILOCK</strong> (vendeur) et tout client (acheteur) passant commande via le site ou par tout autre canal de vente de la Société. Toute commande implique l&apos;acceptation pleine et entière des présentes CGV.
       </p>
 
       <h2>1. Identification du vendeur</h2>
@@ -352,7 +352,7 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>2. Utilisation du site</h2>
       <p>
-        Le site arinilock.ma est réservé à un usage personnel et non commercial. Il est interdit de reproduire, distribuer, modifier ou exploiter tout contenu du site sans autorisation écrite préalable d&apos;ARINILOCK. L&apos;accès au site suppose l&apos;acceptation des présentes conditions et de notre{" "}
+        Le site www.arinilock.ma est réservé à un usage personnel et non commercial. Il est interdit de reproduire, distribuer, modifier ou exploiter tout contenu du site sans autorisation écrite préalable d&apos;ARINILOCK. L&apos;accès au site suppose l&apos;acceptation des présentes conditions et de notre{" "}
         <NextLink href="/politique-de-confidentialite" className={linkClass}>
           Politique de confidentialité
         </NextLink>.
@@ -424,7 +424,7 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>11. Propriété intellectuelle</h2>
       <p>
-        L&apos;ensemble des éléments du site arinilock.ma (marque, logo, textes, images, graphismes) sont la propriété exclusive d&apos;ARINILOCK et sont protégés par les lois marocaines sur la propriété intellectuelle. Toute reproduction, même partielle, est interdite sans autorisation préalable.
+        L&apos;ensemble des éléments du site www.arinilock.ma (marque, logo, textes, images, graphismes) sont la propriété exclusive d&apos;ARINILOCK et sont protégés par les lois marocaines sur la propriété intellectuelle. Toute reproduction, même partielle, est interdite sans autorisation préalable.
       </p>
 
       <h2>12. Protection des données personnelles</h2>
@@ -457,7 +457,7 @@ export const termsContent: Record<Locale, ReactNode> = {
   en: (
     <>
       <p>
-        These Terms of Sale and Use (hereinafter the &quot;Terms&quot;) govern the use of the website <strong>arinilock.ma</strong> and sales concluded between <strong>ARINILOCK</strong> (seller) and any customer (buyer) placing an order via the site or any other sales channel of the Company. Any order implies full acceptance of these Terms.
+        These Terms of Sale and Use (hereinafter the &quot;Terms&quot;) govern the use of the website <strong>www.arinilock.ma</strong> and sales concluded between <strong>ARINILOCK</strong> (seller) and any customer (buyer) placing an order via the site or any other sales channel of the Company. Any order implies full acceptance of these Terms.
       </p>
 
       <h2>1. Seller identification</h2>
@@ -471,7 +471,7 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>2. Use of the site</h2>
       <p>
-        The arinilock.ma site is reserved for personal, non-commercial use. Reproducing, distributing, modifying or exploiting any content of the site without ARINILOCK&apos;s prior written authorization is prohibited. Access to the site implies acceptance of these terms and of our{" "}
+        The www.arinilock.ma site is reserved for personal, non-commercial use. Reproducing, distributing, modifying or exploiting any content of the site without ARINILOCK&apos;s prior written authorization is prohibited. Access to the site implies acceptance of these terms and of our{" "}
         <NextLink href="/politique-de-confidentialite" className={linkClass}>
           Privacy Policy
         </NextLink>.
@@ -543,7 +543,7 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>11. Intellectual property</h2>
       <p>
-        All elements of the arinilock.ma site (brand, logo, text, images, graphics) are the exclusive property of ARINILOCK and are protected by Moroccan intellectual property law. Any reproduction, even partial, is prohibited without prior authorization.
+        All elements of the www.arinilock.ma site (brand, logo, text, images, graphics) are the exclusive property of ARINILOCK and are protected by Moroccan intellectual property law. Any reproduction, even partial, is prohibited without prior authorization.
       </p>
 
       <h2>12. Personal data protection</h2>
@@ -576,7 +576,7 @@ export const termsContent: Record<Locale, ReactNode> = {
   ar: (
     <>
       <p>
-        تحكم هذه الشروط العامة للبيع والاستخدام (يُشار إليها فيما يلي بـ«الشروط العامة») استخدام الموقع الإلكتروني <strong>arinilock.ma</strong> والمبيعات المُبرَمة بين <strong>ARINILOCK</strong> (البائع) وأي عميل (المشتري) يقوم بطلب عبر الموقع أو عبر أي قناة بيع أخرى تابعة للشركة. يعني أي طلب القبول الكامل والتام لهذه الشروط العامة.
+        تحكم هذه الشروط العامة للبيع والاستخدام (يُشار إليها فيما يلي بـ«الشروط العامة») استخدام الموقع الإلكتروني <strong>www.arinilock.ma</strong> والمبيعات المُبرَمة بين <strong>ARINILOCK</strong> (البائع) وأي عميل (المشتري) يقوم بطلب عبر الموقع أو عبر أي قناة بيع أخرى تابعة للشركة. يعني أي طلب القبول الكامل والتام لهذه الشروط العامة.
       </p>
 
       <h2>1. تعريف البائع</h2>
@@ -590,7 +590,7 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>2. استخدام الموقع</h2>
       <p>
-        موقع arinilock.ma مخصص للاستخدام الشخصي وغير التجاري. يُمنع نسخ أو توزيع أو تعديل أو استغلال أي محتوى من الموقع دون إذن كتابي مسبق من ARINILOCK. يفترض الوصول إلى الموقع قبول هذه الشروط وسياسة{" "}
+        موقع www.arinilock.ma مخصص للاستخدام الشخصي وغير التجاري. يُمنع نسخ أو توزيع أو تعديل أو استغلال أي محتوى من الموقع دون إذن كتابي مسبق من ARINILOCK. يفترض الوصول إلى الموقع قبول هذه الشروط وسياسة{" "}
         <NextLink href="/politique-de-confidentialite" className={linkClass}>
           الخصوصية
         </NextLink>{" "}
@@ -663,7 +663,7 @@ export const termsContent: Record<Locale, ReactNode> = {
 
       <h2>11. الملكية الفكرية</h2>
       <p>
-        جميع عناصر موقع arinilock.ma (العلامة، الشعار، النصوص، الصور، التصاميم) هي ملكية حصرية لـ ARINILOCK ومحمية بموجب القوانين المغربية المتعلقة بالملكية الفكرية. يُمنع أي نسخ، ولو جزئي، دون إذن مسبق.
+        جميع عناصر موقع www.arinilock.ma (العلامة، الشعار، النصوص، الصور، التصاميم) هي ملكية حصرية لـ ARINILOCK ومحمية بموجب القوانين المغربية المتعلقة بالملكية الفكرية. يُمنع أي نسخ، ولو جزئي، دون إذن مسبق.
       </p>
 
       <h2>12. حماية المعطيات الشخصية</h2>

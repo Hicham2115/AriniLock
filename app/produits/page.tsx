@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Boutique",
   description:
     "Découvrez la serrure connectée ARINILOCK et ses accessoires. Empreinte digitale, code PIN, app mobile — livraison partout au Maroc en 2 à 4 jours.",
-  alternates: { canonical: "https://arinilock.ma/produits" },
+  alternates: { canonical: "https://www.arinilock.ma/produits" },
   openGraph: {
     title: "Boutique — ARINILOCK",
     description:

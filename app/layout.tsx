@@ -49,7 +49,7 @@ const notoSerifArabic = Noto_Naskh_Arabic({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://arinilock.ma"),
+  metadataBase: new URL("https://www.arinilock.ma"),
   title: {
     default: "ARINILOCK — La porte qui vous reconnaît",
     template: "%s | ARINILOCK",
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     "sécurité maison",
     "ARINILOCK",
   ],
-  authors: [{ name: "ARINILOCK", url: "https://arinilock.ma" }],
+  authors: [{ name: "ARINILOCK", url: "https://www.arinilock.ma" }],
   creator: "ARINILOCK",
   openGraph: {
     type: "website",
@@ -94,7 +94,7 @@ export const metadata: Metadata = {
     images: ["/og-image.jpg"],
   },
   alternates: {
-    canonical: "https://arinilock.ma",
+    canonical: "https://www.arinilock.ma",
   },
   icons: {
     icon: "/favicon.ico",
