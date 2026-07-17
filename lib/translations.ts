@@ -539,7 +539,7 @@ const fr = {
         {
           title: "Produit",
           links: [
-            { href: "#produit", label: "Poignée connectée" },
+            { href: "/produits", label: "Poignée connectée" },
             { href: "#fonctionnalites", label: "Fonctionnalités" },
             { href: "#avis", label: "Avis clients" },
           ],
@@ -2446,7 +2446,7 @@ const ar: typeof fr = {
         {
           title: "المنتج",
           links: [
-            { href: "#produit", label: "المقبض الذكي" },
+            { href: "/produits", label: "قفل الذكي" },
             { href: "#fonctionnalites", label: "المميزات" },
             { href: "#avis", label: "آراء العملاء" },
           ],
