@@ -37,10 +37,13 @@ export async function POST(req: Request) {
 
   const order = JSON.parse(rawBody) as ShopifyOrderWebhookPayload;
   const address = order.shipping_address;
+  // Orders created via the quick-buy form send a zero-width-space lastName
+  // when the customer only gave one name (see NO_LAST_NAME_PLACEHOLDER in
+  // lib/shopify/orders.ts) — strip it so the sheet shows the name alone
+  // instead of a duplicated "name name".
+  const lastName = (address?.last_name ?? order.customer?.last_name ?? "").replace(/​/g, "").trim();
   const fullName =
-    [address?.first_name ?? order.customer?.first_name, address?.last_name ?? order.customer?.last_name]
-      .filter(Boolean)
-      .join(" ") || "—";
+    [address?.first_name ?? order.customer?.first_name, lastName || null].filter(Boolean).join(" ") || "—";
   const orderTotal = `${order.total_price} ${order.currency}`;
   const phone = address?.phone ?? order.phone ?? order.customer?.phone ?? "";
   const city = address?.city ?? "";

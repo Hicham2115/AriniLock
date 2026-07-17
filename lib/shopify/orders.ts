@@ -28,9 +28,13 @@ export interface QuickOrderInput {
 
 // Shopify's orderCreate silently drops shippingAddress/billingAddress when
 // lastName is empty (no userErrors) — always send a non-empty lastName.
+// When only one word is given, use an invisible zero-width-space placeholder
+// (NOT a duplicate of firstName) so downstream display can show the name alone.
+export const NO_LAST_NAME_PLACEHOLDER = "​";
+
 function splitName(fullName: string): { firstName: string; lastName: string } {
   const [firstName, ...rest] = fullName.trim().split(/\s+/);
-  return { firstName, lastName: rest.length ? rest.join(" ") : firstName };
+  return { firstName, lastName: rest.length ? rest.join(" ") : NO_LAST_NAME_PLACEHOLDER };
 }
 
 export async function createQuickOrder(input: QuickOrderInput): Promise<{ id: string; name: string }> {
