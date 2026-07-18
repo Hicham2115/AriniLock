@@ -32,6 +32,7 @@ import {
 import Image, { type StaticImageData } from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useT } from "@/hooks/use-t";
+import { useLanguageStore } from "@/stores/language-store";
 
 import imgAsset1 from "./assets/Untitled design.png";
 import imgAsset2 from "./assets/Gemini_Generated_Image_yu0rvhyu0rvhyu0r.png";
@@ -44,8 +45,6 @@ import { OrderForm } from "@/components/order-form";
 import { OrderModal } from "@/components/order-modal";
 import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/utils";
-
-const PRICE = "2 590 dh";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
@@ -258,6 +257,10 @@ function StickyBar({
 export function M1ProClient() {
   const t = useT();
   const p = t.m1pro;
+  const locale = useLanguageStore((s) => s.locale);
+  const isAr = locale === "ar";
+  const PRICE = isAr ? "2 590 درهم" : "2 590 dh";
+  const RATING = isAr ? "4.9" : "4,9";
 
   const UNLOCK_METHODS = p.unlockMethods.map((m, i) => ({ ...m, icon: UNLOCK_ICONS[i] }));
   const FEATURES       = p.features.map((f, i)      => ({ ...f, ...FEATURE_META[i] }));
@@ -322,7 +325,7 @@ export function M1ProClient() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.85, ease, delay: 0.08 }}
                   className="font-display2 leading-[0.88] text-foreground"
-                  style={{ fontSize: "clamp(3rem, 6.5vw, 5.5rem)" }}
+                  style={{ fontSize: "clamp(2.5rem, 5.5vw, 4.5rem)" }}
                 >
                   ARINILOCK
                   <br />
@@ -346,7 +349,7 @@ export function M1ProClient() {
                   className="mt-6 flex items-center gap-3"
                 >
                   <Stars />
-                  <span className="text-xs font-semibold text-foreground">4,9</span>
+                  <span className="text-xs font-semibold text-foreground">{RATING}</span>
                   <span className="text-xs text-muted-foreground">· {p.heroRating}</span>
                 </motion.div>
 

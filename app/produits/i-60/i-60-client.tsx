@@ -43,8 +43,7 @@ import { OrderModal } from "@/components/order-modal";
 import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/utils";
 import { useT } from "@/hooks/use-t";
-
-const PRICE = "3 490 dh";
+import { useLanguageStore } from "@/stores/language-store";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
@@ -227,6 +226,10 @@ function StickyBar({
 export function I60Client() {
   const t = useT();
   const q = t.i60;
+  const locale = useLanguageStore((s) => s.locale);
+  const isAr = locale === "ar";
+  const PRICE = isAr ? "3 490 درهم" : "3 490 dh";
+  const RATING = isAr ? "4.8" : "4,8";
 
   const UNLOCK_METHODS = q.unlockMethods.map((m, i) => ({
     ...m,
@@ -280,7 +283,7 @@ export function I60Client() {
           <div className="absolute left-0 right-0 top-0 h-px bg-linear-to-r from-transparent via-primary/30 to-transparent" />
 
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="grid items-end gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="grid items-end gap-12 lg:grid-cols-2 lg:gap-32">
               {/* Left — copy */}
               <div className="order-2 pb-16 lg:order-1 lg:pb-24">
                 <motion.div
@@ -298,7 +301,7 @@ export function I60Client() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.85, ease, delay: 0.08 }}
                   className="font-display2 leading-[0.88] text-foreground"
-                  style={{ fontSize: "clamp(3.8rem, 9vw, 7.5rem)" }}
+                  style={{ fontSize: "clamp(2.5rem, 5.5vw, 4.5rem)" }}
                 >
                   ARINILOCK
                   <br />
@@ -322,7 +325,7 @@ export function I60Client() {
                 >
                   <Stars />
                   <span className="text-xs font-semibold text-foreground">
-                    4,8
+                    {RATING}
                   </span>
                   <span className="text-xs text-muted-foreground">
                     · {q.heroRating}

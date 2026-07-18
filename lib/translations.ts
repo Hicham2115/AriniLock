@@ -929,30 +929,33 @@ const fr = {
     specs: [
       { label: "Modèle", value: "ARINILOCK i60" },
       {
-        label: "Matériau",
+        label: "Méthodes d'accès",
         value:
-          "Alliage d'aluminium haute densité · panneau acrylique anti-rayures",
+          "Face ID 3D ultra précision · Reconnaissance palmaire · Empreinte digitale · Code PIN · Code temporaire multi-niveaux · Carte NFC/RFID · App · Clé mécanique",
       },
       {
         label: "Design",
         value: "Push-Pull moderne · réversible gauche/droite",
       },
-      {
-        label: "Méthodes d'accès",
-        value: "Face 3D · Paume · Empreinte · PIN · RFID · App · Clé",
-      },
       { label: "Écran intérieur", value: "LCD couleur 3,5 à 4 pouces" },
       { label: "Caméra", value: "Grand angle · vision nocturne infrarouge" },
-      { label: "Batterie", value: "Lithium rechargeable 4 200–5 000 mAh" },
-      { label: "Recharge urgence", value: "Port USB-C" },
-      { label: "Connectivité", value: "WiFi via Tuya Smart (iOS & Android)" },
-      { label: "Cylindre", value: "Classe C haute sécurité" },
-      { label: "Épaisseur porte", value: "40 à 120 mm" },
-      { label: "Mortaise", value: "Multipoints 6068 incluse" },
       {
-        label: "Capacité",
-        value: "100 empreintes · plusieurs profils faciaux",
+        label: "Matériau",
+        value: "Alliage aluminium premium / acier inox",
       },
+      { label: "Batterie", value: "Li-ion 5 000 mAh · rechargeable USB-C" },
+      { label: "Autonomie batterie", value: "18 à 24 mois" },
+      { label: "Connectivité", value: "WiFi 2,4 GHz + Bluetooth" },
+      {
+        label: "Application",
+        value: "Tuya Smart / TT Lock (iOS & Android)",
+      },
+      { label: "Cylindre", value: "Classe C haute sécurité" },
+      { label: "Épaisseur porte", value: "38 à 110 mm" },
+      { label: "Mortaise", value: "6065 / 6068 — 24 × 240 mm" },
+      { label: "Empreintes", value: "Jusqu'à 200" },
+      { label: "Codes PIN", value: "Jusqu'à 150 utilisateurs" },
+      { label: "Cartes IC/NFC", value: "Jusqu'à 200" },
       { label: "Garantie", value: "2 ans constructeur" },
       {
         label: "Livraison",
@@ -1878,26 +1881,27 @@ const en: typeof fr = {
     specs: [
       { label: "Model", value: "ARINILOCK i60" },
       {
-        label: "Material",
-        value: "High-density aluminium alloy · scratch-resistant acrylic panel",
+        label: "Access methods",
+        value:
+          "3D Face ID (ultra-precision) · Palm recognition · Fingerprint · PIN code · Multi-level temporary code · NFC/RFID card · App · Mechanical key",
       },
       { label: "Design", value: "Modern Push-Pull · reversible left/right" },
-      {
-        label: "Access methods",
-        value: "Face 3D · Palm · Fingerprint · PIN · RFID · App · Key",
-      },
       { label: "Interior screen", value: "Colour LCD 3.5–4 inches" },
       { label: "Camera", value: "Wide-angle · infrared night vision" },
-      { label: "Battery", value: "Rechargeable lithium 4,200–5,000 mAh" },
-      { label: "Emergency charge", value: "USB-C port" },
-      { label: "Connectivity", value: "Wi-Fi via Tuya Smart (iOS & Android)" },
-      { label: "Cylinder", value: "Class C high security" },
-      { label: "Door thickness", value: "40–120 mm" },
-      { label: "Mortice", value: "6068 multipoint included" },
       {
-        label: "Capacity",
-        value: "100 fingerprints · multiple facial profiles",
+        label: "Material",
+        value: "Premium aluminium alloy / stainless steel",
       },
+      { label: "Battery", value: "Li-ion 5,000 mAh · USB-C rechargeable" },
+      { label: "Battery life", value: "18 to 24 months" },
+      { label: "Connectivity", value: "Wi-Fi 2.4GHz + Bluetooth" },
+      { label: "App", value: "Tuya Smart / TT Lock (iOS & Android)" },
+      { label: "Cylinder", value: "Class C high security" },
+      { label: "Door thickness", value: "38–110 mm" },
+      { label: "Mortice", value: "6065 / 6068 — 24 × 240 mm" },
+      { label: "Fingerprints", value: "Up to 200" },
+      { label: "PIN codes", value: "Up to 150 users" },
+      { label: "IC/NFC cards", value: "Up to 200" },
       { label: "Warranty", value: "2-year manufacturer warranty" },
       {
         label: "Delivery",
@@ -2167,8 +2171,8 @@ const ar: typeof fr = {
     heroTitle: "تحدّث إلينا.",
     heroSub:
       "هل لديك أي استفسار حول طلبك أو عملية التركيب أو أحد منتجاتنا؟ فريقنا هنا لمساعدتك والإجابة عن جميع أسئلتك.",
-    hours: "متاح الاثنين–الجمعة · 9h–18h",
-    address: "Bd Zoulikha Nasri, Corner Office N°19, Sidi Maarouf, Casablanca",
+    hours: "متاح من الاثنين إلى الجمعة، من 9 صباحًا إلى 6 مساءً",
+    address: "شارع زليخة ناصري، Corner Office رقم 19، سيدي معروف، الدار البيضاء",
     channels: [
       {
         label: "واتساب",
@@ -2178,12 +2182,12 @@ const ar: typeof fr = {
       {
         label: "الهاتف",
         value: "+212 6 68 89 88 60",
-        sub: "الاثنين–الجمعة · 9h–18h",
+        sub: "من الاثنين إلى الجمعة، من 9 صباحًا إلى 6 مساءً",
       },
       {
         label: "الهاتف 2",
         value: "+212 6 60 64 81 95",
-        sub: "الاثنين–الجمعة · 9h–18h",
+        sub: "من الاثنين إلى الجمعة، من 9 صباحًا إلى 6 مساءً",
       },
       {
         label: "البريد",
@@ -2228,13 +2232,13 @@ const ar: typeof fr = {
   sections: {
     stats: {
       label: "01 — بالأرقام",
-      right: "لمحة — إصدار الإطلاق",
-      headline: ["لماذا", "تختارنا."],
+      right: "لمحة سريعة",
+      headline: ["لماذا", "تختار ARINILOCK؟"],
       items: [
-        { value: "150", unit: "", label: "بصمة", sub: "كحد اقصى" },
-        { value: "7", unit: "", label: "طرق", sub: "للدخول" },
+        { value: "150", unit: "", label: "بصمة", sub: "كحد أقصى" },
+        { value: "7", unit: "", label: "طرق", sub: "للفتح" },
         { value: "12–18", unit: " شهرًا", label: "عمر", sub: "البطارية" },
-        { value: "2", unit: "سنتان", label: "ضمان", sub: "البائع" },
+        { value: "سنتان", unit: "", label: "ضمان", sub: "البائع" },
       ],
       details: [
         {
@@ -2267,53 +2271,53 @@ const ar: typeof fr = {
     features: {
       label: "03 — المميزات",
       right: "أمان الجيل القادم",
-      headline: ["سبع", "طرق", "للدخول."],
+      headline: ["سبع", "طرق", "للفتح."],
       items: [
         {
           title: "البصمة الرقمية",
           description:
-            "تخزين حتى 150 بصمة. فتح في أقل من ثانية حتى مع اليدين المبللتين قليلًا.",
+            "تخزين حتى 150 بصمة. فتح خلال أقل من ثانية واحدة حتى مع اليدين المبللتين قليلًا.",
         },
         {
           title: "الرمز السري",
           description:
-            "رمز شخصي من 6 أرقام، قابل للتغيير من التطبيق. رموز مؤقتة للضيوف ولعمال المنزل.",
+            "رمز شخصي من 6 أرقام، قابل للتغيير من التطبيق. إمكانية إنشاء رموز مؤقتة للضيوف أو العاملين في المنزل.",
         },
         {
           title: "التطبيق المحمول",
           description:
-            "تحكّم في فتح وإغلاق الباب عن بُعد، وراقب السجل الكامل لعمليات الدخول والخروج أينما كنت في العالم.",
+            "تحكّم في بابك من أي مكان، وافتحه أو أغلقه عن بُعد، واطّلع على سجل جميع عمليات الفتح والإغلاق مباشرةً من التطبيق.",
         },
         {
           title: "بطاقة RFID",
-          description: "بطاقات NFC فائقة السرعة . تعمل بدون إنترنت.",
+          description: "بطاقات RFID/NFC سريعة الاستجابة. تعمل بدون إنترنت.",
         },
         {
           title: "مفتاح احتياطي",
           description:
-            "مفتاح احتياطي مرفق مع كل قفل — في حالة أي عطل طارئ: بطارية فارغة أو هاتف معطل أو انقطاع الشبكة.",
+            "مفتاح احتياطي مرفق مع كل قفل — في حالات الطوارئ: بطارية فارغة أو هاتف معطل أو انقطاع الشبكة.",
         },
         {
           title: " التعرف على الوجه (Face ID)",
           description:
-            "التعرف على الوجه ثلاثي الأبعاد للوصول الفوري والآمن. يعمل ليلًا ونهارًا بفضل أجهزة الاستشعار بالأشعة تحت الحمراء.",
+            "تقنية التعرف ثلاثي الأبعاد على الوجه لفتح سريع وآمن. يعمل ليلًا ونهارًا بفضل أجهزة الاستشعار بالأشعة تحت الحمراء.",
         },
         {
           title: "راحة اليد",
           description:
-            "تصميم يناسب راحة اليد، يتيح فتح الباب بسهولة بحركة واحدة حتى عندما تكون يداك مشغولتين.",
+            "مقبض مدمج بتصميم مريح لراحة اليد، يتيح فتح الباب بحركة واحدة سهلة حتى عندما تكون يداك مشغولتين.",
         },
       ],
     },
     howItWorks: {
       label: "04 — التركيب",
-      right: "من 0 إلى 1 في 45 دقيقة",
+      right: "جاهز للاستخدام خلال 45 دقيقة",
       headline: ["يُركَّب في أقل من", "45 دقيقة."],
       steps: [
         {
           title: " التركيب بواسطة فريقنا المتخصص",
           description:
-            "يقوم فريقنا المتخصص بتركيب القفل مباشرةً على بابك الحالي وضبط جميع الإعدادات اللازمة، دون إتلاف الباب.",
+            "يتولى فريقنا المتخصص تركيب القفل مباشرةً على بابك الحالي وضبط جميع الإعدادات اللازمة، دون أي إتلاف للباب.",
         },
         {
           title: "الاتصال بالتطبيق",
@@ -2323,14 +2327,14 @@ const ar: typeof fr = {
         {
           title: "أضف صلاحيات الدخول",
           description:
-            "أنشئ بعد ذلك صلاحيات دائمة أو مؤقتة لعائلتك وضيوفك و لعمال المنزل.",
+            "يمكنك بعد ذلك إنشاء صلاحيات دائمة أو مؤقتة لأفراد عائلتك وضيوفك والعاملين في المنزل.",
         },
       ],
     },
     faq: {
       label: "06 — الأسئلة الشائعة",
       right: "أسئلة شائعة",
-      headline: ["كل ما", "تحتاج", "معرفته."],
+      headline: ["كل ما", "تحتاج", "إلى معرفته."],
       items: [
         {
           q: "هل ARINILOCK متوافق مع جميع الأبواب؟",
@@ -2379,38 +2383,38 @@ const ar: typeof fr = {
       testimonials: [
         {
           title: "تركيب نظيف وسريع",
-          body: "وصل الفني في الموعد المحدد وأنهى التركيب في أقل من ساعة. البصمة تعمل بسرعة وموثوقية في الاستخدام اليومي.",
+          body: "وصل الفني في الموعد المحدد وأنهى التركيب في أقل من ساعة. تعمل البصمة بسرعة وبدقة في الاستخدام اليومي.",
           author: "سلمى ب.",
           city: "الدار البيضاء",
         },
         {
           title: "خدمة احترافية من البداية للنهاية",
-          body: "طلبت يوم الجمعة، وكان الفني عندي في صباح اليوم التالي. تركيب مرتب وشرح واضح حول التطبيق.",
-          author: "يوسف .",
+          body: "طلبت يوم الجمعة، وكان الفني عندي في صباح اليوم التالي. تركيب احترافي وشرح واضح حول التطبيق.",
+          author: "يوسف",
           city: "مراكش",
         },
         {
           title: "أقل قلقًا بشأن إغلاق الباب",
-          body: "يُقفل الباب تلقائيًا، فلم أعد أقلق من نسيان إغلاقه عند الخروج. سهل الاستخدام لكل أفراد العائلة.",
-          author: "كريم .",
+          body: "يُقفل الباب تلقائيًا، فلم أعد أقلق من نسيان إغلاقه عند الخروج. سهل الاستخدام لجميع أفراد العائلة.",
+          author: "كريم",
           city: "الرباط",
         },
         {
           title: "مفيد عندما لا أكون في المنزل",
-          body: "يمكنني فتح الباب عن بُعد من التطبيق عندما أكون خارج المنزل، للسماح بدخول شخص أثق به.",
-          author: "نادية .",
+          body: "يمكنني فتح الباب عن بُعد بسهولة من التطبيق عندما أكون خارج المنزل، للسماح بدخول شخص أثق به.",
+          author: "نادية",
           city: "أكادير",
         },
         {
           title: "مناسب للإيجار القصير",
           body: "أدير شقة للإيجار القصير. أنشئ رمزًا مؤقتًا لكل مستأجر وأحذفه بعد مغادرته.",
-          author: "حسن .",
+          author: "حسن",
           city: "فاس",
         },
         {
           title: "سهل حتى لوالديّ",
-          body: "كان والداي قلقين من أن يكون الأمر معقدًا. في الواقع البصمة أسهل استخدامًا من المفتاح التقليدي.",
-          author: "إيمان .",
+          body: "كان والداي يعتقدان أن استخدامه سيكون معقدًا. في الواقع، البصمة أسهل استخدامًا من المفتاح التقليدي.",
+          author: "إيمان",
           city: "طنجة",
         },
       ],
@@ -2420,7 +2424,8 @@ const ar: typeof fr = {
       designedFor: "مصمم للمنزل المغربي",
       blurb:
         "القفل الذكي الذي يفتح بالبصمة أو الرمز أو الهاتف. أمان ذكي دون المساس بالأناقة.",
-      taglineShort: "منتجاتنا موثوقة وبجودة عالية، ومصممة لتدوم طويلاً.",
+      taglineShort:
+        "منتجات ARINILOCK مصممة لتوفر أعلى مستويات الأمان والجودة، وتدوم لسنوات.",
       serviceTitle: "ARINILOCK في خدمتك",
       helpLink: "هل تحتاج مساعدة؟",
       paymentLabel: "وسائل الدفع",
@@ -2446,7 +2451,7 @@ const ar: typeof fr = {
         {
           title: "المنتج",
           links: [
-            { href: "/produits", label: "قفل الذكي" },
+            { href: "/produits", label: "الأقفال الذكية" },
             { href: "#fonctionnalites", label: "المميزات" },
             { href: "#avis", label: "آراء العملاء" },
           ],
@@ -2566,13 +2571,13 @@ const ar: typeof fr = {
       "ضمان سنتان",
     ],
     unlockSection: "02 — طرق الفتح",
-    unlockTitle: "ستة طرق\nللدخول.",
+    unlockTitle: "ست طرق\nللفتح.",
     unlockMethods: [
       { label: "بصمة الإصبع", desc: "أقل من ثانية واحدة · حتى 100 بصمة" },
       { label: "رمز PIN اللمسي", desc: "مضاد للتجسس · رمز افتراضي" },
       { label: "بطاقة RFID", desc: "فتح فوري · بدون إنترنت" },
       {
-        label: "تطبيق Tuya Smart Life",
+        label: "تطبيق Tuya Smart",
         desc: "واي فاي 2.4 GHz · iOS وAndroid",
       },
       { label: "كلمة مرور مؤقتة", desc: "الضيوف والإيجارات القصيرة" },
@@ -2581,7 +2586,7 @@ const ar: typeof fr = {
     features: [
       {
         tag: "جرس الباب",
-        title: "رؤية.\nحديث.\nبدون فتح.",
+        title: "شاهد.\nتحدّث.\nدون فتح الباب.",
         body: "تتيح لك الشاشة الملونة HD المدمجة بحجم 4.5 بوصة مراقبة الزوار ليلاً ونهاراً. كاميرا واسعة الزاوية مع رؤية ليلية وجرس فيديو ثنائي الاتجاه وإشعارات فورية تمنحك السيطرة الكاملة — حتى عن بُعد عبر Tuya Smart.",
         detail: "كاميرا HD · رؤية ليلية · التقاط تلقائي",
       },
@@ -2602,7 +2607,7 @@ const ar: typeof fr = {
       { l: "طرق الفتح", suffix: "" },
       { l: "مستخدم", suffix: "" },
       { l: "شاشة HD", suffix: " بوصة" },
-      { l: "الضمان", suffix: " سنة" },
+      { l: "سنتا الضمان", suffix: "" },
     ],
     gallerySection: "06 — معرض الصور",
     galleryTitle: "تصميم\nاستثنائي.",
@@ -2611,21 +2616,24 @@ const ar: typeof fr = {
     specsDesc: "كل مكوّن في M1 Pro مختار لضمان أقصى موثوقية على المدى الطويل.",
     specs: [
       { label: "الموديل", value: "ARINILOCK M1 Pro" },
-      { label: "المادة", value: "سبيكة من الألومنيوم عالية المتانة · أسود مطفأ" },
+      {
+        label: "المادة",
+        value: "سبيكة من الألومنيوم عالية المتانة · أسود مطفأ",
+      },
       { label: "الأبعاد", value: "380 × 75 ملم" },
       { label: "الشاشة", value: '4.5" HD ملونة' },
-      { label: "الكاميرا", value: "HD زاوية واسعة · رؤية ليلية" },
+      { label: "الكاميرا", value: "كاميرا HD بعدسة واسعة الزاوية مع رؤية ليلية" },
       { label: "الأسطوانة", value: "درجة C (أمان عالٍ)" },
       { label: "سماكة الباب", value: "40–120 ملم · مقبض قابل للعكس" },
       { label: "عدد المستخدمين", value: "حتى 200 مستخدم" },
       {
         label: "طرق الفتح",
-        value: "بصمة · PIN · RFID · تطبيق · مؤقت · مفتاح",
+        value: "بصمة · PIN · RFID · تطبيق · كلمة مرور مؤقتة · مفتاح",
       },
-      { label: "الطاقة", value: "4 بطاريات AA + منفذ USB-C للطوارئ" },
+      { label: "الطاقة", value: "4 بطاريات AA + منفذ USB-C للشحن الطارئ" },
       { label: "درجة الحرارة", value: "-15 °C إلى +60 °C" },
       { label: "الاتصال", value: "واي فاي 2.4 GHz" },
-      { label: "التطبيق", value: "Tuya Smart / Smart Life (iOS وAndroid)" },
+      { label: "التطبيق", value: "Tuya Smart أو Smart Life (iOS وAndroid)" },
       { label: "المساعد الصوتي", value: "Amazon Alexa وGoogle Home" },
       { label: "الضمان", value: "سنتان — قطع غيار وخدمة" },
       {
@@ -2650,7 +2658,7 @@ const ar: typeof fr = {
       {
         name: "مهدي أ.",
         city: "الرباط",
-        body: "اللون الفضي رائع على بابي الخشبي. آلية Push-Pull سلسة جدًا لا تُقارن بأي قفل تقليدي. 7 أشهر ولا مشكلة واحدة. فريق الدعم ردّ في 20 دقيقة حين سألت.",
+        body: "اللون الفضي رائع على بابي الخشبي. آلية Push-Pull سلسة جدًا لا تُقارن بأي قفل تقليدي. 7 أشهر ولا مشكلة واحدة. ردّ فريق الدعم خلال 20 دقيقة عندما تواصلت معهم.",
       },
     ],
     faqSection: "09 — الأسئلة الشائعة",
@@ -2662,7 +2670,7 @@ const ar: typeof fr = {
       },
       {
         q: "ماذا يحدث إذا نفدت البطارية؟",
-        a: "يُنبّهك التطبيق تلقائياً عندما تنخفض البطارية عن 20%. في حالة الطوارئ، يتيح منفذ USB-C للطوارئ شحناً سريعاً لفتح الباب. المفتاحان الميكانيكيان المرفقان متاحان دائماً.",
+        a: "يُنبّهك التطبيق تلقائياً عندما تنخفض البطارية عن 20%. في حالة الطوارئ، يتيح منفذ USB-C للشحن الطارئ شحناً سريعاً لفتح الباب. المفتاحان الميكانيكيان المرفقان متاحان دائماً.",
       },
       {
         q: "كيف يعمل جرس الفيديو عن بُعد؟",
@@ -2700,7 +2708,7 @@ const ar: typeof fr = {
   i60: {
     heroBadge: "وجه ثلاثي الأبعاد · راحة اليد · بصمة · Push-Pull",
     heroDesc:
-      "قفل ذكي 7-في-1 بتقنية التعرف على الوجه ثلاثي الأبعاد وقراءة راحة اليد اللاتلامسية وتصميم Push-Pull حصري. كاميرا HD ليلية وبطارية ليثيوم قابلة للشحن عبر USB-C — لأقصى درجات الأمان.",
+      "قفل ذكي 7 في 1 مزوّد بتقنية التعرف ثلاثي الأبعاد على الوجه، وقراءة راحة اليد دون تلامس، وتصميم Push-Pull فاخر. كما يضم كاميرا HD برؤية ليلية وبطارية ليثيوم قابلة لإعادة الشحن عبر USB-C، ليمنحك أعلى مستويات الأمان.",
     heroRating: "256 تقييم موثق",
     heroCta: "اطلب الآن",
     heroCtaSecondary: "كيف يعمل؟",
@@ -2712,67 +2720,67 @@ const ar: typeof fr = {
     ] as [string, string, string],
     ticker: [
       "وجه ثلاثي الأبعاد · راحة اليد · بصمة",
-      "7 طرق وصول",
+      "7 طرق للفتح",
       "كاميرا HD ليلية",
       "Push-Pull متميز",
       "أسطوانة درجة C",
       "ضمان سنتان",
     ],
-    unlockSection: "02 — طرق الوصول",
-    unlockTitle: "سبعة طرق\nللدخول.",
+    unlockSection: "02 — طرق الفتح",
+    unlockTitle: "7 طرق\nللفتح.",
     unlockMethods: [
       {
         label: "التعرف على الوجه ثلاثي الأبعاد",
-        desc: "مضاد انتحال · فائق السرعة",
+        desc: "مضاد لانتحال الهوية · فائق السرعة",
       },
-      { label: "قراءة راحة اليد", desc: "لاتلامسي · صحي" },
+      { label: "قراءة راحة اليد", desc: "دون تلامس · أكثر نظافة" },
       { label: "بصمة الإصبع", desc: "أقل من 0.5 ثانية · دقة عالية" },
       { label: "رمز PIN آمن", desc: "مضاد للتجسس · رموز مؤقتة" },
-      { label: "بطاقة RFID / NFC", desc: "وصول فوري · مضمّنة" },
+      { label: "بطاقة RFID / NFC", desc: "فتح فوري · مضمّنة" },
       { label: "تطبيق Tuya Smart", desc: "واي فاي · iOS وAndroid" },
-      { label: "مفتاح ميكانيكي", desc: "مفتاحان · أسطوانة C" },
+      { label: "مفتاح ميكانيكي", desc: "مفتاحان احتياطيان · أسطوانة من الدرجة C" },
     ],
     features: [
       {
         tag: "البيومتري",
         title: "الوجه.\nراحة اليد.\nالبصمة.",
-        body: "يدمج i60 ثلاثة أوضاع بيومترية متقدمة: التعرف على الوجه ثلاثي الأبعاد بتقنية مضادة لانتحال الهوية، وقراءة راحة اليد اللاتلامسية، وبصمة إصبع دقيقة في أقل من 0.5 ثانية. كل هذا دون لمس مفتاح قط.",
+        body: "يدمج i60 ثلاثة أوضاع بيومترية متقدمة: التعرف على الوجه ثلاثي الأبعاد بتقنية مضادة لانتحال الهوية، وقراءة راحة اليد دون تلامس، وبصمة إصبع دقيقة في أقل من 0.5 ثانية. كل ذلك دون الحاجة إلى استخدام أي مفتاح.",
         detail: "وجه ثلاثي الأبعاد · مضاد الانتحال · أقل من 0.5 ثانية",
       },
       {
         tag: "جرس الباب",
-        title: "شاهد زوارك.\nبدون فتح.",
-        body: "تتيح لك كاميرا HD واسعة الزاوية مع رؤية ليلية بالأشعة تحت الحمراء وشاشة LCD الداخلية الملونة رؤية الزوار والتحدث معهم في الوقت الفعلي. إشعارات فورية على هاتفك وسجل وصول في تطبيق Tuya Smart.",
+        title: "شاهد زوارك\nقبل فتح الباب.",
+        body: "تتيح لك كاميرا HD واسعة الزاوية مع رؤية ليلية بالأشعة تحت الحمراء وشاشة LCD الداخلية الملونة رؤية الزوار والتحدث معهم في الوقت الفعلي. إشعارات فورية على هاتفك وسجل عمليات الفتح في تطبيق Tuya Smart.",
         detail: "كاميرا HD · رؤية ليلية · جرس فيديو متصل",
       },
       {
         tag: "الأمان",
         title: "قفل تلقائي.\nتنبيهات فورية.",
-        body: "يُقفل القفل تلقائياً بعد كل إغلاق. إنذار اقتحام، قفل بعد رموز خاطئة، تنبيه انخفاض البطارية وكشف محاولات الفتح القسري — يُنبَّه على هاتفك فوراً.",
+        body: "يُقفل القفل تلقائياً بعد كل إغلاق. إنذار محاولة الاقتحام، قفل تلقائي بعد عدة محاولات إدخال رموز خاطئة، تنبيه انخفاض البطارية وكشف محاولات الفتح القسري — يُنبَّه على هاتفك فوراً.",
         detail: "أسطوانة C · إنذار اقتحام · قفل تلقائي",
       },
     ],
     stats: [
-      { l: "طرق الوصول", suffix: "" },
+      { l: "طرق الفتح", suffix: "" },
       { l: "سرعة الفتح", suffix: " ث" },
-      { l: "بصمات", suffix: "" },
-      { l: "الضمان", suffix: " سنة" },
+      { l: "بصمة", suffix: "" },
+      { l: "سنتا الضمان", suffix: "" },
     ],
     installSection: "06 — التركيب",
-    installTitle: "في 45\nدقيقة،\nالأمر تم.",
+    installTitle: "جاهز للاستخدام\nخلال 45 دقيقة.",
     installDesc: "بدون تقني، بدون توتر. فقط هاتفك والدليل المرفق.",
     steps: [
       {
         num: "01",
-        title: "انزع القفل القديم",
+        title: "أزل القفل القديم",
         description:
-          "افكّ المسامير الأربعة من بابك الحالي — لا تحتاج أدوات خاصة.",
+          "قم بفك المسامير الأربعة من بابك الحالي — لا تحتاج أدوات خاصة.",
       },
       {
         num: "02",
-        title: "ركّب اللوحة الخارجية",
+        title: "ثبّت اللوحة الخارجية",
         description:
-          "ركّب لوحة Push-Pull مع الكاميرا ولوحة المفاتيح اللمسية. الميزاب 6068 متعدد النقاط مرفق.",
+          "ثبّت لوحة Push-Pull مع الكاميرا ولوحة المفاتيح اللمسية. الميزاب 6068 متعدد النقاط مرفق.",
       },
       {
         num: "03",
@@ -2794,29 +2802,33 @@ const ar: typeof fr = {
     specs: [
       { label: "الموديل", value: "ARINILOCK i60" },
       {
-        label: "المادة",
-        value: "سبيكة ألومينيوم عالية الكثافة · لوح أكريليك مضاد للخدش",
+        label: "طرق الفتح",
+        value:
+          "التعرف على الوجه ثلاثي الأبعاد فائق الدقة · قراءة راحة اليد · بصمة الإصبع · رمز PIN · رمز مؤقت متعدد المستويات · بطاقة NFC/RFID · تطبيق · مفتاح ميكانيكي",
       },
       { label: "التصميم", value: "Push-Pull حديث · قابل للعكس" },
-      {
-        label: "طرق الوصول",
-        value: "وجه 3D · راحة يد · بصمة · PIN · RFID · تطبيق · مفتاح",
-      },
       { label: "الشاشة الداخلية", value: "LCD ملونة 3.5–4 بوصة" },
       {
         label: "الكاميرا",
         value: "زاوية واسعة · رؤية ليلية بالأشعة تحت الحمراء",
       },
-      { label: "البطارية", value: "ليثيوم قابلة للشحن 4200–5000 mAh" },
-      { label: "شحن الطوارئ", value: "منفذ USB-C" },
-      { label: "الاتصال", value: "واي فاي عبر Tuya Smart (iOS وAndroid)" },
-      { label: "الأسطوانة", value: "درجة C أمان عالٍ" },
-      { label: "سماكة الباب", value: "40–120 ملم" },
-      { label: "الميزاب", value: "6068 متعدد النقاط مرفق" },
       {
-        label: "الطاقة الاستيعابية",
-        value: "100 بصمة · ملفات تعريف وجه متعددة",
+        label: "المادة",
+        value: "سبيكة ألومنيوم فاخرة / فولاذ مقاوم للصدأ",
       },
+      {
+        label: "البطارية",
+        value: "ليثيوم أيون 5000 mAh · قابلة للشحن عبر USB-C",
+      },
+      { label: "عمر البطارية", value: "من 18 إلى 24 شهرًا" },
+      { label: "الاتصال", value: "واي فاي 2.4 جيجاهرتز + بلوتوث" },
+      { label: "التطبيق", value: "Tuya Smart / TT Lock (iOS وAndroid)" },
+      { label: "الأسطوانة", value: "درجة C أمان عالٍ" },
+      { label: "سماكة الباب", value: "38–110 ملم" },
+      { label: "الميزاب", value: "6065 / 6068 — 24 × 240 ملم" },
+      { label: "البصمات", value: "حتى 200" },
+      { label: "رموز PIN", value: "حتى 150 مستخدمًا" },
+      { label: "بطاقات IC/NFC", value: "حتى 200" },
       { label: "الضمان", value: "سنتان من الشركة البائع" },
       { label: "التوصيل", value: "سريع · جميع أنحاء المغرب · التركيب مشمول" },
     ],
@@ -2827,7 +2839,7 @@ const ar: typeof fr = {
       {
         name: "حميد ب.",
         city: "الرباط",
-        body: "التعرف على الوجه ثلاثي الأبعاد يعمل في الظلام التام بفضل أجهزة الاستشعار بالأشعة تحت الحمراء — جرّبته في الساعة الثانية صباحًا ونجح. آلية Push-Pull سلاسة مدهشة. أنصح به بلا تردد.",
+        body: "التعرف على الوجه ثلاثي الأبعاد يعمل في الظلام التام بفضل أجهزة الاستشعار بالأشعة تحت الحمراء — جرّبته في الساعة الثانية صباحًا ونجح. أنصح به بلا تردد.",
       },
       {
         name: "نادية ت.",
