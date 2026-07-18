@@ -794,7 +794,7 @@ const fr = {
     faqs: [
       {
         q: "Avec quels types de portes est-il compatible ?",
-        a: "L'ARINILOCK M1 Pro est compatible avec les portes en bois, acier, aluminium, inox et portes blindées — simples ou doubles battants, d'une épaisseur de 40 à 120 mm. En cas de doute, notre équipe vérifie la compatibilité gratuitement sur photo avant l'achat.",
+        a: "L'ARINILOCK M1 Pro est compatible avec les portes en bois, acier, aluminium, inox et portes blindées — simples ou doubles battants, d'une épaisseur de 38 à 110 mm. En cas de doute, notre équipe vérifie la compatibilité gratuitement sur photo avant l'achat.",
       },
       {
         q: "Que se passe-t-il si la batterie est vide ?",
@@ -1760,7 +1760,7 @@ const en: typeof fr = {
     faqs: [
       {
         q: "Which door types is it compatible with?",
-        a: "The ARINILOCK M1 Pro is compatible with wooden, steel, aluminium, stainless steel and armoured doors — single or double leaf, 40–120 mm thick. If in doubt, our team will check compatibility for free via photo before purchase.",
+        a: "The ARINILOCK M1 Pro is compatible with wooden, steel, aluminium, stainless steel and armoured doors — single or double leaf, 38–110 mm thick. If in doubt, our team will check compatibility for free via photo before purchase.",
       },
       {
         q: "What happens if the battery dies?",
@@ -2566,7 +2566,7 @@ const ar: typeof fr = {
   m1pro: {
     heroBadge: "كاميرا الباب · التعرف على الوجه · واي فاي",
     heroDesc:
-      "قفل ذكي مزوّد بشاشة HD ملونة بقياس 4.5 بوصة، وجرس باب بالفيديو ثنائي الاتجاه، وكاميرا برؤية ليلية. يوفر 6 طرق للفتح عبر تطبيق Tuya Smart، وهو مثالي للفلل، والرياض، ووحدات Airbnb.",
+      "قفل ذكي مزوّد بشاشة HD ملونة بقياس 4.5 بوصة، وجرس باب بالفيديو ثنائي الاتجاه، وكاميرا برؤية ليلية. يوفر ست طرق للفتح عبر تطبيق Tuya Smart، وهو مثالي للفلل، والرياض، ووحدات Airbnb.",
     heroRating: "389 تقييم موثق",
     heroCta: "اطلب الآن",
     heroCtaSecondary: "استكشف المميزات",
@@ -2588,7 +2588,7 @@ const ar: typeof fr = {
     unlockTitle: "ست طرق\nللفتح.",
     unlockMethods: [
       { label: "بصمة الإصبع", desc: "أقل من ثانية واحدة · حتى 100 بصمة" },
-      { label: "رمز PIN اللمسي", desc: "مضاد للتجسس · رمز افتراضي" },
+      { label: "رمز PIN", desc: "مضاد للتجسس · رمز افتراضي" },
       { label: "بطاقة RFID", desc: "فتح فوري · بدون إنترنت" },
       {
         label: "تطبيق Tuya Smart",
@@ -2621,7 +2621,7 @@ const ar: typeof fr = {
       { l: "طرق الفتح", suffix: "" },
       { l: "مستخدم", suffix: "" },
       { l: "شاشة HD", suffix: " بوصة" },
-      { l: "سنتا الضمان", suffix: "" },
+      { l: "الضمان", suffix: "" },
     ],
     gallerySection: "06 — معرض الصور",
     galleryTitle: "تصميم\nاستثنائي.",
@@ -2644,7 +2644,7 @@ const ar: typeof fr = {
       },
       { label: "الأبعاد", value: "380 × 75 ملم" },
       { label: "الشاشة", value: '4.5" HD ملونة' },
-      { label: "الأسطوانة", value: "درجة C (أمان عالٍ)" },
+      { label: "الأسطوانة", value: "أسطوانة من الدرجة C عالية الأمان" },
       { label: "سماكة الباب", value: "38–110 ملم · مقبض قابل للعكس" },
       { label: "الميزاب المعياري", value: "5050 / 6068 — 24 × 240 ملم" },
       { label: "البصمات", value: "حتى 200" },
@@ -2687,7 +2687,7 @@ const ar: typeof fr = {
     faqs: [
       {
         q: "ما أنواع الأبواب المتوافقة معه؟",
-        a: "ARINILOCK M1 Pro متوافق مع أبواب الخشب والصلب والألومينيوم والفولاذ المقاوم للصدأ والأبواب المدرعة — مفردة أو مزدوجة، بسماكة 40–120 ملم. في حال الشك، يتحقق فريقنا من التوافق مجاناً عبر صورة قبل الشراء.",
+        a: "ARINILOCK M1 Pro متوافق مع أبواب الخشب والصلب والألومينيوم والفولاذ المقاوم للصدأ والأبواب المدرعة — مفردة أو مزدوجة، بسماكة 38–110 ملم. في حال الشك، يتحقق فريقنا من التوافق مجاناً عبر صورة قبل الشراء.",
       },
       {
         q: "ماذا يحدث إذا نفدت البطارية؟",
