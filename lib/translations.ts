@@ -819,7 +819,7 @@ const fr = {
       "Remplissez le formulaire et notre équipe vous contacte sous 24h pour confirmer votre commande. Paiement à la livraison, partout au Maroc.",
     orderBullets: [
       "Livraison gratuite partout au Maroc",
-      "Installation incluse (Casablanca & Rabat)",
+      "Installation incluse partout au Maroc",
       "Garantie 2 ans — SAV réactif",
       "Paiement à la livraison",
     ],
@@ -995,7 +995,7 @@ const fr = {
       "Remplissez le formulaire et notre équipe vous contacte sous 24h pour confirmer votre commande. Paiement à la livraison, partout au Maroc.",
     orderBullets: [
       "Livraison gratuite partout au Maroc",
-      "Installation incluse (Casablanca & Rabat)",
+      "Installation incluse partout au Maroc",
       "Garantie 2 ans — SAV réactif",
       "Paiement à la livraison",
     ],
@@ -1785,7 +1785,7 @@ const en: typeof fr = {
       "Fill in the form and our team will contact you within 24 hours to confirm your order. Cash on delivery, across Morocco.",
     orderBullets: [
       "Free delivery across Morocco",
-      "Installation included (Casablanca & Rabat)",
+      "Installation included across Morocco",
       "2-year warranty — responsive after-sales",
       "Cash on delivery",
     ],
@@ -1948,7 +1948,7 @@ const en: typeof fr = {
       "Fill in the form and our team will contact you within 24 hours to confirm your order. Cash on delivery, across Morocco.",
     orderBullets: [
       "Free delivery across Morocco",
-      "Installation included (Casablanca & Rabat)",
+      "Installation included across Morocco",
       "2-year warranty — responsive after-sales",
       "Cash on delivery",
     ],
@@ -2712,7 +2712,7 @@ const ar: typeof fr = {
       "أكمل النموذج وسيتصل بك فريقنا خلال 24 ساعة لتأكيد طلبك. الدفع عند الاستلام في جميع أنحاء المغرب.",
     orderBullets: [
       "توصيل مجاني في جميع أنحاء المغرب",
-      "التركيب مشمول (الدار البيضاء والرباط)",
+      "التركيب مشمول في جميع أنحاء المغرب",
       "ضمان سنتان — خدمة ما بعد البيع",
       "الدفع عند الاستلام",
     ],
@@ -2729,7 +2729,7 @@ const ar: typeof fr = {
   i60: {
     heroBadge: "وجه ثلاثي الأبعاد · راحة اليد · بصمة · Push-Pull",
     heroDesc:
-      "قفل ذكي 7 في 1 مزوّد بتقنية التعرف ثلاثي الأبعاد على الوجه، وقراءة راحة اليد دون تلامس، وتصميم Push-Pull فاخر. كما يضم كاميرا HD برؤية ليلية وبطارية ليثيوم قابلة لإعادة الشحن عبر USB-C، ليمنحك أعلى مستويات الأمان.",
+      "قفل ذكي مزوّد بتقنية التعرف ثلاثي الأبعاد على الوجه، وقراءة راحة اليد دون تلامس، وتصميم Push-Pull فاخر. كما يضم كاميرا HD برؤية ليلية وبطارية ليثيوم قابلة لإعادة الشحن عبر USB-C، ليمنحك أعلى مستويات الأمان.",
     heroRating: "256 تقييم موثق",
     heroCta: "اطلب الآن",
     heroCtaSecondary: "كيف يعمل؟",
@@ -2879,7 +2879,7 @@ const ar: typeof fr = {
       "أكمل النموذج وسيتصل بك فريقنا خلال 24 ساعة لتأكيد طلبك. الدفع عند الاستلام في جميع أنحاء المغرب.",
     orderBullets: [
       "توصيل مجاني في جميع أنحاء المغرب",
-      "التركيب مشمول (الدار البيضاء والرباط)",
+      "التركيب مشمول في جميع أنحاء المغرب",
       "ضمان سنتان — خدمة ما بعد البيع",
       "الدفع عند الاستلام",
     ],
