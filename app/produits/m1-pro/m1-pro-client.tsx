@@ -304,7 +304,7 @@ export function M1ProClient() {
           <div className="absolute left-0 right-0 top-0 h-px bg-linear-to-r from-transparent via-primary/30 to-transparent" />
 
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="grid items-end gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="grid items-end gap-12 lg:grid-cols-2 lg:gap-32">
               {/* Left — copy */}
               <div className="order-2 pb-16 lg:order-1 lg:pb-24">
                 <motion.div
@@ -322,7 +322,7 @@ export function M1ProClient() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.85, ease, delay: 0.08 }}
                   className="font-display2 leading-[0.88] text-foreground"
-                  style={{ fontSize: "clamp(3.8rem, 9vw, 7.5rem)" }}
+                  style={{ fontSize: "clamp(3rem, 6.5vw, 5.5rem)" }}
                 >
                   ARINILOCK
                   <br />
