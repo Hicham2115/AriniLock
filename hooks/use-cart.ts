@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { queryKeys } from "@/lib/query-keys";
 import {
   addCartLines,
+  clearCart,
   getCart,
   removeCartLines,
   updateCartLine,
@@ -74,4 +75,14 @@ export function useRemoveCartLine() {
     (lineId: string) => removeCartLines([lineId]),
     "Impossible de retirer cet article",
   );
+}
+
+export function useClearCart() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: clearCart,
+    onSuccess: (cart) => {
+      queryClient.setQueryData(queryKeys.cart, cart);
+    },
+  });
 }

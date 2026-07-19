@@ -2,7 +2,7 @@
 
 import { Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import Image from "next/image";
-import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -109,6 +109,7 @@ export function CartDrawer() {
   const open = useUiStore((s) => s.cartOpen);
   const setOpen = useUiStore((s) => s.setCartOpen);
   const { data: cart, isLoading, isError } = useCart();
+  const router = useRouter();
 
   function computeSubtotal(lines: Cart["lines"]): string {
     if (!lines.length) return `0 ${t.product.currencyLabel}`;
@@ -121,10 +122,9 @@ export function CartDrawer() {
   }
 
   const handleCheckout = () => {
-    if (!cart?.lines.length || !cart.checkoutUrl) return;
+    if (!cart?.lines.length) return;
     setOpen(false);
-    // Using Shopify's hosted checkout for now — see app/checkout/page.tsx (commented out).
-    window.location.href = cart.checkoutUrl;
+    router.push("/checkout");
   };
 
   return (

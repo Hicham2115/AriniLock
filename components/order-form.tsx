@@ -9,14 +9,14 @@ import { z } from "zod";
 import { useT } from "@/hooks/use-t";
 import { cn } from "@/lib/utils";
 
-const VILLES = [
+export const VILLES = [
   "Casablanca", "Rabat", "Marrakech", "Fès", "Tanger", "Agadir",
   "Meknès", "Oujda", "Kénitra", "Tétouan", "Safi", "El Jadida",
   "Béni Mellal", "Nador", "Settat", "Khémisset", "Berrechid",
   "Khouribga", "Mohammedia", "Laâyoune", "Autre",
 ];
 
-function buildSchema(errors: {
+export function buildSchema(errors: {
   prenomRequired: string;
   telephoneRequired: string;
   telephoneInvalid: string;
@@ -37,7 +37,8 @@ function buildSchema(errors: {
   });
 }
 
-type FormValues = { prenom: string; telephone: string; adresse: string; ville: string };
+export type ContactFormValues = { prenom: string; telephone: string; adresse: string; ville: string };
+type FormValues = ContactFormValues;
 
 interface Props {
   productName: string;
@@ -46,13 +47,13 @@ interface Props {
   quantity?: number;
 }
 
-function FieldError({ errors }: { errors: (string | undefined)[] }) {
+export function FieldError({ errors }: { errors: (string | undefined)[] }) {
   const msg = errors.find(Boolean);
   if (!msg) return null;
   return <p className="mt-1 text-xs font-medium text-red-500">{msg}</p>;
 }
 
-function InputField({
+export function InputField({
   label,
   icon: Icon,
   error,

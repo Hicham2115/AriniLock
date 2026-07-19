@@ -122,6 +122,11 @@ export async function updateCartLine(
   return normalizeCart(data.cartLinesUpdate);
 }
 
+export async function clearCart(): Promise<Cart> {
+  clearCartId();
+  return EMPTY_CART;
+}
+
 export async function removeCartLines(lineIds: string[]): Promise<Cart> {
   if (!isShopifyConfigured) return mockCartApi.removeLines(lineIds);
 

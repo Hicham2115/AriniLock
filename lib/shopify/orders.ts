@@ -16,9 +16,33 @@ interface OrderCreateResponse {
   };
 }
 
+export interface OrderLineInput {
+  variantId: string;
+  quantity: number;
+}
+
+interface CreateOrderInput {
+  lineItems: OrderLineInput[];
+  fullName: string;
+  phone: string;
+  address1: string;
+  city: string;
+  note: string;
+  tags: string[];
+}
+
 export interface QuickOrderInput {
   variantId: string;
   quantity: number;
+  fullName: string;
+  phone: string;
+  address1: string;
+  city: string;
+  note: string;
+}
+
+export interface CartOrderInput {
+  lines: OrderLineInput[];
   fullName: string;
   phone: string;
   address1: string;
@@ -37,11 +61,11 @@ function splitName(fullName: string): { firstName: string; lastName: string } {
   return { firstName, lastName: rest.length ? rest.join(" ") : NO_LAST_NAME_PLACEHOLDER };
 }
 
-export async function createQuickOrder(input: QuickOrderInput): Promise<{ id: string; name: string }> {
+async function createOrder(input: CreateOrderInput): Promise<{ id: string; name: string }> {
   const { firstName, lastName } = splitName(input.fullName);
   const data = await shopifyAdminFetch<OrderCreateResponse>(ORDER_CREATE_MUTATION, {
     order: {
-      lineItems: [{ variantId: input.variantId, quantity: input.quantity }],
+      lineItems: input.lineItems,
       shippingAddress: {
         firstName,
         lastName,
@@ -51,7 +75,7 @@ export async function createQuickOrder(input: QuickOrderInput): Promise<{ id: st
         phone: input.phone,
       },
       financialStatus: "PENDING",
-      tags: ["achat-rapide", "cod"],
+      tags: input.tags,
       note: input.note,
     },
   });
@@ -64,4 +88,28 @@ export async function createQuickOrder(input: QuickOrderInput): Promise<{ id: st
     throw new Error("La commande n'a pas pu être créée.");
   }
   return order;
+}
+
+export async function createQuickOrder(input: QuickOrderInput): Promise<{ id: string; name: string }> {
+  return createOrder({
+    lineItems: [{ variantId: input.variantId, quantity: input.quantity }],
+    fullName: input.fullName,
+    phone: input.phone,
+    address1: input.address1,
+    city: input.city,
+    note: input.note,
+    tags: ["achat-rapide", "cod"],
+  });
+}
+
+export async function createOrderFromCart(input: CartOrderInput): Promise<{ id: string; name: string }> {
+  return createOrder({
+    lineItems: input.lines,
+    fullName: input.fullName,
+    phone: input.phone,
+    address1: input.address1,
+    city: input.city,
+    note: input.note,
+    tags: ["panier", "cod"],
+  });
 }

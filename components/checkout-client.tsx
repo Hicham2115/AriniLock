@@ -3,13 +3,16 @@
 import { CheckCircle2, ChevronDown, Loader2, ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { useCart } from "@/hooks/use-cart";
+import { useCart, useClearCart } from "@/hooks/use-cart";
 import { useFormatMoney } from "@/hooks/use-format-money";
 import { useT } from "@/hooks/use-t";
 import { cn } from "@/lib/utils";
 import type { Cart } from "@/types/shopify";
+
+const HOME_REDIRECT_DELAY_MS = 4000;
 
 function computeSubtotal(lines: Cart["lines"]) {
   if (!lines.length) return null;
@@ -39,8 +42,10 @@ const EMPTY: FormState = { fullName: "", phone: "", city: "", address: "", notes
 
 export function CheckoutClient() {
   const t = useT();
+  const router = useRouter();
   const formatMoney = useFormatMoney();
   const { data: cart, isLoading } = useCart();
+  const clearCart = useClearCart();
   const [form, setForm] = useState<FormState>(EMPTY);
   const [errors, setErrors] = useState<Partial<FormState>>({});
   const [submitting, setSubmitting] = useState(false);
@@ -48,6 +53,12 @@ export function CheckoutClient() {
 
   const lines = cart?.lines ?? [];
   const total = computeSubtotal(lines);
+
+  useEffect(() => {
+    if (!orderRef) return;
+    const timer = setTimeout(() => router.push("/"), HOME_REDIRECT_DELAY_MS);
+    return () => clearTimeout(timer);
+  }, [orderRef, router]);
 
   function set(field: keyof FormState, value: string) {
     setForm((f) => ({ ...f, [field]: value }));
@@ -77,16 +88,21 @@ export function CheckoutClient() {
           ...form,
           phone: form.phone.replace(/\s/g, ""),
           items: lines.map((l) => ({
+            variantId: l.merchandise.id,
             title: l.merchandise.product.title,
             variant: l.merchandise.title,
             quantity: Math.max(l.quantity, 1),
-            price: formatMoney(l.merchandise.price),
+            price: l.merchandise.price.amount,
           })),
-          total: total ? formatMoney(total) : "—",
         }),
       });
       const data: { ok: boolean; orderRef: string } = await res.json();
-      if (data.ok) setOrderRef(data.orderRef);
+      if (data.ok) {
+        clearCart.mutate();
+        setOrderRef(data.orderRef);
+      } else {
+        toast.error(t.checkout.errors.failed);
+      }
     } catch {
       toast.error(t.checkout.errors.failed);
     } finally {
