@@ -20,6 +20,14 @@ export interface SheetOrderRow {
   orderTotal: string;
 }
 
+// Orders can reach here with a local "0XXXXXXXX" number (Shopify doesn't
+// always normalize what the customer typed) — the sheet should always show
+// the full "+212XXXXXXXX" form.
+function normalizeMoroccanPhone(phone: string): string {
+  const trimmed = phone.trim();
+  return trimmed.startsWith("0") ? `+212${trimmed.slice(1)}` : trimmed;
+}
+
 // Best-effort logging — a Sheets outage must never block a real Shopify order,
 // so failures are swallowed (and logged) rather than thrown.
 export async function logOrderToSheet(row: SheetOrderRow): Promise<void> {
@@ -28,7 +36,7 @@ export async function logOrderToSheet(row: SheetOrderRow): Promise<void> {
   try {
     await axios.post(
       webhookUrl!,
-      { secret: webhookSecret, ...row },
+      { secret: webhookSecret, ...row, phone: normalizeMoroccanPhone(row.phone) },
       { timeout: 10_000, maxRedirects: 5 },
     );
   } catch (err) {
