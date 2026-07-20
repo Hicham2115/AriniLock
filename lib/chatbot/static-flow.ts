@@ -245,7 +245,7 @@ function arRecommend(feature: string, property: string | null) {
       };
     }
   }
-}
+} 
 
 const AR: LocaleContent = {
   welcome: {
