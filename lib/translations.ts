@@ -208,7 +208,7 @@ const fr = {
     },
     errors: {
       name: "Nom complet requis",
-      phone: "Numéro marocain invalide (ex: 0612345678)",
+      phone: "Numéro de téléphone requis",
       city: "Veuillez choisir une ville",
       address: "Adresse complète requise",
       failed: "Erreur lors de la commande. Veuillez réessayer.",
@@ -634,7 +634,6 @@ const fr = {
     errors: {
       prenomRequired: "Nom complet obligatoire",
       telephoneRequired: "Numéro obligatoire",
-      telephoneInvalid: "Numéro marocain invalide (ex: 06 XX XX XX XX)",
       adresseRequired: "Adresse obligatoire",
       villeRequired: "Veuillez choisir une ville",
       submitFailed:
@@ -1216,7 +1215,7 @@ const en: typeof fr = {
     },
     errors: {
       name: "Full name required",
-      phone: "Invalid Moroccan number (e.g. 0612345678)",
+      phone: "Phone number required",
       city: "Please choose a city",
       address: "Full address required",
       failed: "Order failed. Please try again.",
@@ -1614,7 +1613,6 @@ const en: typeof fr = {
     errors: {
       prenomRequired: "Full name required",
       telephoneRequired: "Phone number required",
-      telephoneInvalid: "Invalid Moroccan number (e.g. 06 XX XX XX XX)",
       adresseRequired: "Address required",
       villeRequired: "Please choose a city",
       submitFailed: "Failed to send your order. Please try again.",
@@ -2160,7 +2158,7 @@ const ar: typeof fr = {
     },
     errors: {
       name: "الاسم الكامل مطلوب",
-      phone: "رقم مغربي غير صالح (مثال: 0612345678)",
+      phone: "رقم الهاتف مطلوب",
       city: "يرجى اختيار مدينة",
       address: "العنوان الكامل مطلوب",
       failed: "فشل الطلب. يرجى المحاولة مرة أخرى.",
@@ -2552,7 +2550,6 @@ const ar: typeof fr = {
     errors: {
       prenomRequired: "الاسم الكامل مطلوب",
       telephoneRequired: "رقم الهاتف مطلوب",
-      telephoneInvalid: "رقم مغربي غير صالح (مثال: 06 XX XX XX XX)",
       adresseRequired: "العنوان مطلوب",
       villeRequired: "يرجى اختيار مدينة",
       submitFailed: "حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مرة أخرى.",

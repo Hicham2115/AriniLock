@@ -10,7 +10,7 @@ const quickOrderSchema = z.object({
   productName: z.string().min(1),
   price: z.string().min(1),
   prenom: z.string().min(1),
-  telephone: z.string().regex(/^(0|\+212)[5-7]\d{8}$/),
+  telephone: z.string().min(1),
   adresse: z.string().min(3),
   ville: z.string().min(1),
 });

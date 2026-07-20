@@ -68,8 +68,7 @@ export function CheckoutClient() {
   function validate(): boolean {
     const e: Partial<FormState> = {};
     if (form.fullName.trim().length < 2) e.fullName = t.checkout.errors.name;
-    if (!/^(\+212|0)[5-7]\d{8}$/.test(form.phone.replace(/\s/g, "")))
-      e.phone = t.checkout.errors.phone;
+    if (!form.phone.trim()) e.phone = t.checkout.errors.phone;
     if (!form.city) e.city = t.checkout.errors.city;
     if (form.address.trim().length < 5) e.address = t.checkout.errors.address;
     setErrors(e);

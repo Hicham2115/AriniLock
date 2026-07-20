@@ -19,19 +19,12 @@ export const VILLES = [
 export function buildSchema(errors: {
   prenomRequired: string;
   telephoneRequired: string;
-  telephoneInvalid: string;
   adresseRequired: string;
   villeRequired: string;
 }) {
   return z.object({
     prenom:    z.string().min(1, errors.prenomRequired),
-    telephone: z
-      .string()
-      .min(1, errors.telephoneRequired)
-      .refine(
-        (v) => /^(0|\+212)[5-7]\d{8}$/.test(v.replace(/\s/g, "")),
-        errors.telephoneInvalid,
-      ),
+    telephone: z.string().min(1, errors.telephoneRequired),
     adresse:   z.string().min(3, errors.adresseRequired),
     ville:     z.string().min(1, errors.villeRequired),
   });

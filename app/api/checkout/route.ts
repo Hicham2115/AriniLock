@@ -14,7 +14,7 @@ const itemSchema = z.object({
 
 const checkoutSchema = z.object({
   fullName: z.string().min(2, "Nom requis"),
-  phone: z.string().regex(/^(\+212|0)[5-7]\d{8}$/, "Numéro marocain invalide"),
+  phone: z.string().min(1, "Numéro de téléphone requis"),
   city: z.string().min(1, "Ville requise"),
   address: z.string().min(5, "Adresse requise"),
   notes: z.string().optional(),
