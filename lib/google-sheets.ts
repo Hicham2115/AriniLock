@@ -20,12 +20,13 @@ export interface SheetOrderRow {
   orderTotal: string;
 }
 
-// Orders can reach here with a local "0XXXXXXXX" number (Shopify doesn't
-// always normalize what the customer typed) — the sheet should always show
-// the full "+212XXXXXXXX" form.
+// Shopify sometimes drops the leading 0 from a Moroccan mobile number
+// (e.g. "612345678" instead of "0612345678"). Restore it so the sheet reads
+// naturally — everything else (other prefixes, foreign numbers) is left
+// exactly as the client entered it.
 function normalizeMoroccanPhone(phone: string): string {
   const trimmed = phone.trim();
-  return trimmed.startsWith("0") ? `+212${trimmed.slice(1)}` : trimmed;
+  return /^[67]\d{8}$/.test(trimmed) ? `0${trimmed}` : trimmed;
 }
 
 // Best-effort logging — a Sheets outage must never block a real Shopify order,
