@@ -77,6 +77,11 @@ async function createOrder(input: CreateOrderInput): Promise<{ id: string; name:
       financialStatus: "PENDING",
       tags: input.tags,
       note: input.note,
+      // Shopify reformats shippingAddress.phone based on countryCode (e.g.
+      // strips the Moroccan trunk "0"), which is wrong for non-Moroccan
+      // numbers too. Carry the exact string the customer typed as a custom
+      // attribute so the orders webhook can log it untouched.
+      customAttributes: [{ key: "raw_phone", value: input.phone }],
     },
     // Without this, orderCreate defaults to BYPASS and never touches
     // inventory — orders would keep being placed regardless of stock.

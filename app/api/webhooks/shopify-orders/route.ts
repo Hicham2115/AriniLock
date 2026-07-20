@@ -46,6 +46,7 @@ interface ShopifyOrderWebhookPayload {
     phone: string | null;
   } | null;
   customer: { first_name: string | null; last_name: string | null; phone: string | null } | null;
+  note_attributes: { name: string; value: string }[];
 }
 
 export async function POST(req: Request) {
@@ -69,7 +70,12 @@ export async function POST(req: Request) {
   const fullName =
     [address?.first_name ?? order.customer?.first_name, lastName || null].filter(Boolean).join(" ") || "—";
   const orderTotal = `${order.total_price} ${order.currency}`;
-  const phone = address?.phone ?? order.phone ?? order.customer?.phone ?? "";
+  // Prefer the exact string the customer typed (stashed as a custom order
+  // attribute at creation time) over Shopify's shipping-address phone, which
+  // it silently reformats based on the shipping country. Falls back to the
+  // Shopify fields for orders created before this attribute existed.
+  const rawPhoneAttr = order.note_attributes?.find((a) => a.name === "raw_phone")?.value;
+  const phone = rawPhoneAttr || address?.phone || order.phone || order.customer?.phone || "";
   const city = address?.city ?? "";
   const shippingAddress = address?.address1 ?? "";
 
