@@ -79,9 +79,9 @@ export const metadata: Metadata = {
       "Poignée connectée premium : empreinte digitale, code PIN, app mobile et carte RFID. Installation garantie 2 ans.",
     images: [
       {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
+        url: "/og-home.jpg",
+        width: 670,
+        height: 1200,
         alt: "ARINILOCK — Poignée connectée premium",
       },
     ],
@@ -91,7 +91,7 @@ export const metadata: Metadata = {
     title: "ARINILOCK — La porte qui vous reconnaît",
     description:
       "Poignée connectée : empreinte digitale, code PIN, app mobile. Installation livraison partout au Maroc.",
-    images: ["/og-image.jpg"],
+    images: ["/og-home.jpg"],
   },
   alternates: {
     canonical: "https://www.arinilock.ma",
