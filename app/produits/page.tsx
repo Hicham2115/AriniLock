@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Boutique — ARINILOCK",
     description:
       "Serrure connectée et accessoires. Livraison partout au Maroc, paiement à la livraison.",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "ARINILOCK boutique" }],
+    images: [{ url: "/og-home.jpg", width: 670, height: 1200, alt: "ARINILOCK boutique" }],
   },
 };
 

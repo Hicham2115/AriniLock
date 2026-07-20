@@ -29,13 +29,13 @@ export async function generateMetadata({
       description,
       images: image
         ? [{ url: image.url, width: image.width ?? 900, height: image.height ?? 900, alt: image.altText ?? product.title }]
-        : [{ url: "/og-image.jpg", width: 1200, height: 630, alt: product.title }],
+        : [{ url: "/og-home.jpg", width: 670, height: 1200, alt: product.title }],
     },
     twitter: {
       card: "summary_large_image",
       title: `${product.title} | ARINILOCK`,
       description,
-      images: image ? [image.url] : ["/og-image.jpg"],
+      images: image ? [image.url] : ["/og-home.jpg"],
     },
   };
 }

@@ -10,14 +10,14 @@ export const metadata: Metadata = {
     title: "I 60 — Serrure Connectée Compacte | ARINILOCK",
     description:
       "La serrure connectée ultra-compacte pour appartement et résidence. Empreinte digitale, code PIN et app mobile, installation en 15 minutes.",
-    images: [{ url: "/og-i-60.jpg", width: 894, height: 1200, alt: "ARINILOCK I 60" }],
+    images: [{ url: "/og-home.jpg", width: 670, height: 1200, alt: "ARINILOCK I 60" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "I 60 — Serrure Connectée Compacte | ARINILOCK",
     description:
       "La serrure connectée ultra-compacte pour appartement et résidence. Empreinte digitale, code PIN et app mobile.",
-    images: ["/og-i-60.jpg"],
+    images: ["/og-home.jpg"],
   },
 };
 

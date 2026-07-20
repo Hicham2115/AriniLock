@@ -10,14 +10,14 @@ export const metadata: Metadata = {
     title: "M1 Pro — Serrure Connectée Premium | ARINILOCK",
     description:
       "La serrure connectée haut de gamme alliant reconnaissance biométrique avancée, sécurité militaire et design d'exception.",
-    images: [{ url: "/og-m1-pro.jpg", width: 1200, height: 1200, alt: "ARINILOCK M1 Pro" }],
+    images: [{ url: "/og-home.jpg", width: 670, height: 1200, alt: "ARINILOCK M1 Pro" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "M1 Pro — Serrure Connectée Premium | ARINILOCK",
     description:
       "La serrure connectée haut de gamme alliant reconnaissance biométrique avancée et sécurité militaire.",
-    images: ["/og-m1-pro.jpg"],
+    images: ["/og-home.jpg"],
   },
 };
 
