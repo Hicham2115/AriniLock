@@ -1,8 +1,8 @@
 import { shopifyAdminFetch } from "./admin";
 
 const ORDER_CREATE_MUTATION = `#graphql
-  mutation orderCreate($order: OrderCreateOrderInput!) {
-    orderCreate(order: $order) {
+  mutation orderCreate($order: OrderCreateOrderInput!, $options: OrderCreateOptionsInput) {
+    orderCreate(order: $order, options: $options) {
       userErrors { field message }
       order { id name }
     }
@@ -78,6 +78,9 @@ async function createOrder(input: CreateOrderInput): Promise<{ id: string; name:
       tags: input.tags,
       note: input.note,
     },
+    // Without this, orderCreate defaults to BYPASS and never touches
+    // inventory — orders would keep being placed regardless of stock.
+    options: { inventoryBehaviour: "DECREMENT_OBEYING_POLICY" },
   });
 
   const { userErrors, order } = data.orderCreate;

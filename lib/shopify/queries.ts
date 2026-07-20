@@ -12,6 +12,7 @@ const VARIANT_FRAGMENT = /* GraphQL */ `
     id
     title
     availableForSale
+    quantityAvailable
     price {
       amount
       currencyCode

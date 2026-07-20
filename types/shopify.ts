@@ -16,6 +16,7 @@ export const variantSchema = z.object({
   id: z.string(),
   title: z.string(),
   availableForSale: z.boolean(),
+  quantityAvailable: z.number().nullable().optional(),
   price: moneySchema,
   compareAtPrice: moneySchema.nullable().optional(),
   image: imageSchema.nullable().optional(),
@@ -75,7 +76,12 @@ export const newsletterSchema = z.object({
 export type NewsletterPayload = z.infer<typeof newsletterSchema>;
 
 export function isProductInStock(product: Product): boolean {
-  return product.variants.some((v) => v.availableForSale);
+  return product.variants.some((v) => {
+    // Storefront API returns null when inventory isn't tracked for a
+    // variant — treat that as always in stock (no count to be empty).
+    if (v.quantityAvailable == null) return true;
+    return v.quantityAvailable > 0;
+  });
 }
 
 export function formatMoney(money: Money, currencyLabel?: string): string {
