@@ -6,7 +6,7 @@ import { ProductCard, ProductCardSkeleton } from "@/components/product-card";
 import { Reveal } from "@/components/reveal";
 import { useAccessories, useMainProduct } from "@/hooks/use-product";
 import { useT } from "@/hooks/use-t";
-import type { Product } from "@/types/shopify";
+import { isProductInStock, type Product } from "@/types/shopify";
 
 export function BestSellers() {
   const t = useT();
@@ -20,7 +20,9 @@ export function BestSellers() {
   const products: Product[] = [
     ...(mainProduct ? [mainProduct] : []),
     ...(accessories?.filter((a) => a.handle !== mainProduct?.handle) ?? []),
-  ].slice(0, 4);
+  ]
+    .filter(isProductInStock)
+    .slice(0, 4);
 
   return (
     <section className="mx-auto max-w-7xl border-t border-line px-6 py-24 lg:px-10">

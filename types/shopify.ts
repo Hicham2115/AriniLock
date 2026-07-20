@@ -74,6 +74,10 @@ export const newsletterSchema = z.object({
 
 export type NewsletterPayload = z.infer<typeof newsletterSchema>;
 
+export function isProductInStock(product: Product): boolean {
+  return product.variants.some((v) => v.availableForSale);
+}
+
 export function formatMoney(money: Money, currencyLabel?: string): string {
   const value = Number.parseFloat(money.amount);
   const formatted = new Intl.NumberFormat("fr-FR", {

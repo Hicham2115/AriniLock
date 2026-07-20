@@ -13,7 +13,7 @@ import { useAccessories, useMainProduct } from "@/hooks/use-product";
 import { useT } from "@/hooks/use-t";
 import { queryKeys } from "@/lib/query-keys";
 import { MAIN_PRODUCT_HANDLE } from "@/lib/shopify/products";
-import type { Product } from "@/types/shopify";
+import { isProductInStock, type Product } from "@/types/shopify";
 
 const COLOR_OPTIONS = [
   { label: "Black",  bg: "bg-[#1E1B18]" },
@@ -62,6 +62,7 @@ export function ProduitsPageClient() {
 
   const range = PRICE_RANGES[priceIdx];
   const visible = allProducts.filter((p) => {
+    if (!isProductInStock(p)) return false;
     const price = parseFloat(p.variants[0]?.price.amount ?? "0");
     if (price < range.min || price > range.max) return false;
     if (search && !p.title.toLowerCase().includes(search.toLowerCase())) return false;
