@@ -239,7 +239,7 @@ function arRecommend(feature: string, property: string | null) {
     case "simple":
     default: {
       const link = `/produits/${MAIN_PRODUCT_HANDLE}`;
-      return {
+      return { 
         productLink: link,
         content: `بالنسبة لـ${propertyLabel ?? "هذا الملف الشخصي"}، أنصحك بـ **مقبض ARINILOCK المتصل** — بصمة الإصبع، رمز PIN، بطاقة RFID، تطبيق، مفتاح احتياطي — ابتداءً من 1590 درهم.\n\n[عرض المنتج →](${link})`,
       };
