@@ -76,6 +76,10 @@ export async function POST(req: Request) {
   // Shopify fields for orders created before this attribute existed.
   const rawPhoneAttr = order.note_attributes?.find((a) => a.name === "raw_phone")?.value;
   const phone = rawPhoneAttr || address?.phone || order.phone || order.customer?.phone || "";
+  console.log("[phone-debug] note_attributes:", JSON.stringify(order.note_attributes));
+  console.log("[phone-debug] rawPhoneAttr:", JSON.stringify(rawPhoneAttr));
+  console.log("[phone-debug] address?.phone:", JSON.stringify(address?.phone));
+  console.log("[phone-debug] final phone:", JSON.stringify(phone), "typeof:", typeof phone);
   const city = address?.city ?? "";
   const shippingAddress = address?.address1 ?? "";
 
